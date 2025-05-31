@@ -1,0 +1,135 @@
+:root {
+    --accent: #00eaff;
+    --bg: #0c0e11;
+    --text: #e9eef2;
+    --radius: 1rem;
+    --fs-base: clamp(1rem, 1vw+0.6rem, 1.25rem);
+    /* fluid type */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: Inter, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* Navbar ----------------------------------------------------*/
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    backdrop-filter: blur(12px) saturate(180%);
+    background: rgba(12, 14, 17, 0.65);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.25rem;
+    letter-spacing: .1rem
+}
+
+.logo .accent {
+    color: var(--accent)
+}
+
+.burger {
+    display: none;
+    background: none;
+    border: none;
+}
+
+.burger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    margin: 5px 0;
+    transition: .3s
+}
+
+/* mobile menu */
+@media(max-width:768px) {
+    .burger {
+        display: block
+    }
+
+    .menu {
+        position: fixed;
+        inset: 0 0 0 40%;
+        background: var(--bg);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(100%);
+        transition: transform .45s cubic-bezier(.5, 0, .5, 1)
+    }
+
+    .menu.open {
+        transform: none
+    }
+}
+
+.menu a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1rem
+}
+
+.menu a:hover {
+    color: var(--accent)
+}
+
+/* Hero ------------------------------------------------------*/
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%
+}
+
+#scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%
+}
+
+.hero-text {
+    position: relative;
+    z-index: 10;
+    font-size: clamp(2.5rem, 5vw+1rem, 6rem);
+    text-align: center;
+    color: var(--text);
+    top: 40vh;
+    mix-blend-mode: difference
+}
+
+.grad {
+    color: transparent;
+    background: linear-gradient(90deg, var(--accent), #7a00ff);
+    -webkit-background-clip: text;
+    border-bottom: 2px solid var(--accent)
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important
+    }
+}
