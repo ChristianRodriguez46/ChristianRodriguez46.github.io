@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hangman Game</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <div class="game-container">
+            <div class="game-inner">
+                <!-- Alphabet Buttons -->
+                <div class="letters"></div>
+        
+                <!-- 3-D Hangman -->
+                <div class="hangman-container">
+                    <svg viewBox="0 0 96 96">
+                        <!-- gallows -->
+                        <line class="gallows" x1="16" y1="80" x2="32" y2="80" />
+                        <line class="gallows" x1="24" y1="80" x2="24" y2="16" />
+                        <line class="gallows" x1="21" y1="16" x2="60" y2="16" />
+                        <line class="gallows" x1="24" y1="24" x2="32" y2="16" />
+                        <line class="gallows" x1="56" y1="16" x2="56" y2="28" />
+                        <!-- man (6 parts) -->
+                        <circle class="part step1" cx="56" cy="34" r="6" />
+                        <line class="part step2" x1="56" y1="40" x2="56" y2="56" />
+                        <line class="part step3" x1="44" y1="46" x2="56" y2="48" />
+                        <line class="part step4" x1="68" y1="46" x2="56" y2="48" />
+                        <line class="part step5" x1="50" y1="70" x2="56" y2="56" />
+                        <line class="part step6" x1="62" y1="70" x2="56" y2="56" />
+                    </svg>
+                </div>
+        
+                <!-- Hint text -->
+                <p class="hint-text"></p>
+        
+                <!-- Word slots -->
+                <div class="hint"></div>
+            </div>
+        </div>
+        
+        <!-- overlays retained (hidden by default) -->
+        <div class="overlay lose-overlay" id="loseOverlay">
+            <div class="overlay-content">
+                <h1>You Lost!</h1>
+                <p>The word was <span id="loseWord"></span></p>
+                <button onclick="location.reload()">Try Again</button>
+            </div>
+        </div>
+        <div class="overlay win-overlay" id="winOverlay">
+            <div class="overlay-content">
+                <h1>Great Job!</h1>
+                <button onclick="location.reload()">Play Again</button>
+            </div>
+        </div>
+        
+        <!-- Using type="module" lets us import our word bank via ES modules,
+             keeping data separate and making the code more modular and maintainable -->
+        <script type="module">
+            /* --- 1. Import word + hint from the bank --- */
+            import { getRandomWord, getHint } from './hangman_word_bank.js';
+
+            const word = getRandomWord();        // chosen word (no repeat)
+            const hint = getHint();              // matching concise hint
+
+            /* --- 2. Show the hint text & prep overlays --- */
+            document.querySelector('.hint-text').textContent = `Hint: ${hint}`;
+            document.getElementById('loseWord').textContent = word;
+
+            /* --- 3. DOM references --- */
+            const lettersDiv = document.querySelector('.letters');
+            const hintSlots = document.querySelector('.hint');
+            const svg = document.querySelector('svg');
+            const loseOverlay = document.getElementById('loseOverlay');
+            const winOverlay = document.getElementById('winOverlay');
+
+            /* --- 4. Build alphabet buttons --- */
+            'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(ch => {
+                const btn = document.createElement('input');
+                btn.type = 'radio';
+                btn.className = 'letter-btn';
+                btn.dataset.letter = ch;
+
+                // mark correct vs. wrong for styling
+                if (word.includes(ch.toLowerCase())) btn.setAttribute('correct', '');
+                else btn.dataset.wrong = '1';
+
+                lettersDiv.appendChild(btn);
+            });
+
+            /* --- 5. Build empty slots for the word --- */
+            word.split('').forEach(() => {
+                const slot = document.createElement('span');
+                slot.className = 'letter-slot';
+                hintSlots.appendChild(slot);
+            });
+
+            /* --- 6. Gameplay logic (6 strikes) --- */
+            let wrong = 0;
+
+            lettersDiv.addEventListener('change', e => {
+                const btn = e.target;
+                btn.disabled = true;                           // block double‑click
+                const letter = btn.dataset.letter.toLowerCase();
+
+                if (btn.dataset.wrong) {
+                    /* wrong guess → reveal next body part */
+                    wrong++;
+                    const part = svg.querySelector(`.step${wrong}`);
+                    if (part) part.classList.add('visible');
+                } else {
+                    /* correct guess → fill matching slots */
+                    [...hintSlots.children].forEach((slot, i) => {
+                        if (word[i] === letter) slot.textContent = letter.toUpperCase();
+                    });
+                }
+
+                /* lose after 6 wrong guesses */
+                if (wrong >= 6) loseOverlay.classList.add('active');
+
+                /* win if all letters revealed */
+                if ([...hintSlots.children].every(s => s.textContent))
+                    winOverlay.classList.add('active');
+            });
+        </script>          
+    </body>
+</html>

@@ -1,0 +1,662 @@
+/* ---------- Base Styles & Layout ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Permanent Marker', "Gill Sans";
+    background: #0f0f0f;
+    overflow: hidden;
+    padding: 1rem;
+    position: relative;
+}
+
+/* ---------- Animated Backgrounds ---------- */
+body::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -20%;
+    width: 140%;
+    height: 140%;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.2), transparent 40%),
+        radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.2), transparent 40%);
+    animation: moveBackground 20s linear infinite;
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: scrollGrid 60s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveBackground {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(30px, 30px) rotate(180deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes scrollGrid {
+    0% {
+        background-position: 0 0, 0 0;
+    }
+
+    100% {
+        background-position: -40px -40px, -40px -40px;
+    }
+}
+
+/* ---------- Game Container ---------- */
+.game-container {
+    perspective: 900px;
+    width: 100%;
+    max-width: 24rem;
+}
+
+.game-inner {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.game-inner:hover {
+    transform: scale(1.02);
+}
+
+/* ---------- Alphabet Grid ---------- */
+.letters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2.4rem, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.letter-btn {
+    position: relative;
+    appearance: none;
+    width: 100%;
+    padding-top: 100%;
+    /* square */
+    background: #fff;
+    border: 2px solid #bbb;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.06));
+    transition: border-color 0.25s, color 0.25s;
+}
+
+.letter-btn::before {
+    content: attr(data-letter);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    font-size: 1.25rem;
+    color: #2c3e50;
+    transition: transform 0.2s ease-out;
+}
+
+.letter-btn:checked::before {
+    animation: popLetter 0.3s forwards;
+}
+
+@keyframes popLetter {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    60% {
+        transform: translate(-50%, -50%) scale(1.4);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.letter-btn:hover:not(:disabled) {
+    border-color: #7f8c8d;
+}
+
+.letter-btn:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+/* incorrect guess */
+.letter-btn:checked {
+    background: #ecf0f1;
+}
+
+.letter-btn:checked::before {
+    color: #e74c3c;
+}
+
+/* correct guess */
+.letter-btn[correct]:checked::before {
+    color: #27ae60;
+}
+
+/* ripple effect */
+.letter-btn:focus:not(:disabled)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: inherit;
+    animation: ripple 0.6s;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* ---------- 3D Hangman ---------- */
+.hangman-container {
+    width: 100%;
+    margin: 0 auto 2rem;
+    display: flex;
+    justify-content: center;
+    transform-style: preserve-3d;
+    animation: swingGallows 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes swingGallows {
+    0% {
+        transform: rotateZ(-1deg);
+    }
+
+    100% {
+        transform: rotateZ(1deg);
+    }
+}
+
+svg {
+    width: 100%;
+    max-width: 18rem;
+    transform: rotateX(15deg) rotateY(-12deg);
+    transform-style: preserve-3d;
+}
+
+.gallows {
+    stroke: #2c3e50;
+    stroke-width: 5;
+    stroke-linecap: round;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+svg .part {
+    stroke: #d8d8d8;
+    stroke-width: 5;
+    stroke-linecap: round;
+    transition: stroke 0.4s, transform 0.4s;
+    transform-origin: center;
+}
+
+svg .part.visible {
+    stroke: #111;
+    transform: translateZ(22px) rotateX(10deg);
+}
+
+/* ---------- Word Hint Slots ---------- */
+.hint {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.letter-slot {
+    flex: 1;
+    height: 3.6rem;
+    border-bottom: 4px solid #111;
+    font-size: 1.8rem;
+    line-height: 3.6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.letter-slot.reveal::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: slotSweep 0.5s forwards;
+}
+
+@keyframes slotSweep {
+    to {
+        left: 100%;
+    }
+}
+
+/* ---------- Endgame Overlays ---------- */
+.overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+    animation: fadeOverlay 0.4s forwards;
+    z-index: 10;
+}
+
+.overlay.active {
+    display: flex;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes fadeOverlay {
+    from {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        background: rgba(0, 0, 0, 0.6);
+    }
+}
+
+.overlay-content {
+    background: #333;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: #fff;
+    transform: scale(0.8);
+    animation: popOverlay 0.3s forwards;
+}
+
+@keyframes popOverlay {
+    to {
+        transform: scale(1);
+    }
+}
+
+.overlay-content h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.overlay-content button {
+    margin-top: 1rem;
+    padding: 0.7rem 1.6rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: #2980b9;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.overlay-content button:hover {
+    transform: translateY(-2px);
+    background: #1f6391;
+}
+
+.lose-overlay .overlay-content {
+    background: #992d2d;
+}
+
+.win-overlay .overlay-content {
+    background: #26734a;
+}
+
+/* ---------- Overlay: Better Mobile Friendliness ---------- */
+/*----------------------------------------
+   Breakpoints:
+   • Mobile S:   ≤ 320px
+   • Mobile M:  321–375px
+   • Mobile L:  376–425px
+   • Tablet:    426–767px
+   • Laptop:    768–1023px
+   • Laptop L: 1024–1439px
+   • 4K:      ≥1440px (e.g. 2560px+)
+-----------------------------------------*/
+
+/* Mobile S (≤320px) */
+@media (max-width: 320px) {
+    /* Ensure the flex parent spans the full viewport */
+    html,
+    body {
+        height: 100%;
+    }
+
+    /* Center the game-container in the body flexbox */
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fallback centering on the container itself */
+    .game-container {
+        margin: auto;
+        /* center if ever removed from flex context */
+        align-self: center;
+        /* reinforce vertical centering */
+    }
+
+    .game-container {
+        max-width: 18rem;
+    }
+
+    .letters {
+        grid-template-columns: repeat(auto-fill, minmax(1.8rem, 1fr));
+        gap: 0.3rem;
+    }
+
+    .letter-btn::before {
+        font-size: 0.9rem;
+    }
+
+    .letter-slot {
+        height: 2.6rem;
+        font-size: 1.3rem;
+        border-bottom-width: 2px;
+    }
+
+    .overlay-content {
+        width: 90%;
+        padding: 0.8rem;
+    }
+
+    .overlay-content h1 {
+        font-size: 1.4rem;
+    }
+}
+
+/* Mobile M (321–375px) */
+@media (min-width: 321px) and (max-width: 375px) {
+    /* Ensure the flex parent spans the full viewport */
+    html,
+    body {
+        height: 100%;
+    }
+
+    /* Center the game-container in the body flexbox */
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fallback centering on the container itself */
+    .game-container {
+        margin: auto;
+        /* center if ever removed from flex context */
+        align-self: center;
+        /* reinforce vertical centering */
+    }
+
+    .game-container {
+        max-width: 20rem;
+    }
+
+    .letters {
+        grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr));
+        gap: 0.35rem;
+    }
+
+    .letter-btn::before {
+        font-size: 1rem;
+    }
+
+    .letter-slot {
+        height: 2.8rem;
+        font-size: 1.4rem;
+    }
+}
+
+/* Mobile L (376–425px) */
+@media (min-width: 376px) and (max-width: 425px) {
+    /* Ensure the flex parent spans the full viewport */
+    html,
+    body {
+        height: 100%;
+    }
+
+    /* Center the game-container in the body flexbox */
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fallback centering on the container itself */
+    .game-container {
+        margin: auto;
+        /* center if ever removed from flex context */
+        align-self: center;
+        /* reinforce vertical centering */
+    }
+    
+    .game-container {
+        max-width: 22rem;
+    }
+
+    .letters {
+        grid-template-columns: repeat(auto-fill, minmax(2.2rem, 1fr));
+        gap: 0.4rem;
+    }
+
+    .letter-btn::before {
+        font-size: 1.1rem;
+    }
+
+    .letter-slot {
+        height: 3rem;
+        font-size: 1.5rem;
+    }
+}
+
+/* Tablet (426–767px) */
+@media (min-width: 426px) and (max-width: 767px) {
+    /* Ensure the flex parent spans the full viewport */
+    html,
+    body {
+        height: 100%;
+    }
+
+    /* Center the game-container in the body flexbox */
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fallback centering on the container itself */
+    .game-container {
+        margin: auto;
+        /* center if ever removed from flex context */
+        align-self: center;
+        /* reinforce vertical centering */
+    }
+    
+    .game-container {
+        max-width: 24rem;
+    }
+
+    .letters {
+        grid-template-columns: repeat(auto-fill, minmax(2.4rem, 1fr));
+        gap: 0.45rem;
+    }
+
+    .letter-btn::before {
+        font-size: 1.2rem;
+    }
+
+    .letter-slot {
+        height: 3.2rem;
+        font-size: 1.6rem;
+    }
+}
+
+/* Laptop (768–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Ensure the flex parent spans the full viewport */
+    html,
+    body {
+        height: 100%;
+    }
+
+    /* Center the game-container in the body flexbox */
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fallback centering on the container itself */
+    .game-container {
+        margin: auto;
+        /* center if ever removed from flex context */
+        align-self: center;
+        /* reinforce vertical centering */
+    }
+
+    .game-container {
+        max-width: 26rem;
+    }
+
+    .letters {
+        grid-template-columns: repeat(auto-fill, minmax(2.6rem, 1fr));
+        gap: 0.5rem;
+    }
+
+    .letter-btn::before {
+        font-size: 1.25rem;
+    }
+
+    .letter-slot {
+        height: 3.4rem;
+        font-size: 1.7rem;
+    }
+}
+
+/* Laptop L (1024–1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    /* Ensure the flex parent spans the full viewport */
+    html,
+    body {
+        height: 100%;
+    }
+
+    /* Center the game-container in the body flexbox */
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fallback centering on the container itself */
+    .game-container {
+        margin: auto;
+        /* center if ever removed from flex context */
+        align-self: center;
+        /* reinforce vertical centering */
+    }
+
+    .game-container {
+        max-width: 28rem;
+    }
+
+    .letters {
+        grid-template-columns: repeat(auto-fill, minmax(2.8rem, 1fr));
+        gap: 0.6rem;
+    }
+
+    .letter-btn::before {
+        font-size: 1.3rem;
+    }
+
+    .letter-slot {
+        height: 3.6rem;
+        font-size: 1.8rem;
+    }
+}
+
+/* 4K & Large Desktops (≥1440px) */
+@media (min-width: 1440px) {
+    /* Ensure the flex parent spans the full viewport */
+    html,
+    body {
+        height: 100%;
+    }
+
+    /* Center the game-container in the body flexbox */
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Fallback centering on the container itself */
+    .game-container {
+        margin: auto;
+        /* center if ever removed from flex context */
+        align-self: center;
+        /* reinforce vertical centering */
+    }
+
+    .game-container {
+        max-width: 30rem;
+    }
+
+    .letters {
+        grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr));
+        gap: 0.7rem;
+    }
+
+    .letter-btn::before {
+        font-size: 1.4rem;
+    }
+
+    .letter-slot {
+        height: 3.8rem;
+        font-size: 1.9rem;
+    }
+}
