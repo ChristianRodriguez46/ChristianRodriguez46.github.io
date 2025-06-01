@@ -1,15 +1,7 @@
-// ========= Mobile Navigation Toggle ========= //
-const menuToggle = document.getElementById("menu-toggle");
-const body = document.body;
+/* ========= MOBILE NAVIGATION TOGGLE ========= */
+const navToggle = document.getElementById('nav-toggle');
+const navMenu = document.getElementById('nav-menu');
 
-menuToggle.addEventListener("click", () => {
-    body.classList.toggle("nav-open");
+navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
 });
-
-// ========= Close menu when clicking a link (mobile UX) ========= //
-const navLinks = document.querySelectorAll(".nav-links a");
-navLinks.forEach(link =>
-    link.addEventListener("click", () => {
-        body.classList.remove("nav-open");
-    })
-);
