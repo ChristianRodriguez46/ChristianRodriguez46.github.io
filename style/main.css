@@ -37,8 +37,8 @@ body::before {
     content: "";
     position: fixed;
     inset: -50%;
-    background: radial-gradient(circle at 25% 25%, #00e0ff, transparent 45%),
-        radial-gradient(circle at 75% 75%, #c900ff, transparent 45%);
+    background: radial-gradient(circle at 25% 25%, #00e0ff 0%, transparent 45%),
+        radial-gradient(circle at 75% 75%, #c900ff 0%, transparent 45%);
     animation: moveGradient 20s linear infinite;
     filter: blur(120px) brightness(0.65);
     z-index: -1;
@@ -74,12 +74,17 @@ body::before {
     z-index: 100;
 }
 
+/* Logo now uses an image */
 .nav__logo {
-    text-shadow: -4px 0px 5px #1e91d3;
-    font-size: 2.00rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: var(--clr-light);
+    display: flex;
+    align-items: center;
+}
+
+.nav__logo img {
+    height: 48px;
+    /* adjust to suit logo proportions */
+    width: auto;
+    display: block;
 }
 
 /* Menu links */
@@ -197,8 +202,6 @@ body::before {
 
 /* ===== MEDIA QUERIES ===== */
 @media (max-width: 768px) {
-
-    /* Navigation collapses */
     .nav__toggle {
         display: flex;
     }
@@ -221,5 +224,10 @@ body::before {
 
     .nav__menu.open {
         transform: translateX(0);
+    }
+
+    /* Adjust logo size on small screens */
+    .nav__logo img {
+        height: 40px;
     }
 }
