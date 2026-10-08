@@ -23,6 +23,38 @@
 
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="style/main.css">
+    <style>
+        /* CV (PDF) link: an outlined pill so it stands out in the nav bar */
+        .globalnav .globalnav__menu a.globalnav__cv {
+            padding: 4px 12px;
+            margin: 4px 0;
+            font-weight: 600;
+            color: var(--link);
+            border: 1px solid currentColor;
+            border-radius: var(--radius-pill);
+            opacity: 1;
+            transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+
+            &:hover {
+                color: var(--on-blue);
+                background: var(--blue);
+                border-color: var(--blue);
+            }
+
+            /* In the phone menu it is a full-size row like the other links */
+            @media (max-width: 833px) {
+                margin: 0;
+                padding: 14px 0;
+                border: 0;
+                border-radius: 0;
+
+                &:hover {
+                    color: var(--link);
+                    background: none;
+                }
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -49,6 +81,9 @@
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="./Projects/Hangman/">Projects</a></li>
                 <li><a href="./Coursework/">Coursework</a></li>
+                <!-- CV: opens the PDF in a new tab, where its links are clickable -->
+                <li><a class="globalnav__cv" href="./resume/Christian_Rodriguez_Resume.pdf" target="_blank"
+                        rel="noopener" aria-label="CV, PDF, opens in a new tab">CV (PDF)</a></li>
             </ul>
         </nav>
     </header>
@@ -126,12 +161,14 @@
         </section>
 
         <!-- ========= ABOUT ========= -->
-        <!-- <section id="about" class="band band--alt" role="region" aria-labelledby="about-title">
+        <section id="about" class="band band--alt" role="region" aria-labelledby="about-title">
             <h2 class="band__title" id="about-title">About this site</h2>
             <p class="band__body">
                 This site is built with pure HTML, CSS, and JavaScript and is hosted on GitHub Pages.
+                It follows Apple's design style, adapts to light and dark mode, and stays fully responsive
+                with Flexbox and CSS Grid.
             </p>
-        </section> -->
+        </section>
 
         <!-- ========= CONTACT ========= -->
         <section id="contact" class="band" role="region" aria-labelledby="contact-title">
