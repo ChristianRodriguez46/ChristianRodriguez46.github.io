@@ -1,0 +1,9 @@
+------------------------
+Jael the Monster
+------------------------
+TYPE: Skinny
+COLOR: Jazzberry Jam
+NO. OF EYES: 10
+NO. OF ARMS: 3
+NO. of LEGS: 13
+------------------------

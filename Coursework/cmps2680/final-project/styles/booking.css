@@ -1,0 +1,76 @@
+body{
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images8/Cool-Black-Wallpaper.jpg");
+    color: white;
+}
+
+hr.my-4 {
+    margin: 18px!important;
+}
+
+footer a{
+    color: #FCF4B4!important;
+    font-weight:500!important;
+}
+
+#container{
+    display:flex;
+    justify-content: space-around;
+    height:auto;
+}
+#form {padding: 40px;
+    border: solid rgba(255, 255, 255, 0.402);
+    width: 600px;
+    height: auto;
+    margin: 30px;
+    background: #000000a6;
+}
+
+
+form#b-form > div {
+    margin: 5px;
+}
+
+.col-md-5 {
+    margin: 5px 2px;
+}
+
+input#email.form-control {
+    width: 100%!important;
+    padding: 0.375rem 0.75rem!important;
+    margin:0px!important;
+    color: #212529!important;
+    background-color: #fff!important;
+    border: 1px solid #ced4da!important;
+}
+
+input#fname.form-control {
+    width: 100%!important;
+    padding: 0.375rem 0.75rem!important;
+    margin:0px!important;
+    color: #212529!important;
+    background-color: #fff!important;
+    border: 1px solid #ced4da!important;
+}
+
+div#in-form > label {
+    font-size: 14.5px;
+}
+
+div#output_container {
+    display: flex;
+    justify-content:space-evenly;
+}
+
+div#Is_container > h6 {
+    margin-left: 16px;
+}
+
+#button{
+    background-color: white;
+    border-radius: 15px;
+    width:150px;
+    height:35px;
+    border:none;
+    margin:30px;
+}
+

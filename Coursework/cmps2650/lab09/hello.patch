@@ -1,0 +1,10 @@
+--- hello.c	2025-10-07 13:56:49.377724292 -0700
++++ hello_new.c	2025-10-07 13:57:41.201557118 -0700
+@@ -1,6 +1,6 @@
+ #include <stdio.h>
+ 
+ int main() {
+-    printf("Hello, World!\n");
++    printf("Hello, Unix World!\n");
+     return 0;
+ }

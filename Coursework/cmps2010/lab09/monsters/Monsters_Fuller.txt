@@ -1,0 +1,9 @@
+------------------------
+Fuller the Monster
+------------------------
+TYPE: Stringy
+COLOR: Manatee
+NO. OF EYES: 13
+NO. OF ARMS: 15
+NO. of LEGS: 9
+------------------------

@@ -1,0 +1,9 @@
+------------------------
+Deacon the Monster
+------------------------
+TYPE: Round
+COLOR: Carnation Pink
+NO. OF EYES: 14
+NO. OF ARMS: 3
+NO. of LEGS: 13
+------------------------

@@ -1,0 +1,9 @@
+------------------------
+Rahim the Monster
+------------------------
+TYPE: Prickly
+COLOR: Radical Red
+NO. OF EYES: 10
+NO. OF ARMS: 10
+NO. of LEGS: 9
+------------------------

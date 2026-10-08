@@ -1,0 +1,9 @@
+------------------------
+Jarrod the Monster
+------------------------
+TYPE: Furry
+COLOR: Sea Green
+NO. OF EYES: 6
+NO. OF ARMS: 1
+NO. of LEGS: 9
+------------------------

@@ -1,0 +1,9 @@
+------------------------
+Uriah the Monster
+------------------------
+TYPE: Rough
+COLOR: Periwinkle
+NO. OF EYES: 1
+NO. OF ARMS: 7
+NO. of LEGS: 4
+------------------------

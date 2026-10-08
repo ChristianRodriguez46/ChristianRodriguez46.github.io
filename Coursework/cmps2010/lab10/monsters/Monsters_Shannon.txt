@@ -1,0 +1,9 @@
+------------------------
+Shannon the Monster
+------------------------
+TYPE: Slippery
+COLOR: Dandelion
+NO. OF EYES: 8
+NO. OF ARMS: 6
+NO. of LEGS: 1
+------------------------

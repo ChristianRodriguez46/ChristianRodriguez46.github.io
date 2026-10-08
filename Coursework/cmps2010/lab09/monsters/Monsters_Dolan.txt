@@ -1,0 +1,9 @@
+------------------------
+Dolan the Monster
+------------------------
+TYPE: Gross
+COLOR: Brown
+NO. OF EYES: 13
+NO. OF ARMS: 6
+NO. of LEGS: 5
+------------------------

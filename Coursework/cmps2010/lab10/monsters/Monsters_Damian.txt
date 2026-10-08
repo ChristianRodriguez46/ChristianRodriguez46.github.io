@@ -1,0 +1,9 @@
+------------------------
+Damian the Monster
+------------------------
+TYPE: Soft
+COLOR: Almond
+NO. OF EYES: 13
+NO. OF ARMS: 13
+NO. of LEGS: 14
+------------------------

@@ -1,0 +1,542 @@
+/* =============================================================
+   style/coursework.css
+   Styles for Coursework/index.html and the Linux answers page
+   (Coursework/cmps2650/index.html). Load it after main.css: it reuses
+   the variables (colors, sizes, fonts) defined there.
+
+   Uses native CSS nesting, the same as main.css.
+
+   Sections in this file
+     1. Course bar (sticky list of course numbers)
+     2. Page intro
+     3. Course cards
+     4. Featured projects
+     5. Lab and assignment list
+     6. Lab answers (Linux answers page)
+
+   Troubleshooting
+   - The course bar covers a heading after clicking a course: raise
+     scroll-padding-top in the html:has(.has-localnav) rule (section 1).
+   - The highlighted course in the bar is wrong: the highlight is set by
+     main.js ("Course bar highlight"), which watches each .course section.
+   - A command block runs off the side on phones: that is expected;
+     code blocks scroll sideways (section 6). Long lines can also be
+     split with a trailing backslash in the HTML.
+   - Course cards stay invisible: main.js hides cards below the screen
+     and fades them in with anime.js as you scroll. If JavaScript errors
+     out, they are shown again; check the browser console.
+   ============================================================= */
+
+
+/* ---------- 1. Course bar ---------- */
+.localnav {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    height: var(--localnav-h);
+    background: var(--nav-bg);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid color-mix(in srgb, var(--hairline) 55%, transparent);
+
+    & .localnav__inner {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        max-width: calc(var(--content) + 2 * var(--gutter));
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 var(--gutter);
+    }
+
+    & .localnav__title {
+        flex: none;
+        font-family: var(--font-display);
+        font-size: 21px;
+        font-weight: 600;
+        letter-spacing: 0.011em;
+        color: var(--ink);
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            font-size: 17px;
+            letter-spacing: -0.022em;
+        }
+    }
+
+    /* Scrolls sideways when the course numbers don't fit */
+    & .localnav__list {
+        position: relative;
+        display: flex;
+        gap: 2px;
+        margin-left: auto;
+        padding: 0 14px;
+        overflow-x: auto;
+        list-style: none;
+        scrollbar-width: none;
+        mask-image: linear-gradient(to right, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        & a {
+            display: block;
+            padding: 6px 11px;
+            font-size: 13px;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            color: var(--ink);
+            border-radius: var(--radius-pill);
+            opacity: 0.8;
+            transition: background-color 0.2s var(--ease), color 0.2s var(--ease), opacity 0.2s var(--ease);
+
+            &:hover {
+                opacity: 1;
+                text-decoration: none;
+                background: var(--fill);
+            }
+
+            /* The course currently on screen (set by main.js) */
+            &[aria-current="location"] {
+                opacity: 1;
+                color: var(--canvas);
+                background: var(--ink);
+            }
+        }
+    }
+}
+
+/* On this page the course bar (not the global nav) sticks to the top,
+   so jump links stop just below it */
+html:has(.has-localnav) {
+    scroll-padding-top: calc(var(--localnav-h) + 20px);
+}
+
+
+/* ---------- 2. Page intro ---------- */
+.cw-hero {
+    padding: clamp(60px, 9vw, 112px) var(--gutter) clamp(44px, 6vw, 72px);
+    text-align: center;
+
+    & .cw-hero__title {
+        font-family: var(--font-display);
+        font-size: clamp(48px, 8vw, 80px);
+        font-weight: 600;
+        line-height: 1.05;
+        letter-spacing: -0.015em;
+    }
+
+    & .cw-hero__lede {
+        max-width: 30em;
+        margin: 18px auto 0;
+        font-size: clamp(19px, 2.2vw, 24px);
+        line-height: 1.33;
+        letter-spacing: 0.009em;
+        color: var(--ink);
+        text-wrap: pretty;
+    }
+
+    & .cw-hero__note {
+        max-width: 36em;
+        margin: 14px auto 0;
+        font-size: 15px;
+        line-height: 1.47;
+        letter-spacing: -0.016em;
+        color: var(--ink-2);
+        text-wrap: pretty;
+    }
+}
+
+
+/* ---------- 3. Course cards ---------- */
+.courses {
+    padding: clamp(28px, 4vw, 48px) var(--gutter) clamp(80px, 10vw, 120px);
+    background: var(--canvas-alt);
+
+    & .courses__list {
+        display: grid;
+        gap: 22px;
+        max-width: var(--content);
+        margin: 0 auto;
+        list-style: none;
+
+        /* Lets wide content (command blocks) scroll inside the card
+           instead of stretching the card past the screen */
+        & > li {
+            min-width: 0;
+        }
+    }
+}
+
+.course {
+    padding: clamp(28px, 5vw, 56px);
+    background: var(--card);
+    border-radius: var(--radius-tile);
+
+    & .course__code {
+        font-size: 17px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-2);
+    }
+
+    & .course__title {
+        margin-top: 2px;
+        font-family: var(--font-display);
+        font-size: clamp(28px, 4vw, 40px);
+        font-weight: 600;
+        line-height: 1.1;
+        letter-spacing: 0;
+        text-wrap: balance;
+    }
+
+    & .course__summary {
+        max-width: 38em;
+        margin-top: 12px;
+        font-size: clamp(17px, 1.8vw, 19px);
+        line-height: 1.42;
+        letter-spacing: 0.012em;
+        color: var(--ink-2);
+    }
+
+    /* Languages and tools */
+    & .course__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+        list-style: none;
+
+        & li {
+            padding: 4px 11px;
+            font-size: 12px;
+            letter-spacing: -0.01em;
+            color: var(--ink-2);
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-pill);
+        }
+    }
+
+    & .course__subhead {
+        margin: 36px 0 14px;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 1.24;
+        letter-spacing: -0.022em;
+    }
+}
+
+
+/* ---------- 4. Featured projects ---------- */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 268px), 1fr));
+    gap: 14px;
+    list-style: none;
+
+    & .feature {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: 100%;
+        padding: 24px 24px 18px;
+        background: var(--card-inner);
+        border-radius: var(--radius-card);
+    }
+
+    & .feature__title {
+        font-family: var(--font-display);
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 1.19;
+        letter-spacing: 0.011em;
+    }
+
+    & .feature__text {
+        font-size: 15px;
+        line-height: 1.47;
+        letter-spacing: -0.016em;
+        color: var(--ink-2);
+    }
+
+    /* "Code only for now" notes, with a small status dot */
+    & .feature__note {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        font-size: 13px;
+        line-height: 1.38;
+        color: var(--ink-2);
+
+        &::before {
+            content: "";
+            flex: none;
+            width: 7px;
+            height: 7px;
+            background: #ff9f0a;
+            border-radius: 50%;
+            transform: translateY(-1px);
+        }
+    }
+
+    & .feature__actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0 20px;
+        margin-top: auto;
+        padding-top: 6px;
+
+        & .link-chevron {
+            font-size: 15px;
+        }
+    }
+}
+
+
+/* ---------- 5. Lab and assignment list ---------- */
+/* Each lab is a small tile: its label ("Lab 5"), its title, and an
+   optional "Demo" button. The whole left part links to the code and
+   README on GitHub. */
+.labs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 8px;
+    list-style: none;
+
+    & .lab {
+        display: flex;
+        align-items: stretch;
+        background: var(--card-inner);
+        border-radius: 14px;
+        transition: background-color 0.2s var(--ease);
+
+        &:hover {
+            background: var(--fill);
+        }
+    }
+
+    & .lab__code {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1px;
+        min-height: 58px;
+        padding: 10px 16px;
+        color: var(--ink);
+        border-radius: 14px;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    & .lab__label {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--ink-2);
+    }
+
+    & .lab__title {
+        font-size: 15px;
+        line-height: 1.3;
+        letter-spacing: -0.016em;
+    }
+
+    /* Live demo button on the right of the tile */
+    & .lab__demo {
+        align-self: center;
+        flex: none;
+        margin-right: 12px;
+        padding: 5px 12px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--link);
+        border: 1px solid currentColor;
+        border-radius: var(--radius-pill);
+
+        &:hover {
+            text-decoration: none;
+            color: var(--on-blue);
+            background: var(--blue);
+            border-color: var(--blue);
+        }
+    }
+}
+
+/* Term from the transcript, shown after the course number */
+.course__term {
+    font-weight: 400;
+
+    &::before {
+        content: ", ";
+    }
+}
+
+
+/* Commands mentioned in a lab summary or topic */
+.course__summary code,
+.course__tags code {
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+}
+
+/* "Read the lab answers" button under the Linux course summary */
+.course__more {
+    margin-top: 22px;
+}
+
+
+/* ---------- 6. Lab answers (Linux answers page) ---------- */
+/* The long course title needs a smaller size than "Coursework" */
+.cw-hero__title--long {
+    max-width: 14em;
+    margin: 0 auto;
+    font-size: clamp(36px, 6vw, 64px);
+    text-wrap: balance;
+}
+
+.cw-hero__back {
+    margin-top: 22px;
+    font-size: 17px;
+}
+
+/* Rendered answers: headings, paragraphs, lists, command blocks, tables */
+.answer {
+    margin-top: 32px;
+    padding-top: 28px;
+    font-size: 17px;
+    line-height: 1.5;
+    letter-spacing: -0.022em;
+    border-top: 1px solid var(--hairline);
+
+    /* Text keeps a readable line length; command blocks use the full card */
+    & > p,
+    & > ul,
+    & > ol,
+    & > h3 {
+        max-width: 46em;
+    }
+
+    & h3 {
+        margin: 34px 0 0;
+        font-family: var(--font-display);
+        font-size: 21px;
+        font-weight: 600;
+        line-height: 1.19;
+        letter-spacing: 0.011em;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    & p,
+    & ul,
+    & ol,
+    & pre,
+    & .answer__table {
+        margin-top: 12px;
+    }
+
+    & ul,
+    & ol {
+        padding-left: 1.25em;
+        list-style: disc;
+
+        & li + li {
+            margin-top: 6px;
+        }
+    }
+
+    & strong {
+        font-weight: 600;
+    }
+
+    /* Inline commands and file names */
+    & code {
+        padding: 0.1em 0.38em;
+        font-family: var(--font-mono);
+        font-size: 0.86em;
+        letter-spacing: 0;
+        background: var(--card-inner);
+        border-radius: 6px;
+        overflow-wrap: anywhere;
+    }
+
+    /* Command blocks: scroll sideways instead of wrapping, so each
+       command stays on one line exactly as it is typed */
+    & pre {
+        overflow-x: auto;
+        padding: 18px 20px;
+        font-size: 14px;
+        line-height: 1.6;
+        background: var(--card-inner);
+        border-radius: 14px;
+        tab-size: 4;
+
+        & code {
+            padding: 0;
+            font-size: inherit;
+            background: none;
+            border-radius: 0;
+            overflow-wrap: normal;
+        }
+
+        &:focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
+        }
+    }
+
+    /* Shell comments in a command block (added by the page's HTML as
+       <span class="cmt">) */
+    & .cmt {
+        color: var(--ink-2);
+    }
+
+    & .answer__table {
+        overflow-x: auto;
+
+        &:focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
+        }
+    }
+
+    & table {
+        width: 100%;
+        font-size: 15px;
+        line-height: 1.4;
+        border-collapse: collapse;
+    }
+
+    & th,
+    & td {
+        padding: 10px 16px 10px 0;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--hairline);
+    }
+
+    & th {
+        font-weight: 600;
+        color: var(--ink-2);
+    }
+
+    & td code {
+        white-space: nowrap;
+    }
+}
+
+/* Link to the lab's scripts on GitHub, under its answers */
+.answer__files {
+    margin-top: 28px;
+    font-size: 17px;
+}

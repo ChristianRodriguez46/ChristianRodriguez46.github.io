@@ -1,0 +1,134 @@
+body{
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images8/Cool-Black-Wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}
+
+/* Reset margin and padding for all elements, and set box-sizing to border-box */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+main {
+  flex-wrap: wrap;
+  display: flex;
+  min-height: 100vh;
+  justify-content: flex-end; 
+}
+
+
+.container {
+  padding: 0px;
+  width: 300px;
+  
+  display: grid;
+  place-content: center;
+  position: relative;
+  overflow: hidden;
+  
+  border-radius: 1rem;
+  
+  /* Define custom property --position with value 50% */
+  --position: 50%;
+
+  box-shadow: 0px 0px 11px 8px black;
+}
+
+/* Style the image-container element */
+.image-container {
+  min-width: 300px; 
+  max-width: 800px; 
+  max-height: 90vh; 
+  aspect-ratio: 1/1;
+}
+
+/* Style the slider-image element */
+.slider-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* cover the entire container */
+  object-position: left; 
+}
+
+/* Style the image-before element */
+.image-before {
+  position: absolute;
+  inset: 0;
+  width: var(--position);       /* set width to custom property --position */
+}
+
+/* Style the slider element */
+.slider {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  opacity: 0;       /* set opacity to 0 to hide the slider */
+  
+  /* Set width and height to 100% for Firefox compatibility */
+  width: 100%;
+  height: 100%;
+}
+
+/* Style the slider-button element when it is focused and visible */
+.slider:focus-visible ~ .slider-button {
+  outline: 5px solid black;
+  outline-offset: 3px;
+}
+
+/* Style the slider-line element */
+.slider-line {
+  position: absolute;           /* makes the slider above images */
+  inset: 0; 
+  width: .2rem;
+  height: 100%;
+  background-color: white;
+  z-index: 10;
+  left: var(--position);        /* set left to custom property --position */
+  transform: translateX(-50%);  /* translate the element horizontally by -50% */
+  pointer-events: none;       
+}
+
+/* Position the slider button absolutely and center it horizontally and vertically */
+.slider-button {
+    position: absolute;
+    background-color: white; 
+    color: black;               /* make the arrows black */
+    padding: .5rem;
+    border-radius: 100vw; 
+    display: grid;                
+    place-items: center;          
+    top: 50%;                     
+    left: var(--position);             
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 100;                       /* ensure the button is above other elements */
+    box-shadow: 1px 1x 1px hsl(0, 50%, 2%, .5 ); 
+}
+
+/* fixes sliders that have small pics */
+.col {
+    min-height: 310px;
+    margin: 10px;
+    padding: 30px 0px;
+}
+
+.smallImgs {
+    object-fit: fill;
+}
+
+footer a{
+    color: #FCF4B4!important;
+    font-weight:500!important;
+}
+footer p { color: white;}

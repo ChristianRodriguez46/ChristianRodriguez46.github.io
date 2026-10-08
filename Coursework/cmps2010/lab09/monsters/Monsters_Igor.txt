@@ -1,0 +1,9 @@
+------------------------
+Igor the Monster
+------------------------
+TYPE: Slimy
+COLOR: Orchid
+NO. OF EYES: 12
+NO. OF ARMS: 5
+NO. of LEGS: 3
+------------------------

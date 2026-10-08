@@ -1,0 +1,9 @@
+---------------------------
+Cora the Monster
+---------------------------
+Name: Cora
+Type: 
+Color: Blue Bell
+Eyes: 15
+Arms: 12
+Legs: 0

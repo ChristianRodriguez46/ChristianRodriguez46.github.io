@@ -1,0 +1,9 @@
+------------------------
+Autumn the Monster
+------------------------
+TYPE: Stringy
+COLOR: Scarlet
+NO. OF EYES: 7
+NO. OF ARMS: 12
+NO. of LEGS: 3
+------------------------

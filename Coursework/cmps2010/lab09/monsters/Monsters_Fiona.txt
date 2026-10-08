@@ -1,0 +1,9 @@
+------------------------
+Fiona the Monster
+------------------------
+TYPE: Thick
+COLOR: Bittersweet
+NO. OF EYES: 12
+NO. OF ARMS: 7
+NO. of LEGS: 7
+------------------------

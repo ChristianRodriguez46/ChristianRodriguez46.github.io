@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursework | Christian Rodriguez</title>
+    <meta name="description" content="Labs and projects from Christian Rodriguez's computer science courses at CSU Bakersfield.">
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/coursework.css">
+</head>
+
+<body class="has-localnav">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+                <li><a href="../Projects/Hangman/">Projects</a></li>
+                <li><a href="./" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="localnav" role="navigation" aria-label="Courses">
+        <div class="localnav__inner">
+            <a class="localnav__title" href="#main">Coursework</a>
+            <ul class="localnav__list" role="list">
+                <li><a href="#cmps2010" aria-label="CMPS 2010, Programming Fundamentals">2010</a></li>
+                <li><a href="#cmps2020" aria-label="CMPS 2020, Programming II: Data Structures">2020</a></li>
+                <li><a href="#cmps2650" aria-label="CMPS 2650, Linux Environment and Administration">2650</a></li>
+                <li><a href="#cmps2680" aria-label="CMPS 2680, Client-Side Web">2680</a></li>
+                <li><a href="#cmps3120" aria-label="CMPS 3120, Algorithm Analysis">3120</a></li>
+                <li><a href="#cmps3350" aria-label="CMPS 3350, Software Engineering">3350</a></li>
+                <li><a href="#cmps3390" aria-label="CMPS 3390, Application Development">3390</a></li>
+                <li><a href="#cmps3500" aria-label="CMPS 3500, Programming Languages">3500</a></li>
+                <li><a href="#cmps3560" aria-label="CMPS 3560, Artificial Intelligence">3560</a></li>
+                <li><a href="#cmps3600" aria-label="CMPS 3600, Operating Systems">3600</a></li>
+                <li><a href="#cmps3620" aria-label="CMPS 3620, Computer Networks">3620</a></li>
+                <li><a href="#cmps3640" aria-label="CMPS 3640, Distributed and Parallel Computation">3640</a></li>
+                <li><a href="#cmps3680" aria-label="CMPS 3680, Server-Side Web">3680</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main" role="main" tabindex="-1">
+        <section class="cw-hero" role="region" aria-labelledby="cw-title">
+            <h1 class="cw-hero__title" id="cw-title" data-animate>Coursework</h1>
+            <p class="cw-hero__lede" data-animate>
+                Labs and projects from my Computer Science degree at California State University, Bakersfield.
+            </p>
+            <p class="cw-hero__note" data-animate>
+                Every lab links to its code on GitHub, with a README that explains what it does and how to run it.
+                Front-end labs also open as live demos. PHP projects are code only until they move to my own server.
+                The Linux course links to a page of the commands I used in each lab.
+            </p>
+        </section>
+
+        <div class="courses">
+            <ul class="courses__list" role="list" aria-label="Courses">
+            <li>
+            <section class="course" id="cmps2010" role="region" aria-labelledby="cmps2010-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 2010</p>
+                    <h2 class="course__title" id="cmps2010-title">Programming Fundamentals</h2>
+                    <p class="course__summary">Procedural and object-oriented C++: control structures, functions, arrays, file I/O, pointers, dynamic memory and classes.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>C++</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps2010-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps2010-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/final-project" aria-label="Final project, Restaurant reviews: code and instructions on GitHub"><span class="lab__label">Final project</span><span class="lab__title">Restaurant reviews</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab01" aria-label="Lab 1, First programs and arithmetic: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">First programs and arithmetic</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab02" aria-label="Lab 2, Mad Libs and math functions: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">Mad Libs and math functions</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab03" aria-label="Lab 3, Guessing game and calculator: code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">Guessing game and calculator</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab04" aria-label="Lab 4, Fruit inventory menu: code and instructions on GitHub"><span class="lab__label">Lab 4</span><span class="lab__title">Fruit inventory menu</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab05" aria-label="Lab 5, File processing and prime numbers: code and instructions on GitHub"><span class="lab__label">Lab 5</span><span class="lab__title">File processing and prime numbers</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab06" aria-label="Lab 6, Arrays from files and random names: code and instructions on GitHub"><span class="lab__label">Lab 6</span><span class="lab__title">Arrays from files and random names</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab08" aria-label="Lab 8, Pointers: inventory and money game: code and instructions on GitHub"><span class="lab__label">Lab 8</span><span class="lab__title">Pointers: inventory and money game</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab09" aria-label="Lab 9, Monster cards with structs: code and instructions on GitHub"><span class="lab__label">Lab 9</span><span class="lab__title">Monster cards with structs</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab10" aria-label="Lab 10, Monster class: code and instructions on GitHub"><span class="lab__label">Lab 10</span><span class="lab__title">Monster class</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab11" aria-label="Lab 11, Monster class with constructors: code and instructions on GitHub"><span class="lab__label">Lab 11</span><span class="lab__title">Monster class with constructors</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab12" aria-label="Lab 12, Shapes with inheritance: code and instructions on GitHub"><span class="lab__label">Lab 12</span><span class="lab__title">Shapes with inheritance</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps2020" role="region" aria-labelledby="cmps2020-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 2020</p>
+                    <h2 class="course__title" id="cmps2020-title">Programming II: Data Structures</h2>
+                    <p class="course__summary">Weekly labs and homework on data structures in C++.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>C++</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps2020-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps2020-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/baseProg.cpp" aria-label="baseProg.cpp, Blank starter program for new labs: code and instructions on GitHub"><span class="lab__label">baseProg.cpp</span><span class="lab__title">Blank starter program for new labs</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/review2" aria-label="Exam review, Resizable array (exam practice): code and instructions on GitHub"><span class="lab__label">Exam review</span><span class="lab__title">Resizable array (exam practice)</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk02" aria-label="Week 2, Classes and operator overloading: code and instructions on GitHub"><span class="lab__label">Week 2</span><span class="lab__title">Classes and operator overloading</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk03" aria-label="Week 3, Board game with structs; inheritance: code and instructions on GitHub"><span class="lab__label">Week 3</span><span class="lab__title">Board game with structs; inheritance</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk04" aria-label="Week 4, Exporting data; credit card validation: code and instructions on GitHub"><span class="lab__label">Week 4</span><span class="lab__title">Exporting data; credit card validation</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk05" aria-label="Week 5, Config file parser and templates: code and instructions on GitHub"><span class="lab__label">Week 5</span><span class="lab__title">Config file parser and templates</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk07" aria-label="Week 7, Linked lists and a linked stack: code and instructions on GitHub"><span class="lab__label">Week 7</span><span class="lab__title">Linked lists and a linked stack</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk08" aria-label="Week 8, Stacks: array version and postfix calculator: code and instructions on GitHub"><span class="lab__label">Week 8</span><span class="lab__title">Stacks: array version and postfix calculator</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk09" aria-label="Week 9, Queues and a ring buffer: code and instructions on GitHub"><span class="lab__label">Week 9</span><span class="lab__title">Queues and a ring buffer</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk10" aria-label="Week 10, Deque and a window manager: code and instructions on GitHub"><span class="lab__label">Week 10</span><span class="lab__title">Deque and a window manager</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk12" aria-label="Week 12, Hash function collisions: code and instructions on GitHub"><span class="lab__label">Week 12</span><span class="lab__title">Hash function collisions</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk13" aria-label="Week 13, Recursion, sorting and heaps: code and instructions on GitHub"><span class="lab__label">Week 13</span><span class="lab__title">Recursion, sorting and heaps</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk14" aria-label="Week 14, Binary search tree and searching: code and instructions on GitHub"><span class="lab__label">Week 14</span><span class="lab__title">Binary search tree and searching</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps2650" role="region" aria-labelledby="cmps2650-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 2650</p>
+                    <h2 class="course__title" id="cmps2650-title">Linux Environment and Administration</h2>
+                    <p class="course__summary">The Linux command line, editors and shell scripting, then running a Debian system: users, passwords, storage, services and DNS.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>Bash</li><li>vim</li><li>grep</li><li>sed</li><li>awk</li><li>Debian</li></ul>
+                    <p class="course__more"><a class="button button--small" href="cmps2650/">Read the lab answers</a></p>
+                </header>
+                <h3 class="course__subhead" id="cmps2650-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps2650-labs">
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab01" aria-label="Lab 1, Exploring the Linux system: commands and answers"><span class="lab__label">Lab 1</span><span class="lab__title">Exploring the Linux system</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab02" aria-label="Lab 2, Hosts, terminals and remote access: commands and answers"><span class="lab__label">Lab 2</span><span class="lab__title">Hosts, terminals and remote access</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab03" aria-label="Lab 3, Disk usage, links, find and text pipelines: commands and answers"><span class="lab__label">Lab 3</span><span class="lab__title">Disk usage, links, find and text pipelines</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab04" aria-label="Lab 4, Basic regular expressions with grep: commands and answers"><span class="lab__label">Lab 4</span><span class="lab__title">Basic regular expressions with grep</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab05" aria-label="Lab 5, Regular expressions in grep and vi: commands and answers"><span class="lab__label">Lab 5</span><span class="lab__title">Regular expressions in grep and vi</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab06" aria-label="Lab 6, vim skills and shell profiles: commands and answers"><span class="lab__label">Lab 6</span><span class="lab__title">vim skills and shell profiles</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab07" aria-label="Lab 7, Bash scripting, part 1: commands and answers"><span class="lab__label">Lab 7</span><span class="lab__title">Bash scripting, part 1</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab08" aria-label="Lab 8, Bash scripting, part 2: commands and answers"><span class="lab__label">Lab 8</span><span class="lab__title">Bash scripting, part 2</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab09" aria-label="Lab 9, diff and patch: commands and answers"><span class="lab__label">Lab 9</span><span class="lab__title">diff and patch</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#lab10" aria-label="Lab 10, sed, awk, nano and emacs: commands and answers"><span class="lab__label">Lab 10</span><span class="lab__title">sed, awk, nano and emacs</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#admin-lab01" aria-label="Admin lab 1, Users and groups: commands and answers"><span class="lab__label">Admin lab 1</span><span class="lab__title">Users and groups</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#admin-lab02" aria-label="Admin lab 2, Passwords and login policy: commands and answers"><span class="lab__label">Admin lab 2</span><span class="lab__title">Passwords and login policy</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#admin-lab03" aria-label="Admin lab 3, Storage: commands and answers"><span class="lab__label">Admin lab 3</span><span class="lab__title">Storage</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#admin-lab04" aria-label="Admin lab 4, Logical volume management (LVM): commands and answers"><span class="lab__label">Admin lab 4</span><span class="lab__title">Logical volume management (LVM)</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#admin-lab05" aria-label="Admin lab 5, Services and scheduled jobs: commands and answers"><span class="lab__label">Admin lab 5</span><span class="lab__title">Services and scheduled jobs</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#admin-lab07" aria-label="Admin lab 7, DNS lookups: commands and answers"><span class="lab__label">Admin lab 7</span><span class="lab__title">DNS lookups</span></a></li>
+                    <li class="lab"><a class="lab__code" href="cmps2650/#scripts" aria-label="Scripts, Utility scripts: commands and answers"><span class="lab__label">Scripts</span><span class="lab__title">Utility scripts</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps2680" role="region" aria-labelledby="cmps2680-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 2680</p>
+                    <h2 class="course__title" id="cmps2680-title">Client-Side Web</h2>
+                    <p class="course__summary">Page layout and design with HTML and CSS, and client-side programming with JavaScript.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Bootstrap</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps2680-featured">Featured</h3>
+                <ul class="features" role="list" aria-labelledby="cmps2680-featured">
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps2680-feature-1">
+                            <h4 class="feature__title" id="cmps2680-feature-1">Car detailing site</h4>
+                            <p class="feature__text">Business site with a service menu, a booking form with validation and a before-and-after gallery.</p>
+                            <div class="feature__actions"><a class="button button--small" href="cmps2680/final-project/home.html" aria-label="Open the Car detailing site live demo">Live demo</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/final-project" aria-label="View the Car detailing site code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps2680-feature-2">
+                            <h4 class="feature__title" id="cmps2680-feature-2">To-do list app</h4>
+                            <p class="feature__text">Add tasks and click one to remove it, in plain JavaScript.</p>
+                            <div class="feature__actions"><a class="button button--small" href="cmps2680/project2/todo.html" aria-label="Open the To-do list app live demo">Live demo</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/project2" aria-label="View the To-do list app code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                </ul>
+                <h3 class="course__subhead" id="cmps2680-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps2680-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/final-project" aria-label="Final project, Car detailing site: code and instructions on GitHub"><span class="lab__label">Final project</span><span class="lab__title">Car detailing site</span></a><a class="lab__demo" href="cmps2680/final-project/home.html" aria-label="Final project live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab01" aria-label="Lab 1, First HTML page: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">First HTML page</span></a><a class="lab__demo" href="cmps2680/lab01/lab1.html" aria-label="Lab 1 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab02" aria-label="Lab 2, Linked pages and images: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">Linked pages and images</span></a><a class="lab__demo" href="cmps2680/lab02/lab2.html" aria-label="Lab 2 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab03" aria-label="Lab 3, Small business site: code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">Small business site</span></a><a class="lab__demo" href="cmps2680/lab03/home.html" aria-label="Lab 3 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab04" aria-label="Lab 4, CSS box layout: code and instructions on GitHub"><span class="lab__label">Lab 4</span><span class="lab__title">CSS box layout</span></a><a class="lab__demo" href="cmps2680/lab04/lab4.html" aria-label="Lab 4 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab05" aria-label="Lab 5, Photo gallery: code and instructions on GitHub"><span class="lab__label">Lab 5</span><span class="lab__title">Photo gallery</span></a><a class="lab__demo" href="cmps2680/lab05/gallery.html" aria-label="Lab 5 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab06" aria-label="Lab 6, Number guessing game: code and instructions on GitHub"><span class="lab__label">Lab 6</span><span class="lab__title">Number guessing game</span></a><a class="lab__demo" href="cmps2680/lab06/guess.html" aria-label="Lab 6 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab07" aria-label="Lab 7, Live multiples: code and instructions on GitHub"><span class="lab__label">Lab 7</span><span class="lab__title">Live multiples</span></a><a class="lab__demo" href="cmps2680/lab07/lab7.html" aria-label="Lab 7 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab08" aria-label="Lab 8, Deck of cards: code and instructions on GitHub"><span class="lab__label">Lab 8</span><span class="lab__title">Deck of cards</span></a><a class="lab__demo" href="cmps2680/lab08/lab8.html" aria-label="Lab 8 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab09" aria-label="Lab 9, Form input and output: code and instructions on GitHub"><span class="lab__label">Lab 9</span><span class="lab__title">Form input and output</span></a><a class="lab__demo" href="cmps2680/lab09/lab9.html" aria-label="Lab 9 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab10" aria-label="Lab 10, Business site with Bootstrap: code and instructions on GitHub"><span class="lab__label">Lab 10</span><span class="lab__title">Business site with Bootstrap</span></a><a class="lab__demo" href="cmps2680/lab10/home.html" aria-label="Lab 10 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/php-intro" aria-label="PHP intro, First PHP script: code and instructions on GitHub"><span class="lab__label">PHP intro</span><span class="lab__title">First PHP script</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/project1" aria-label="Project 1, Hobbies site: code and instructions on GitHub"><span class="lab__label">Project 1</span><span class="lab__title">Hobbies site</span></a><a class="lab__demo" href="cmps2680/project1/home.html" aria-label="Project 1 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/project2" aria-label="Project 2, To-do list: code and instructions on GitHub"><span class="lab__label">Project 2</span><span class="lab__title">To-do list</span></a><a class="lab__demo" href="cmps2680/project2/todo.html" aria-label="Project 2 live demo">Demo</a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps3120" role="region" aria-labelledby="cmps3120-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 3120</p>
+                    <h2 class="course__title" id="cmps3120-title">Algorithm Analysis</h2>
+                    <p class="course__summary">Measuring algorithm performance, and the techniques and data structures behind efficient algorithms.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>C</li><li>Python</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps3120-featured">Featured</h3>
+                <ul class="features" role="list" aria-labelledby="cmps3120-featured">
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3120-feature-1">
+                            <h4 class="feature__title" id="cmps3120-feature-1">Sensor network clustering</h4>
+                            <p class="feature__text">Assigns sensor nodes to cluster heads with a Voronoi diagram, then improves the assignment with Tabu search to cut hop counts. Python with NumPy, SciPy and Matplotlib.</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/sensor-network-assignment" aria-label="View the Sensor network clustering code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                </ul>
+                <h3 class="course__subhead" id="cmps3120-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps3120-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/factorial.c" aria-label="factorial.c, Factorial calculator: code and instructions on GitHub"><span class="lab__label">factorial.c</span><span class="lab__title">Factorial calculator</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab01" aria-label="Lab 1, Stack-sortable strings and permutations: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">Stack-sortable strings and permutations</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab02" aria-label="Lab 2, Guessing games against a black box: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">Guessing games against a black box</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab03" aria-label="Lab 3, Sorting and matching with a comparison oracle: code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">Sorting and matching with a comparison oracle</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab04" aria-label="Lab 4, Encoding binary trees: code and instructions on GitHub"><span class="lab__label">Lab 4</span><span class="lab__title">Encoding binary trees</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab05" aria-label="Lab 5, Rebuilding a BST from its preorder listing: code and instructions on GitHub"><span class="lab__label">Lab 5</span><span class="lab__title">Rebuilding a BST from its preorder listing</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab06" aria-label="Lab 6, Greedy connections with a min-heap: code and instructions on GitHub"><span class="lab__label">Lab 6</span><span class="lab__title">Greedy connections with a min-heap</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab07" aria-label="Lab 7, Subset sum: exhaustive search vs. hashing: code and instructions on GitHub"><span class="lab__label">Lab 7</span><span class="lab__title">Subset sum: exhaustive search vs. hashing</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab08" aria-label="Lab 8, Shortest distances with BFS: code and instructions on GitHub"><span class="lab__label">Lab 8</span><span class="lab__title">Shortest distances with BFS</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab09" aria-label="Lab 9, Binary search for hidden positions: code and instructions on GitHub"><span class="lab__label">Lab 9</span><span class="lab__title">Binary search for hidden positions</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/sensor-network-assignment" aria-label="Assignment, Sensor network clustering: code and instructions on GitHub"><span class="lab__label">Assignment</span><span class="lab__title">Sensor network clustering</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps3350" role="region" aria-labelledby="cmps3350-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 3350</p>
+                    <h2 class="course__title" id="cmps3350-title">Software Engineering</h2>
+                    <p class="course__summary">Individual labs and a semester game built by a five-person team.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>C++</li><li>OpenGL</li><li>X11</li><li>Team development</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps3350-featured">Featured</h3>
+                <ul class="features" role="list" aria-labelledby="cmps3350-featured">
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3350-feature-1">
+                            <h4 class="feature__title" id="cmps3350-feature-1">Casino game (team project)</h4>
+                            <p class="feature__text">Five-person team game in C++ with OpenGL and X11 graphics, featuring three games. I built the dice game: its interface, textures and betting.</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/casino-game" aria-label="View the Casino game (team project) code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                </ul>
+                <h3 class="course__subhead" id="cmps3350-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps3350-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/casino-game" aria-label="Team project, Casino game (team project): code and instructions on GitHub"><span class="lab__label">Team project</span><span class="lab__title">Casino game (team project)</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/group8diagram.gif" aria-label="group8diagram.gif, : code and instructions on GitHub"><span class="lab__label">group8diagram.gif</span><span class="lab__title"></span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab01" aria-label="Lab 1, OpenGL bouncing box: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">OpenGL bouncing box</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab02" aria-label="Lab 2, Keyboard-controlled animation: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">Keyboard-controlled animation</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab03" aria-label="Lab 3, HTTPS requests in C++: code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">HTTPS requests in C++</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab05" aria-label="Lab 5, Unit testing with build flags: code and instructions on GitHub"><span class="lab__label">Lab 5</span><span class="lab__title">Unit testing with build flags</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab06" aria-label="Lab 6, Waterfall particle simulation: code and instructions on GitHub"><span class="lab__label">Lab 6</span><span class="lab__title">Waterfall particle simulation</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab07" aria-label="Lab 7, Days between dates: code and instructions on GitHub"><span class="lab__label">Lab 7</span><span class="lab__title">Days between dates</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab09" aria-label="Lab 9, Random numbers and Monte Carlo: code and instructions on GitHub"><span class="lab__label">Lab 9</span><span class="lab__title">Random numbers and Monte Carlo</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab10" aria-label="Lab 10, Word filtering challenge: code and instructions on GitHub"><span class="lab__label">Lab 10</span><span class="lab__title">Word filtering challenge</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab11" aria-label="Lab 11, Android app and download page: code and instructions on GitHub"><span class="lab__label">Lab 11</span><span class="lab__title">Android app and download page</span></a><a class="lab__demo" href="cmps3350/lab11/lab11.html" aria-label="Lab 11 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab14" aria-label="Lab 14, Lunar lander: code and instructions on GitHub"><span class="lab__label">Lab 14</span><span class="lab__title">Lunar lander</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/mydiagram3.gif" aria-label="mydiagram3.gif, : code and instructions on GitHub"><span class="lab__label">mydiagram3.gif</span><span class="lab__title"></span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps3390" role="region" aria-labelledby="cmps3390-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 3390</p>
+                    <h2 class="course__title" id="cmps3390-title">Application Development</h2>
+                    <p class="course__summary">Planning and building applications: frameworks, client/server protocols, data management and collaborative development.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>C++</li><li>PHP</li><li>Git</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps3390-featured">Featured</h3>
+                <ul class="features" role="list" aria-labelledby="cmps3390-featured">
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3390-feature-1">
+                            <h4 class="feature__title" id="cmps3390-feature-1">Quotes API</h4>
+                            <p class="feature__text">PHP endpoint that returns a random book, movie or game quote as JSON, with input validation and JSON error responses.</p>
+                            <p class="feature__note">Code only for now (PHP).</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3390/quotes-api" aria-label="View the Quotes API code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                </ul>
+                <h3 class="course__subhead" id="cmps3390-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps3390-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3390/lab01" aria-label="Lab 1, Version control with Git: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">Version control with Git</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3390/lab08" aria-label="Lab 8, JSON search and replace endpoints: code and instructions on GitHub"><span class="lab__label">Lab 8</span><span class="lab__title">JSON search and replace endpoints</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3390/quotes-api" aria-label="Quotes API, Quotes API: code and instructions on GitHub"><span class="lab__label">Quotes API</span><span class="lab__title">Quotes API</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3390/version.php" aria-label="version.php, JSON response check for the course server: code and instructions on GitHub"><span class="lab__label">version.php</span><span class="lab__title">JSON response check for the course server</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps3500" role="region" aria-labelledby="cmps3500-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 3500</p>
+                    <h2 class="course__title" id="cmps3500-title">Programming Languages</h2>
+                    <p class="course__summary">How programming languages work, explored by writing the same kinds of programs in C, Ada, Fortran, Prolog and C#.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>C</li><li>C++</li><li>Ada</li><li>Fortran</li><li>Prolog</li><li>C#</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps3500-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps3500-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab01" aria-label="Lab 1, C on the Linux server: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">C on the Linux server</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab02" aria-label="Lab 2, C++ templates and exceptions: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">C++ templates and exceptions</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab03" aria-label="Lab 3, Ada: strong typing and concurrent tasks: code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">Ada: strong typing and concurrent tasks</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab04" aria-label="Lab 4, Fortran 77: code and instructions on GitHub"><span class="lab__label">Lab 4</span><span class="lab__title">Fortran 77</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab06" aria-label="Lab 6, Prolog: facts, rules and queries: code and instructions on GitHub"><span class="lab__label">Lab 6</span><span class="lab__title">Prolog: facts, rules and queries</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab07" aria-label="Lab 7, C# compared with C++: code and instructions on GitHub"><span class="lab__label">Lab 7</span><span class="lab__title">C# compared with C++</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps3560" role="region" aria-labelledby="cmps3560-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 3560</p>
+                    <h2 class="course__title" id="cmps3560-title">Artificial Intelligence</h2>
+                    <p class="course__summary">Expert systems, logic, fuzzy sets, neural networks and evolutionary algorithms.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>Python</li><li>C++</li><li>Prolog</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps3560-featured">Featured</h3>
+                <ul class="features" role="list" aria-labelledby="cmps3560-featured">
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3560-feature-1">
+                            <h4 class="feature__title" id="cmps3560-feature-1">Neural network</h4>
+                            <p class="feature__text">A small neural network in C++ trained on the Iris dataset (lab 8 builds a single perceptron first).</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab09" aria-label="View the Neural network code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3560-feature-2">
+                            <h4 class="feature__title" id="cmps3560-feature-2">Genetic algorithm</h4>
+                            <p class="feature__text">Solves the Max-Ones problem with tournament selection, crossover and mutation in Python.</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab10" aria-label="View the Genetic algorithm code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                </ul>
+                <h3 class="course__subhead" id="cmps3560-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps3560-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab01" aria-label="Lab 1, Rule-based classifier for iris flowers: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">Rule-based classifier for iris flowers</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab02" aria-label="Lab 2, Forward chaining: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">Forward chaining</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab03" aria-label="Lab 3, Propositional logic entailment: code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">Propositional logic entailment</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab04" aria-label="Lab 4, Facts and rules in Prolog: code and instructions on GitHub"><span class="lab__label">Lab 4</span><span class="lab__title">Facts and rules in Prolog</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab05" aria-label="Lab 5, Expert system for choosing a training medium: code and instructions on GitHub"><span class="lab__label">Lab 5</span><span class="lab__title">Expert system for choosing a training medium</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab06" aria-label="Lab 6, Fuzzy sets: code and instructions on GitHub"><span class="lab__label">Lab 6</span><span class="lab__title">Fuzzy sets</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab07" aria-label="Lab 7, Mamdani fuzzy inference: code and instructions on GitHub"><span class="lab__label">Lab 7</span><span class="lab__title">Mamdani fuzzy inference</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab08" aria-label="Lab 8, Pocket perceptron: code and instructions on GitHub"><span class="lab__label">Lab 8</span><span class="lab__title">Pocket perceptron</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab09" aria-label="Lab 9, Multiclass neural network: code and instructions on GitHub"><span class="lab__label">Lab 9</span><span class="lab__title">Multiclass neural network</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab10" aria-label="Lab 10, Genetic algorithm: code and instructions on GitHub"><span class="lab__label">Lab 10</span><span class="lab__title">Genetic algorithm</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps3600" role="region" aria-labelledby="cmps3600-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 3600</p>
+                    <h2 class="course__title" id="cmps3600-title">Operating Systems</h2>
+                    <p class="course__summary">Processes, threads, signals, interprocess communication, synchronization and memory in C.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>C</li><li>POSIX</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps3600-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps3600-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab01" aria-label="Lab 1, System calls instead of the C++ library: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">System calls instead of the C++ library</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab02" aria-label="Lab 2, Processes with fork and wait: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">Processes with fork and wait</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab03" aria-label="Lab 3, Signal handlers: code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">Signal handlers</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab04" aria-label="Lab 4, Shared memory and message queues: code and instructions on GitHub"><span class="lab__label">Lab 4</span><span class="lab__title">Shared memory and message queues</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab05" aria-label="Lab 5, Ordering processes with semaphores: code and instructions on GitHub"><span class="lab__label">Lab 5</span><span class="lab__title">Ordering processes with semaphores</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab06" aria-label="Lab 6, Producer and consumer threads: code and instructions on GitHub"><span class="lab__label">Lab 6</span><span class="lab__title">Producer and consumer threads</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab07" aria-label="Lab 7, Dining philosophers: code and instructions on GitHub"><span class="lab__label">Lab 7</span><span class="lab__title">Dining philosophers</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab08" aria-label="Lab 8, Threads, fork and exec: code and instructions on GitHub"><span class="lab__label">Lab 8</span><span class="lab__title">Threads, fork and exec</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab09" aria-label="Lab 9, Traffic intersection with threads: code and instructions on GitHub"><span class="lab__label">Lab 9</span><span class="lab__title">Traffic intersection with threads</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab10" aria-label="Lab 10, Dot product with threads and pipes: code and instructions on GitHub"><span class="lab__label">Lab 10</span><span class="lab__title">Dot product with threads and pipes</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab11" aria-label="Lab 11, Memory-mapped files: code and instructions on GitHub"><span class="lab__label">Lab 11</span><span class="lab__title">Memory-mapped files</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab13" aria-label="Lab 13, Intersection, continued: code and instructions on GitHub"><span class="lab__label">Lab 13</span><span class="lab__title">Intersection, continued</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab15" aria-label="Lab 15, Semester project: code and instructions on GitHub"><span class="lab__label">Lab 15</span><span class="lab__title">Semester project</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/templates" aria-label="Templates, Starter templates: code and instructions on GitHub"><span class="lab__label">Templates</span><span class="lab__title">Starter templates</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps3620" role="region" aria-labelledby="cmps3620-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 3620</p>
+                    <h2 class="course__title" id="cmps3620-title">Computer Networks</h2>
+                    <p class="course__summary">TCP/IP networking, with labs on sockets, I/O handling, process control and client/server programs.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>C</li><li>sockets</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps3620-featured">Featured</h3>
+                <ul class="features" role="list" aria-labelledby="cmps3620-featured">
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3620-feature-1">
+                            <h4 class="feature__title" id="cmps3620-feature-1">Multi-client server</h4>
+                            <p class="feature__text">A daemon that forks a child per connection and talks to it through pipes, with signal handling for clean shutdown.</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab05" aria-label="View the Multi-client server code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                </ul>
+                <h3 class="course__subhead" id="cmps3620-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps3620-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/homework02" aria-label="Homework 2, Physical layer homework: code and instructions on GitHub"><span class="lab__label">Homework 2</span><span class="lab__title">Physical layer homework</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab01" aria-label="Lab 1, Network diagnostic tools: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">Network diagnostic tools</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab02" aria-label="Lab 2, TCP client and server: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">TCP client and server</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab03" aria-label="Lab 3, Signals and select(): code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">Signals and select()</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab04" aria-label="Lab 4, Full-duplex chat with select(): code and instructions on GitHub"><span class="lab__label">Lab 4</span><span class="lab__title">Full-duplex chat with select()</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab05" aria-label="Lab 5, Multi-client server: code and instructions on GitHub"><span class="lab__label">Lab 5</span><span class="lab__title">Multi-client server</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab06" aria-label="Lab 6, Telnet-style shell service: code and instructions on GitHub"><span class="lab__label">Lab 6</span><span class="lab__title">Telnet-style shell service</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps3640" role="region" aria-labelledby="cmps3640-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 3640</p>
+                    <h2 class="course__title" id="cmps3640-title">Distributed and Parallel Computation</h2>
+                    <p class="course__summary">Concurrency and parallel programming with OpenMP, measuring speedup and synchronization costs.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>C++</li><li>OpenMP</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps3640-featured">Featured</h3>
+                <ul class="features" role="list" aria-labelledby="cmps3640-featured">
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3640-feature-1">
+                            <h4 class="feature__title" id="cmps3640-feature-1">Parallel histogram</h4>
+                            <p class="feature__text">OpenMP histogram with locks, plus a write-up on why it ran 39 times slower than the sequential version.</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3640/lab07" aria-label="View the Parallel histogram code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                </ul>
+                <h3 class="course__subhead" id="cmps3640-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps3640-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3640/lab01" aria-label="Lab 1, Timing a multithreaded array operation: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">Timing a multithreaded array operation</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3640/lab02" aria-label="Lab 2, First OpenMP programs: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">First OpenMP programs</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3640/lab03" aria-label="Lab 3, Computing pi in parallel: code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">Computing pi in parallel</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3640/lab07" aria-label="Lab 7, Parallel histogram with locks: code and instructions on GitHub"><span class="lab__label">Lab 7</span><span class="lab__title">Parallel histogram with locks</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3640/lab10" aria-label="Lab 10, C++ threads: code and instructions on GitHub"><span class="lab__label">Lab 10</span><span class="lab__title">C++ threads</span></a></li>
+                </ul>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="cmps3680" role="region" aria-labelledby="cmps3680-title">
+                <header class="course__header">
+                    <p class="course__code">CMPS 3680</p>
+                    <h2 class="course__title" id="cmps3680-title">Server-Side Web</h2>
+                    <p class="course__summary">Server-side development: web servers, data interchange formats, storage and retrieval with MySQL, and security.</p>
+                    <ul class="course__tags" role="list" aria-label="Languages and tools"><li>PHP</li><li>MySQL</li><li>JavaScript</li></ul>
+                </header>
+                <h3 class="course__subhead" id="cmps3680-featured">Featured</h3>
+                <ul class="features" role="list" aria-labelledby="cmps3680-featured">
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3680-feature-1">
+                            <h4 class="feature__title" id="cmps3680-feature-1">Car detailing site with PHP and MySQL</h4>
+                            <p class="feature__text">Rebuilt the CMPS 2680 site with a backend: appointments with chosen interior and exterior services are saved to MySQL, customers sign up and log in with hashed passwords, and the contact form is handled in PHP.</p>
+                            <p class="feature__note">Code only for now. The PHP pages need a server, so a live version will follow.</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/final-project" aria-label="View the Car detailing site with PHP and MySQL code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3680-feature-2">
+                            <h4 class="feature__title" id="cmps3680-feature-2">Product manager with MySQL</h4>
+                            <p class="feature__text">Add, validate and remove products. Lab 4 stores them in a JSON file, lab 5 sets up the MySQL table, and lab 6 moves the storage into MySQL.</p>
+                            <p class="feature__note">Code only for now (PHP).</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab06" aria-label="View the Product manager with MySQL code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="feature" role="article" aria-labelledby="cmps3680-feature-3">
+                            <h4 class="feature__title" id="cmps3680-feature-3">Quiz app</h4>
+                            <p class="feature__text">Loads geography, movie and music quizzes from JSON files and grades the answers in PHP.</p>
+                            <p class="feature__note">Code only for now (PHP).</p>
+                            <div class="feature__actions"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/project1" aria-label="View the Quiz app code on GitHub">View code</a></div>
+                        </article>
+                    </li>
+                </ul>
+                <h3 class="course__subhead" id="cmps3680-labs">Labs and assignments</h3>
+                <ul class="labs" role="list" aria-labelledby="cmps3680-labs">
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/final-project" aria-label="Final project, Car detailing site with PHP and MySQL: code and instructions on GitHub"><span class="lab__label">Final project</span><span class="lab__title">Car detailing site with PHP and MySQL</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab01" aria-label="Lab 1, Client-side form validation: code and instructions on GitHub"><span class="lab__label">Lab 1</span><span class="lab__title">Client-side form validation</span></a><a class="lab__demo" href="cmps3680/lab01/lab1.html" aria-label="Lab 1 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab02" aria-label="Lab 2, PHP basics: code and instructions on GitHub"><span class="lab__label">Lab 2</span><span class="lab__title">PHP basics</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab03" aria-label="Lab 3, Templated product catalog: code and instructions on GitHub"><span class="lab__label">Lab 3</span><span class="lab__title">Templated product catalog</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab04" aria-label="Lab 4, Product manager with a JSON file: code and instructions on GitHub"><span class="lab__label">Lab 4</span><span class="lab__title">Product manager with a JSON file</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab05" aria-label="Lab 5, Setting up MySQL: code and instructions on GitHub"><span class="lab__label">Lab 5</span><span class="lab__title">Setting up MySQL</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab06" aria-label="Lab 6, Product manager with MySQL: code and instructions on GitHub"><span class="lab__label">Lab 6</span><span class="lab__title">Product manager with MySQL</span></a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab10" aria-label="Lab 10, Calling a web API with jQuery: code and instructions on GitHub"><span class="lab__label">Lab 10</span><span class="lab__title">Calling a web API with jQuery</span></a><a class="lab__demo" href="cmps3680/lab10/lab10.html" aria-label="Lab 10 live demo">Demo</a></li>
+                    <li class="lab"><a class="lab__code" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/project1" aria-label="Project 1, Quiz app: code and instructions on GitHub"><span class="lab__label">Project 1</span><span class="lab__title">Quiz app</span></a></li>
+                </ul>
+            </section>
+            </li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../Projects/Hangman/">Projects</a></li>
+                    <li><a href="./" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../js/main.js" defer></script>
+</body>
+
+</html>

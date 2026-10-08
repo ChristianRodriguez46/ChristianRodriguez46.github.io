@@ -1,0 +1,9 @@
+------------------------
+Arthur the Monster
+------------------------
+TYPE: Thick
+COLOR: Almond
+NO. OF EYES: 5
+NO. OF ARMS: 2
+NO. of LEGS: 8
+------------------------

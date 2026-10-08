@@ -1,0 +1,35 @@
+{
+  "name": "Movie Quiz",
+  "questions": [
+    {
+      "id": "1",
+      "text": "In The Matrix, does Neo take the blue pill or the red pill?",
+      "options": [null, "Red", "Blue"],
+      "answer": "Red"
+    },
+    {
+      "id": "2",
+      "text": "Who played park owner John Hammond in Jurassic Park?",
+      "options": [null, "Sam Neill", "Danny DeVito", "Jeff Goldblum", "Richard Attenborough"],
+      "answer": "Richard Attenborough"
+    },
+    {
+      "id": "3",
+      "text": "Which famous film composer wrote the music for Tim Burton's 1989 Batman?",
+      "options": [null, "John Williams", "Danny Elfman", "Hanz Zimmer", "Howard Shore"],
+      "answer": "Danny Elfman"
+    },
+    {
+      "id": "4",
+      "text": "Which black-and-white movie had the first flushing toilet?",
+      "options": [null, "12 Angry Men", "Casablanca", "Psycho", "Citizen Kane"],
+      "answer": "Psycho"
+    },
+    {
+      "id": "5",
+      "text": "What was the first feature-length animated movie ever released?",
+      "options": [null, "Fantasia", "Snow White and the Seven Dwarfs", "Steamboat Willie", "Dumbo"],
+      "answer": "Snow White and the Seven Dwarfs"
+    }
+  ]
+}

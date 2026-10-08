@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Booking</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="./script1.js"></script>
+        <link rel="stylesheet" type="text/css" href="./style1.css">
+    </head>
+    <body data-new-gr-c-s-check-loaded="14.1143.0" data-gr-ext-installed="">
+        <nav class="navbar naxvbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid" id="navContainer">
+                <a class="navbar-brand" href="./home.html">Wise Choice Detailing</a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#xx" style="cursor:pointer" fdprocessedid="kwg44" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="xx" style="">
+                    <ul class="navbar-nav" id="navList">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./home.html">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./service.html">Services</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./booking.html">Book your detailing</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./gallery.html">Gallery</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contact.html">Contact Us</a>
+                        </li>
+                    </ul>
+
+                    <form role="search">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <!--Form Container-->
+        <div id="container">
+            <div id="form">       
+                <form id="b-form" class="needs-validation" onsubmit="return submitForm()" novalidate="">
+                    <!--Personal Infomation div-->
+                    <div id="Per-info">
+                        <div class="row g-3">
+
+                            <div class="col-12">
+                                <label for="fname" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fname" name="fname" placeholder="ex. Eric Cartmen" required="">
+
+                                <div class="invalid-feedback">
+                                    Full Name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email </label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required="">
+
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for service.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St 93306" required="">
+
+                                <div class="invalid-feedback">
+                                    Please enter your address.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="car" class="form-label">What type of car?</label>
+                                <input type="text" class="form-control" id="car" name="car" required="">
+
+                                <div class="invalid-feedback">
+                                    Please enter what you need detailed.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="phone" class="form-label">Enter your phone number: 
+                                    <span class="text-body-secondary">(Optional)</span>
+                                </label>
+                                <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" size="11">
+
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="day" class="form-label">Select a date and time</label>
+                                <input type="datetime-local" class="form-control" id="day" name="date" required="">
+                                <div class="invalid-feedback">
+                                    Please select a date and time.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <!--package div-->
+                    <div class="p-form">
+                        <legend>Packages:</legend>
+
+                        <input type="radio" id="bronze" name="p_service" value="Bronze">
+                        <label for="bronze">BRONZE</label><br>
+
+                        <input type="radio" id="silver" name="p_service" value="Silver">
+                        <label for="silver">SILVER</label><br>
+
+                        <input type="radio" id="Gold" name="p_service" value="Gold">
+                        <label for="Gold">Gold</label><br>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <!--Service div-->
+                    <div id="s-form">
+                        <!--Exterior services-->
+                        <div id="ex-form">
+                            <legend>Exterior Individual Services:</legend>
+
+                            <input type="checkbox" id="s1" name="I_serv" value="Full Service Hand Wash">
+                            <label for="s1">FULL SERVICE HAND WASH</label>
+                            <br>
+                            <input type="checkbox" id="s2" name="I_serv" value="WHEEL CLEAN &amp; SHINE">
+                            <label for="s2">WHEEL CLEAN &amp; SHINE</label>
+                            <br>
+                            <input type="checkbox" id="s3" name="I_serv" value="PLASTIC RESTORE">
+                            <label for="s3">PLASTIC RESTORE</label>
+                            <br>
+
+                            <input type="checkbox" id="s4" name="I_serv" value="ENGINE BAY">
+                            <label for="s4">ENGINE BAY</label>
+                            <br>
+
+                            <input type="checkbox" id="s5" name="I_serv" value="HAND WAX">
+                            <label for="s5">HAND WAX</label>
+                            <br>
+
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!--Interior Services-->
+                        <div id="in-form">
+                            <legend>Interior Individual Services:</legend>
+
+                            <input type="checkbox" id="s6" name="I_serv" value="VACCUM &amp; CLEAN">
+                            <label for="s6">VACCUM &amp; CLEAN</label>
+                            <br>
+
+                            <input type="checkbox" id="s7" name="I_serv" value="LEATHER CLEAN &amp; CONDITION">
+                            <label for="s7">LEATHER CLEAN &amp; CONDITION</label>
+                            <br>
+
+                            <input type="checkbox" id="s8" name="I_serv" value="DOOR, DASH, &amp; PLASTIC CONDITION">
+                            <label for="s8">DOOR, DASH, &amp; PLASTIC CONDITION</label>
+                            <br>
+
+                            <input type="checkbox" id="s9" name="I_serv" value="CARPET &amp; UPHOLSTERY SHAMPOO">
+                            <label for="s9">CARPET &amp; UPHOLSTERY SHAMPOO</label>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <button id="button" type="submit">Continue to checkout</button>
+                </form>
+                <div id="output_container">
+                    <div id="output"></div>            
+                    <div id="Is_container"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="./home.html" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="./service.html" class="nav-link px-2 text-body-secondary">Services</a></li>
+                <li class="nav-item"><a href="./booking.html" class="nav-link px-2 text-body-secondary">Booking</a></li>
+                <li class="nav-item"><a href="./gallery.html" class="nav-link px-2 text-body-secondary">Gallery</a></li>
+                <li class="nav-item"><a href="./contact.html" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+            </ul>
+            <p class="text-center text-body-secondary"> © 2023 Wise Choice Detailing. All rights reserved.</p>
+        </footer>
+        <script>
+            //bootstrap validation for personal information
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (() => {
+                'use strict'
+
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.querySelectorAll('.needs-validation')
+
+                // Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                    form.addEventListener('submit', event => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+            })()
+        </script>
+    </body>
+</html>

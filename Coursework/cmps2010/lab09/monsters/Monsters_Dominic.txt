@@ -1,0 +1,9 @@
+------------------------
+Dominic the Monster
+------------------------
+TYPE: Hot
+COLOR: Pink Flamingo
+NO. OF EYES: 1
+NO. OF ARMS: 4
+NO. of LEGS: 12
+------------------------

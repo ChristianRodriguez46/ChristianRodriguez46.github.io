@@ -1,0 +1,9 @@
+------------------------
+Keiko the Monster
+------------------------
+TYPE: Furry
+COLOR: Blush
+NO. OF EYES: 5
+NO. OF ARMS: 7
+NO. of LEGS: 8
+------------------------

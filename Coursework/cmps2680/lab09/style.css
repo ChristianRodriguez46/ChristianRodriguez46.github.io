@@ -1,0 +1,59 @@
+body{
+    background-color: #F4F5FF;
+    font-family: monospace;
+    /*gif background*/
+    background: url(./programming.gif) no-repeat fixed center;
+    background-size: 492px;
+    background-position: left;
+}
+div#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3a4cbca6;
+    margin: 150px auto;
+    padding: 50px;
+    height: auto;
+    width: 356px;
+    box-shadow: 0px 0px 25px 9px #1e96d8b8;
+}
+/*This affects all the inputs listed*/
+input[type=text], input[type=date], input[type=email]{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+}
+input[type=email]{
+    font-size: 15px
+}
+input[type=text] {
+    font-size: 22px;
+}
+input[type=submit]{
+    width: 133px;
+    height: 49px;
+    font-size: 25px;
+    border-color: #1aa1d1;
+    border-radius:5px;
+}
+
+input[type=date]{
+    font-size: 20px;
+}
+
+label{
+    font-size:25px;
+    color:white;
+}
+
+#output{
+    font-family:sans-serif, serif;
+    font-weight: bold;
+    height: auto;
+    width: 90%;
+    padding: 15px;
+    background-color: #a2b5cd;
+    box-shadow: 0px 0px 5px 5px #a2b5cd;
+    color: #1a1313;
+}

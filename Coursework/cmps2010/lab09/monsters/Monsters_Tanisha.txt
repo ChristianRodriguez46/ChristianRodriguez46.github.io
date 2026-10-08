@@ -1,0 +1,9 @@
+------------------------
+Tanisha the Monster
+------------------------
+TYPE: Thick
+COLOR: Magenta
+NO. OF EYES: 3
+NO. OF ARMS: 3
+NO. of LEGS: 7
+------------------------

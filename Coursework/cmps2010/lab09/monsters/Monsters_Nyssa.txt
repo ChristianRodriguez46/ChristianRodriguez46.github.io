@@ -1,0 +1,9 @@
+------------------------
+Nyssa the Monster
+------------------------
+TYPE: Tiny
+COLOR: Banana Mania
+NO. OF EYES: 9
+NO. OF ARMS: 15
+NO. of LEGS: 11
+------------------------

@@ -1,0 +1,9 @@
+------------------------
+Brenden the Monster
+------------------------
+TYPE: Spiky
+COLOR: Magenta
+NO. OF EYES: 9
+NO. OF ARMS: 3
+NO. of LEGS: 6
+------------------------

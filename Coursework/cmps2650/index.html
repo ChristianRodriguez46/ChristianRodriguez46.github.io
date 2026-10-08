@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+    CMPS 2650 lab answers. Plain HTML: edit the text in place.
+    Each lab is one <section class="course" id="..."> inside <ul class="courses__list">.
+    To add a lab: copy a whole <li> ... </li>, give the section a new id, and add a link
+    with the same #id to the course bar (<ul class="localnav__list">) so the highlight works.
+    Styles: style/main.css and style/coursework.css (section 6, "Lab answers").
+-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMPS 2650 Linux Labs | Christian Rodriguez</title>
+    <meta name="description" content="Commands and answers for Christian Rodriguez's CMPS 2650 Linux Environment and Administration labs at CSU Bakersfield.">
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../style/main.css">
+    <link rel="stylesheet" href="../../style/coursework.css">
+</head>
+
+<body class="has-localnav">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../index.html#about">About</a></li>
+                <li><a href="../../index.html#contact">Contact</a></li>
+                <li><a href="../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="localnav" role="navigation" aria-label="Labs">
+        <div class="localnav__inner">
+            <a class="localnav__title" href="#main">CMPS 2650</a>
+            <ul class="localnav__list" role="list">
+                <li><a href="#lab01" aria-label="Lab 1, Exploring the Linux system">1</a></li>
+                <li><a href="#lab02" aria-label="Lab 2, Hosts, terminals and remote access">2</a></li>
+                <li><a href="#lab03" aria-label="Lab 3, Disk usage, links, find and text pipelines">3</a></li>
+                <li><a href="#lab04" aria-label="Lab 4, Basic regular expressions with grep">4</a></li>
+                <li><a href="#lab05" aria-label="Lab 5, Regular expressions in grep and vi">5</a></li>
+                <li><a href="#lab06" aria-label="Lab 6, vim skills and shell profiles">6</a></li>
+                <li><a href="#lab07" aria-label="Lab 7, Bash scripting, part 1">7</a></li>
+                <li><a href="#lab08" aria-label="Lab 8, Bash scripting, part 2">8</a></li>
+                <li><a href="#lab09" aria-label="Lab 9, diff and patch">9</a></li>
+                <li><a href="#lab10" aria-label="Lab 10, sed, awk, nano and emacs">10</a></li>
+                <li><a href="#admin-lab01" aria-label="Admin lab 1, Users and groups">A1</a></li>
+                <li><a href="#admin-lab02" aria-label="Admin lab 2, Passwords and login policy">A2</a></li>
+                <li><a href="#admin-lab03" aria-label="Admin lab 3, Storage">A3</a></li>
+                <li><a href="#admin-lab04" aria-label="Admin lab 4, Logical volume management (LVM)">A4</a></li>
+                <li><a href="#admin-lab05" aria-label="Admin lab 5, Services and scheduled jobs">A5</a></li>
+                <li><a href="#admin-lab07" aria-label="Admin lab 7, DNS lookups">A7</a></li>
+                <li><a href="#scripts" aria-label="Scripts, Utility scripts">Scripts</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="main" role="main" tabindex="-1">
+        <section class="cw-hero" role="region" aria-labelledby="cw-title">
+            <h1 class="cw-hero__title cw-hero__title--long" id="cw-title" data-animate>Linux Environment and Administration</h1>
+            <p class="cw-hero__lede" data-animate>
+                The commands I used for each CMPS 2650 lab, and what they do.
+            </p>
+            <p class="cw-hero__note" data-animate>
+                Labs 1 to 10 cover the command line, editors and shell scripting. The admin labs cover running a
+                Debian system: users, passwords, storage, services and DNS. The lab handouts are the
+                instructor&rsquo;s and are not included, so each lab starts with the task in my own words.
+                Server addresses, other users&rsquo; information and password hashes are left out.
+            </p>
+            <p class="cw-hero__back" data-animate><a class="link-chevron" href="../#cmps2650">All coursework</a></p>
+        </section>
+
+        <div class="courses">
+            <ul class="courses__list" role="list" aria-label="Labs">
+            <li>
+            <section class="course" id="lab01" role="region" aria-labelledby="lab01-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 1</p>
+                    <h2 class="course__title" id="lab01-title">Exploring the Linux system</h2>
+                    <p class="course__summary">A first look around the server: the running kernel, the standard directories, and how Linux represents hardware as files.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li>Kernel information</li><li>Filesystem hierarchy</li><li>Device files</li></ul>
+                </header>
+                <div class="answer">
+                    <h3>Which kernel is running?</h3>
+                    <pre tabindex="0"><code class="language-bash">cat /proc/version     <span class="cmt"># kernel version, compiler and build date</span>
+uname -a              <span class="cmt"># the same information in one line</span>
+</code></pre>
+                    <h3>What is <code>/usr</code> for?</h3>
+                    <p><code>/usr</code> holds installed software that is shared by every user: programs in <code>/usr/bin</code>, libraries in
+                    <code>/usr/lib</code>, and documentation in <code>/usr/share</code>. (System configuration lives in <code>/etc</code>, not <code>/usr</code>.)</p>
+                    <h3>How does Linux show devices?</h3>
+                    <p>Hardware is represented as special files in <code>/dev</code>, for example disks (<code>/dev/sda</code>) and terminals
+                    (<code>/dev/pts/N</code>). Programs read and write these files to talk to the device.</p>
+                    <h3>What is <code>/dev/null</code>?</h3>
+                    <p>A device that discards everything written to it. It is used to hide unwanted output, for example
+                    <code>command 2&gt;/dev/null</code> drops error messages, and <code>&gt; logfile</code> (or <code>cat /dev/null &gt; logfile</code>) empties a
+                    log file.</p>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="lab02" role="region" aria-labelledby="lab02-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 2</p>
+                    <h2 class="course__title" id="lab02-title">Hosts, terminals and remote access</h2>
+                    <p class="course__summary">Identifying the machine and session you are logged in to, basic network tools, and copying files over SSH.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>hostname</code> and <code>/etc/hosts</code></li><li>Terminals</li><li>SSH and X11 forwarding</li><li><code>scp</code></li></ul>
+                </header>
+                <div class="answer">
+                    <h3>Which machine am I on?</h3>
+                    <pre tabindex="0"><code class="language-bash">hostname            <span class="cmt"># the machine's name</span>
+hostname -I         <span class="cmt"># its IP address(es)</span>
+cat /etc/hosts      <span class="cmt"># local name-to-address table</span>
+</code></pre>
+                    <p><code>/etc/hosts</code> maps names to addresses before DNS is consulted. On Debian, the machine's own hostname is
+                    mapped to <code>127.0.1.1</code>, a loopback address, so the system can always resolve its own name.</p>
+                    <h3>Which terminal am I using?</h3>
+                    <pre tabindex="0"><code class="language-bash">tty            <span class="cmt"># e.g. /dev/pts/33: the pseudo-terminal for this SSH session</span>
+who am i       <span class="cmt"># my login with its terminal</span>
+</code></pre>
+                    <h3>Network tools</h3>
+                    <ul>
+                    <li><code>netstat</code> shows network connections, routing tables, interface statistics and multicast
+                      memberships (<code>ss</code> is the modern replacement).</li>
+                    <li>In <code>ping</code> output, <strong>TTL</strong> (time to live) is the number of routers a packet may still pass through
+                      before it is discarded, which stops packets from looping forever.</li>
+                    </ul>
+                    <h3>Graphical programs over SSH</h3>
+                    <pre tabindex="0"><code class="language-bash">ssh -X user@server   <span class="cmt"># untrusted X11 forwarding: remote programs get limited access to your display</span>
+ssh -Y user@server   <span class="cmt"># trusted forwarding: fewer restrictions, less secure</span>
+</code></pre>
+                    <p>Use <code>-X</code> by default and switch to <code>-Y</code> only when a program does not work under <code>-X</code>.</p>
+                    <h3>Copying files</h3>
+                    <pre tabindex="0"><code class="language-bash">scp notes.txt user@server:~/      <span class="cmt"># upload</span>
+scp user@server:~/notes.txt .     <span class="cmt"># download</span>
+</code></pre>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="lab03" role="region" aria-labelledby="lab03-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 3</p>
+                    <h2 class="course__title" id="lab03-title">Disk usage, links, find and text pipelines</h2>
+                    <p class="course__summary">Measuring disk usage, creating symbolic and hard links, searching with <code>find</code>, and building pipelines with <code>sort</code>, <code>uniq</code>, <code>tr</code> and <code>wc</code>.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>du</code></li><li>Symbolic and hard links</li><li><code>find</code> with <code>-exec</code></li><li><code>sort</code>, <code>uniq</code>, <code>tr</code>, <code>wc</code></li></ul>
+                </header>
+                <div class="answer">
+                    <h3>Disk usage</h3>
+                    <pre tabindex="0"><code class="language-bash">du -sh       <span class="cmt"># total size of the current directory, human-readable</span>
+du -h ~      <span class="cmt"># every folder under home; the last line is the account total</span>
+</code></pre>
+                    <h3>Directories and links</h3>
+                    <pre tabindex="0"><code class="language-bash">mkdir -p ./US/California/Kern/Bakersfield   <span class="cmt"># -p also creates the missing parent folders</span>
+mkdir -p ./US/California/Kern/Shafter
+ln -s US/California/Kern/Bakersfield bako   <span class="cmt"># symbolic link to a deep directory</span>
+ls -al                                      <span class="cmt"># bako's permissions start with &quot;l&quot; (a link)</span>
+cd bako &amp;&amp; echo &quot;Bakersfield - Home of CSUB&quot; &gt; test.txt &amp;&amp; cat test.txt
+pwd                                         <span class="cmt"># shows the path through the link: .../bako</span>
+</code></pre>
+                    <p><code>echo</code> prints the text and <code>&gt;</code> redirects it into <code>test.txt</code>, creating or overwriting the file.</p>
+                    <pre tabindex="0"><code class="language-bash">ln -s US/California/Kern/Bakersfield/test.txt sltest.txt   <span class="cmt"># symbolic link</span>
+ln    US/California/Kern/Bakersfield/test.txt hltest.txt   <span class="cmt"># hard link (no -s)</span>
+</code></pre>
+                    <ul>
+                    <li>The hard link's permissions start with <code>-</code>: it is another name for the same file, so it shows the
+                      file's real size and modification time.</li>
+                    <li>The symbolic link is a small file containing a path, so its size is the length of that path and its
+                      time is when the link was created.</li>
+                    <li>Deleting either link leaves the original <code>test.txt</code> in place.</li>
+                    </ul>
+                    <h3>find</h3>
+                    <pre tabindex="0"><code class="language-bash">find /etc -type f -name &quot;a*&quot;              <span class="cmt"># files under /etc whose names start with &quot;a&quot;</span>
+find ~ -type f -empty                     <span class="cmt"># empty files in my account</span>
+find . -not -name &quot;*.cpp&quot;                 <span class="cmt"># everything (files and directories) except .cpp files</span>
+find ~ -name &quot;*.cpp&quot; -perm -004           <span class="cmt"># .cpp files readable by everyone (&quot;the world&quot;)</span>
+find ~ -name &quot;*.cpp&quot; -perm -004 -exec chmod o-r '{}' \;   <span class="cmt"># remove world-read from each one</span>
+find ~ -type f -mtime -365                <span class="cmt"># files modified in the last year</span>
+find ~ -type f -mtime -365 | wc -l        <span class="cmt"># ...and how many there are</span>
+</code></pre>
+                    <p>After the <code>chmod</code>, running the <code>-perm -004</code> search again returns nothing, because no <code>.cpp</code> file is
+                    world-readable any more.</p>
+                    <h3>Pipelines</h3>
+                    <pre tabindex="0"><code class="language-bash">who | sort &gt; who.txt                          <span class="cmt"># logged-in users, sorted, saved to a file</span>
+uniq who.txt                                  <span class="cmt"># collapse repeated adjacent lines</span>
+awk '{print $1}' who.txt | sort | uniq | wc -l   <span class="cmt"># count unique users</span>
+uniq who.txt &gt; who2.txt
+cat who2.txt | tr -s ' ' &gt; who3.txt           <span class="cmt"># squeeze repeated spaces into one</span>
+cat who3.txt | tr -d ' ' &gt; who4.txt           <span class="cmt"># delete all spaces</span>
+cat who4.txt | tr '\n' ',' &gt; who5.txt         <span class="cmt"># turn newlines into commas: one comma-separated line</span>
+diff who4.txt who5.txt                        <span class="cmt"># shows the line-per-name vs. single-line difference</span>
+</code></pre>
+                    <p>The <code>who</code> output files themselves are not included because they list other users of the server.</p>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="lab04" role="region" aria-labelledby="lab04-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 4</p>
+                    <h2 class="course__title" id="lab04-title">Basic regular expressions with grep</h2>
+                    <p class="course__summary">Matching text with basic regular expressions (BREs) in <code>grep</code>. <code>text.txt</code> is the sample file the commands run against.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li>Anchors and character classes</li><li>Repetition <code>\{n,m\}</code></li><li><code>grep -o</code>, <code>-i</code>, <code>-c</code>, <code>-v</code></li></ul>
+                </header>
+                <div class="answer">
+                    <pre tabindex="0"><code class="language-bash">grep &quot;apple&quot; text.txt              <span class="cmt"># exact case</span>
+grep -i &quot;apple&quot; text.txt           <span class="cmt"># any case</span>
+grep &quot;^Apple&quot; text.txt             <span class="cmt"># &quot;Apple&quot; at the start of a line</span>
+grep '[A-Z]\{2,\}' text.txt        <span class="cmt"># two or more capital letters in a row (BRE)</span>
+grep -E '[A-Z]{2,}' text.txt       <span class="cmt"># the same with extended regex, no escaping needed</span>
+grep ', M[A-Z]$' text.txt          <span class="cmt"># cities in states whose code starts with M</span>
+</code></pre>
+                    <h3>Matching patterns</h3>
+                    <pre tabindex="0"><code class="language-bash">echo &quot;X9YZ XX1YZ&quot;         | grep -o &quot;X[369]YZ&quot;            <span class="cmt"># X, one of 3/6/9, then YZ</span>
+echo &quot;X333YZ X369YZ X123YZ&quot; | grep -o &quot;X[369]\{3\}YZ&quot;      <span class="cmt"># three digits, each 3, 6 or 9</span>
+echo &quot;what? X6?9 no&quot;       | grep -o '[^ ]*[?][^ ]*'       <span class="cmt"># words containing a question mark</span>
+</code></pre>
+                    <h3>Practical patterns</h3>
+                    <pre tabindex="0"><code class="language-bash">grep -o &quot;[0-9]\{3\}-[0-9]\{2\}-[0-9]\{4\}&quot;     <span class="cmt"># US Social Security number format</span>
+grep &quot;//&quot; program.cpp                            <span class="cmt"># lines with // comments</span>
+grep -c &quot;^[[:space:]]*$&quot; file.txt                <span class="cmt"># count blank lines</span>
+grep -v &quot;^[[:space:]]*$&quot; file.txt &gt; clean.txt    <span class="cmt"># copy the file without blank lines</span>
+</code></pre>
+                </div>
+                <p class="answer__files"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2650/lab04" aria-label="Lab 4 scripts and files on GitHub">Scripts and files on GitHub</a></p>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="lab05" role="region" aria-labelledby="lab05-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 5</p>
+                    <h2 class="course__title" id="lab05-title">Regular expressions in grep and vi</h2>
+                    <p class="course__summary">Search-and-replace with regular expressions inside <code>vi</code>, and extended regular expressions (EREs) in <code>grep</code>. The lab used song lyrics as sample text; that file is not included.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li>vi substitution</li><li><code>:g</code> and <code>:v</code></li><li>Extended regular expressions</li><li>Backreferences</li></ul>
+                </header>
+                <div class="answer">
+                    <h3>grep</h3>
+                    <pre tabindex="0"><code class="language-bash">grep -o &quot;Bel-Air&quot; lyrics.txt | wc -l      <span class="cmt"># how many times a phrase appears (not just matching lines)</span>
+</code></pre>
+                    <h3>vi substitutions</h3>
+                    <div class="answer__table" tabindex="0" role="region" aria-label="Table, scrolls sideways on small screens">
+                    <table>
+                    <thead>
+                    <tr>
+                    <th>Command</th>
+                    <th>What it does</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td><code>:%s/?$/??/g</code></td>
+                    <td>Double every question mark at the end of a line</td>
+                    </tr>
+                    <tr>
+                    <td><code>:1,$v/?$/s/$/,/</code></td>
+                    <td>Add a comma to every line that does not end with <code>?</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>:1,$-1v/?$/s/$/,/</code></td>
+                    <td>The same, but skip the last line</td>
+                    </tr>
+                    <tr>
+                    <td><code>:1,$v/?$/s/$/,/gc</code></td>
+                    <td>The <code>c</code> flag asks before each replacement</td>
+                    </tr>
+                    <tr>
+                    <td><code>:g/^[ ]*$/d</code></td>
+                    <td>Delete blank lines (lines of only spaces)</td>
+                    </tr>
+                    <tr>
+                    <td><code>:1,15s/^/\/\/ /</code></td>
+                    <td>Comment out the first 15 lines of a C++ file by adding <code>//</code></td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    <p><code>:g/pattern/command</code> runs a command on every line that matches; <code>:v/pattern/command</code> runs it on every
+                    line that does not.</p>
+                    <h3>Extended regular expressions</h3>
+                    <pre tabindex="0"><code class="language-bash">grep  &quot;(\bI\b|\bme\b|\bmy\b)&quot; lyrics.txt     <span class="cmt"># matches nothing: ( ) and | are ERE syntax</span>
+grep -E &quot;(\bI\b|\bme\b|\bmy\b)&quot; lyrics.txt   <span class="cmt"># lines containing the words I, me or my</span>
+egrep &quot;(\bI\b|\bme\b|\bmy\b)&quot; lyrics.txt     <span class="cmt"># same as grep -E</span>
+
+echo &quot;Arrow, Arrowhead, Wheelbarrow, Bone marrow, Tomorrow&quot; |
+  grep -Eo &quot;\bArrow(head)?\b|\bWheelbarrow\b|\bBone marrow\b&quot;   <span class="cmt"># everything except Tomorrow</span>
+grep -Eo &quot;[0-9]{3}-[0-9]{2}-[0-9]{4}&quot;                               <span class="cmt"># SSN format</span>
+</code></pre>
+                    <h3>Strings that match each pattern</h3>
+                    <div class="answer__table" tabindex="0" role="region" aria-label="Table, scrolls sideways on small screens">
+                    <table>
+                    <thead>
+                    <tr>
+                    <th>Pattern</th>
+                    <th>Two matching examples</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td><code>[0-3]*\d+\l?</code></td>
+                    <td><code>00312a</code>, <code>2319x</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>(ha){2,}.*</code></td>
+                    <td><code>haha</code>, <code>hahahaha!</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>[ba][ba](na){2}</code></td>
+                    <td><code>banana</code>, <code>abnana</code></td>
+                    </tr>
+                    <tr>
+                    <td><code>X\([abc]\)Z\([0-9]+\)\2</code></td>
+                    <td><code>XaZ55</code>, <code>XcZ123123</code></td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    </div>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="lab06" role="region" aria-labelledby="lab06-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 6</p>
+                    <h2 class="course__title" id="lab06-title">vim skills and shell profiles</h2>
+                    <p class="course__summary">Moving around and reformatting code in vim, then customizing the shell through <code>.bash_logout</code>, aliases and the prompt. <code>hello.cpp</code> is the file used for the indenting and folding steps.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li>vim marks, search and indentation</li><li>Code folding</li><li><code>.bashrc</code>, <code>.bash_logout</code>, aliases, <code>PS1</code></li></ul>
+                </header>
+                <div class="answer">
+                    <h3>vim</h3>
+                    <div class="answer__table" tabindex="0" role="region" aria-label="Table, scrolls sideways on small screens">
+                    <table>
+                    <thead>
+                    <tr>
+                    <th>Keys</th>
+                    <th>What they do</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td><code>mw</code>, then <code>`w</code></td>
+                    <td>Set mark <em>w</em>, then jump back to the exact character where it was set</td>
+                    </tr>
+                    <tr>
+                    <td><code>'w</code></td>
+                    <td>Jump to the start of the line holding mark <em>w</em></td>
+                    </tr>
+                    <tr>
+                    <td><code>gg</code></td>
+                    <td>Go to the top of the file</td>
+                    </tr>
+                    <tr>
+                    <td><code>/prince</code>, then <code>/</code> + Up + Enter</td>
+                    <td>Search forward and repeat the search</td>
+                    </tr>
+                    <tr>
+                    <td><code>:r!ls $HOME</code></td>
+                    <td>Insert the output of a shell command into the file</td>
+                    </tr>
+                    <tr>
+                    <td><code>=iB</code></td>
+                    <td>Re-indent everything inside the surrounding <code>{ }</code> block</td>
+                    </tr>
+                    <tr>
+                    <td><code>4==</code></td>
+                    <td>Re-indent the current line and the next three</td>
+                    </tr>
+                    <tr>
+                    <td><code>&gt;%</code> / <code>&lt;%</code></td>
+                    <td>Indent or outdent through the matching bracket</td>
+                    </tr>
+                    <tr>
+                    <td><code>&gt;&gt;</code> / <code>&lt;&lt;</code></td>
+                    <td>Indent or outdent the current line</td>
+                    </tr>
+                    <tr>
+                    <td><code>zf%</code>, <code>zc</code>, <code>zo</code></td>
+                    <td>Create a fold through the matching bracket, close it, open it</td>
+                    </tr>
+                    </tbody>
+                    </table>
+                    </div>
+                    <p>Code folding collapses a block of code into one line so you can see the structure of a file without the
+                    details, the same as in an IDE.</p>
+                    <h3>Profiles</h3>
+                    <pre tabindex="0"><code class="language-bash"><span class="cmt"># appended to ~/.bash_logout: record when and where each session ended</span>
+echo &quot;`date` from `pwd`&quot; &gt;&gt; ~/logout_history.txt
+
+alias                            <span class="cmt"># list current aliases</span>
+alias name=&quot;command&quot;             <span class="cmt"># define one (put it in ~/.bashrc to keep it)</span>
+
+echo 'rm -f ~/.bash_history' &gt;&gt; ~/.bash_logout    <span class="cmt"># clear command history at every logout</span>
+
+<span class="cmt"># a colored prompt: user@host:directory time, then $ on a new line</span>
+PS1='\[\e[1;36m\]\u@\h:\[\e[0m\]\[\e[1;34m\]\w\[\e[0m\] \@\n\$ '
+</code></pre>
+                </div>
+                <p class="answer__files"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2650/lab06" aria-label="Lab 6 scripts and files on GitHub">Scripts and files on GitHub</a></p>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="lab07" role="region" aria-labelledby="lab07-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 7</p>
+                    <h2 class="course__title" id="lab07-title">Bash scripting, part 1</h2>
+                    <p class="course__summary">How a script's interpreter is chosen, exit codes, and a script that reports whether a C++ file compiles.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li>Shebang lines</li><li>Exit status <code>$?</code></li><li>Redirecting stderr</li></ul>
+                </header>
+                <div class="answer">
+                    <h3>Running a script different ways (<code>lab7-01.sh</code>)</h3>
+                    <pre tabindex="0"><code class="language-bash">sh lab7-01.sh        <span class="cmt"># fails: sh is a basic POSIX shell without bash's += operator</span>
+bash lab7-01.sh      <span class="cmt"># works: prints &quot;Hello, Scripts&quot;</span>
+chmod u+x lab7-01.sh
+./lab7-01.sh         <span class="cmt"># works: the #!/bin/bash line makes the kernel run it with bash</span>
+</code></pre>
+                    <p>Writing <code>H = "Hello"</code> with spaces breaks the script: bash reads <code>H</code> as a command name and reports
+                    <code>H: command not found</code>. Assignments in bash must not have spaces around <code>=</code>.</p>
+                    <h3>Exit codes (<code>argcount.cpp</code>)</h3>
+                    <pre tabindex="0"><code class="language-bash">g++ argcount.cpp
+./a.out alpha bravo charlie delta
+echo $?        <span class="cmt"># 4: the program returns argc - 1, so $? is the number of arguments</span>
+</code></pre>
+                    <p><code>$?</code> always holds the exit status of the last command; 0 conventionally means success.</p>
+                    <h3>Does it compile? (<code>lab7-02.sh</code>)</h3>
+                    <pre tabindex="0"><code class="language-bash">./lab7-02.sh hello.cpp     <span class="cmt"># prints &quot;Compile successful&quot; or &quot;Compile failed&quot;</span>
+</code></pre>
+                    <p>The script runs <code>g++ "$1"</code>, sends compiler errors to <code>/dev/null</code> with <code>2&gt;/dev/null</code>, and checks <code>$?</code>.
+                    <code>hello.cpp</code> in this folder is broken on purpose, to test the "Compile failed" branch.</p>
+                </div>
+                <p class="answer__files"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2650/lab07" aria-label="Lab 7 scripts and files on GitHub">Scripts and files on GitHub</a></p>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="lab08" role="region" aria-labelledby="lab08-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 8</p>
+                    <h2 class="course__title" id="lab08-title">Bash scripting, part 2</h2>
+                    <p class="course__summary">Parsing <code>key=value</code> arguments, loops and arithmetic, functions, and here-documents.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>cut</code> and <code>case</code></li><li>Arithmetic <code>(( ))</code></li><li>Functions</li><li>Here-documents</li></ul>
+                </header>
+                <div class="answer">
+                    <h3>Parsing arguments (<code>lab8-01.sh</code>)</h3>
+                    <pre tabindex="0"><code class="language-bash">bash lab8-01.sh A=100 B=200     <span class="cmt"># prints A + B = 300</span>
+</code></pre>
+                    <p>For each argument, <code>cut -f1 -d=</code> takes the text before the <code>=</code> (the key) and <code>cut -f2 -d=</code> the text
+                    after it (the value). A <code>case</code> statement stores the values in <code>A</code> and <code>B</code>, then <code>(( ))</code> adds them.</p>
+                    <h3>Factorial (<code>lab8-02.sh</code>)</h3>
+                    <pre tabindex="0"><code class="language-bash">bash lab8-02.sh     <span class="cmt"># asks for a number, prints e.g. 5! = 120</span>
+</code></pre>
+                    <p>Uses <code>echo -n</code> and <code>read</code> for input and a C-style <code>for (( i=2; i&lt;=n; i++ ))</code> loop.</p>
+                    <h3>Factorial with a function (<code>lab8-03.sh</code>)</h3>
+                    <pre tabindex="0"><code class="language-bash">bash lab8-03.sh 5   <span class="cmt"># uses the command-line argument</span>
+bash lab8-03.sh     <span class="cmt"># no argument: prints a message from a here-document, then asks for a number</span>
+</code></pre>
+                    <p>The calculation lives in a <code>calc</code> function with a <code>local</code> variable.</p>
+                </div>
+                <p class="answer__files"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2650/lab08" aria-label="Lab 8 scripts and files on GitHub">Scripts and files on GitHub</a></p>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="lab09" role="region" aria-labelledby="lab09-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 9</p>
+                    <h2 class="course__title" id="lab09-title">diff and patch</h2>
+                    <p class="course__summary">Creating a patch file from two versions of a program, applying it, and rolling it back. <code>hello.patch</code> is the patch I produced.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>diff -u</code></li><li><code>patch</code> and <code>patch -R</code></li><li><code>sed -i</code></li></ul>
+                </header>
+                <div class="answer">
+                    <pre tabindex="0"><code class="language-bash">cat &gt; hello.c &lt;&lt; EOF            <span class="cmt"># create the original program with a here-document</span>
+...
+EOF
+gcc hello.c -o hello &amp;&amp; ./hello                 <span class="cmt"># Hello, World!</span>
+
+cp hello.c hello_new.c
+sed -i 's/Hello, World/Hello, Unix World/' hello_new.c
+
+diff -u hello.c hello_new.c &gt; hello.patch       <span class="cmt"># unified diff: the patch file</span>
+cp hello.c hello_original.c
+patch hello_original.c &lt; hello.patch            <span class="cmt"># apply it</span>
+gcc hello_original.c -o hello_patched &amp;&amp; ./hello_patched   <span class="cmt"># Hello, Unix World!</span>
+
+patch -R hello_original.c &lt; hello.patch         <span class="cmt"># roll it back</span>
+gcc hello_original.c -o orig &amp;&amp; ./orig          <span class="cmt"># Hello, World! again</span>
+</code></pre>
+                    <p>In the unified diff, lines starting with <code>-</code> are removed and lines starting with <code>+</code> are added; the
+                    <code>@@ -1,6 +1,6 @@</code> header gives the line ranges in each file.</p>
+                </div>
+                <p class="answer__files"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2650/lab09" aria-label="Lab 9 scripts and files on GitHub">Scripts and files on GitHub</a></p>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="lab10" role="region" aria-labelledby="lab10-title">
+                <header class="course__header">
+                    <p class="course__code">Lab 10</p>
+                    <h2 class="course__title" id="lab10-title">sed, awk, nano and emacs</h2>
+                    <p class="course__summary">The same text edits done with <code>sed</code> and <code>awk</code> on <code>students.txt</code>, then configuring nano and emacs. <code>emacs-f5-compile-run.el</code> is my emacs setting that saves, compiles and runs the current file with F5.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>sed</code> substitution</li><li><code>awk</code> fields and totals</li><li>Editor configuration</li></ul>
+                </header>
+                <div class="answer">
+                    <h3>sed and awk</h3>
+                    <pre tabindex="0"><code class="language-bash">sed 's/Bob/Robert/' students.txt        <span class="cmt"># prints the change; the file is untouched</span>
+sed -i 's/Bob/Robert/' students.txt     <span class="cmt"># -i edits the file in place</span>
+awk '{gsub(&quot;Bob&quot;,&quot;Robert&quot;); print}' students.txt
+
+sed 's/.*[[:space:]]//' students.txt    <span class="cmt"># scores only (drop everything up to the last space)</span>
+awk '{print $2}' students.txt           <span class="cmt"># scores only (second field)</span>
+
+awk '{total += $2; count++} END {print total/count}' students.txt   <span class="cmt"># average score</span>
+</code></pre>
+                    <p><code>sed</code> works on text patterns, while <code>awk</code> splits each line into fields and understands numbers, which
+                    makes it the better tool for comparisons and totals.</p>
+                    <h3>emacs</h3>
+                    <ul>
+                    <li><code>C-</code> means Ctrl and <code>M-</code> means Alt (Meta).</li>
+                    <li><code>C-x 2</code> splits the window top and bottom, <code>C-x 3</code> splits it side by side, and <code>C-x 0</code> closes the
+                      current window.</li>
+                    <li><code>emacs-f5-compile-run.el</code> adds an F5 command to <code>~/.emacs</code>: it saves the file, then compiles and runs
+                      it with the right command for C, C++, Java, Python or Go.</li>
+                    </ul>
+                </div>
+                <p class="answer__files"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2650/lab10" aria-label="Lab 10 scripts and files on GitHub">Scripts and files on GitHub</a></p>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="admin-lab01" role="region" aria-labelledby="admin-lab01-title">
+                <header class="course__header">
+                    <p class="course__code">Admin lab 1</p>
+                    <h2 class="course__title" id="admin-lab01-title">Users and groups</h2>
+                    <p class="course__summary">Creating and managing user accounts and groups on a Debian virtual machine.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>useradd</code>, <code>usermod</code>, <code>groupadd</code>, <code>gpasswd</code></li><li><code>/etc/passwd</code> and <code>/etc/group</code></li></ul>
+                </header>
+                <div class="answer">
+                    <pre tabindex="0"><code class="language-bash">sudo useradd -m adam                      <span class="cmt"># new user with a home directory</span>
+sudo groupadd warriors                    <span class="cmt"># new group (next free GID)</span>
+sudo groupadd -g 9999 fighters            <span class="cmt"># new group with a chosen GID</span>
+id adam                                   <span class="cmt"># UID, primary group and supplementary groups</span>
+
+sudo usermod -aG warriors adam            <span class="cmt"># add adam to a supplementary group (-a keeps existing ones)</span>
+sudo usermod -aG fighters,warriors adam   <span class="cmt"># several groups at once</span>
+sudo useradd -m -g warriors benjamin      <span class="cmt"># new user whose primary group is warriors</span>
+sudo gpasswd -d adam warriors             <span class="cmt"># remove adam from warriors</span>
+</code></pre>
+                    <ul>
+                    <li>A new user's UID usually matches the GID of their personal group (for example <code>1001:1001</code>), while a
+                      group created with <code>-g</code> uses the number you give.</li>
+                    <li>The account created at install time belongs to many extra groups (such as <code>audio</code>, <code>video</code>,
+                      <code>plugdev</code>, <code>netdev</code>), which give it access to devices; a new user only belongs to its own group.</li>
+                    <li><code>grep -E '^[^:]*:[^:]*:([0-9]+):\1:' /etc/passwd</code> lists accounts whose UID equals their primary GID;
+                      adding <code>-v</code> lists the ones that differ.</li>
+                    <li>Typing arrow keys where a program is not expecting them prints escape sequences, which show up as
+                      <code>^[[A</code>, <code>^[[B</code>, <code>^[[C</code> and <code>^[[D</code> (up, down, right, left).</li>
+                    </ul>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="admin-lab02" role="region" aria-labelledby="admin-lab02-title">
+                <header class="course__header">
+                    <p class="course__code">Admin lab 2</p>
+                    <h2 class="course__title" id="admin-lab02-title">Passwords and login policy</h2>
+                    <p class="course__summary">How Linux stores password hashes, password-strength rules with PAM, and default files for new users.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>/etc/shadow</code> hash format</li><li>PAM password rules</li><li><code>/etc/skel</code></li></ul>
+                </header>
+                <div class="answer">
+                    <h3><code>/etc/shadow</code></h3>
+                    <p>Each entry stores the hashed password as <code>$id$parameters$salt$hash</code>:</p>
+                    <ul>
+                    <li><code>$y$</code> means the yescrypt algorithm (Debian's default).</li>
+                    <li>The parameters block sets yescrypt's cost.</li>
+                    <li>The salt is random per user, so two people with the same password get different hashes.</li>
+                    <li>The rest is the derived hash. The actual value from the lab is not shown here.</li>
+                    </ul>
+                    <h3>Password strength with PAM</h3>
+                    <pre tabindex="0"><code class="language-text">password requisite pam_cracklib.so retry=3 minlen=8 difok=3
+</code></pre>
+                    <p>Check new passwords for strength, allow 3 tries, require at least 8 characters, and require at least 3
+                    characters to differ from the old password.</p>
+                    <h3>Defaults for new users</h3>
+                    <p>Files in <code>/etc/skel</code> are copied into every new user's home directory. Adding a line such as
+                    <code># TEST LINE</code> to <code>/etc/skel/.profile</code> means every account created afterward starts with that line.</p>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="admin-lab03" role="region" aria-labelledby="admin-lab03-title">
+                <header class="course__header">
+                    <p class="course__code">Admin lab 3</p>
+                    <h2 class="course__title" id="admin-lab03-title">Storage</h2>
+                    <p class="course__summary">Finding disks, partitions and filesystems, measuring disk usage, and viewing directory trees.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>lsblk</code>, <code>df</code>, <code>du</code>, <code>parted</code></li><li>Filesystem types</li><li><code>tree</code></li></ul>
+                </header>
+                <div class="answer">
+                    <pre tabindex="0"><code class="language-bash">lsblk                         <span class="cmt"># disks and partitions, e.g. /dev/sda, /dev/sda1, /dev/sdb1</span>
+df -hT                        <span class="cmt"># mounted filesystems with type and size</span>
+df -ht ext4                   <span class="cmt"># only ext4 filesystems, human-readable sizes (-h), filtered by type (-t)</span>
+lsscsi | grep -i tape         <span class="cmt"># attached tape drives</span>
+lsscsi | grep -Ei 'cd|dvd'    <span class="cmt"># attached optical drives</span>
+sudo parted -l                <span class="cmt"># partition tables, including the swap partition's size</span>
+sudo du -sh /etc              <span class="cmt"># total size of one directory</span>
+</code></pre>
+                    <h3>tree</h3>
+                    <pre tabindex="0"><code class="language-bash">sudo apt update &amp;&amp; sudo apt install -y tree
+tree -P &quot;*.conf&quot; /etc         <span class="cmt"># only files matching a glob</span>
+sudo tree / -L 3 --du -h      <span class="cmt"># three levels deep with sizes</span>
+sudo tree / -L 3 --du -h -d   <span class="cmt"># directories only</span>
+</code></pre>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="admin-lab04" role="region" aria-labelledby="admin-lab04-title">
+                <header class="course__header">
+                    <p class="course__code">Admin lab 4</p>
+                    <h2 class="course__title" id="admin-lab04-title">Logical volume management (LVM)</h2>
+                    <p class="course__summary">Working with LVM volume groups and logical volumes on the virtual machine, then mounting them.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li>LVM volume groups and logical volumes</li><li>Mounting filesystems</li></ul>
+                </header>
+                <div class="answer">
+                    <pre tabindex="0"><code class="language-bash">sudo mount /dev/vg01/vol_data /mnt/data    <span class="cmt"># mount the logical volume vol_data from volume group vg01</span>
+</code></pre>
+                    <p>LVM device paths follow <code>/dev/&lt;volume group&gt;/&lt;logical volume&gt;</code>. Because logical volumes are not tied to
+                    one physical partition, they can be resized or moved across disks later.</p>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="admin-lab05" role="region" aria-labelledby="admin-lab05-title">
+                <header class="course__header">
+                    <p class="course__code">Admin lab 5</p>
+                    <h2 class="course__title" id="admin-lab05-title">Services and scheduled jobs</h2>
+                    <p class="course__summary">Managing services with systemd and scheduling commands with cron.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>systemctl</code></li><li><code>ss</code> for listening ports</li><li>crontab syntax</li></ul>
+                </header>
+                <div class="answer">
+                    <h3>systemd services</h3>
+                    <pre tabindex="0"><code class="language-bash">systemctl list-units --type=service --state=running   <span class="cmt"># services running now</span>
+systemctl list-units --type=service --state=active    <span class="cmt"># all active services</span>
+sudo ss -tulpn | grep sshd                             <span class="cmt"># which port SSH listens on (22)</span>
+
+sudo systemctl status apache2     <span class="cmt"># is the web server running?</span>
+sudo systemctl start apache2      <span class="cmt"># start it now</span>
+sudo systemctl enable apache2     <span class="cmt"># start it at every boot</span>
+sudo systemctl restart apache2    <span class="cmt"># restart after a configuration change</span>
+</code></pre>
+                    <h3>cron</h3>
+                    <pre tabindex="0"><code class="language-cron"><span class="cmt"># every 5 minutes, append the date to a log</span>
+*/5 * * * * date &gt;&gt; ~/date.log
+
+<span class="cmt"># at midnight on December 25, add a message to the login banner</span>
+0 0 25 12 * echo &quot;Merry Christmas&quot; &gt;&gt; /etc/motd
+</code></pre>
+                    <p>The five fields are minute, hour, day of month, month and day of week. To test the December job
+                    without waiting, set the clock just before it with <code>sudo date -s "2025-12-24 23:59:00"</code>.</p>
+                    <p>The sample script reviewed in this lab notifies users about their disk usage when quotas are in place,
+                    so it is the kind of job cron would run on a schedule.</p>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="admin-lab07" role="region" aria-labelledby="admin-lab07-title">
+                <header class="course__header">
+                    <p class="course__code">Admin lab 7</p>
+                    <h2 class="course__title" id="admin-lab07-title">DNS lookups</h2>
+                    <p class="course__summary">Querying DNS records and domain registration details.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li><code>dig</code> record types</li><li>SOA and MX records</li><li><code>whois</code></li></ul>
+                </header>
+                <div class="answer">
+                    <pre tabindex="0"><code class="language-bash">dig example.com                  <span class="cmt"># A records; repeat queries can return different addresses</span>
+sudo resolvectl flush-caches     <span class="cmt"># clear the local DNS cache (older systems: systemd-resolve --flush-caches)</span>
+dig soa example.com              <span class="cmt"># start of authority: primary name server, admin, serial and timers</span>
+dig mx example.com               <span class="cmt"># mail servers with priorities</span>
+whois example.com                <span class="cmt"># registrar, expiration date and name servers</span>
+</code></pre>
+                    <ul>
+                    <li>In an <strong>SOA</strong> record, the numbers after the two names are the serial number, refresh, retry, expire
+                      and minimum TTL, in seconds.</li>
+                    <li>In <strong>MX</strong> records, the lower priority number is tried first; servers with the same number share the
+                      load.</li>
+                    <li><strong>.edu</strong> domains have a single registrar, EDUCAUSE, which manages the whole <code>.edu</code> zone.</li>
+                    </ul>
+                </div>
+            </section>
+            </li>
+            <li>
+            <section class="course" id="scripts" role="region" aria-labelledby="scripts-title">
+                <header class="course__header">
+                    <p class="course__code">Scripts</p>
+                    <h2 class="course__title" id="scripts-title">Utility scripts</h2>
+                    <p class="course__summary"><code>move.sh</code> renames a file by adding today's date before its extension, so <code>notes.txt</code> becomes <code>notes_20251007.txt</code>. <code>test.sh</code> prints all its arguments joined by colons, showing how <code>IFS</code> changes the way <code>"$*"</code> joins arguments.</p>
+                    <ul class="course__tags" role="list" aria-label="Topics"><li>Parameter expansion <code>${f%.*}</code></li><li><code>IFS</code> and <code>$*</code></li></ul>
+                </header>
+                <div class="answer">
+                    <pre tabindex="0"><code class="language-bash">bash move.sh notes.txt     <span class="cmt"># notes.txt -&gt; notes_YYYYMMDD.txt</span>
+bash test.sh a b c        <span class="cmt"># a:b:c</span>
+</code></pre>
+                </div>
+                <p class="answer__files"><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2650/scripts" aria-label="Scripts scripts and files on GitHub">Scripts and files on GitHub</a></p>
+            </section>
+            </li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../js/main.js" defer></script>
+</body>
+
+</html>

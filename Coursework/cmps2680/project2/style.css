@@ -1,0 +1,57 @@
+body {
+    margin: 0px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 41px;
+    margin: 3px;
+}
+
+div#container {
+    /*width 50% and margin auto make the container centered*/
+    margin: auto;
+    width: 50%;
+    
+    margin-top: 15px;
+    height: 600px;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+div#list {
+    background-color: white;
+    border: 10px;
+    margin: 5px 43px;
+    height: 78%;
+    width: 82%;
+    overflow: scroll;
+}
+
+div.listItem {
+    font-family: sans-serif;
+    font-size: 17px;
+    margin: 5px;
+    width: fit-content;
+}
+
+div.listItem:hover {
+    background-color: #f5efef;
+    cursor: pointer;
+    text-decoration: line-through red;
+}
+div#tools {
+    margin-top: 10px;
+}
+
+input#todo{
+    font-size: 16px;
+}
+button#submit {
+    background-color: #81df81;
+}
+
+

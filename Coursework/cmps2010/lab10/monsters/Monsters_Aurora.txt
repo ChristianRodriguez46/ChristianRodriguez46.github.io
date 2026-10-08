@@ -1,0 +1,9 @@
+------------------------
+Aurora the Monster
+------------------------
+TYPE: Soft
+COLOR: Orange
+NO. OF EYES: 2
+NO. OF ARMS: 11
+NO. of LEGS: 7
+------------------------

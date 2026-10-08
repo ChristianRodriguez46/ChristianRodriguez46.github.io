@@ -1,0 +1,9 @@
+------------------------
+Alexa the Monster
+------------------------
+TYPE: Smooth
+COLOR: Sky Blue
+NO. OF EYES: 8
+NO. OF ARMS: 13
+NO. of LEGS: 4
+------------------------

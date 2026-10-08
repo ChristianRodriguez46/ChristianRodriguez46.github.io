@@ -1,0 +1,9 @@
+------------------------
+Jane the Monster
+------------------------
+TYPE: Thin
+COLOR: Gray
+NO. OF EYES: 3
+NO. OF ARMS: 0
+NO. of LEGS: 12
+------------------------

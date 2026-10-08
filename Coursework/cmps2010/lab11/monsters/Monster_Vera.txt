@@ -1,0 +1,9 @@
+---------------------------
+Vera the Monster
+---------------------------
+Name: Vera
+Type: 
+Color: Bittersweet
+Eyes: 3
+Arms: 6
+Legs: 0

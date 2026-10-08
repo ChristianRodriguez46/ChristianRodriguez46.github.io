@@ -1,0 +1,9 @@
+------------------------
+Harlan the Monster
+------------------------
+TYPE: Creepy
+COLOR: Neon Carrot
+NO. OF EYES: 11
+NO. OF ARMS: 5
+NO. of LEGS: 3
+------------------------

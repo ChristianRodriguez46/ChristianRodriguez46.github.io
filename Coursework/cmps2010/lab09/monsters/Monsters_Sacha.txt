@@ -1,0 +1,9 @@
+------------------------
+Sacha the Monster
+------------------------
+TYPE: Sticky
+COLOR: Radical Red
+NO. OF EYES: 3
+NO. OF ARMS: 1
+NO. of LEGS: 4
+------------------------

@@ -1,0 +1,9 @@
+------------------------
+Aurora the Monster
+------------------------
+TYPE: Slippery
+COLOR: Macaroni and Cheese
+NO. OF EYES: 3
+NO. OF ARMS: 15
+NO. of LEGS: 13
+------------------------

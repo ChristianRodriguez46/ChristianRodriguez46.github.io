@@ -1,0 +1,9 @@
+---------------------------
+Jakeem the Monster
+---------------------------
+Name: Jakeem
+Type: 
+Color: Shocking Pink
+Eyes: 3
+Arms: 14
+Legs: 0

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+n=$1
+
+for (( i=0; i<n; i++ )); do
+  echo
+  if [ $i -eq 0 ]; then
+    echo "Running: ./ArrayOp"
+    ./ArrayOp
+  else
+    echo "Running: ./ArrayOp $i"
+    ./ArrayOp $i
+  fi
+done

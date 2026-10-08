@@ -1,0 +1,9 @@
+------------------------
+Joan the Monster
+------------------------
+TYPE: Hot
+COLOR: Razzle Dazzle Rose
+NO. OF EYES: 1
+NO. OF ARMS: 12
+NO. of LEGS: 3
+------------------------

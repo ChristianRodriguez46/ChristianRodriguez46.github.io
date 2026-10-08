@@ -1,0 +1,16 @@
+Name: Santa Claus, LAB 02, Log file 
+=============================
+RangeError exception thrown, file: list.h, function: add, lineno: 55, index: 10
+RangerError caught in add, file: lab02.cpp, line: 51
+RangeError exception thrown, file: list.h, function: add, lineno: 55, index: 10
+RangerError caught in add, file: lab02.cpp, line: 60
+RangeError exception thrown, file: list.h, function: add, lineno: 55, index: 10
+RangerError caught in add, file: lab02.cpp, line: 51
+RangeError exception thrown, file: list.h, function: add, lineno: 55, index: 10
+RangerError caught in add, file: lab02.cpp, line: 60
+RangeError exception thrown, file: list.h, function: swap, lineno: 104, index: 11
+RangeError caught in swap, file: lab02.cpp, line: 81
+RangeError exception thrown, file: list.h, function: max, lineno: 124, index: 10
+RangerError caught in max, file: lab02.cpp, line: 94
+RangeError exception thrown, file: list.h, function: swap, lineno: 104, index: 11
+RangeError caught in swap, file: lab02.cpp, line: 110

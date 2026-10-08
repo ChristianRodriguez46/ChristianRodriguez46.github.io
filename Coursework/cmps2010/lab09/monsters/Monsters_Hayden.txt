@@ -1,0 +1,9 @@
+------------------------
+Hayden the Monster
+------------------------
+TYPE: Creepy
+COLOR: Green Yellow
+NO. OF EYES: 2
+NO. OF ARMS: 2
+NO. of LEGS: 13
+------------------------

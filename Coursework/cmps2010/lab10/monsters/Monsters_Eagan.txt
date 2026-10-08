@@ -1,0 +1,9 @@
+------------------------
+Eagan the Monster
+------------------------
+TYPE: Mushy
+COLOR: Jazzberry Jam
+NO. OF EYES: 8
+NO. OF ARMS: 10
+NO. of LEGS: 14
+------------------------

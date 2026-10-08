@@ -1,0 +1,9 @@
+------------------------
+Germaine the Monster
+------------------------
+TYPE: Round
+COLOR: Manatee
+NO. OF EYES: 7
+NO. OF ARMS: 15
+NO. of LEGS: 10
+------------------------

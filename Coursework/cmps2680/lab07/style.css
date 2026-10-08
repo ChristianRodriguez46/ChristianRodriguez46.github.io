@@ -1,0 +1,48 @@
+body{
+    margin: 0px;
+}
+h1{
+    text-shadow: 1px 1px 3px purple;
+    margin: 26px 0px 15px 0px;
+    border-radius: 4px;
+    font-size: 47px;
+}
+
+div#container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+}
+#userInput {
+    background-color: #fed8b1;
+    color: black;
+    font-size: 19px;
+    padding: 5px;
+    border-radius: 5px;
+}
+div#multiples{
+    width: 21%;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+#multiples > .a {
+    background-color: lightgreen;
+    padding: 5px;
+    outline: 2px dotted;
+    border-radius: 4px;
+    margin: 10px 0px;
+}
+
+#multiples > .b {
+    background-color: lightblue;
+    padding: 5px;
+    outline: 2px dotted;
+    border-radius: 4px;
+    margin: 10px 0px;
+}
+

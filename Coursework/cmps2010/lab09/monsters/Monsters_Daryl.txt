@@ -1,0 +1,9 @@
+------------------------
+Daryl the Monster
+------------------------
+TYPE: Soft
+COLOR: Vivid Violet
+NO. OF EYES: 10
+NO. OF ARMS: 0
+NO. of LEGS: 3
+------------------------

@@ -1,0 +1,9 @@
+---------------------------
+Vincent the Monster
+---------------------------
+Name: Vincent
+Type: 
+Color: Vivid Tangerine
+Eyes: 7
+Arms: 4
+Legs: 0

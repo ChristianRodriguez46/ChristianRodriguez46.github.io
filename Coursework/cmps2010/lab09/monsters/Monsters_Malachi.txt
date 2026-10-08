@@ -1,0 +1,9 @@
+------------------------
+Malachi the Monster
+------------------------
+TYPE: Round
+COLOR: Eggplant
+NO. OF EYES: 10
+NO. OF ARMS: 1
+NO. of LEGS: 7
+------------------------

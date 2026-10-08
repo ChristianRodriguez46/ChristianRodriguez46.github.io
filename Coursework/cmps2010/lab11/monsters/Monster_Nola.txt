@@ -1,0 +1,9 @@
+---------------------------
+Nola the Monster
+---------------------------
+Name: Nola
+Type: 
+Color: Navy Blue
+Eyes: 1
+Arms: 11
+Legs: 0

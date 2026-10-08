@@ -1,0 +1,9 @@
+------------------------
+Sawyer the Monster
+------------------------
+TYPE: Rough
+COLOR: Macaroni and Cheese
+NO. OF EYES: 14
+NO. OF ARMS: 4
+NO. of LEGS: 11
+------------------------

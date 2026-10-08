@@ -1,0 +1,9 @@
+------------------------
+Nelle the Monster
+------------------------
+TYPE: Thin
+COLOR: Neon Carrot
+NO. OF EYES: 2
+NO. OF ARMS: 1
+NO. of LEGS: 9
+------------------------

@@ -1,0 +1,9 @@
+------------------------
+Denise the Monster
+------------------------
+TYPE: Spiky
+COLOR: Mango Tango
+NO. OF EYES: 8
+NO. OF ARMS: 7
+NO. of LEGS: 7
+------------------------

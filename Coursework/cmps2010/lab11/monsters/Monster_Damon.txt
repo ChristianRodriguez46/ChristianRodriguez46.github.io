@@ -1,0 +1,10 @@
+---------------------------
+Damon the Monster
+---------------------------
+Name: Damon
+Type: 
+
+Color: Denim
+Eyes: 14
+Arms: 12
+Legs: 0

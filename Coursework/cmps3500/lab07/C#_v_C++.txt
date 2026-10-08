@@ -1,0 +1,69 @@
+How C# is Different from C++
+
+Note: some of the differences below have changed - check the latest docs
+for the most recent C# standards
+
+A brief overview:
+
+MAJOR FUNCTIONAL DIFFERENCES
+   * entry point is a method called Main inside a class (must be uppercase) 
+   * no class-less functions
+   * default parameter passing mechanism is by value (IN mode); keywords ref 
+     and out support INOUT and OUT parameter passing modes
+   * automatic garbage collection
+   * introduces properties
+   * introduces interfaces (like an abstract class but more general)
+   * support for lambda (anonymous) functions 
+   * .NET-Framework library (STL in C++ is not as extensive)
+   * advanced runtime type information and reflection
+   * built-in support for threads
+   * attributes can be attached to classes and retrieved at runtime
+   * built-in networking support (can open a socket)
+   * support for metadata (maintaining data about your data) 
+   * support for reflection
+
+CONTROL STRUCTURE DIFFERENCES
+   * supports iteration on data structure (foreach construct)
+   * no deterministic order of calls to destructors
+   * support for static constructors (executed before any instance of the class)
+   * supports constructor-chaining (one constructor can call another 
+     constructor from the same class - try doing this in C++)
+
+DATA TYPE DIFFERENCES
+   * everything derives from Object or can be treated as if it did
+   * all arrays are heap dynamic objects 
+   * arithmetic operations can be checked for overflow if required
+   * introduces value types and reference types (the value of a value type 
+     exists on the stack - the value of a reference type exists in the heap)
+   * by default all classes are reference types and all scalars and simple
+     structs are value types
+   * UTF/16 encoding for strings
+   * no bitfields
+   * supports jagged arrays (array of arrays)
+   * stronger typed - no implicit narrowing coercions
+   * type bool and keywords true and false - no coercion from arithmetic 
+     expression to type bool in conditions; e.g no more (x=5) errors
+   * everything must be initialized before being used
+   * no pointers - except in unsafe mode
+   * structs and classes are different (structs are classes in C with all
+     public members, structs are value types in C#)
+   * all types have a defined size (e.g. a long is 64Bit on all platforms)
+
+MINOR SYNTACTIC DIFFERENCES
+   * Main must be uppercase
+   * no semicolon after a class declaration 
+   * 'using' replaces header files and #include statements
+   * no fall-through on switch-statements
+   * no forward declarations required, classes can be arranged at will
+   * access to class members is with dot operator only (no -> or ::)
+   * conditional functions (e.g., for debugging)
+   * 'readonly' is the keyword for named constants instead of 'const'
+   * no multiple inheritance
+   * no global variables, functions, constants
+   * no default arguments on function parameters
+
+EXCEPTION HANDLIING
+   * no user-defined exception classes - must be derived from System.Exception 
+   * there is a 'finally' block for exceptions
+   * implicit exception handling on input
+   * implicit array bounds checking

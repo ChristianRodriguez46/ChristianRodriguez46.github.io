@@ -1,0 +1,91 @@
+body{
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images8/Cool-Black-Wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+}
+
+#container{
+    display:flex;
+    justify-content: space-around;
+    height:auto;
+}
+
+div#form{
+    padding:40px;
+    border: solid rgba(255, 255, 255, 0.402);
+    width:600px;
+    height:auto;
+   /* margin:30px;*/
+    background: #000000a6;
+}
+
+form.c-form{
+    text-align:center;
+    padding-bottom: 15px;
+}
+
+h1#c-header{
+    color:white;
+    font-family: sans-serif;
+    text-align:center;
+    margin:30px;
+}
+
+form input[type=text],input[type=tel], #message{
+    background-color: rgba(255, 255, 255, 0);
+    color:white;
+    border: none; 
+    margin:20px; 
+    padding: 5px; 
+    width:80%; 
+    border-bottom: solid white; 
+}
+
+
+form #orderHelp.text-muted{
+    color: #eddada !important;
+}
+
+textarea#message {
+    height: 250px;
+    resize: vertical;
+    border:2px solid white;
+    border-radius: 8px 8px 8px 8px;
+}
+
+div.button_container {
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.button{
+    background-color: white;
+    border-radius: 15px;
+    width:150px;
+    height:35px;
+    border:none;
+    margin:30px;
+}
+
+div#c_output{
+    text-align: center;
+    margin: 6px 0px;
+    padding-bottom: 24px;
+}
+
+div#logo {
+    display: flex;
+    flex-direction: row;
+    height: 118px;
+    width: 182px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+footer a{
+    color: #FCF4B4!important;
+    font-weight:500!important;
+}

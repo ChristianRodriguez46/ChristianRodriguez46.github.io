@@ -1,0 +1,9 @@
+------------------------
+Ulla the Monster
+------------------------
+TYPE: Sticky
+COLOR: Purple Pizzazz
+NO. OF EYES: 0
+NO. OF ARMS: 14
+NO. of LEGS: 2
+------------------------

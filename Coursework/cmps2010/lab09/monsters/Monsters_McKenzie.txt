@@ -1,0 +1,9 @@
+------------------------
+McKenzie the Monster
+------------------------
+TYPE: Slippery
+COLOR: Outer Space
+NO. OF EYES: 15
+NO. OF ARMS: 11
+NO. of LEGS: 10
+------------------------

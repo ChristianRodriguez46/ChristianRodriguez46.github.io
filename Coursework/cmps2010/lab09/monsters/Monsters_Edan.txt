@@ -1,0 +1,9 @@
+------------------------
+Edan the Monster
+------------------------
+TYPE: Nasty
+COLOR: Cotton Candy
+NO. OF EYES: 11
+NO. OF ARMS: 7
+NO. of LEGS: 6
+------------------------

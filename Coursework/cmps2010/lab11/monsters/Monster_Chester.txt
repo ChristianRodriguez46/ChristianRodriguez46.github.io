@@ -1,0 +1,9 @@
+---------------------------
+Chester the Monster
+---------------------------
+Name: Chester
+Type: 
+Color: Cadet Blue
+Eyes: 10
+Arms: 8
+Legs: 0

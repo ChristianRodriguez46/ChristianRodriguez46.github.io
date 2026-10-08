@@ -1,0 +1,9 @@
+------------------------
+Venus the Monster
+------------------------
+TYPE: Smooth
+COLOR: Razzmatazz
+NO. OF EYES: 1
+NO. OF ARMS: 10
+NO. of LEGS: 14
+------------------------

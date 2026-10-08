@@ -1,0 +1,18 @@
+#lorem {
+    width: 70%;
+    height: 150px;
+    margin: 50px auto;
+    padding: 5px;
+    border: 1px solid gray;
+    overflow-y: scroll;
+}
+
+div#container {
+    box-shadow: 6px 4px 5px #00a1d7;
+    width: 390px;
+}
+
+td {
+    outline: inset;
+    padding: 10px;
+}

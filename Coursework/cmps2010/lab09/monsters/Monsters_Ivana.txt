@@ -1,0 +1,9 @@
+------------------------
+Ivana the Monster
+------------------------
+TYPE: Squishy
+COLOR: Aquamarine
+NO. OF EYES: 15
+NO. OF ARMS: 14
+NO. of LEGS: 8
+------------------------

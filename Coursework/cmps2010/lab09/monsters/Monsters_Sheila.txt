@@ -1,0 +1,9 @@
+------------------------
+Sheila the Monster
+------------------------
+TYPE: Mushy
+COLOR: Melon
+NO. OF EYES: 2
+NO. OF ARMS: 10
+NO. of LEGS: 12
+------------------------

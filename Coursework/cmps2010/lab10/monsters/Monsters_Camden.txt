@@ -1,0 +1,9 @@
+------------------------
+Camden the Monster
+------------------------
+TYPE: Creepy
+COLOR: Radical Red
+NO. OF EYES: 9
+NO. OF ARMS: 3
+NO. of LEGS: 6
+------------------------

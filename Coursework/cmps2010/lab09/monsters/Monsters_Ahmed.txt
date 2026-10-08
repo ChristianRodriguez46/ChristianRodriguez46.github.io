@@ -1,0 +1,9 @@
+------------------------
+Ahmed the Monster
+------------------------
+TYPE: Small
+COLOR: DooDoo Brown
+NO. OF EYES: 1
+NO. OF ARMS: 3
+NO. of LEGS: 10
+------------------------

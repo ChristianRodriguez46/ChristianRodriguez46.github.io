@@ -1,0 +1,9 @@
+------------------------
+Meghan the Monster
+------------------------
+TYPE: Skinny
+COLOR: Jungle Green
+NO. OF EYES: 6
+NO. OF ARMS: 1
+NO. of LEGS: 7
+------------------------

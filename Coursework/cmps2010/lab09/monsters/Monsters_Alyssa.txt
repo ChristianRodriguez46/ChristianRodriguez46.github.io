@@ -1,0 +1,9 @@
+------------------------
+Alyssa the Monster
+------------------------
+TYPE: Skinny
+COLOR: Atomic Tangerine
+NO. OF EYES: 9
+NO. OF ARMS: 15
+NO. of LEGS: 13
+------------------------

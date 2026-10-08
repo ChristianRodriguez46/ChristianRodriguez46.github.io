@@ -1,0 +1,44 @@
+#gallery {
+    margin: 20px auto;
+    width: 900px;
+}
+
+#thumbnails {
+    display: flex;
+    width: inherit;
+    margin: auto;
+    justify-content: center;
+}
+
+.preview {
+    margin: auto;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.preview img {
+    background-color: lightblue;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+}
+.desc {
+    font-family: arial;
+    text-align: center;
+    font-weight: bolder;
+    padding: 0px;
+    margin: 4px;
+}
+
+#display {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: lightgreen;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+#fullview {
+    display: block;
+    margin: 0 auto;
+    max-height: 500px;
+}

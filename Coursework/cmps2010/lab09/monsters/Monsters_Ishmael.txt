@@ -1,0 +1,9 @@
+------------------------
+Ishmael the Monster
+------------------------
+TYPE: Gross
+COLOR: Jungle Green
+NO. OF EYES: 4
+NO. OF ARMS: 12
+NO. of LEGS: 3
+------------------------

@@ -1,0 +1,9 @@
+------------------------
+Kendall the Monster
+------------------------
+TYPE: Round
+COLOR: Yellow Green
+NO. OF EYES: 11
+NO. OF ARMS: 4
+NO. of LEGS: 0
+------------------------

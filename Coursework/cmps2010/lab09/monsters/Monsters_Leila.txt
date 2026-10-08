@@ -1,0 +1,9 @@
+------------------------
+Leila the Monster
+------------------------
+TYPE: Dry
+COLOR: Canary
+NO. OF EYES: 15
+NO. OF ARMS: 7
+NO. of LEGS: 5
+------------------------

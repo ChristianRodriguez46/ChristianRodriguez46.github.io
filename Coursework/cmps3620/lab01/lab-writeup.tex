@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{courier}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\lstset{
+  basicstyle=\footnotesize\ttfamily,
+  breaklines=true,
+  frame=single,
+  captionpos=b
+}
+
+\begin{document}
+
+\section*{LAB WRITEUP: Log in to Odin and try these tools}
+Give different domain names and IP addresses to each one to see what happens. Answer the following questions and upload the writeup to Canvas. Use only plain PDF format for your writeup.
+
+\begin{enumerate}
+
+\item \textbf{Overall behavior:}  
+When exercising \texttt{dig}, \texttt{ping}, \texttt{traceroute}, \texttt{ss} and \texttt{telnet} on Odin with a variety of hostnames and IP addresses, each tool behaved as expected for its diagnostic purpose. \texttt{dig} successfully performed forward and reverse DNS lookups (including CNAME and SOA queries) and exposed both answer and authority sections. \texttt{ping} reported sub‐10 ms round‐trip times to Google’s servers. \texttt{traceroute} revealed the multi‐hop path through campus and ISP routers, with occasional “\texttt{* * *}” where intermediate hops did not respond. \texttt{ss} listed dozens of UDP and TCP sockets in the listening state (notably DNS on port 53). Finally, \texttt{telnet} to the Delphi MySQL port failed with “No route to host,” indicating either network filtering or a bind restriction on that service.
+
+\item \textbf{dig outputs and differences:}  
+  \begin{enumerate}
+  \item \texttt{dig www.cs.csub.edu}
+  \begin{lstlisting}[caption={Output of \texttt{dig www.cs.csub.edu}}]
+; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> www.cs.csub.edu
+;; QUESTION SECTION:
+;www.cs.csub.edu.        IN      A
+
+;; ANSWER SECTION:
+www.cs.csub.edu. 86400 IN CNAME odin.cs.csub.edu.
+odin.cs.csub.edu.86400 IN A     136.168.x.x
+
+;; Query time: 0 msec
+;; SERVER: 136.168.x.x#53
+;; WHEN: Thu Jun 12 08:38:42 PDT 2025
+  \end{lstlisting}
+
+  \item \texttt{dig soa www.cs.csub.edu}
+  \begin{lstlisting}[caption={Output of \texttt{dig soa www.cs.csub.edu}}]
+; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> soa www.cs.csub.edu
+;; QUESTION SECTION:
+;www.cs.csub.edu.        IN      SOA
+
+;; ANSWER SECTION:
+www.cs.csub.edu. 86400 IN CNAME odin.cs.csub.edu.
+
+;; AUTHORITY SECTION:
+cs.csub.edu.     43200 IN SOA sleipnir.cs.csubak.edu. postmaster.cs.csubak.edu.
+                2024120200 300 60 1209600 43200
+
+;; Query time: 0 msec
+;; SERVER: 136.168.x.x#53
+;; WHEN: Thu Jun 12 08:08:11 PDT 2025
+  \end{lstlisting}
+
+  \textbf{Difference:}  
+  The plain A‐record lookup returns the alias (CNAME) and its IPv4 address. The SOA query returns, in the AUTHORITY section, the zone’s Start‐Of‐Authority record (primary name server, administrator, serial, timers), rather than the address itself.
+
+  \end{enumerate}
+
+\item \textbf{Reverse‐DNS SOA lookup for 209.9.244.*:}  
+Which command yields a non‐root authority server?  
+\begin{lstlisting}[caption={Correct SOA lookup for the reverse zone}]
+dig soa 224.9.209.in-addr.arpa
+;; AUTHORITY SECTION:
+224.9.209.in-addr.arpa. 3600 IN SOA ns1.dfw.databank.com.
+                         ipadmin.databank.com. 2024070214 7200 3600 1209600 3600
+\end{lstlisting}
+The other form (\texttt{dig soa 224.9.209}) returns NXDOMAIN with the root SOA.
+
+\item \textbf{Unknown‐host error:}  
+Upon seeing:
+\begin{quote}
+\texttt{--- unknown host ftp.foo.com ---}
+\end{quote}
+this indicates a DNS resolution failure (the name does not map to any IP). To investigate, one would use:
+\begin{itemize}
+  \item \texttt{dig ftp.foo.com} or \texttt{nslookup ftp.foo.com} to confirm.
+  \item \texttt{dig @8.8.8.8 ftp.foo.com} to test against a public DNS server.
+\end{itemize}
+
+\item \textbf{Connection timed out:}  
+Suppose instead:
+\begin{quote}
+\texttt{Trying 208.207.151.35 \dots\\
+\dots Connection timed out.}
+\end{quote}
+\begin{enumerate}
+  \item This differs from “unknown host” in that DNS succeeded (an IP was returned) but the TCP handshake failed. Possible causes include a firewall blocking the port, the service being down, or network filtering.
+  \item To investigate:
+    \begin{itemize}
+      \item \texttt{ping 208.207.151.35} to check ICMP reachability.
+      \item \texttt{traceroute -n 208.207.151.35} to locate where packets are dropped.
+      \item \texttt{telnet 208.207.151.35 <port>} or \texttt{nmap} to test specific TCP ports.
+    \end{itemize}
+\end{enumerate}
+
+\item \textbf{SS command analysis (\texttt{ss -tunlp4}):}
+\begin{lstlisting}[caption={Excerpt of \texttt{ss -tunlp4}}]
+udp   UNCONN 0 0 0.0.0.0:43276    0.0.0.0:*       
+udp   UNCONN 0 0 192.168.128.110:53 0.0.0.0:*      
+\dots                             
+tcp   LISTEN 0 128 0.0.0.0:22      0.0.0.0:*       
+tcp   LISTEN 0  10 127.0.0.1:3306  0.0.0.0:*       
+\end{lstlisting}
+\begin{enumerate}
+  \item \textbf{Total sockets:} approximately  eighty UDP sockets and forty TCP sockets are in the listening state.
+  \item \textbf{CLOSE-WAIT state:} 0 TCP sockets. Since we only listed \texttt{-l} (listening) sockets, none appear in \texttt{CLOSE-WAIT}.
+  \item \textbf{Majority use:} Most TCP listeners are on port 53 (DNS), indicating Odin serves as a DNS resolver/authority.
+\end{enumerate}
+
+\item \textbf{Telnet to Delphi MySQL:}
+\begin{lstlisting}[caption={\texttt{telnet delphi.cs.csubak.edu 3306}}]
+Trying 136.168.x.x...
+telnet: Unable to connect to remote host: No route to host
+\end{lstlisting}
+This indicates that, although DNS resolved the name, the TCP connection could not be established. Likely causes include:
+\begin{itemize}
+  \item A firewall or network ACL blocking port 3306.
+  \item The MySQL server on Delphi is bound only to localhost (127.0.0.1) and not listening on the external interface.
+\end{itemize}
+
+\end{enumerate}
+
+\end{document}

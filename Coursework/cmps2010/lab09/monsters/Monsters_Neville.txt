@@ -1,0 +1,9 @@
+------------------------
+Neville the Monster
+------------------------
+TYPE: Gross
+COLOR: Yellow Green
+NO. OF EYES: 2
+NO. OF ARMS: 7
+NO. of LEGS: 12
+------------------------

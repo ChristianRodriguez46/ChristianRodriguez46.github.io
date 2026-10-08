@@ -1,0 +1,10 @@
+---------------------------
+Arthur the Monster
+---------------------------
+Name: Arthur
+Type: 
+
+Color: Wild Strawberry
+Eyes: 5
+Arms: 5
+Legs: 0

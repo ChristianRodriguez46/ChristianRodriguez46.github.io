@@ -1,0 +1,9 @@
+---------------------------
+Dalton the Monster
+---------------------------
+Name: Dalton
+Type: 
+Color: Scarlet
+Eyes: 10
+Arms: 7
+Legs: 0

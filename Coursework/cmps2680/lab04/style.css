@@ -1,0 +1,43 @@
+body{
+    background-color:black;
+    margin:0px;
+}
+p{
+ margin: 0px;
+ font-size: 25px;
+}
+
+div{
+    width:300px;
+    height:300px;
+    float :left;
+    display:inline-block;
+}
+div#container{
+    margin: 650px 650px;
+    padding: 5px;
+    width:600px;
+    height: 600px;
+    box-shadow:1px 1px 35px 2px lightgreen;
+}
+div#box1{
+    background-color:red;
+    color: purple;
+}
+div#box2{
+    width: 260px;
+    height: 260px;
+    background-color:lightblue;
+    border: 20px solid blue;
+}
+div#box3{
+    border-radius:30px;
+    width: 270px;
+    height: 270px;
+    padding: 15px;
+    background-color:yellow;
+}
+div#box4{
+    background-color:purple;
+    color: red;
+}

@@ -1,0 +1,9 @@
+------------------------
+Aristotle the Monster
+------------------------
+TYPE: Squishy
+COLOR: Gray
+NO. OF EYES: 11
+NO. OF ARMS: 7
+NO. of LEGS: 9
+------------------------

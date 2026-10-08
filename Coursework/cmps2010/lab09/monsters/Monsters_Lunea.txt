@@ -1,0 +1,9 @@
+------------------------
+Lunea the Monster
+------------------------
+TYPE: Sticky
+COLOR: DooDoo Brown
+NO. OF EYES: 3
+NO. OF ARMS: 15
+NO. of LEGS: 0
+------------------------

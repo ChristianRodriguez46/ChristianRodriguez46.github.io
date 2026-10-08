@@ -1,0 +1,9 @@
+---------------------------
+Summer the Monster
+---------------------------
+Name: Summer
+Type: 
+Color: Purple Heart
+Eyes: 10
+Arms: 7
+Legs: 0

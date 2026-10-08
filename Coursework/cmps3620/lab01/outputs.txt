@@ -1,0 +1,395 @@
+a. DIG
+
+    ----------------------------
+    command: dig www.google.com
+    ----------------------------
+
+    ; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> www.google.com
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 10335
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: 42c27e22c5293cdc01000000684aecf0ef592716e71b787c (good)
+    ;; QUESTION SECTION:
+    ;www.google.com.                   IN       A
+
+    ;; ANSWER SECTION:
+    www.google.com.         300     IN A142.250.217.132
+
+    ;; Query time: 19 msec
+    ;; SERVER: 136.168.x.x#53(136.168.x.x) (UDP)
+    ;; WHEN: Thu Jun 12 08:06:24 PDT 2025
+    ;; MSG SIZE  rcvd: 87
+
+    =====================================================================
+
+    ----------------------------
+    command: dig -x 136.168.x.x
+    ----------------------------
+
+    ; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> -x 136.168.x.x
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 17252
+    ;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: 4a780017a74d6b3701000000684aed532ca242029ee3eaac (good)
+    ;; QUESTION SECTION:
+    ;x.x.168.136.in-addr.arpa.  IN      PTR
+
+    ;; ANSWER SECTION:
+    x.x.168.136.in-addr.arpa. 600 IN    PTR     guru.cs.csubak.edu.
+
+    ;; Query time: 3 msec
+    ;; SERVER: 136.168.x.x#53(136.168.x.x) (UDP)
+    ;; WHEN: Thu Jun 12 08:08:03 PDT 2025
+    ;; MSG SIZE  rcvd: 117
+
+    =====================================================================
+
+    ----------------------------
+    command: dig www.cs.csub.edu  
+    ----------------------------
+
+    ; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> www.cs.csub.edu
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 27210
+    ;; flags: qr aa rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: 0e05ed8fc58170d601000000684af482f290a3034669d9fa (good)
+    ;; QUESTION SECTION:
+    ;www.cs.csub.edu.               IN      A
+
+    ;; ANSWER SECTION:
+    www.cs.csub.edu.        86400   IN      CNAME   odin.cs.csub.edu.
+    odin.cs.csub.edu.       86400   IN      A       136.168.x.x
+
+    ;; Query time: 0 msec
+    ;; SERVER: 136.168.x.x#53(136.168.x.x) (UDP)
+    ;; WHEN: Thu Jun 12 08:38:42 PDT 2025
+    ;; MSG SIZE  rcvd: 107
+    =====================================================================
+
+    ----------------------------
+    command: dig soa www.cs.csub.edu
+    ----------------------------
+    
+    ; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> soa www.cs.csub.edu
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62770
+    ;; flags: qr aa rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: 869f1c222a24071c01000000684aed5b4f477ec629c34b83 (good)
+    ;; QUESTION SECTION:
+    ;www.cs.csub.edu.               IN      SOA
+
+    ;; ANSWER SECTION:
+    www.cs.csub.edu.        86400   IN      CNAME   odin.cs.csub.edu.
+
+    ;; AUTHORITY SECTION:
+    cs.csub.edu.            43200   IN      SOA     sleipnir.cs.csubak.edu. postmaster.cs.csubak.edu. 2024120200 300 60 1209600 43200
+
+    ;; Query time: 0 msec
+    ;; SERVER: 136.168.x.x#53(136.168.x.x) (UDP)
+    ;; WHEN: Thu Jun 12 08:08:11 PDT 2025
+    ;; MSG SIZE  rcvd: 160
+    
+    =====================================================================
+
+    ----------------------------
+    command: dig soa 224.9.209.in-addr.arpa  
+    ----------------------------
+
+    ; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> soa 224.9.209.in-addr.arpa
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 33351
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: 90fbf69826f8687f01000000684ba2d7032c0f3ea2d4682d (good)
+    ;; QUESTION SECTION:
+    ;224.9.209.in-addr.arpa.                IN      SOA
+
+    ;; ANSWER SECTION:
+    224.9.209.in-addr.arpa. 3600    IN      SOA     ns1.dfw.databank.com. ipadmin.databank.com. 2024070214 7200 3600 1209600 3600
+
+    ;; Query time: 187 msec
+    ;; SERVER: 136.168.x.x#53(136.168.x.x) (UDP)
+    ;; WHEN: Thu Jun 12 21:02:31 PDT 2025
+    ;; MSG SIZE  rcvd: 155
+    
+    =====================================================================
+
+    ----------------------------
+    command: dig soa 209.9.224  
+    ----------------------------
+
+    ; <<>> DiG 9.18.33-1~deb12u2-Debian <<>> soa 209.9.224
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 44336
+    ;; flags: qr rd ra ad; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: aaef945a2ed7be4a01000000684ba28e8fcc6a03608b6dc2 (good)
+    ;; QUESTION SECTION:
+    ;209.9.224.                     IN      SOA
+
+    ;; AUTHORITY SECTION:
+    .                       2016    IN      SOA     a.root-servers.net. nstld.verisign-grs.com. 2025061202 1800 900 604800 86400
+
+    ;; Query time: 0 msec
+    ;; SERVER: 136.168.x.x#53(136.168.x.x) (UDP)
+    ;; WHEN: Thu Jun 12 21:01:18 PDT 2025
+    ;; MSG SIZE  rcvd: 141
+
+b. PING
+
+    ----------------------------
+    command: ping www.google.com
+    ----------------------------
+
+
+    PING www.google.com (142.250.217.132) 56(84) bytes of data.
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=1 ttl=115 time=9.49 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=2 ttl=115 time=9.70 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=3 ttl=115 time=9.77 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=4 ttl=115 time=9.88 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=5 ttl=115 time=9.44 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=6 ttl=115 time=9.91 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=7 ttl=115 time=9.44 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=8 ttl=115 time=9.64 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=9 ttl=115 time=9.84 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=10 ttl=115 time=9.52 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=11 ttl=115 time=9.71 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=12 ttl=115 time=9.53 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=13 ttl=115 time=9.72 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=14 ttl=115 time=9.66 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=15 ttl=115 time=9.55 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=16 ttl=115 time=9.39 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=17 ttl=115 time=9.75 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=18 ttl=115 time=9.75 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=19 ttl=115 time=9.89 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=20 ttl=115 time=9.38 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=21 ttl=115 time=9.58 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=22 ttl=115 time=9.78 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=23 ttl=115 time=9.46 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=24 ttl=115 time=9.56 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=25 ttl=115 time=9.86 ms
+    64 bytes from lax31s19-in-f4.1e100.net (142.250.217.132): icmp_seq=26 ttl=115 time=9.94 ms
+
+    --- www.google.com ping statistics ---
+    26 packets transmitted, 26 received, 0% packet loss, time 25031ms
+    rtt min/avg/max/mdev = 9.378/9.659/9.939/0.170 ms
+
+c. TRACEROUTE
+    ----------------------------
+    command: traceroute -n www.google.com
+    ----------------------------
+
+    traceroute to www.google.com (142.250.217.132), 30 hops max, 60 byte packets
+    1  136.168.x.x  0.498 ms  0.476 ms  0.488 ms
+    2  136.168.x.x  1.278 ms  1.291 ms  1.204 ms
+    3  136.168.x.x  1.383 ms  1.561 ms  1.705 ms
+    4  137.164.4.97  2.149 ms  1.828 ms  1.764 ms
+    5  137.164.46.240  9.905 ms 137.164.46.242  9.668 ms 137.164.46.246  9.471 ms
+    6  137.164.11.86  9.508 ms  9.880 ms  9.814 ms
+    7  * * *
+    8  * * *
+    9  142.250.226.42  10.612 ms 142.251.79.36  10.237 ms 142.251.60.98  9.910 ms
+    10  209.85.250.77  9.453 ms 142.250.231.88  10.154 ms 209.85.250.77  9.614 ms
+    11  142.250.217.132  9.392 ms  9.560 ms  9.755 ms
+
+d. SS
+    ----------------------------
+    command: ss -tunlp4
+    ----------------------------
+
+    Netid   State    Recv-Q   Send-Q       Local Address:Port      Peer Address:Port  Process   
+    udp     UNCONN   0        0                  0.0.0.0:43276          0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:53             0.0.0.0:*               
+    udp     UNCONN   0        0          192.168.128.110:123            0.0.0.0:*               
+    udp     UNCONN   0        0          136.168.x.x:123            0.0.0.0:*               
+    udp     UNCONN   0        0                127.0.0.1:123            0.0.0.0:*               
+    udp     UNCONN   0        0                  0.0.0.0:123            0.0.0.0:*               
+    udp     UNCONN   0        0                  0.0.0.0:517            0.0.0.0:*               
+    udp     UNCONN   0        0                  0.0.0.0:518            0.0.0.0:*               
+    udp     UNCONN   0        0                  0.0.0.0:5353           0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         192.168.128.110:53             0.0.0.0:*               
+    tcp     LISTEN   0        128                0.0.0.0:1081           0.0.0.0:*               
+    tcp     LISTEN   0        128                0.0.0.0:22             0.0.0.0:*               
+    tcp     LISTEN   0        20                 0.0.0.0:25             0.0.0.0:*               
+    tcp     LISTEN   0        128                0.0.0.0:222            0.0.0.0:*               
+    tcp     LISTEN   0        128                0.0.0.0:631            0.0.0.0:*               
+    tcp     LISTEN   0        5                  0.0.0.0:3551           0.0.0.0:*               
+    tcp     LISTEN   0        50                 0.0.0.0:9102           0.0.0.0:*               
+    tcp     LISTEN   0        50                 0.0.0.0:9101           0.0.0.0:*               
+    tcp     LISTEN   0        511              127.0.0.1:5959           0.0.0.0:*               
+    tcp     LISTEN   0        50         136.168.x.x:9103           0.0.0.0:*               
+    tcp     LISTEN   0        2048             127.0.0.1:8001           0.0.0.0:*               
+    tcp     LISTEN   0        100              127.0.0.1:8024           0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        5                127.0.0.1:953            0.0.0.0:*               
+    tcp     LISTEN   0        4096             127.0.0.1:783            0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        10               127.0.0.1:53             0.0.0.0:*               
+    tcp     LISTEN   0        80               127.0.0.1:3306           0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        10         136.168.x.x:53             0.0.0.0:*               
+    tcp     LISTEN   0        4096             127.0.0.1:11434          0.0.0.0:* 
+
+e. TELNET
+    ----------------------------
+    command: telnet delphi.cs.csubak.edu 3306
+    ----------------------------
+
+    Trying 136.168.x.x...
+    telnet: Unable to connect to remote host: No route to host
+
+

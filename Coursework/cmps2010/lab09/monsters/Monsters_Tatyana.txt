@@ -1,0 +1,9 @@
+------------------------
+Tatyana the Monster
+------------------------
+TYPE: Furry
+COLOR: Salmon
+NO. OF EYES: 5
+NO. OF ARMS: 14
+NO. of LEGS: 13
+------------------------

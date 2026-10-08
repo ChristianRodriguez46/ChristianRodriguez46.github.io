@@ -1,0 +1,9 @@
+------------------------
+Cora the Monster
+------------------------
+TYPE: Gross
+COLOR: Desert Sand
+NO. OF EYES: 7
+NO. OF ARMS: 8
+NO. of LEGS: 10
+------------------------

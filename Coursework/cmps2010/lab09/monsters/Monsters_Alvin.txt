@@ -1,0 +1,9 @@
+------------------------
+Alvin the Monster
+------------------------
+TYPE: Mushy
+COLOR: Atomic Tangerine
+NO. OF EYES: 9
+NO. OF ARMS: 1
+NO. of LEGS: 1
+------------------------

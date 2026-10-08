@@ -1,0 +1,9 @@
+------------------------
+Stephen the Monster
+------------------------
+TYPE: Slippery
+COLOR: Sea Green
+NO. OF EYES: 12
+NO. OF ARMS: 0
+NO. of LEGS: 9
+------------------------

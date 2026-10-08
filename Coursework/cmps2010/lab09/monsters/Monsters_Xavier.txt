@@ -1,0 +1,9 @@
+------------------------
+Xavier the Monster
+------------------------
+TYPE: Creepy
+COLOR: Fern
+NO. OF EYES: 1
+NO. OF ARMS: 1
+NO. of LEGS: 0
+------------------------

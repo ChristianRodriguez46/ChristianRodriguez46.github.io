@@ -1,0 +1,36 @@
+body {
+    background-color: lavender;
+}
+
+div#container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+ 
+}
+
+header {
+    background-color: #E6BBAD; 
+     font-size: 18px; 
+     border-radius: 45px; 
+     width: 50%; 
+     margin: -2px auto; 
+     text-align: center;
+    }
+
+div.f-container{
+    font-size: 21px;
+    background-color: lightblue;
+    border-radius: 40px;
+    width: 63%;
+    margin: 9px auto;
+}
+
+h2 {
+    margin-left: 15px;
+}
+
+p {
+    margin-left: 52px;
+}
+

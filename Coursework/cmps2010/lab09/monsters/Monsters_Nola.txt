@@ -1,0 +1,9 @@
+------------------------
+Nola the Monster
+------------------------
+TYPE: Dry
+COLOR: Plum
+NO. OF EYES: 7
+NO. OF ARMS: 6
+NO. of LEGS: 12
+------------------------

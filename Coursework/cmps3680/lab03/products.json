@@ -1,0 +1,90 @@
+[
+  {
+    "id": "63e49f51aceda900b4bf2641",
+    "details": {
+      "name": "Flam Jangler",
+      "image": "https://cs.csub.edu/~paul/cs3680/labs/images/flamJangler.png",
+      "vendor": "Imaginart",
+      "description": "Minim reprehenderit minim velit mollit reprehenderit amet aute occaecat.",
+      "quantity": 3,
+      "price": 27.63
+    }
+  },
+  {
+    "id": "63e49f51b3ffee1216506cb7",
+    "details": {
+      "name": "Widget",
+      "image": "https://cs.csub.edu/~paul/cs3680/labs/images/widget.png",
+      "vendor": "Crustatia",
+      "description": "Ex ad reprehenderit consequat nisi.",
+      "quantity": 8,
+      "price": 5.65
+    }
+  },
+  {
+    "id": "63e49f51f15e320721f2aa3f",
+    "details": {
+      "name": "Wire Stretcher",
+      "image": "https://cs.csub.edu/~paul/cs3680/labs/images/wireStretcher.png",
+      "vendor": "Kiggle",
+      "description": "Ad eu reprehenderit fugiat reprehenderit nostrud aliquip elit minim elit laborum.",
+      "quantity": 25,
+      "price": 9.61
+    }
+  },
+  {
+    "id": "63e49f51308cb6880294367d",
+    "details": {
+      "name": "Updog",
+      "image": "https://cs.csub.edu/~paul/cs3680/labs/images/updog.png",
+      "vendor": "Geekmosis",
+      "description": "Cillum officia consequat pariatur ut eiusmod pariatur aliquip consectetur aliqua.",
+      "quantity": 16,
+      "price": 7.98
+    }
+  },
+  {
+    "id": "63e49f516dbfff679c130034",
+    "details": {
+      "name": "Drill Silencer",
+      "image": "https://cs.csub.edu/~paul/cs3680/labs/images/drillSilencer.png",
+      "vendor": "Waab",
+      "description": "Est consequat laborum dolor quis sunt fugiat commodo exercitation quis irure occaecat sint eu proident.",
+      "quantity": 20,
+      "price": 8.97
+    }
+  },
+  {
+    "id": "63e49f510582cf6ac95b51fa",
+    "details": {
+      "name": "Left Handed Screwdriver",
+      "image": "https://cs.csub.edu/~paul/cs3680/labs/images/leftHandedScrewdriver.png",
+      "vendor": "Eventex",
+      "description": "Nisi quis eiusmod veniam ad id anim do cupidatat ex ad incididunt fugiat enim deserunt.",
+      "quantity": 18,
+      "price": 10.26
+    }
+  },
+  {
+    "id": "63e49f51d72d9401e9518eac",
+    "details": {
+      "name": "Replacement Bubbles",
+      "image": "https://cs.csub.edu/~paul/cs3680/labs/images/replacementBubbles.png",
+      "vendor": "Geekko",
+      "description": "Reprehenderit in sint ea mollit nostrud quis exercitation irure.",
+      "quantity": 2,
+      "price": 6.74
+    }
+  },
+  {
+    "id": "63e49f516359f35955f96063",
+    "details": {
+      "name": "Box of Ohms",
+      "image": "https://cs.csub.edu/~paul/cs3680/labs/images/boxOfOhms.png",
+      "vendor": "Confrenzy",
+      "description": "Adipisicing id anim pariatur ullamco culpa laborum.",
+      "quantity": 17,
+      "price": 21.53
+    }
+  }
+]

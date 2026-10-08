@@ -1,0 +1,9 @@
+------------------------
+Marsden the Monster
+------------------------
+TYPE: Thick
+COLOR: Laser Lemon
+NO. OF EYES: 12
+NO. OF ARMS: 1
+NO. of LEGS: 3
+------------------------

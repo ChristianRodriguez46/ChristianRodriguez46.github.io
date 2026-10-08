@@ -1,0 +1,9 @@
+------------------------
+Sage the Monster
+------------------------
+TYPE: Wet
+COLOR: Chestnut
+NO. OF EYES: 11
+NO. OF ARMS: 15
+NO. of LEGS: 7
+------------------------

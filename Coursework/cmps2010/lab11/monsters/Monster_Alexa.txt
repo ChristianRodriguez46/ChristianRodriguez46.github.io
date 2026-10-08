@@ -1,0 +1,9 @@
+---------------------------
+Alexa the Monster
+---------------------------
+Name: Alexa
+Type: 	
+Color: Pink Flamingo
+Eyes: 7
+Arms: 9
+Legs: 0

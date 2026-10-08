@@ -1,0 +1,9 @@
+------------------------
+Lysandra the Monster
+------------------------
+TYPE: Round
+COLOR: Vivid Tangerine
+NO. OF EYES: 3
+NO. OF ARMS: 13
+NO. of LEGS: 1
+------------------------

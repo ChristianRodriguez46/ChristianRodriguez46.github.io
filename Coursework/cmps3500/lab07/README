@@ -1,0 +1,18 @@
+Instructions for compiling and executing C# code on Linux.
+
+C# language uses Just-In-Time (JIT) compiler development similar to Java.
+You can compile on Linux and execute under Windows (if you have .net) and 
+under Linux using mono.
+
+Compile a C# source into an executable named filename.exe
+
+  $ mcs {filename.cs}
+
+Execute the C# application  
+
+  $ mono {filename.exe}
+
+Debug your executable:
+
+  $ mcs -debug {filename.exe}
+  $ mdb {filename.exe}

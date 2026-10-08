@@ -1,0 +1,9 @@
+------------------------
+Venus the Monster
+------------------------
+TYPE: Hot
+COLOR: Blue
+NO. OF EYES: 3
+NO. OF ARMS: 4
+NO. of LEGS: 11
+------------------------

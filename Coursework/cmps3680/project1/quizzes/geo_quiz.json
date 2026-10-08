@@ -1,0 +1,35 @@
+{
+  "name": "Geography Quiz",
+  "questions": [
+    {
+      "id": "1",
+      "text": "How many countries are there?",
+      "options": [null, 142, 176, 195, 202],
+      "answer": 195
+    },
+    {
+      "id": "2",
+      "text": "Which is the tallest mountain in the world?",
+      "options": [null, "Mt Everest", "Denali", "K2", "Mt Kilimanjaro"],
+      "answer": "Mt Everest"
+    },
+    {
+      "id": "3",
+      "text": "Which country has the highest population?",
+      "options": [null, "USA", "India", "Russia", "China"],
+      "answer": "China"
+    },
+    {
+      "id": "4",
+      "text": "What is the largest desert in the world?",
+      "options": [null, "Sahara", "Antarctic", "Arabian", "Great Australian"],
+      "answer": "Antarctic"
+    },
+    {
+      "id": "5",
+      "text": "What is the smallest country in the world?",
+      "options": [null, "Monaco", "Maldives", "Vatican City", "San Marino"],
+      "answer": "Vatican City"
+    }
+  ]
+}

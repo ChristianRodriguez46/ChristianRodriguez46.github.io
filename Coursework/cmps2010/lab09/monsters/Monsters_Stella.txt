@@ -1,0 +1,9 @@
+------------------------
+Stella the Monster
+------------------------
+TYPE: Nasty
+COLOR: Green Yellow
+NO. OF EYES: 11
+NO. OF ARMS: 14
+NO. of LEGS: 1
+------------------------

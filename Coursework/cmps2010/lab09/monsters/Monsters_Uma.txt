@@ -1,0 +1,9 @@
+------------------------
+Uma the Monster
+------------------------
+TYPE: Stringy
+COLOR: Violet
+NO. OF EYES: 7
+NO. OF ARMS: 8
+NO. of LEGS: 12
+------------------------

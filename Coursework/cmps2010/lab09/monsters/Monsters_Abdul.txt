@@ -1,0 +1,9 @@
+------------------------
+Abdul the Monster
+------------------------
+TYPE: Dry
+COLOR: Eggplant
+NO. OF EYES: 2
+NO. OF ARMS: 6
+NO. of LEGS: 15
+------------------------

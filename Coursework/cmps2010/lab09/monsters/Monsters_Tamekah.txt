@@ -1,0 +1,9 @@
+------------------------
+Tamekah the Monster
+------------------------
+TYPE: Gross
+COLOR: Royal Purple
+NO. OF EYES: 7
+NO. OF ARMS: 10
+NO. of LEGS: 10
+------------------------

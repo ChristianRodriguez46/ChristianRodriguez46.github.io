@@ -1,0 +1,20 @@
++++ Game 1
+ a1 = 62575301
+ Time taken = 0.415706 sec
+*** Yep! Your guess is correct.
+
++++ Game 2
+ a2 = 24005923
+ Time taken = 0.402537 sec
+*** Yep! Your guess is correct.
+
++++ Game 3
+ a3 = 22298480
+ Time taken = 0.000002 sec
+*** Yep! Your guess is correct.
+
++++ Game 4
+ a4 = 36206288
+ Time taken = 0.000002 sec
+*** Yep! Your guess is correct.
+

@@ -1,0 +1,9 @@
+---------------------------
+Hayden the Monster
+---------------------------
+Name: Hayden
+Type: 
+Color: Red Orange
+Eyes: 12
+Arms: 9
+Legs: 0

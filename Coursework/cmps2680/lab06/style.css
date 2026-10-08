@@ -1,0 +1,53 @@
+body {
+    font-family: verdana;
+}
+
+#title, #description {
+    margin: 5px 50px;
+}
+
+#container {
+    margin: 20px auto;
+    width: 600px;
+    height: 600px;
+    background-color: #40E0D0;
+    border: 1px solid lightgray;
+}
+
+#clues {
+    margin: 20px auto;
+    padding: 10px;
+    width: 480px;
+    height: 400px;
+    font-size: 14pt;
+    font-family: monospace;
+    line-height: 200%;
+    background-color: #D2F8F4;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 5px black;
+}
+
+#options {
+    display: flex;
+    margin: 30px auto;
+    width: 300px;
+    justify-content: space-between;
+}
+
+#options button {
+    padding: 5px 10px;
+    background-color: #E66571;
+    color: white;
+    font-size: 14pt;
+    border: 1px solid lightgray;
+    box-shadow: 2px 2px 5px black;
+    cursor: pointer; 
+}
+
+#options button:hover {
+    background-color: #E04050;
+}
+
+#options button:active {
+    box-shadow: none;
+}

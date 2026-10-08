@@ -1,0 +1,341 @@
+Script started on 2026-08-25 10:43:24-07:00 [TERM="xterm-256color" TTY="/dev/pts/25" COLUMNS="81" LINES="48"]
+
+"Who decided that? Not you. I'm the one who decides."
+- Escanor, the Lion's Sin of Pride
+
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ ls -la 
+[?2004ltotal 8
+drwx---r-x 2 crodriguez4 student 4096 Aug 25 10:43 [0m[01;34m.[0m
+drwx------ 4 crodriguez4 student 4096 Aug 25 10:39 [01;34m..[0m
+-rw----r-- 1 crodriguez4 student    0 Aug 25 10:43 lab1_output.log
+-rw----r-- 1 crodriguez4 student    0 Aug 25 10:43 lab1_time.log
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ vim lab1_ .txt
+[?2004l[?1006;1000h[?1002h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;48r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[48;1H"lab1.txt" [New][2;1H½[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[93m  1 [m
+[94m~                                                                                [3;1H~                                                                                [4;1H~                                                                                [5;1H~                                                                                [6;1H~                                                                                [7;1H~                                                                                [8;1H~                                                                                [9;1H~                                                                                [10;1H~                                                                                [11;1H~                                                                                [12;1H~                                                                                [13;1H~                                                                                [14;1H~                                                                                [15;1H~                                                                                [16;1H~                                                                                [17;1H~                                                                                [18;1H~                                                                                [19;1H~                                                                                [20;1H~                                                                                [21;1H~                                                                                [22;1H~                                                                                [23;1H~                                                                                [24;1H~                                                                                [25;1H~                                                                                [26;1H~                                                                                [27;1H~                                                                                [28;1H~                                                                                [29;1H~                                                                                [30;1H~                                                                                [31;1H~                                                                                [32;1H~                                                                                [33;1H~                                                                                [34;1H~                                                                                [35;1H~                                                                                [36;1H~                                                                                [37;1H~                                                                                [38;1H~                                                                                [39;1H~                                                                                [40;1H~                                                                                [41;1H~                                                                                [42;1H~                                                                                [43;1H~                                                                                [44;1H~                                                                                [45;1H~                                                                                [46;1H~                                                                                [47;1H~                                                                                [m[48;64H0,0-1[9CAll[1;5H[?25h[?4m[?12$p[?25l[48;54H/[1;5H[48;55H0[1;5H[48;56H0[1;5H[48;57H0[1;5H[48;58H0[1;5H[48;59H/[1;5H[48;60H0[1;5H[48;61H0[1;5H[48;62H0[1;5H[48;63H0[1;5H[?25h[?25l[48;54H          [1;5H[?25h[?25l[48;54Hi[1;5H[48;54H [1;5H[48;1H[1m-- INSERT --[m[48;13H[K[48;64H0,1[11CAll[1;5H[?25h[?25lI[48;64H1,2[1;6H[?25h[?25l[48;66H3[1;7H[?25h[?25la[48;66H4[1;8H[?25h[?25lm[48;66H5[1;9H[?25h[?25l[48;66H6[1;10H[?25h[?25lc[48;66H7[1;11H[?25h[?25lu[48;66H8[1;12H[?25h[?25lr[48;66H9[1;13H[?25h[?25lr[48;66H10[1;14H[?25h[?25le[48;67H1[1;15H[?25h[?25ln[48;67H2[1;16H[?25h[?25lt[48;67H3[1;17H[?25h[?25ll[48;67H4[1;18H[?25h[?25ly[48;67H5[1;19H[?25h[?25lu[48;67H6[1;20H[?25h[?25l[48;67H7[1;21H[?25h[?25l[48;67H6[1;20H[?25h[?25l[1;19H[K[48;67H5[1;19H[?25h[?25l[48;67H6[1;20H[?25h[?25ld[48;67H7[1;21H[?25h[?25lo[48;67H8[1;22H[?25h[?25li[48;67H9[1;23H[?25h[?25ln[48;66H20[1;24H[?25h[?25lg[48;67H1[1;25H[?25h[?25l[48;67H2[1;26H[?25h[?25ll[48;67H3[1;27H[?25h[?25la[48;67H4[1;28H[?25h[?25lb[48;67H5[1;29H[?25h[?25l[48;67H6[1;30H[?25h[?25l1[48;67H7[1;31H[?25h[?25l.[48;67H8[1;32H[?25h[48;1H[K[1;31H[?25l[48;54H^[[1;31H[?25h[?25l[48;54H  [1;32H[48;64H1,27[10CAll[1;31H[?25h[?25l[48;54H:[1;31H[48;54H[K[48;1H:[?25hwq[?25l[?1006;1000l[?1002l[?2004l[>4;m"lab1.txt" [New] 1L, 28B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ cp lab1.bakl[1@l[1@a[1@b[1@.[1@t[1@x[1@t[1@1.[1@ [1Ptxt[1@ 
+[?2004l[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ ls
+[?2004l[0m[00;90mlab1.bak[0m  lab1.txt  lab1_output.log  lab1_time.log
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ mkdir backups && mv lab1.bak bal ckups/
+[?2004l[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ cd backups/           ls backups/
+[?2004l[0m[00;90mlab1.bak[0m
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ chmod 700 backups/ 
+[?2004l[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ who && ps -u 
+[?2004lu01          pts/0        Aug 25 10:39 (xxx.xxx.xx.xxx)
+u02      pts/1        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u03      pts/2        Aug 19 15:31 (tmux(32740).%0)
+u04      pts/3        Aug 25 07:12 (xxx.xxx.xxx.x)
+u05      pts/4        Aug 25 09:55 (xxx.xxx.xx.xx)
+u02      pts/5        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u06       pts/6        Aug 25 09:56 (xxx.xxx.xxx.x)
+u07          pts/7        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/8        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/9        Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/10       Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/11       Aug 25 09:58 (xxx.xxx.xx.xxx)
+u04      pts/12       Aug 25 07:17 (xxx.xxx.xxx.x)
+u10      pts/13       Aug 25 09:59 (xxx.xxx.xx.xxx)
+u11          pts/14       Aug 25 09:59 (xxx.xxx.xxx.x)
+u12      pts/15       Aug 25 10:02 (xxx.xxx.xxx.x)
+u13      pts/16       Aug 25 10:03 (xxx.xxx.xxx.x)
+u14      pts/17       Aug 25 10:04 (xxx.xxx.xx.xx)
+u15      pts/18       Aug 25 10:08 (xxx.xxx.xx.xxx)
+u16         pts/19       Aug 25 10:21 (xxx.xxx.xx.xxx)
+u11          pts/20       Aug 25 10:30 (xxx.xxx.xxx.x)
+u15      pts/21       Aug 25 10:11 (xxx.xxx.xx.xxx)
+u17      pts/22       Aug 25 09:28 (xxx.xxx.xxx.xx)
+u12      pts/23       Aug 25 10:31 (xxx.xxx.xx.xx)
+u18       pts/24       Aug 25 10:23 (xxx.xxx.xx.xxx)
+crodriguez4 pts/25       Aug 25 10:15 (xxx.xxx.xx.xxx)
+u19       pts/26       Aug 25 10:41 (xxx.xxx.xx.x)
+u20      pts/27       Aug 25 10:16 (xxx.xxx.xxx.x)
+u20      pts/28       Aug 25 10:22 (xxx.xxx.xxx.x)
+u16         pts/29       Aug 25 10:23 (xxx.xxx.xx.xxx)
+u07          pts/30       Aug 25 10:24 (xxx.xxx.xx.xxx)
+crodriguez4 pts/31       Aug 25 10:33 (xxx.xxx.xx.xxx)
+u21      pts/39       Aug 25 07:44 (xxx.xxx.xx.xxx)
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+crodrig+ 3338354  0.0  0.0   9024  6680 pts/25   Ss   10:15   0:00 -bash
+crodrig+ 3348244  0.0  0.0   7352  5612 pts/31   Ss+  10:33   0:00 -bash
+crodrig+ 3351748  0.0  0.0   2524  1036 pts/25   S+   10:43   0:00 script -T lab1
+crodrig+ 3351749  0.0  0.0   8988  6616 pts/32   Ss   10:43   0:00 bash -i
+crodrig+ 3352620  0.0  0.0  10348  5352 pts/32   R+   10:45   0:00 ps -u
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ who && ps -u $USER
+[?2004lu01          pts/0        Aug 25 10:39 (xxx.xxx.xx.xxx)
+u02      pts/1        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u03      pts/2        Aug 19 15:31 (tmux(32740).%0)
+u04      pts/3        Aug 25 07:12 (xxx.xxx.xxx.x)
+u05      pts/4        Aug 25 09:55 (xxx.xxx.xx.xx)
+u02      pts/5        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u06       pts/6        Aug 25 09:56 (xxx.xxx.xxx.x)
+u07          pts/7        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/8        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/9        Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/10       Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/11       Aug 25 09:58 (xxx.xxx.xx.xxx)
+u04      pts/12       Aug 25 07:17 (xxx.xxx.xxx.x)
+u10      pts/13       Aug 25 09:59 (xxx.xxx.xx.xxx)
+u11          pts/14       Aug 25 09:59 (xxx.xxx.xxx.x)
+u12      pts/15       Aug 25 10:02 (xxx.xxx.xxx.x)
+u13      pts/16       Aug 25 10:03 (xxx.xxx.xxx.x)
+u14      pts/17       Aug 25 10:04 (xxx.xxx.xx.xx)
+u15      pts/18       Aug 25 10:08 (xxx.xxx.xx.xxx)
+u16         pts/19       Aug 25 10:21 (xxx.xxx.xx.xxx)
+u11          pts/20       Aug 25 10:30 (xxx.xxx.xxx.x)
+u15      pts/21       Aug 25 10:11 (xxx.xxx.xx.xxx)
+u17      pts/22       Aug 25 09:28 (xxx.xxx.xxx.xx)
+u12      pts/23       Aug 25 10:31 (xxx.xxx.xx.xx)
+u18       pts/24       Aug 25 10:23 (xxx.xxx.xx.xxx)
+crodriguez4 pts/25       Aug 25 10:15 (xxx.xxx.xx.xxx)
+u19       pts/26       Aug 25 10:41 (xxx.xxx.xx.x)
+u20      pts/27       Aug 25 10:16 (xxx.xxx.xxx.x)
+u20      pts/28       Aug 25 10:22 (xxx.xxx.xxx.x)
+u16         pts/29       Aug 25 10:23 (xxx.xxx.xx.xxx)
+u07          pts/30       Aug 25 10:24 (xxx.xxx.xx.xxx)
+crodriguez4 pts/31       Aug 25 10:33 (xxx.xxx.xx.xxx)
+u21      pts/39       Aug 25 07:44 (xxx.xxx.xx.xxx)
+    PID TTY          TIME CMD
+3338322 ?        00:00:00 systemd
+3338323 ?        00:00:00 (sd-pam)
+3338339 ?        00:00:00 pulseaudio
+3338347 ?        00:00:00 sshd
+3338354 pts/25   00:00:00 bash
+3338408 ?        00:00:00 dbus-daemon
+3348243 ?        00:00:00 sshd
+3348244 pts/31   00:00:00 bash
+3351748 pts/25   00:00:00 script
+3351749 pts/32   00:00:00 bash
+3352643 pts/32   00:00:00 ps
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ kill [7m3348244[27m3348244
+[?2004l[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ kill 3348244who && ps -u $USER
+[?2004lu01          pts/0        Aug 25 10:39 (xxx.xxx.xx.xxx)
+u02      pts/1        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u03      pts/2        Aug 19 15:31 (tmux(32740).%0)
+u04      pts/3        Aug 25 07:12 (xxx.xxx.xxx.x)
+u05      pts/4        Aug 25 09:55 (xxx.xxx.xx.xx)
+u02      pts/5        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u06       pts/6        Aug 25 09:56 (xxx.xxx.xxx.x)
+u07          pts/7        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/8        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/9        Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/10       Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/11       Aug 25 09:58 (xxx.xxx.xx.xxx)
+u04      pts/12       Aug 25 07:17 (xxx.xxx.xxx.x)
+u10      pts/13       Aug 25 09:59 (xxx.xxx.xx.xxx)
+u11          pts/14       Aug 25 09:59 (xxx.xxx.xxx.x)
+u12      pts/15       Aug 25 10:02 (xxx.xxx.xxx.x)
+u13      pts/16       Aug 25 10:03 (xxx.xxx.xxx.x)
+u14      pts/17       Aug 25 10:04 (xxx.xxx.xx.xx)
+u15      pts/18       Aug 25 10:08 (xxx.xxx.xx.xxx)
+u16         pts/19       Aug 25 10:21 (xxx.xxx.xx.xxx)
+u11          pts/20       Aug 25 10:30 (xxx.xxx.xxx.x)
+u15      pts/21       Aug 25 10:11 (xxx.xxx.xx.xxx)
+u17      pts/22       Aug 25 09:28 (xxx.xxx.xxx.xx)
+u12      pts/23       Aug 25 10:31 (xxx.xxx.xx.xx)
+u18       pts/24       Aug 25 10:23 (xxx.xxx.xx.xxx)
+crodriguez4 pts/25       Aug 25 10:15 (xxx.xxx.xx.xxx)
+u19       pts/26       Aug 25 10:41 (xxx.xxx.xx.x)
+u20      pts/27       Aug 25 10:16 (xxx.xxx.xxx.x)
+u20      pts/28       Aug 25 10:22 (xxx.xxx.xxx.x)
+u16         pts/29       Aug 25 10:23 (xxx.xxx.xx.xxx)
+u07          pts/30       Aug 25 10:24 (xxx.xxx.xx.xxx)
+u21      pts/39       Aug 25 07:44 (xxx.xxx.xx.xxx)
+    PID TTY          TIME CMD
+3338322 ?        00:00:00 systemd
+3338323 ?        00:00:00 (sd-pam)
+3338339 ?        00:00:00 pulseaudio
+3338347 ?        00:00:00 sshd
+3338354 pts/25   00:00:00 bash
+3338408 ?        00:00:00 dbus-daemon
+3351748 pts/25   00:00:00 script
+3351749 pts/32   00:00:00 bash
+3352934 pts/32   00:00:00 ps
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ who
+[?2004lu01          pts/0        Aug 25 10:39 (xxx.xxx.xx.xxx)
+u02      pts/1        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u03      pts/2        Aug 19 15:31 (tmux(32740).%0)
+u04      pts/3        Aug 25 07:12 (xxx.xxx.xxx.x)
+u05      pts/4        Aug 25 09:55 (xxx.xxx.xx.xx)
+u02      pts/5        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u06       pts/6        Aug 25 09:56 (xxx.xxx.xxx.x)
+u07          pts/7        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/8        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/9        Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/10       Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/11       Aug 25 09:58 (xxx.xxx.xx.xxx)
+u04      pts/12       Aug 25 07:17 (xxx.xxx.xxx.x)
+u10      pts/13       Aug 25 09:59 (xxx.xxx.xx.xxx)
+u11          pts/14       Aug 25 09:59 (xxx.xxx.xxx.x)
+u12      pts/15       Aug 25 10:02 (xxx.xxx.xxx.x)
+u13      pts/16       Aug 25 10:03 (xxx.xxx.xxx.x)
+u14      pts/17       Aug 25 10:04 (xxx.xxx.xx.xx)
+u15      pts/18       Aug 25 10:08 (xxx.xxx.xx.xxx)
+u16         pts/19       Aug 25 10:21 (xxx.xxx.xx.xxx)
+u11          pts/20       Aug 25 10:30 (xxx.xxx.xxx.x)
+u15      pts/21       Aug 25 10:11 (xxx.xxx.xx.xxx)
+u17      pts/22       Aug 25 09:28 (xxx.xxx.xxx.xx)
+u12      pts/23       Aug 25 10:31 (xxx.xxx.xx.xx)
+u18       pts/24       Aug 25 10:23 (xxx.xxx.xx.xxx)
+crodriguez4 pts/25       Aug 25 10:15 (xxx.xxx.xx.xxx)
+u19       pts/26       Aug 25 10:41 (xxx.xxx.xx.x)
+u20      pts/27       Aug 25 10:16 (xxx.xxx.xxx.x)
+u20      pts/28       Aug 25 10:22 (xxx.xxx.xxx.x)
+u16         pts/29       Aug 25 10:23 (xxx.xxx.xx.xxx)
+u07          pts/30       Aug 25 10:24 (xxx.xxx.xx.xxx)
+u21      pts/39       Aug 25 07:44 (xxx.xxx.xx.xxx)
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ who
+[?2004lu01          pts/0        Aug 25 10:39 (xxx.xxx.xx.xxx)
+u02      pts/1        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u03      pts/2        Aug 19 15:31 (tmux(32740).%0)
+u04      pts/3        Aug 25 07:12 (xxx.xxx.xxx.x)
+u05      pts/4        Aug 25 09:55 (xxx.xxx.xx.xx)
+u02      pts/5        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u06       pts/6        Aug 25 09:56 (xxx.xxx.xxx.x)
+u07          pts/7        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/8        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/9        Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/10       Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/11       Aug 25 09:58 (xxx.xxx.xx.xxx)
+u04      pts/12       Aug 25 07:17 (xxx.xxx.xxx.x)
+u10      pts/13       Aug 25 09:59 (xxx.xxx.xx.xxx)
+u11          pts/14       Aug 25 09:59 (xxx.xxx.xxx.x)
+u12      pts/15       Aug 25 10:02 (xxx.xxx.xxx.x)
+u13      pts/16       Aug 25 10:03 (xxx.xxx.xxx.x)
+u14      pts/17       Aug 25 10:04 (xxx.xxx.xx.xx)
+u15      pts/18       Aug 25 10:08 (xxx.xxx.xx.xxx)
+u16         pts/19       Aug 25 10:21 (xxx.xxx.xx.xxx)
+u11          pts/20       Aug 25 10:30 (xxx.xxx.xxx.x)
+u15      pts/21       Aug 25 10:11 (xxx.xxx.xx.xxx)
+u17      pts/22       Aug 25 09:28 (xxx.xxx.xxx.xx)
+u12      pts/23       Aug 25 10:31 (xxx.xxx.xx.xx)
+u18       pts/24       Aug 25 10:23 (xxx.xxx.xx.xxx)
+crodriguez4 pts/25       Aug 25 10:15 (xxx.xxx.xx.xxx)
+u19       pts/26       Aug 25 10:41 (xxx.xxx.xx.x)
+u20      pts/27       Aug 25 10:16 (xxx.xxx.xxx.x)
+u20      pts/28       Aug 25 10:22 (xxx.xxx.xxx.x)
+u16         pts/29       Aug 25 10:23 (xxx.xxx.xx.xxx)
+u07          pts/30       Aug 25 10:24 (xxx.xxx.xx.xxx)
+crodriguez4 pts/31       Aug 25 10:47 (xxx.xxx.xx.xxx)
+u21      pts/39       Aug 25 07:44 (xxx.xxx.xx.xxx)
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ ps -u $USER
+[?2004l    PID TTY          TIME CMD
+3338322 ?        00:00:00 systemd
+3338323 ?        00:00:00 (sd-pam)
+3338339 ?        00:00:00 pulseaudio
+3338347 ?        00:00:00 sshd
+3338354 pts/25   00:00:00 bash
+3338408 ?        00:00:00 dbus-daemon
+3351748 pts/25   00:00:00 script
+3351749 pts/32   00:00:00 bash
+3353056 ?        00:00:00 sshd
+3353057 pts/31   00:00:00 bash
+3353213 pts/32   00:00:00 ps
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ kill 3353057
+[?2004l[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ kill 3353057[1Pps -u $USER
+[?2004l    PID TTY          TIME CMD
+3338322 ?        00:00:00 systemd
+3338323 ?        00:00:00 (sd-pam)
+3338339 ?        00:00:00 pulseaudio
+3338347 ?        00:00:00 sshd
+3338354 pts/25   00:00:00 bash
+3338408 ?        00:00:00 dbus-daemon
+3351748 pts/25   00:00:00 script
+3351749 pts/32   00:00:00 bash
+3353056 ?        00:00:00 sshd
+3353057 pts/31   00:00:00 bash
+3353263 pts/32   00:00:00 ps
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ ps -u $USERkill 3353057[1Pps -u $USERwho[K
+[?2004lu01          pts/0        Aug 25 10:39 (xxx.xxx.xx.xxx)
+u02      pts/1        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u03      pts/2        Aug 19 15:31 (tmux(32740).%0)
+u04      pts/3        Aug 25 07:12 (xxx.xxx.xxx.x)
+u05      pts/4        Aug 25 09:55 (xxx.xxx.xx.xx)
+u02      pts/5        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u06       pts/6        Aug 25 09:56 (xxx.xxx.xxx.x)
+u07          pts/7        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/8        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/9        Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/10       Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/11       Aug 25 09:58 (xxx.xxx.xx.xxx)
+u04      pts/12       Aug 25 07:17 (xxx.xxx.xxx.x)
+u10      pts/13       Aug 25 09:59 (xxx.xxx.xx.xxx)
+u11          pts/14       Aug 25 09:59 (xxx.xxx.xxx.x)
+u12      pts/15       Aug 25 10:02 (xxx.xxx.xxx.x)
+u13      pts/16       Aug 25 10:03 (xxx.xxx.xxx.x)
+u14      pts/17       Aug 25 10:04 (xxx.xxx.xx.xx)
+u15      pts/18       Aug 25 10:08 (xxx.xxx.xx.xxx)
+u11          pts/20       Aug 25 10:30 (xxx.xxx.xxx.x)
+u15      pts/21       Aug 25 10:11 (xxx.xxx.xx.xxx)
+u17      pts/22       Aug 25 09:28 (xxx.xxx.xxx.xx)
+u12      pts/23       Aug 25 10:31 (xxx.xxx.xx.xx)
+u18       pts/24       Aug 25 10:23 (xxx.xxx.xx.xxx)
+crodriguez4 pts/25       Aug 25 10:15 (xxx.xxx.xx.xxx)
+u19       pts/26       Aug 25 10:41 (xxx.xxx.xx.x)
+u20      pts/27       Aug 25 10:16 (xxx.xxx.xxx.x)
+u20      pts/28       Aug 25 10:22 (xxx.xxx.xxx.x)
+u16         pts/29       Aug 25 10:23 (xxx.xxx.xx.xxx)
+u07          pts/30       Aug 25 10:24 (xxx.xxx.xx.xxx)
+crodriguez4 pts/31       Aug 25 10:47 (xxx.xxx.xx.xxx)
+u21      pts/39       Aug 25 07:44 (xxx.xxx.xx.xxx)
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ whops -u $USERwho[K[Kkill -9 3353057
+[?2004l[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ kill -9 3353057who[Kps -u $USER
+[?2004l    PID TTY          TIME CMD
+3338322 ?        00:00:00 systemd
+3338323 ?        00:00:00 (sd-pam)
+3338339 ?        00:00:00 pulseaudio
+3338347 ?        00:00:00 sshd
+3338354 pts/25   00:00:00 bash
+3338408 ?        00:00:00 dbus-daemon
+3351748 pts/25   00:00:00 script
+3351749 pts/32   00:00:00 bash
+3353963 pts/32   00:00:00 ps
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ ps -u $USERkill -9 3353057who[K
+[?2004lu01          pts/0        Aug 25 10:39 (xxx.xxx.xx.xxx)
+u02      pts/1        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u03      pts/2        Aug 19 15:31 (tmux(32740).%0)
+u04      pts/3        Aug 25 07:12 (xxx.xxx.xxx.x)
+u05      pts/4        Aug 25 09:55 (xxx.xxx.xx.xx)
+u02      pts/5        Aug 25 09:55 (xxx.xxx.xx.xxx)
+u06       pts/6        Aug 25 09:56 (xxx.xxx.xxx.x)
+u07          pts/7        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/8        Aug 25 09:56 (xxx.xxx.xx.xxx)
+u08      pts/9        Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/10       Aug 25 09:57 (xxx.xxx.xx.xxx)
+u09      pts/11       Aug 25 09:58 (xxx.xxx.xx.xxx)
+u04      pts/12       Aug 25 07:17 (xxx.xxx.xxx.x)
+u10      pts/13       Aug 25 09:59 (xxx.xxx.xx.xxx)
+u11          pts/14       Aug 25 09:59 (xxx.xxx.xxx.x)
+u12      pts/15       Aug 25 10:02 (xxx.xxx.xxx.x)
+u13      pts/16       Aug 25 10:03 (xxx.xxx.xxx.x)
+u14      pts/17       Aug 25 10:04 (xxx.xxx.xx.xx)
+u15      pts/18       Aug 25 10:08 (xxx.xxx.xx.xxx)
+u22      pts/19       Aug 25 10:48 (xxx.xxx.xxx.x)
+u11          pts/20       Aug 25 10:30 (xxx.xxx.xxx.x)
+u15      pts/21       Aug 25 10:11 (xxx.xxx.xx.xxx)
+u17      pts/22       Aug 25 09:28 (xxx.xxx.xxx.xx)
+u12      pts/23       Aug 25 10:31 (xxx.xxx.xx.xx)
+u18       pts/24       Aug 25 10:23 (xxx.xxx.xx.xxx)
+crodriguez4 pts/25       Aug 25 10:15 (xxx.xxx.xx.xxx)
+u19       pts/26       Aug 25 10:41 (xxx.xxx.xx.x)
+u20      pts/27       Aug 25 10:16 (xxx.xxx.xxx.x)
+u20      pts/28       Aug 25 10:22 (xxx.xxx.xxx.x)
+u16         pts/29       Aug 25 10:23 (xxx.xxx.xx.xxx)
+u07          pts/30       Aug 25 10:24 (xxx.xxx.xx.xxx)
+u15      pts/33       Aug 25 10:48 (xxx.xxx.xx.xxx)
+u21      pts/39       Aug 25 07:44 (xxx.xxx.xx.xxx)
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ ci    vi hello.c  
+[?2004l[?1006;1000h[?1002h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;48r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[48;1H"hello.c" [New][2;1H½[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[93m  1 [m
+[94m~                                                                                [3;1H~                                                                                [4;1H~                                                                                [5;1H~                                                                                [6;1H~                                                                                [7;1H~                                                                                [8;1H~                                                                                [9;1H~                                                                                [10;1H~                                                                                [11;1H~                                                                                [12;1H~                                                                                [13;1H~                                                                                [14;1H~                                                                                [15;1H~                                                                                [16;1H~                                                                                [17;1H~                                                                                [18;1H~                                                                                [19;1H~                                                                                [20;1H~                                                                                [21;1H~                                                                                [22;1H~                                                                                [23;1H~                                                                                [24;1H~                                                                                [25;1H~                                                                                [26;1H~                                                                                [27;1H~                                                                                [28;1H~                                                                                [29;1H~                                                                                [30;1H~                                                                                [31;1H~                                                                                [32;1H~                                                                                [33;1H~                                                                                [34;1H~                                                                                [35;1H~                                                                                [36;1H~                                                                                [37;1H~                                                                                [38;1H~                                                                                [39;1H~                                                                                [40;1H~                                                                                [41;1H~                                                                                [42;1H~                                                                                [43;1H~                                                                                [44;1H~                                                                                [45;1H~                                                                                [46;1H~                                                                                [47;1H~                                                                                [m[48;64H0,0-1[9CAll[1;5H[?25h[?4m[?12$p[?25l[48;54Hg[1;5H[48;55Hb[1;5H[48;56H:[1;5H[48;57Ha[1;5H[48;58Ha[1;5H[48;59Ha[1;5H[48;60Ha[1;5H[48;61H/[1;5H[48;62Ha[1;5H[48;63Ha[1;5H[?25h[?25l[48;54H          [1;5H[?25h[?25l[48;54Hg[1;5H[48;55Hb[1;5H[48;56H:[1;5H[48;57H0[1;5H[48;58H0[1;5H[48;59H0[1;5H[48;60H0[1;5H[48;61H/[1;5H[48;62H0[1;5H[48;63H0[1;5H[?25h[?25l[48;54H          [1;5H[?25h[?25l[48;54Hi[1;5H[48;54H [1;5H[48;1H[1m-- INSERT --[m[48;13H[K[48;64H0,1[11CAll[1;5H[?25h[?25l#[48;64H1,2[1;6H[?25h[?25li[48;66H3[1;7H[?25h[?25ln[48;66H4[1;8H[?25h[?25lc[48;66H5[1;9H[?25h[?25ll[48;66H6[1;10H[?25h[?25lu[48;66H7[1;11H[?25h[?25ld[48;66H8[1;12H[?25h[?25le[48;66H9[1;13H[?25h[?25l[48;66H10[1;14H[?25h[?25l[1;5H[38;5;81m#include <[m[48;67H1[1;15H[?25h[?25ls[48;67H2[1;16H[?25h[?25lt[48;67H3[1;17H[?25h[?25ld[48;67H4[1;18H[?25h[?25li[48;67H5[1;19H[?25h[?25lo[48;67H6[1;20H[?25h[?25l.[48;67H7[1;21H[?25h[?25lh[48;67H8[1;22H[?25h[?25l[1;14H[95m<stdio.h>[m[48;67H9[1;23H[?25h[?25l
+[93m  2 [m[2;5H[K[48;64H2,1 [2;5H[?25h[?25li[48;66H2[2;6H[?25h[?25ln[48;66H3[2;7H[?25h[?25l[38;5;121mint[m[48;66H4[2;8H[?25h[?25l[48;66H5[2;9H[?25h[?25lm[48;66H6[2;10H[?25h[?25la[48;66H7[2;11H[?25h[?25li[48;66H8[2;12H[?25h[?25ln[48;66H9[2;13H[?25h[?25l([48;66H10[2;14H[?25h[?25l)[48;66H9 [2;13H[?25h[?25l[46m()[m[48;66H11[2;15H[?25h[?25l()[48;67H2[2;16H[?25h[?25l{[48;67H3[2;17H[?25h[?25l}[48;67H2[2;16H[?25h[?25l[46m{}[m[48;67H4[2;18H[?25h[?25l[48;67H3[2;17H[?25h[?25l[2;17H[K[3;1H[93m  3 [m}[3;6H[K[3;5H[46m}[m[48;64H3,1 [3;5H[?25h[?25l[3;5H[K[4;1H[93m  4 [m}[4;6H[K[4;5H[46m}[m[48;64H4[4;5H[?25h[?25l[2;16H{[4;5H}[48;64H3[3;5H[?25h[?25l[48;66H5[3;9H[?25h[?25lp[48;66H6[3;10H[?25h[?25lr[48;66H7[3;11H[?25h[?25li[48;66H8[3;12H[?25h[?25ln[48;66H9[3;13H[?25h[?25lt[48;66H10[3;14H[?25h[?25lf[48;67H1[3;15H[?25h[?25l([48;67H2[3;16H[?25h[?25l[95m"[4;5H}[m[48;67H3[3;17H[?25h[?25l[95m"[m[4;5H}[48;67H4[3;18H[?25h[?25l)[48;67H1[3;15H[?25h[?25l[46m([2C)[m[48;67H5[3;19H[?25h[?25l[48;67H4[3;18H[?25h[?25l([2C)[48;67H3[3;17H[?25h[?25l[95mH"[m)[48;67H4[3;18H[?25h[?25l[95me"[m)[48;67H5[3;19H[?25h[?25l[95ml"[m)[48;67H6[3;20H[?25h[?25l[95ml"[m)[48;67H7[3;21H[?25h[?25l[95mo"[m)[48;67H8[3;22H[?25h[?25l[95m,"[m)[48;67H9[3;23H[?25h[?25l[95m "[m)[48;66H20[3;24H[?25h[?25l[95mW"[m)[48;67H1[3;25H[?25h[?25l[95mo"[m)[48;67H2[3;26H[?25h[?25l[95mr"[m)[48;67H3[3;27H[?25h[?25l[95ml"[m)[48;67H4[3;28H[?25h[?25l[95md"[m)[48;67H5[3;29H[?25h[?25l[95m!"[m)[48;67H6[3;30H[?25h[?25l[38;5;224m\"[m[95m)[4;5H}[m[48;67H7[3;31H[?25h[?25l[38;5;224mn[m[95m"[m)[4;5H}[48;67H8[3;32H[?25h[?25l[3;15H[46m([17C)[m[48;67H9[3;33H[?25h[?25l[46m;[m);[46m)[m[48;66H30[3;34H[?25h[?25l[48;67H1[3;35H[?25h[?25l[4;5H 
+[93m  5 [m}[5;6H[K[3;15H([18C)[48;64H4,9 [4;13H[?25h[?25l[48;66H8[4;12H[?25h[?25l[48;66H7[4;11H[?25h[?25l[48;66H6[4;10H[?25h[?25l[48;66H5[4;9H[?25h[?25l[48;66H4[4;8H[?25h[?25l[48;66H3[4;7H[?25h[?25l[48;66H2[4;6H[?25h[?25l[48;66H1[4;5H[?25h[?25l[3;15H[46m([18C)[m[48;64H3,30[3;34H[?25h[?25l)[3;34H[K[3;33H[46m)[m[48;66H29[3;33H[?25h[?25l[48;66H30[3;34H[?25h[?25l;[3;15H([17C)[48;67H1[3;35H[?25h[?25l[48;64H4,9 [4;13H[?25h[?25l[48;66H8[4;12H[?25h[?25l[48;66H7[4;11H[?25h[?25l[48;66H6[4;10H[?25h[?25l[48;66H5[4;9H[?25h[?25lr[48;66H6[4;10H[?25h[?25le[48;66H7[4;11H[?25h[?25lt[48;66H8[4;12H[?25h[?25lu[48;66H9[4;13H[?25h[?25lr[48;66H10[4;14H[?25h[?25l[93mreturn[m[48;67H1[4;15H[?25h[?25l[48;67H2[4;16H[?25h[?25l[95m0[m[48;67H3[4;17H[?25h[?25l;[48;67H4[4;18H[?25h[?25l[5;5H 
+[93m  6 [m}[6;6H[K[48;64H5,5 [5;9H[?25h[?25l[48;66H4[5;8H[?25h[?25l[48;66H3[5;7H[?25h[?25l[48;66H2[5;6H[?25h[?25l[48;66H1[5;5H[?25h[?25l}
+[94m~                                                                                [m[48;64H4,14[4;18H[?25h[48;1H[K[4;17H[?25l[48;54H^[[4;17H[?25h[?25l[48;54H  [4;18H[48;64H4,13[10CAll[4;17H[?25h[?25l[48;54H:[4;17H[48;54H[K[48;1H:[?25hwq[?25l[?1006;1000l[?1002l[?2004l[>4;m"hello.c" [New] 5L, 79B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ gcc -g hello.c -o test
+[?2004l[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ ./test 
+[?2004lHello, World!
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ rm test 
+[?2004l[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ ls
+[?2004l[0m[01;34mbackups[0m  hello.c  lab1.txt  lab1_output.log  lab1_time.log
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab01[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab01[00m$ ext it
+[?2004lexit
+
+Script done on 2026-08-25 10:52:13-07:00 [COMMAND_EXIT_CODE="0"]

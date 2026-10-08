@@ -1,0 +1,9 @@
+------------------------
+Xavier the Monster
+------------------------
+TYPE: Mushy
+COLOR: Chestnut
+NO. OF EYES: 4
+NO. OF ARMS: 6
+NO. of LEGS: 6
+------------------------

@@ -1,0 +1,9 @@
+------------------------
+Sean the Monster
+------------------------
+TYPE: Round
+COLOR: Wisteria
+NO. OF EYES: 14
+NO. OF ARMS: 11
+NO. of LEGS: 5
+------------------------

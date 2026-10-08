@@ -1,0 +1,9 @@
+------------------------
+Shannon the Monster
+------------------------
+TYPE: Prickly
+COLOR: Pine Green
+NO. OF EYES: 8
+NO. OF ARMS: 4
+NO. of LEGS: 6
+------------------------

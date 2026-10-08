@@ -1,0 +1,622 @@
+Script started on 2026-10-06 19:13:26-07:00 [TERM="xterm-256color" TTY="/dev/pts/25" COLUMNS="236" LINES="11"]
+
+"Who decided that? Not you. I'm the one who decides."
+- Escanor, the Lion's Sin of Pride
+
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [H[2J]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ ls
+[?2004llab07_output.log  lab07_time.log
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [7mcp /home/fac/melissa/public_html/cs3500-f26/examples/lab07/* . [27m
+[A]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ cp /home/fac/melissa/public_html/cs3500-f26/examples/lab07/* . 
+[A
+[?2004l[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [Kls
+[?2004lC#_v_C++.txt  Makefile  README  lab07.cs  lab07_output.log  lab07_time.log  sample1.cs  sample2.cs  sample3.cs  sample4.cs  sample5.cs  sample6.cs  sample7.cs
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ make
+[?2004lmcs sample1.cs
+mcs sample2.cs
+mcs sample3.cs
+mcs sample4.cs
+mcs sample5.cs
+mcs sample6.cs
+mcs sample7.cs
+mcs lab07.cs
+[31mlab07.cs(45,6): error CS0548: `Assignment.Rectangle.Area': property or indexer must have at least one accessor[0m
+[31mlab07.cs(59,5): error CS0548: `Assignment.Triangle.Area': property or indexer must have at least one accessor[0m
+[31mlab07.cs(74,5): error CS0548: `Assignment.Circle.Radius': property or indexer must have at least one accessor[0m
+[31mlab07.cs(77,5): error CS0548: `Assignment.Circle.Area': property or indexer must have at least one accessor[0m
+Compilation failed: 4 error(s), 0 warnings
+make: *** [Makefile:27: lab07] Error 1
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [H[2J]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [K]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [K]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [K]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [K]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [K]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [K]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ vi lab07.cs 
+[?2004l[?1006;1000h[?1002h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;62r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[62;1H"lab07.cs" 86L, 1971B[2;1H½[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[93m  1 [m[96m/* lab07.cs[m
+[93m  2 [m[96m * C# lab07 Modify this code [m[2;34H[K[3;1H[93m  3 [m[96m */[m[3;8H[K[4;1H[93m  4 
+  5 [m[93musing[m System;
+[93m  6 
+  7 [m[38;5;121mnamespace[m Assignment {
+[93m  8 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mApplication  [m{
+[93m  9 [m    [38;5;121mstatic[m [38;5;121mvoid[m Main() {
+[93m 10 [m      [38;5;121mdouble[m rectWidth [93m=[m [95m8.75f[m, rectHeight [93m=[m [95m20.5f[m;
+[93m 11 [m      IShape shape1 [93m=[m [93mnew[m Rectangle(rectWidth, rectHeight);
+[93m 12 
+ 13 [m      [38;5;121mdouble[m triBase [93m=[m [95m5.5f[m, triHeight [93m=[m [95m12.25f[m;
+[93m 14 [m      IShape shape2 [93m=[m [93mnew[m Triangle(triBase, triHeight);
+[93m 15 
+ 16 [m      [38;5;121mdouble[m cirRadius [93m=[m [95m5.5f[m;
+[93m 17 [m      Circle shape3 [93m=[m [93mnew[m Circle(cirRadius);
+[93m 18 [m      [96m// test Radius property[m
+[93m 19 [m      shape3.Radius [93m=[m [95m3.5f[m;
+[93m 20 [m      Console.WriteLine([95m"My Radius is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);
+[93m 21 
+ 22 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape1, shape1.Area);
+[93m 23 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape2, shape2.Area);
+[93m 24 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape3, shape3.Area);
+[93m 25 [m      shape1.Display();
+[93m 26 [m      shape2.Display();
+[93m 27 [m      shape3.Display();
+[93m 28 [m    }
+[93m 29 [m  }
+[93m 30 
+ 31 [m  [38;5;121mpublic[m [38;5;121minterface[m IShape {
+[93m 32 [m     [38;5;121mvoid[m Display ();
+[93m 33 
+ 34 [m     [38;5;121mdouble[m Area {
+[93m 35 [m[7C[93mget[m;    [96m// concrete classes must implement IShape.Area.Get()[m
+[93m 36 [m     }
+[93m 37 [m  }
+[93m 38 
+ 39 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 40 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mRectangle[m[93m:[m IShape {
+[93m 41 [m     [38;5;121mpublic[m Rectangle([38;5;121mdouble[m inWidth, [38;5;121mdouble[m inHeight) {
+[93m 42 [m     }
+[93m 43 
+ 44 [m     [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 45 [m     }
+[93m 46 
+ 47 [m     [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 48 [m     }
+[93m 49 
+ 50 [m     [38;5;121mprivate[m [38;5;121mdouble[m width [93m=[m [95m0[m;
+[93m 51 [m     [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;
+[93m 52 [m  }
+[93m 53 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 54 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mTriangle[m[93m:[m IShape {
+[93m 55 [m    [38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {
+[93m 56 [m    }
+[93m 57 
+ 58 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 59 [m    }
+[93m 60 
+ 61 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {[62;219H1,1[11CTop[1;5H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[?25l[62;209H2[1;5H[62;210H7[1;5H[62;211H/[1;5H[62;212H2[1;5H[62;213H8[1;5H[62;214H2[1;5H[62;215H8[1;5H[62;216H/[1;5H[62;217H2[1;5H[62;218H2[1;5H[?25h[?25l[62;209H          [1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 62 [m    }
+[93m 63 
+ 64 [m    [38;5;121mprivate[m [38;5;121mdouble[m mybase [93m=[m [95m0[m;[62;1H[K[62;219H4,0-1[9C12%[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 65 [m    [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;
+[93m 66 [m  }
+[93m 67 [m[62;219H[K[62;219H7,1[11C24%[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 68 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 69 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mCircle[m[93m:[m IShape {
+[93m 70 [m    [38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {[62;219H[K[62;219H10,1[10C36%[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 71 [m    }
+[93m 72 
+ 73 [m    [38;5;121mpublic[m [38;5;121mdouble[m Radius {[62;219H[K[62;219H13,1[10C48%[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 74 [m    }
+[93m 75 
+ 76 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {[62;219H[K[62;219H16,1[10C60%[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 77 [m    }
+[93m 78 
+ 79 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {[62;219H[K[62;219H19,1[10C72%[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 80 [m    }
+[93m 81 
+ 82 [m    [38;5;121mprivate[m [38;5;121mdouble[m radius [93m=[m [95m0[m;[62;219H[K[62;219H22,1[10C84%[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 83 [m  }
+[93m 84 
+ 85 [m[62;219H[K[62;219H25,1[10C96%[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 86 [m} [96m// end namespace [m
+[94m~                                                                                                                                                                                                                                           [61;1H~                                                                                                                                                                                                                                           [m[62;219H[K[62;219H28,1[10CBot[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[94m~                                                                                                                                                                                                                                           [60;1H~                                                                                                                                                                                                                                           [61;1H~                                                                                                                                                                                                                                           [m[62;219H[K[62;219H31,1[10CBot[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[94m~                                                                                                                                                                                                                                           [60;1H~                                                                                                                                                                                                                                           [61;1H~                                                                                                                                                                                                                                           [m[62;219H[K[62;219H34,1[10CBot[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[94m~                                                                                                                                                                                                                                           [60;1H~                                                                                                                                                                                                                                           [61;1H~                                                                                                                                                                                                                                           [m[62;219H[K[62;219H37,1[10CBot[1;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[94m~                                                                                                                                                                                                                                           [60;1H~                                                                                                                                                                                                                                           [61;1H~                                                                                                                                                                                                                                           [m[62;219H[K[62;219H40,1[10CBot[1;5H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 37 [m  }
+[93m 38 
+ 39 [m  [96m////////////////////////////////////////////////////////////////////////[m[62;219H[K[62;219H40,1[10CBot[4;5H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 34 [m     [38;5;121mdouble[m Area {
+[93m 35 [m[7C[93mget[m;    [96m// concrete classes must implement IShape.Area.Get()[m
+[93m 36 [m     }[62;219H[K[62;219H40,1[10CBot[7;5H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[93m 34 [m     [38;5;121mdouble[m Area {
+[93m 35 [m[7C[93mget[m;    [96m// concrete classes must implement IShape.Area.Get()[m
+[93m 36 [m     }
+[93m 37 [m  }
+[93m 38 
+ 39 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 40 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mRectangle[m[93m:[m IShape {
+[93m 41 [m     [38;5;121mpublic[m Rectangle([38;5;121mdouble[m inWidth, [38;5;121mdouble[m inHeight) {
+[93m 42 [m     }
+[93m 43 
+ 44 [m     [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 45 [m     }
+[93m 46 
+ 47 [m     [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 48 [m     }
+[93m 49 
+ 50 [m     [38;5;121mprivate[m [38;5;121mdouble[m width [93m=[m [95m0[m;
+[93m 51 [m     [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;
+[93m 52 [m  }
+[93m 53 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 54 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mTriangle[m[93m:[m IShape {
+[93m 55 [m    [38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {
+[93m 56 [m    }
+[93m 57 
+ 58 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 59 [m    }
+[93m 60 
+ 61 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 62 [m    }
+[93m 63 
+ 64 [m    [38;5;121mprivate[m [38;5;121mdouble[m mybase [93m=[m [95m0[m;
+[93m 65 [m    [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;
+[93m 66 [m  }
+[93m 67 
+ 68 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 69 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mCircle[m[93m:[m IShape {
+[93m 70 [m    [38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {
+[93m 71 [m    }
+[93m 72 
+ 73 [m    [38;5;121mpublic[m [38;5;121mdouble[m Radius {
+[93m 74 [m    }
+[93m 75 
+ 76 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 77 [m    }
+[93m 78 
+ 79 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 80 [m    }
+[93m 81 
+ 82 [m    [38;5;121mprivate[m [38;5;121mdouble[m radius [93m=[m [95m0[m;
+[93m 83 [m  }
+[93m 84 
+ 85 
+ 86 [m} [96m// end namespace [m
+[94m~                                                                                                                                                                                                                                                                               [55;1H~                                                                                                                                                                                                                                                                               [56;1H~                                                                                                                                                                                                                                                                               [57;1H~                                                                                                                                                                                                                                                                               [58;1H~                                                                                                                                                                                                                                                                               [59;1H~                                                                                                                                                                                                                                                                               [60;1H~                                                                                                                                                                                                                                                                               [61;1H~                                                                                                                                                                                                                                                                               [m[62;255H40,1[10CBot[7;5H[?25h[27m[23m[29m[m[H[2J[?25l[1;1H[93m 34 [m     [38;5;121mdouble[m Area {
+[93m 35 [m[7C[93mget[m;    [96m// concrete classes must implement IShape.Area.Get()[m
+[93m 36 [m     }
+[93m 37 [m  }
+[93m 38 
+ 39 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 40 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mRectangle[m[93m:[m IShape {
+[93m 41 [m     [38;5;121mpublic[m Rectangle([38;5;121mdouble[m inWidth, [38;5;121mdouble[m inHeight) {
+[93m 42 [m     }
+[93m 43 
+ 44 [m     [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 45 [m     }
+[93m 46 
+ 47 [m     [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 48 [m     }
+[93m 49 
+ 50 [m     [38;5;121mprivate[m [38;5;121mdouble[m width [93m=[m [95m0[m;
+[93m 51 [m     [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;
+[93m 52 [m  }
+[93m 53 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 54 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mTriangle[m[93m:[m IShape {
+[93m 55 [m    [38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {
+[93m 56 [m    }
+[93m 57 
+ 58 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 59 [m    }
+[93m 60 
+ 61 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 62 [m    }
+[93m 63 
+ 64 [m    [38;5;121mprivate[m [38;5;121mdouble[m mybase [93m=[m [95m0[m;
+[93m 65 [m    [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;
+[93m 66 [m  }
+[93m 67 
+ 68 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 69 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mCircle[m[93m:[m IShape {
+[93m 70 [m    [38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {
+[93m 71 [m    }
+[93m 72 
+ 73 [m    [38;5;121mpublic[m [38;5;121mdouble[m Radius {
+[93m 74 [m    }
+[93m 75 
+ 76 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 77 [m    }
+[93m 78 
+ 79 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 80 [m    }
+[93m 81 
+ 82 [m    [38;5;121mprivate[m [38;5;121mdouble[m radius [93m=[m [95m0[m;
+[93m 83 [m  }
+[93m 84 
+ 85 
+ 86 [m} [96m// end namespace [m
+[94m~                                                                                                                                [55;1H~                                                                                                                                [56;1H~                                                                                                                                [57;1H~                                                                                                                                [58;1H~                                                                                                                                [59;1H~                                                                                                                                [60;1H~                                                                                                                                [61;1H~                                                                                                                                [m[62;112H40,1[10CBot[7;5H[?25h[?25l[14;32H[46m{[15;10H}[m[62;113H7,28[14;32H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 31 [m  [38;5;121mpublic[m [38;5;121minterface[m IShape {
+[93m 32 [m     [38;5;121mvoid[m Display ();
+[93m 33 [m[62;112H[K[62;112H47,28[9CBot[17;32H[?25h[?25l[11;60H[46m{[12;10H}[m[17;32H{[18;10H}[62;113H2,6 [12;10H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 28 [m    }
+[93m 29 [m  }
+[93m 30 [m[62;112H[K[62;112H42,6[10CBot[15;10H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 25 [m      shape1.Display();
+[93m 26 [m      shape2.Display();
+[93m 27 [m      shape3.Display();[62;112H[K[62;112H42,6[10C96%[18;10H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 22 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape1, shape1.Area);
+[93m 23 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape2, shape2.Area);
+[93m 24 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape3, shape3.Area);[62;112H[K[62;112H42,6[10C84%[21;10H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 19 [m      shape3.Radius [93m=[m [95m3.5f[m;
+[93m 20 [m      Console.WriteLine([95m"My Radius is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);
+[93m 21 [m[62;112H[K[62;112H42,6[10C72%[24;10H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 16 [m      [38;5;121mdouble[m cirRadius [93m=[m [95m5.5f[m;
+[93m 17 [m      Circle shape3 [93m=[m [93mnew[m Circle(cirRadius);
+[93m 18 [m      [96m// test Radius property[m[62;112H[K[62;112H42,6[10C60%[27;10H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 13 [m      [38;5;121mdouble[m triBase [93m=[m [95m5.5f[m, triHeight [93m=[m [95m12.25f[m;
+[93m 14 [m      IShape shape2 [93m=[m [93mnew[m Triangle(triBase, triHeight);
+[93m 15 [m[62;112H[K[62;112H42,6[10C48%[30;10H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 10 [m      [38;5;121mdouble[m rectWidth [93m=[m [95m8.75f[m, rectHeight [93m=[m [95m20.5f[m;
+[93m 11 [m      IShape shape1 [93m=[m [93mnew[m Rectangle(rectWidth, rectHeight);
+[93m 12 [m[62;112H[K[62;112H42,6[10C36%[33;10H[?25h[?25l[62;113H1,56[32;60H[?25h[?25l[62;102H~@k[32;60H[62;102H   [33;10H[62;113H2,6 [33;10H[?25h[?25l[62;102Hi[33;10H[62;102H [33;10H[62;1H[1m-- INSERT --[m[62;112H[K[62;112H42,6[10C36%[33;10H[?25h[?25l[33;10H[K[34;10H}[35;10H[K[36;10H[38;5;121mpublic[m [38;5;121mdouble[m Area {[37;10H}[38;10H[K[39;10H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[40;10H}[41;10H[K[42;25Hwidth [93m=[m [95m0[m;[42;35H[K[43;7H   [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;[44;7H}[44;8H[K[45;7H[96m////////////////////////////////////////////////////////////////////////[m[46;7H[38;5;121mpublic[m [1C[38;5;121mlass[m [38;5;121mTriangle[m[93m:[m IShape {[46;38H[K[47;9H[38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {[48;9H}[49;9H[K[50;9H[38;5;121mpublic[m [38;5;121mdouble[m Area {[51;9H}[52;9H[K[53;9H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[54;9H}[55;9H[K[56;26Hbase [93m=[m [95m0[m;[56;35H[K[57;7H  [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;[58;7H}[59;7H[K[60;7H[96m////////////////////////////////////////////////////////////////////////[m[61;7H[38;5;121mpublic[m [1C[38;5;121mlass[m [38;5;121mCircle[m[93m:[m IShape {[61;36H[K[34;10H[46m}[m[62;113H3[13C4[34;10H[?25h[?25l[32;60H{[34;10H}[62;113H2[33;10H[?25h[?25l[62;115H9[33;13H[?25h[?25lw[62;115H10[33;14H[?25h[?25li[62;116H1[33;15H[?25h[?25ld[62;116H2[33;16H[?25h[?25lt[62;116H3[33;17H[?25h[?25lh[62;116H4[33;18H[?25h[?25l[62;116H5[33;19H[?25h[?25l[93m=[m[62;116H6[33;20H[?25h[?25l[62;116H7[33;21H[?25h[?25li[62;116H8[33;22H[?25h[?25l[93min[m[62;116H9[33;23H[?25h[?25linW[62;115H20[33;24H[?25h[?25li[62;116H1[33;25H[?25h[?25ld[62;116H2[33;26H[?25h[?25lt[62;116H3[33;27H[?25h[?25lh[62;116H4[33;28H[?25h[?25l;[62;116H5[33;29H[?25h[?25l[34;10H [35;10H}[36;10H[K[37;10H[38;5;121mpublic[m [38;5;121mdouble[m Area {[38;10H}[39;10H[K[40;10H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[41;10H}[42;10H[K[43;25Hwidth [93m=[m [95m0[m;[43;35H[K[44;7H   [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;[45;7H}[45;8H[K[46;7H[96m////////////////////////////////////////////////////////////////////////[m[47;7H[38;5;121mpublic[m [1C[38;5;121mlass[m [38;5;121mTriangle[m[93m:[m IShape {[47;38H[K[48;9H[38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {[49;9H}[50;9H[K[51;9H[38;5;121mpublic[m [38;5;121mdouble[m Area {[52;9H}[53;9H[K[54;9H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[55;9H}[56;9H[K[57;26Hbase [93m=[m [95m0[m;[57;35H[K[58;7H  [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;[59;7H}[60;7H[K[61;7H[96m////////////////////////////////////////////////////////////////////////[m[62;113H3,9 [10C3[34;13H[?25h[?25lh[62;115H10[34;14H[?25h[?25le[62;116H1[34;15H[?25h[?25li[62;116H2[34;16H[?25h[?25lg[62;116H3[34;17H[?25h[?25lh[62;116H4[34;18H[?25h[?25lt[62;116H5[34;19H[?25h[?25l[62;116H6[34;20H[?25h[?25l[93m=[m[62;116H8[34;22H[?25h[?25li[62;116H9[34;23H[?25h[?25l[93min[m[62;115H20[34;24H[?25h[?25linH[62;116H1[34;25H[?25h[?25le[62;116H2[34;26H[?25h[?25li[62;116H3[34;27H[?25h[?25lg[62;116H4[34;28H[?25h[?25lh[62;116H5[34;29H[?25h[?25lt[62;116H6[34;30H[?25h[?25l;[62;116H7[34;31H[?25h[?25l[48;57H[46m{[49;9H}[m[62;112H57,54[48;58H[?25h[?25l[49;9H[46m [m[50;9H}[51;9H[K[52;9H[38;5;121mpublic[m [38;5;121mdouble[m Area {[53;9H}[54;9H[K[55;9H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[56;9H}[57;9H[K[58;26Hbase [93m=[m [95m0[m;[58;35H[K[59;7H  [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;[60;7H}[61;7H[K[48;57H{[49;9H [62;113H8,9 [10C2[49;13H[?25h[?25lm[62;115H10[49;14H[?25h[?25ly[62;116H1[49;15H[?25h[?25lb[62;116H2[49;16H[?25h[?25l[49;15H[K[62;116H1[49;15H[?25h[?25lB[62;116H2[49;16H[?25h[?25la[62;116H3[49;17H[?25h[?25ls[62;116H4[49;18H[?25h[?25le[62;116H5[49;19H[?25h[?25l[62;116H6[49;20H[?25h[?25l[93m=[m[62;116H7[49;21H[?25h[?25l[62;116H8[49;22H[?25h[?25li[62;116H9[49;23H[?25h[?25l[93min[m[62;115H20[49;24H[?25h[?25linB[62;116H1[49;25H[?25h[?25la[62;116H2[49;26H[?25h[?25lse[62;116H4[49;28H[?25h[?25l;[62;116H5[49;29H[?25h[?25l[50;9H [51;9H}[52;9H[K[53;9H[38;5;121mpublic[m [38;5;121mdouble[m Area {[54;9H}[55;9H[K[56;9H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[57;9H}[58;9H[K[59;26Hbase [93m=[m [95m0[m;[59;35H[K[60;7H  [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;[61;7H}[62;113H9,9 [10C1[50;13H[?25h[?25lm[62;115H10[50;14H[?25h[?25ly[62;116H1[50;15H[?25h[?25lH[62;116H2[50;16H[?25h[?25le[62;116H3[50;17H[?25h[?25li[62;116H4[50;18H[?25h[?25lg[62;116H5[50;19H[?25h[?25lh[62;116H6[50;20H[?25h[?25lt[62;116H7[50;21H[?25h[?25l[62;116H8[50;22H[?25h[?25l[93m=[m[62;115H20[50;24H[?25h[?25li[62;116H1[50;25H[?25h[?25l[93min[m[62;116H2[50;26H[?25h[?25linH[62;116H3[50;27H[?25h[?25le[62;116H4[50;28H[?25h[?25li[62;116H5[50;29H[?25h[?25lg[62;116H6[50;30H[?25h[?25lh[62;116H7[50;31H[?25h[?25lt[62;116H8[50;32H[?25h[?25l;[62;116H9[50;33H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 71 
+ 72 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 73 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mCircle[m[93m:[m IShape {[62;112H[K[62;112H59,29[9C41%[47;33H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 74 [m    [38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {
+[93m 75 [m    }
+[93m 76 [m[62;112H[K[62;112H59,29[9C51%[44;33H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 77 [m    [38;5;121mpublic[m [38;5;121mdouble[m Radius {
+[93m 78 [m    }
+[93m 79 [m[62;112H[K[62;112H59,29[9C62%[41;33H[?25h[?25l[56;40H[46m{[57;9H}[m[62;112H74,37[56;41H[?25h[?25l[57;9H[46m [m[58;9H}[59;9H[K[60;9H[38;5;121mpublic[m [38;5;121mdouble[m Radius {[61;9H}[56;40H{[57;9H [62;113H5,9 [10C0[57;13H[?25h[?25lr[62;115H10[57;14H[?25h[?25la[62;116H1[57;15H[?25h[?25ld[62;116H2[57;16H[?25h[?25li[62;116H3[57;17H[?25h[?25lu[62;116H4[57;18H[?25h[?25ls[62;116H5[57;19H[?25h[?25l[62;116H6[57;20H[?25h[?25l[93m=[m[62;116H7[57;21H[?25h[?25l[62;116H8[57;22H[?25h[?25li[62;116H9[57;23H[?25h[?25l[93min[m[62;115H20[57;24H[?25h[?25linR[62;116H1[57;25H[?25h[?25la[62;116H2[57;26H[?25h[?25ld[62;116H3[57;27H[?25h[?25li[62;116H4[57;28H[?25h[?25lu[62;116H5[57;29H[?25h[?25ls[62;116H6[57;30H[?25h[?25l[93m:[m[62;116H7[57;31H[?25h[?25l[57;30H[K[62;116H6[57;30H[?25h[62;1H[K[57;29H[?25l[62;102H^[[57;29H[?25h[?25l[62;102H  [57;30H[62;112H75,25[9C60%[57;29H[?25h[?25l[62;102H~@k[57;29H[62;102H   [57;29H[?25h[?25l[62;102Hi[57;29H[62;102H [57;29H[62;1H[1m-- INSERT --[m[62;112H[K[62;112H75,25[9C60%[57;29H[?25h[?25l[62;116H6[57;30H[?25h[?25l;[62;116H7[57;31H[?25h[62;1H[K[57;30H[?25l[62;102H^[[57;30H[?25h[?25l[62;102H  [57;31H[62;112H75,26[9C60%[57;30H[?25h[?25l[62;102H:[57;30H[62;102H[K[62;1H:[?25hwq[?25l[?1006;1000l[?1002l[?2004l[>4;m"lab07.cs" 91L, 2104B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ make
+[?2004lmcs sample1.cs
+mcs sample2.cs
+mcs sample3.cs
+mcs sample4.cs
+mcs sample5.cs
+mcs sample6.cs
+mcs sample7.cs
+mcs lab07.cs
+[31mlab07.cs(47,6): error CS0548: `Assignment.Rectangle.Area': property or indexer must have at least one accessor[0m
+[31mlab07.cs(63,5): error CS0548: `Assignment.Triangle.Area': property or indexer must have at least one accessor[0m
+[31mlab07.cs(79,5): error CS0548: `Assignment.Circle.Radius': property or indexer must have at least one accessor[0m
+[31mlab07.cs(82,5): error CS0548: `Assignment.Circle.Area': property or indexer must have at least one accessor[0m
+Compilation failed: 4 error(s), 0 warnings
+make: *** [Makefile:27: lab07] Error 1
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ [H[2J]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ makevi lab07.cs 
+[?2004l[?1006;1000h[?1002h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;62r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[62;1H"lab07.cs" 91L, 2104B[2;1H½[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[93m 15 
+ 16 [m      [38;5;121mdouble[m cirRadius [93m=[m [95m5.5f[m;[2;35H[K[3;1H[93m 17 [m      Circle shape3 [93m=[m [93mnew[m Circle(cirRadius);[3;49H[K[4;1H[93m 18 [m      [96m// test Radius property[m
+[93m 19 [m      shape3.Radius [93m=[m [95m3.5f[m;
+[93m 20 [m      Console.WriteLine([95m"My Radius is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);
+[93m 21 
+ 22 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape1, shape1.Area);
+[93m 23 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape2, shape2.Area);
+[93m 24 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape3, shape3.Area);
+[93m 25 [m      shape1.Display();
+[93m 26 [m      shape2.Display();
+[93m 27 [m      shape3.Display();
+[93m 28 [m    }
+[93m 29 [m  }
+[93m 30 
+ 31 [m  [38;5;121mpublic[m [38;5;121minterface[m IShape {
+[93m 32 [m     [38;5;121mvoid[m Display ();
+[93m 33 
+ 34 [m     [38;5;121mdouble[m Area {
+[93m 35 [m[7C[93mget[m;    [96m// concrete classes must implement IShape.Area.Get()[m
+[93m 36 [m     }
+[93m 37 [m  }
+[93m 38 
+ 39 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 40 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mRectangle[m[93m:[m IShape {
+[93m 41 [m     [38;5;121mpublic[m Rectangle([38;5;121mdouble[m inWidth, [38;5;121mdouble[m inHeight) {
+[93m 42 [m[8Cwidth [93m=[m inWidth;
+[93m 43 [m[8Cheight [93m=[m inHeight;
+[93m 44 [m     }
+[93m 45 
+ 46 [m     [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 47 [m     }
+[93m 48 
+ 49 [m     [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 50 [m     }
+[93m 51 
+ 52 [m     [38;5;121mprivate[m [38;5;121mdouble[m width [93m=[m [95m0[m;
+[93m 53 [m     [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;
+[93m 54 [m  }
+[93m 55 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 56 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mTriangle[m[93m:[m IShape {
+[93m 57 [m    [38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {
+[93m 58 [m[8CmyBase [93m=[m inBase;
+[93m 59 [m[8CmyHeight [93m=[m inHeight;
+[93m 60 [m    }
+[93m 61 
+ 62 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 63 [m    }
+[93m 64 
+ 65 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 66 [m    }
+[93m 67 
+ 68 [m    [38;5;121mprivate[m [38;5;121mdouble[m mybase [93m=[m [95m0[m;
+[93m 69 [m    [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;
+[93m 70 [m  }
+[93m 71 
+ 72 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 73 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mCircle[m[93m:[m IShape {
+[93m 74 [m    [38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {
+[93m 75 [m[8Cradius [93m=[m inRadius;[62;112H75,9[10C46%[61;13H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[?25l[62;102H2[61;13H[62;103H7[61;13H[62;104H/[61;13H[62;105H2[61;13H[62;106H8[61;13H[62;107H2[61;13H[62;108H8[61;13H[62;109H/[61;13H[62;110H2[61;13H[62;111H2[61;13H[?25h[?25l[62;102H          [61;13H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 12 
+ 13 [m      [38;5;121mdouble[m triBase [93m=[m [95m5.5f[m, triHeight [93m=[m [95m12.25f[m;
+[93m 14 [m      IShape shape2 [93m=[m [93mnew[m Triangle(triBase, triHeight);[62;1H[K[62;112H72,9[10C36%[61;13H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m  9 [m    [38;5;121mstatic[m [38;5;121mvoid[m Main() {
+[93m 10 [m      [38;5;121mdouble[m rectWidth [93m=[m [95m8.75f[m, rectHeight [93m=[m [95m20.5f[m;
+[93m 11 [m      IShape shape1 [93m=[m [93mnew[m Rectangle(rectWidth, rectHeight);[62;112H[K[62;112H69,9[10C26%[61;13H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m  6 
+  7 [m[38;5;121mnamespace[m Assignment {
+[93m  8 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mApplication  [m{[60;31H[46m{[61;9H}[m[62;112H[K[62;112H66,5[10C16%[61;9H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m  3 [m[96m */[m
+[93m  4 
+  5 [m[93musing[m System;[60;28H[46m{[61;9H}[m[62;112H[K[62;112H63,5[11C6%[61;9H[?25h[?25l[1;61r[1;1H[2L[1;62r[1;1H[93m  1 [m[96m/* lab07.cs[m
+[93m  2 [m[96m * C# lab07 Modify this code [m[62;112H[K[62;112H61,0-1[8CTop[61;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 62 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 63 [m    }
+[93m 64 [m[62;112H[K[62;112H61,0-1[8C10%[58;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 65 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 66 [m    }
+[93m 67 [m[62;112H[K[62;112H61,0-1[8C20%[55;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 68 [m    [38;5;121mprivate[m [38;5;121mdouble[m mybase [93m=[m [95m0[m;
+[93m 69 [m    [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;
+[93m 70 [m  }[62;112H[K[62;112H61,0-1[8C30%[52;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 71 
+ 72 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 73 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mCircle[m[93m:[m IShape {[62;112H[K[62;112H61,0-1[8C40%[49;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 74 [m    [38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {
+[93m 75 [m[8Cradius [93m=[m inRadius;
+[93m 76 [m    }[62;112H[K[62;112H61,0-1[8C50%[46;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 77 
+ 78 [m    [38;5;121mpublic[m [38;5;121mdouble[m Radius {
+[93m 79 [m    }[62;112H[K[62;112H61,0-1[8C60%[43;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 80 
+ 81 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 82 [m    }[62;112H[K[62;112H61,0-1[8C70%[40;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 83 
+ 84 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 85 [m    }[62;112H[K[62;112H61,0-1[8C80%[37;5H[?25h[?25l[62;112H75,26 [51;30H[?25h[?25l[54;30H[46m{[55;9H}[m[62;113H8[54;30H[?25h[?25l[62;102H~@k[54;30H[62;102H   [54;30H[?25h[?25l[62;102Hi[54;30H[62;102H [54;30H[62;1H[1m-- INSERT --[m[62;112H[K[62;112H78,26[9C80%[54;30H[?25h[?25l[62;116H7[54;31H[?25h[?25l[55;9H[46m [m[56;9H}[57;9H[K[58;9H[38;5;121mpublic[m [38;5;121mdouble[m Area {[59;9H}[60;9H[K[61;9H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[54;30H{[55;9H [62;113H9,9 [9C77[55;13H[?25h[?25lg[62;115H10[55;14H[?25h[?25le[62;116H1[55;15H[?25h[?25lt[62;116H2[55;16H[?25h[?25l[62;116H3[55;17H[?25h[?25l[93mget[m {[46m{[56;9H}[m[62;116H4[55;18H[?25h[?25l}[62;116H3[55;17H[?25h[?25l[1C[46m}[m[56;9H}[62;116H4[55;18H[?25h[?25l[46mr[m}r[46m}[m[62;116H5[55;19H[?25h[?25l[46me[m}e[46m}[m[62;116H6[55;20H[?25h[?25l[46mt[mu}tu[46m}[m[62;116H8[55;22H[?25h[?25l[46mr[m}r[46m}[m[62;116H9[55;23H[?25h[?25l[93mretur[m[93m[46mn[m}[93mn[m[46m}[m[62;115H20[55;24H[?25h[?25l[46m [m} [46m}[m[62;116H1[55;25H[?25h[?25l[46mr[m}r[46m}[m[62;116H2[55;26H[?25h[?25l[46ma[m}a[46m}[m[62;116H3[55;27H[?25h[?25l[46md[m}d[46m}[m[62;116H4[55;28H[?25h[?25l[46mi[m}i[46m}[m[62;116H5[55;29H[?25h[?25l[46mu[m}u[46m}[m[62;116H6[55;30H[?25h[?25l[46ms[m}s[46m}[m[62;116H7[55;31H[?25h[?25l[46m;[m};[46m}[m[62;116H8[55;32H[?25h[?25l[46m [m} [46m}[m[62;116H9[55;33H[?25h[?25l[62;115H30[55;34H[?25h[?25l[62;115H29[55;33H[?25h[?25l[62;115H30[55;34H[?25h[?25l[62;115H29[55;33H[?25h[?25l}[55;33H[K[55;32H[46m}[m[62;116H8[55;32H[?25h[?25l[62;116H9[55;33H[?25h[?25l[56;9H [57;9H}[58;9H[K[59;9H[38;5;121mpublic[m [38;5;121mdouble[m Area {[60;9H}[61;9H[K[55;17H{[14C}[62;112H80,9 [10C5[56;13H[?25h[?25ls[62;115H10[56;14H[?25h[?25le[62;116H1[56;15H[?25h[?25lt[62;116H2[56;16H[?25h[?25l[62;116H3[56;17H[?25h[?25l[93mset[m {[46m{[57;9H}[m[62;116H4[56;18H[?25h[?25l}[62;116H3[56;17H[?25h[?25l[1C[46m}[m[57;9H}[62;116H5[56;19H[?25h[?25l[62;116H4[56;18H[?25h[?25l[46mr[me}re[46m}[m[62;116H6[56;20H[?25h[?25l[46mt[m}t[46m}[m[62;116H7[56;21H[?25h[?25l[46mu[m}u[46m}[m[62;116H8[56;22H[?25h[?25l[46mr[m}r[46m}[m[62;116H9[56;23H[?25h[?25l[93mretur[m[93m[46mn[m}[93mn[m[46m}[m[62;115H20[56;24H[?25h[?25l[46m [m} [46m}[m[62;116H1[56;25H[?25h[?25l[46mr[m}r[46m}[m[62;116H2[56;26H[?25h[?25l[46ma[m}a[46m}[m[62;116H3[56;27H[?25h[?25l[46md[m}d[46m}[m[62;116H4[56;28H[?25h[?25l[46mi[m}i[46m}[m[62;116H5[56;29H[?25h[?25l[46mu[m}u[46m}[m[62;116H6[56;30H[?25h[?25l[46ms[m}s[46m}[m[62;116H7[56;31H[?25h[?25l}[56;31H[K[56;30H[46m}[m[62;116H6[56;30H[?25h[?25l}[56;30H[K[56;29H[46m}[m[62;116H5[56;29H[?25h[?25l}[56;29H[K[56;28H[46m}[m[62;116H4[56;28H[?25h[?25l}[56;28H[K[56;27H[46m}[m[62;116H3[56;27H[?25h[?25l}[56;27H[K[56;26H[46m}[m[62;116H2[56;26H[?25h[?25l}[56;26H[K[56;25H[46m}[m[62;116H1[56;25H[?25h[?25l[46mv[m}v[46m}[m[62;116H2[56;26H[?25h[?25l[46ma[m}a[46m}[m[62;116H3[56;27H[?25h[?25l[46ml[m}l[46m}[m[62;116H4[56;28H[?25h[?25l[46mu[m}u[46m}[m[62;116H5[56;29H[?25h[?25l[93mvalu[m[93m[46me[m}[93me[m[46m}[m[62;116H6[56;30H[?25h[?25lvalue[46ms[m}s[46m}[m[62;116H7[56;31H[?25h[?25l[56;17H{[13C}[62;116H6[56;30H[?25h[?25l[62;116H3[56;27H[?25h[?25l[62;116H2[56;26H[?25h[?25l[62;116H1[56;25H[?25h[?25l[62;116H0[56;24H[?25h[?25l[62;115H17[56;21H[?25h[?25l[62;116H6[56;20H[?25h[?25l[62;116H5[56;19H[?25h[?25l[62;116H6[56;20H[?25h[?25l[62;116H7[56;21H[?25h[?25l[62;116H8[56;22H[?25h[?25l[62;116H9[56;23H[?25h[?25l[62;115H20[56;24H[?25h[?25lretur values}[56;31H[K[62;115H19[56;23H[?25h[?25l values}[56;30H[K[62;116H8[56;22H[?25h[?25l values}[56;29H[K[62;116H7[56;21H[?25h[?25l values}[56;28H[K[62;116H6[56;20H[?25h[?25l values}[56;27H[K[62;116H5[56;19H[?25h[?25l values}[56;26H[K[56;17H[46m{[7C}[m[62;116H4[56;18H[?25h[?25lr value[46ms[m}[56;17H{[7Cs[62;116H5[56;19H[?25h[?25le values}[62;116H6[56;20H[?25h[?25la values}[62;116H7[56;21H[?25h[?25ld values}[62;116H8[56;22H[?25h[?25li values}[62;116H9[56;23H[?25h[?25lu values}[62;115H20[56;24H[?25h[?25ls values}[62;116H1[56;25H[?25h[?25l values}[56;32H[K[62;116H0[56;24H[?25h[?25l values}[56;31H[K[62;115H19[56;23H[?25h[?25l values}[56;30H[K[62;116H8[56;22H[?25h[?25l values}[56;29H[K[62;116H7[56;21H[?25h[?25l values}[56;28H[K[62;116H6[56;20H[?25h[?25l values}[56;27H[K[62;116H5[56;19H[?25h[?25la values}[62;116H6[56;20H[?25h[?25ld values}[62;116H7[56;21H[?25h[?25li values}[62;116H8[56;22H[?25h[?25lu values}[62;116H9[56;23H[?25h[?25ls values}[62;115H20[56;24H[?25h[?25l  values}[62;116H1[56;25H[?25h[?25l[93m=[m values}[62;116H2[56;26H[?25h[?25l[62;116H3[56;27H[?25h[?25l[62;116H6[56;30H[?25h[?25l[62;116H8[56;32H[?25h[?25l[56;17H[46m{[15C}[m[62;116H9[56;33H[?25h[?25l[93mvalue[m}[56;33H[K[56;32H[46m}[m[62;116H8[56;32H[?25h[?25l[46m;[m};[46m}[m[62;116H9[56;33H[?25h[?25l[1;61r[1;1H[6L[1;62r[1;1H[93m 19 [m      shape3.Radius [93m=[m [95m3.5f[m;
+[93m 20 [m      Console.WriteLine([95m"My Radius is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);
+[93m 21 
+ 22 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape1, shape1.Area);
+[93m 23 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape2, shape2.Area);
+[93m 24 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape3, shape3.Area);[61;17H[46m{[14C}[m[62;112H[K[62;112H79,29[9C56%[61;33H[?25h[?25l[1;61r[1;1H[6L[1;62r[1;1H[93m 13 [m      [38;5;121mdouble[m triBase [93m=[m [95m5.5f[m, triHeight [93m=[m [95m12.25f[m;
+[93m 14 [m      IShape shape2 [93m=[m [93mnew[m Triangle(triBase, triHeight);
+[93m 15 
+ 16 [m      [38;5;121mdouble[m cirRadius [93m=[m [95m5.5f[m;
+[93m 17 [m      Circle shape3 [93m=[m [93mnew[m Circle(cirRadius);
+[93m 18 [m      [96m// test Radius property[m[62;112H[K[62;112H73,29[9C37%[61;33H[?25h[?25l[1;61r[1;1H[6L[1;62r[1;1H[93m  7 [m[38;5;121mnamespace[m Assignment {
+[93m  8 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mApplication  [m{
+[93m  9 [m    [38;5;121mstatic[m [38;5;121mvoid[m Main() {
+[93m 10 [m      [38;5;121mdouble[m rectWidth [93m=[m [95m8.75f[m, rectHeight [93m=[m [95m20.5f[m;
+[93m 11 [m      IShape shape1 [93m=[m [93mnew[m Rectangle(rectWidth, rectHeight);
+[93m 12 [m[62;112H[K[62;112H67,1[10C18%[61;5H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m  4 
+  5 [m[93musing[m System;
+[93m  6 [m[62;112H[K[62;112H64,1[11C9%[61;5H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m  1 [m[96m/* lab07.cs[m
+[93m  2 [m[96m * C# lab07 Modify this code [m
+[93m  3 [m[96m */[m[62;112H[K[62;112H61,1[10CTop[61;5H[[62;102H^[[61;5H[62;104H[[61;5H[?25h[?25l[62;102H   [61;5H [62;112H[K[62;112H61,1[10CTop[61;5H[?25h[?25l[62;112H[K[62;112H61,1[10CTop[61;5H[?25h[?25l[62;112H20,39[20;43H[?25h[?25l[62;116H8[20;42H[?25h[?25l[62;116H7[20;41H[?25h[?25l[62;116H4[20;38H[?25h[?25l[62;116H3[20;37H[?25h[?25l[62;116H2[20;36H[?25h[?25l[62;116H1[20;35H[?25h[?25l[62;116H0[20;34H[?25h[?25l[62;115H29[20;33H[?25h[?25l[62;116H8[20;32H[?25h[?25l[62;116H7[20;31H[?25h[?25l[62;116H6[20;30H[?25h[?25l[95my Radius is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;69H[K[20;30H[?25h[?25l[95madius is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;66H[K[20;30H[?25h[?25l[95mdius is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;65H[K[20;30H[?25h[?25l[95mius is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;64H[K[20;30H[?25h[?25l[95mus is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;63H[K[20;30H[?25h[?25l[95ms is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;62H[K[20;30H[?25h[?25l[95m is '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;61H[K[20;30H[?25h[?25l[95mis '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;60H[K[20;30H[?25h[?25l[95ms '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;59H[K[20;30H[?25h[?25l[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;58H[K[20;30H[?25h[?25l[95mI '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H7[20;31H[?25h[?25l[1C[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H8[20;32H[?25h[?25l[95ms '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H9[20;33H[?25h[?25l[95me '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;115H30[20;34H[?25h[?25l[95mt '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H1[20;35H[?25h[?25l[1C[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H2[20;36H[?25h[?25l[95mm '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H3[20;37H[?25h[?25l[95my '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H4[20;38H[?25h[?25l[1C[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H5[20;39H[?25h[?25l[95mr '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H6[20;40H[?25h[?25l[95ma '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H7[20;41H[?25h[?25l[95md '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H8[20;42H[?25h[?25l[95mi '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H9[20;43H[?25h[?25l[95mu '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;115H40[20;44H[?25h[?25l[95ms '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H1[20;45H[?25h[?25l[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;72H[K[62;116H0[20;44H[?25h[?25l[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;71H[K[62;115H39[20;43H[?25h[?25l[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;70H[K[62;116H8[20;42H[?25h[?25l[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;69H[K[62;116H7[20;41H[?25h[?25l[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;68H[K[62;116H6[20;40H[?25h[?25l[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;67H[K[62;116H5[20;39H[?25h[?25l[95mR '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H6[20;40H[?25h[?25l[95ma '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H7[20;41H[?25h[?25l[95md '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H8[20;42H[?25h[?25l[95mo '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H9[20;43H[?25h[?25l[95mu '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;115H40[20;44H[?25h[?25l[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;71H[K[62;115H39[20;43H[?25h[?25l[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;70H[K[62;116H8[20;42H[?25h[?25l[95mi '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H9[20;43H[?25h[?25l[95mu '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;115H40[20;44H[?25h[?25l[95ms '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H1[20;45H[?25h[?25l[1C[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H2[20;46H[?25h[?25l[95mt '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H3[20;47H[?25h[?25l[95mo '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H4[20;48H[?25h[?25l[1C[95m '{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[62;116H5[20;49H[?25h[?25l[95m'{0}'[m[38;5;224m\t[m[95m: "[m, shape3.Radius);[20;76H[K[62;116H4[20;48H[?25h[?25l[62;116H5[20;49H[?25h[?25l[1C[95m[46m{[1C}[m[62;116H6[20;50H[?25h[?25l[62;116H7[20;51H[?25h[?25l[62;116H8[20;52H[?25h[?25l[62;116H9[20;53H[?25h[?25l[95m{0}[m[62;115H50[20;54H[?25h[?25l[62;116H1[20;55H[?25h[?25l[62;116H2[20;56H[?25h[?25l[97m[101m\:[m[95m "[m, shape3.Radius);[20;75H[K[62;116H1[20;55H[?25h[?25l[95m: "[m, shape3.Radius);[20;74H[K[62;116H0[20;54H[?25h[?25l[95m "[m, shape3.Radius);[20;73H[K[20;54H[?25h[?25l[95m. "[m, shape3.Radius);[62;116H1[20;55H[?25h[?25l[95m"[m, shape3.Radius);[20;73H[K[20;55H[?25h[?25l[62;113H1,7 [21;11H[?25h[?25l[9;28H[46m{[m[22;54H[95m[46m}[m[62;113H2,51[22;55H[?25h[?25l[9;28H{[22;54H[95m}[m[23;52H[95m[46m{[1C}[m[62;113H3[23;55H[?25h[?25l[95m{1}[m[24;52H[95m[46m{[1C}[m[62;113H4[24;55H[?25h[?25l[95m{1}[m[62;113H5,24[25;28H[?25h[62;1H[K[25;27H[?25l[62;102H^[[25;27H[?25h[?25l[62;102H  [25;28H[62;112H25,23[9CTop[25;27H[?25h[?25l[62;102H:[25;27H[62;102H[K[62;1H:[?25hwq[?25l[?1006;1000l[?1002l[?2004l[>4;m"lab07.cs" 93L, 2166B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ vi lab07.cs [8Pmakevi lab07.cs [8Pmake
+[?2004lmcs sample1.cs
+mcs sample2.cs
+mcs sample3.cs
+mcs sample4.cs
+mcs sample5.cs
+mcs sample6.cs
+mcs sample7.cs
+mcs lab07.cs
+[31mlab07.cs(47,6): error CS0548: `Assignment.Rectangle.Area': property or indexer must have at least one accessor[0m
+[31mlab07.cs(63,5): error CS0548: `Assignment.Triangle.Area': property or indexer must have at least one accessor[0m
+[31mlab07.cs(84,5): error CS0548: `Assignment.Circle.Area': property or indexer must have at least one accessor[0m
+Compilation failed: 3 error(s), 0 warnings
+make: *** [Makefile:27: lab07] Error 1
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ makevi lab07.cs 
+[?2004l[?1006;1000h[?1002h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;62r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[62;1H"lab07.cs" 93L, 2166B[2;1H½[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[93m  1 [m[96m/* lab07.cs[m
+[93m  2 [m[96m * C# lab07 Modify this code [m[2;34H[K[3;1H[93m  3 [m[96m */[m[3;8H[K[4;1H[93m  4 
+  5 [m[93musing[m System;
+[93m  6 
+  7 [m[38;5;121mnamespace[m Assignment {
+[93m  8 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mApplication  [m{
+[93m  9 [m    [38;5;121mstatic[m [38;5;121mvoid[m Main() {
+[93m 10 [m      [38;5;121mdouble[m rectWidth [93m=[m [95m8.75f[m, rectHeight [93m=[m [95m20.5f[m;
+[93m 11 [m      IShape shape1 [93m=[m [93mnew[m Rectangle(rectWidth, rectHeight);
+[93m 12 
+ 13 [m      [38;5;121mdouble[m triBase [93m=[m [95m5.5f[m, triHeight [93m=[m [95m12.25f[m;
+[93m 14 [m      IShape shape2 [93m=[m [93mnew[m Triangle(triBase, triHeight);
+[93m 15 
+ 16 [m      [38;5;121mdouble[m cirRadius [93m=[m [95m5.5f[m;
+[93m 17 [m      Circle shape3 [93m=[m [93mnew[m Circle(cirRadius);
+[93m 18 [m      [96m// test Radius property[m
+[93m 19 [m      shape3.Radius [93m=[m [95m3.5f[m;
+[93m 20 [m      Console.WriteLine([95m"I set my Radius to '{0}'."[m, shape3.Radius);
+[93m 21 
+ 22 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape1, shape1.Area);
+[93m 23 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape2, shape2.Area);
+[93m 24 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape3, shape3.Area);
+[93m 25 [m      shape1.Display();
+[93m 26 [m      shape2.Display();
+[93m 27 [m      shape3.Display();
+[93m 28 [m    }
+[93m 29 [m  }
+[93m 30 
+ 31 [m  [38;5;121mpublic[m [38;5;121minterface[m IShape {
+[93m 32 [m     [38;5;121mvoid[m Display ();
+[93m 33 
+ 34 [m     [38;5;121mdouble[m Area {
+[93m 35 [m[7C[93mget[m;    [96m// concrete classes must implement IShape.Area.Get()[m
+[93m 36 [m     }
+[93m 37 [m  }
+[93m 38 
+ 39 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 40 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mRectangle[m[93m:[m IShape {
+[93m 41 [m     [38;5;121mpublic[m Rectangle([38;5;121mdouble[m inWidth, [38;5;121mdouble[m inHeight) {
+[93m 42 [m[8Cwidth [93m=[m inWidth;
+[93m 43 [m[8Cheight [93m=[m inHeight;
+[93m 44 [m     }
+[93m 45 
+ 46 [m     [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 47 [m     }
+[93m 48 
+ 49 [m     [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 50 [m     }
+[93m 51 
+ 52 [m     [38;5;121mprivate[m [38;5;121mdouble[m width [93m=[m [95m0[m;
+[93m 53 [m     [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;
+[93m 54 [m  }
+[93m 55 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 56 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mTriangle[m[93m:[m IShape {
+[93m 57 [m    [38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {
+[93m 58 [m[8CmyBase [93m=[m inBase;
+[93m 59 [m[8CmyHeight [93m=[m inHeight;
+[93m 60 [m    }
+[93m 61 [m[62;112H25,7[10CTop[25;11H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[?25l[62;102H2[25;11H[62;103H7[25;11H[62;104H/[25;11H[62;105H2[25;11H[62;106H8[25;11H[62;107H2[25;11H[62;108H8[25;11H[62;109H/[25;11H[62;110H2[25;11H[62;111H2[25;11H[?25h[?25l[62;102H          [25;11H[?25h[?25l[62;102H~@k[25;11H[62;102H   [26;11H[62;113H6[26;11H[?25h[?25l[62;102H~@k[26;11H[62;102H   [27;11H[62;113H7[27;11H[?25h[?25l[62;102H~@k[27;11H[62;102H   [28;9H[9;28H[46m{[28;9H}[m[62;113H8,5[28;9H[?25h[?25l[9;28H{[28;9H}[46;29H[46m{[47;10H}[m[62;112H47,6[47;10H[?25h[?25l[62;102Hi[47;10H[62;102H [47;10H[62;1H[1m-- INSERT --[m[62;13H[K[62;112H47,6[10CTop[47;10H[?25h[?25l[62;115H7[47;11H[?25h[?25l[62;115H6[47;10H[?25h[?25l[47;10H[K[48;10H}[49;10H[K[50;10H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[51;10H}[52;10H[K[53;25Hwidth [93m=[m [95m0[m;[53;35H[K[54;7H   [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;[55;7H}[55;8H[K[56;7H[96m////////////////////////////////////////////////////////////////////////[m[57;7H[38;5;121mpublic[m [1C[38;5;121mlass[m [38;5;121mTriangle[m[93m:[m IShape {[57;38H[K[58;9H[38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {[59;15HBase [93m=[m inBase;[59;29H[K[60;9H    myHeight [93m=[m inHeight;[61;9H}[48;10H[46m}[m[62;113H8[48;10H[?25h[?25l[46;29H{[48;10H}[62;113H7[47;10H[?25h[?25l[62;115H9[47;13H[?25h[?25lg[62;115H10[47;14H[?25h[?25le[62;116H1[47;15H[?25h[?25lt[62;116H2[47;16H[?25h[?25l[62;116H3[47;17H[?25h[?25l[93mget[m {}[?25h[?25l[46m{}[m[62;116H4[47;18H[?25h[?25l[46mr[m}r[46m}[m[62;116H5[47;19H[?25h[?25l[46me[m}e[46m}[m[62;116H6[47;20H[?25h[?25l[46mt[m}t[46m}[m[62;116H7[47;21H[?25h[?25l[46mu[m}u[46m}[m[62;116H8[47;22H[?25h[?25l[46mr[m}r[46m}[m[62;116H9[47;23H[?25h[?25l[93mretur[m[93m[46mn[m}[93mn[m[46m}[m[62;115H20[47;24H[?25h[?25l[46m [m} [46m}[m[62;116H1[47;25H[?25h[?25l[46mw[m}w[46m}[m[62;116H2[47;26H[?25h[?25l[46mi[m}i[46m}[m[62;116H3[47;27H[?25h[?25l[46mf[m}f[46m}[m[62;116H4[47;28H[?25h[?25l}[47;28H[K[47;27H[46m}[m[62;116H3[47;27H[?25h[?25l[46md[m}d[46m}[m[62;116H4[47;28H[?25h[?25l[46mt[mh}th[46m}[m[62;116H6[47;30H[?25h[?25l[46m [m} [46m}[m[62;116H7[47;31H[?25h[?25l[93m[46m*[m}[93m*[m[46m}[m[62;116H8[47;32H[?25h[?25l[46m [m} [46m}[m[62;116H9[47;33H[?25h[?25l[46mh[m}h[46m}[m[62;115H30[47;34H[?25h[?25l[46me[m}e[46m}[m[62;116H1[47;35H[?25h[?25l[46mi[m}i[46m}[m[62;116H2[47;36H[?25h[?25l[46mg[m}g[46m}[m[62;116H3[47;37H[?25h[?25l[46mh[m}h[46m}[m[62;116H4[47;38H[?25h[?25l[46mt[m}t[46m}[m[62;116H5[47;39H[?25h[?25l[46m;[m};[46m}[m[62;116H6[47;40H[?25h[?25l[46m [m} [46m}[m[62;116H7[47;41H[?25h[?25l}[47;41H[K[47;40H[46m}[m[62;116H6[47;40H[?25h[?25l[46;29H[46m{[m[47;17H{[22C}[48;10H[46m}[m[62;113H8,7 [48;11H[?25h[?25l[46;29H{[48;10H}[62;113H9,1[49;5H[?25h[?25l[50;32H[46m{[51;10H}[m[62;112H50,29[50;33H[?25h[?25l[51;10H[46m [m[52;10H}[53;10H[K[54;25Hwidth [93m=[m [95m0[m;[54;35H[K[55;7H   [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;[56;7H}[56;8H[K[57;7H[96m////////////////////////////////////////////////////////////////////////[m[58;7H[38;5;121mpublic[m [1C[38;5;121mlass[m [38;5;121mTriangle[m[93m:[m IShape {[58;38H[K[59;9H[38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {[60;15HBase [93m=[m inBase;[60;29H[K[61;9H    myHeight [93m=[m inHeight;[50;32H{[51;10H [62;113H1,10[51;14H[?25h[?25lC[62;116H1[51;15H[?25h[?25lo[62;116H2[51;16H[?25h[?25ln[62;116H3[51;17H[?25h[?25ls[62;116H4[51;18H[?25h[?25lo[62;116H5[51;19H[?25h[?25ll[62;116H6[51;20H[?25h[?25le[62;116H7[51;21H[?25h[?25l.[62;116H8[51;22H[?25h[?25lW[62;116H9[51;23H[?25h[?25lr[62;115H20[51;24H[?25h[?25li[62;116H1[51;25H[?25h[?25lt[62;116H2[51;26H[?25h[?25le[62;116H3[51;27H[?25h[?25ll[62;116H4[51;28H[?25h[?25li[62;116H5[51;29H[?25h[?25ln[62;116H6[51;30H[?25h[?25le[62;116H7[51;31H[?25h[?25l[51;30H[K[62;116H6[51;30H[?25h[?25le[62;116H7[51;31H[?25h[?25l([62;116H8[51;32H[?25h[?25l)[62;116H7[51;31H[?25h[?25l[46m()[m[62;116H9[51;33H[?25h[?25l[62;116H8[51;32H[?25h[?25l[95m[46m"[m[95m)"[m[95m[46m)[m[62;116H9[51;33H[?25h[?25l[95m[46m [m[95m) [m[95m[46m)[m[62;115H30[51;34H[?25h[?25l[95m[46m"[m)[95m"[m[46m)[m[62;116H1[51;35H[?25h[?25l([3C)[62;116H0[51;34H[?25h[?25l[95mI"[m)[62;116H1[51;35H[?25h[?25l[95m "[m)[62;116H2[51;36H[?25h[?25l[95m"[m)[51;37H[K[62;116H1[51;35H[?25h[?25l[95m"[m)[51;36H[K[62;116H0[51;34H[?25h[?25l[95m"[m)[51;35H[K[62;115H29[51;33H[?25h[?25l[95mI"[m)[62;115H30[51;34H[?25h[?25l[95m'"[m)[62;116H1[51;35H[?25h[?25l[95m,"[m)[62;116H2[51;36H[?25h[?25l[95m "[m)[62;116H3[51;37H[?25h[?25l[95ma"[m)[62;116H4[51;38H[?25h[?25l[95m "[m)[62;116H5[51;39H[?25h[?25l[95mr"[m)[62;116H6[51;40H[?25h[?25l[95me"[m)[62;116H7[51;41H[?25h[?25l[95mc"[m)[62;116H8[51;42H[?25h[?25l[95mt"[m)[62;116H9[51;43H[?25h[?25l[95ma"[m)[62;115H40[51;44H[?25h[?25l[95mn"[m)[62;116H1[51;45H[?25h[?25l[95mg"[m)[62;116H2[51;46H[?25h[?25l[95ml"[m)[62;116H3[51;47H[?25h[?25l[95me"[m)[62;116H4[51;48H[?25h[?25l[95m "[m)[62;116H5[51;49H[?25h[?25l[95mm"[m)[62;116H6[51;50H[?25h[?25l[95my"[m)[62;116H7[51;51H[?25h[?25l[95m "[m)[62;116H8[51;52H[?25h[?25l[95m"[m)[51;53H[K[62;116H7[51;51H[?25h[?25l[95m"[m)[51;52H[K[62;116H6[51;50H[?25h[?25l[95m"[m)[51;51H[K[62;116H5[51;49H[?25h[?25l[95m"[m)[51;50H[K[62;116H4[51;48H[?25h[?25l[95m!"[m)[62;116H5[51;49H[?25h[?25l[95m "[m)[62;116H6[51;50H[?25h[?25l[95mI"[m)[62;116H7[51;51H[?25h[?25l[95m "[m)[62;116H8[51;52H[?25h[?25l[62;116H7[51;51H[?25h[?25l[62;116H4[51;48H[?25h[?25l[62;116H3[51;47H[?25h[?25l[62;116H0[51;44H[?25h[?25l[62;115H39[51;43H[?25h[?25l[62;116H6[51;40H[?25h[?25l[62;116H5[51;39H[?25h[?25l[62;116H4[51;38H[?25h[?25l[62;116H3[51;37H[?25h[?25l[62;116H2[51;36H[?25h[?25l[95m a rectangle! I "[m)[51;53H[K[62;116H1[51;35H[?25h[?25l[95mm a rectangle! I "[m)[62;116H2[51;36H[?25h[?25l[62;116H3[51;37H[?25h[?25l[62;116H4[51;38H[?25h[?25l[62;116H8[51;42H[?25h[?25l[62;115H41[51;45H[?25h[?25l[62;116H2[51;46H[?25h[?25l[62;116H3[51;47H[?25h[?25l[62;116H6[51;50H[?25h[?25l[62;116H7[51;51H[?25h[?25l[62;116H8[51;52H[?25h[?25l[51;31H[46m([21C)[m[62;115H50[51;54H[?25h[?25l[62;115H49[51;53H[?25h[?25l[51;31H([21C)[62;116H8[51;52H[?25h[?25l[62;116H7[51;51H[?25h[?25l[62;116H8[51;52H[?25h[?25l[95mh"[m)[62;116H9[51;53H[?25h[?25l[95ma"[m)[62;115H50[51;54H[?25h[?25l[95mv"[m)[62;116H1[51;55H[?25h[?25l[95me"[m)[62;116H2[51;56H[?25h[?25l[95m "[m)[62;116H3[51;57H[?25h[?25l[95mw"[m)[62;116H4[51;58H[?25h[?25l[95mi"[m)[62;116H5[51;59H[?25h[?25l[95md"[m)[62;116H6[51;60H[?25h[?25l[95mt"[m)[62;116H7[51;61H[?25h[?25l[95mh"[m)[62;116H8[51;62H[?25h[?25l[62;116H7[51;61H[?25h[?25l[62;116H8[51;62H[?25h[?25l[95m "[m)[62;116H9[51;63H[?25h[?25l[95m{}"[m)[?25h[?25l[95m[46m{}[m[62;115H61[51;65H[?25h[?25l[62;116H0[51;64H[?25h[?25l[95m[46m0[m[95m}"[m)[95m0[m[95m[46m}[m[62;116H1[51;65H[?25h[?25l[62;116H2[51;66H[?25h[?25l[95m "[m)[95m{0}[m[62;116H3[51;67H[?25h[?25l[95ma"[m)[62;116H4[51;68H[?25h[?25l[95mn"[m)[62;116H5[51;69H[?25h[?25l[95md"[m)[62;116H6[51;70H[?25h[?25l[95m "[m)[62;116H7[51;71H[?25h[?25l[95mh"[m)[62;116H8[51;72H[?25h[?25l[95me"[m)[62;116H9[51;73H[?25h[?25l[95mi"[m)[62;115H70[51;74H[?25h[?25l[95mg"[m)[62;116H1[51;75H[?25h[?25l[95mh"[m)[62;116H2[51;76H[?25h[?25l[95mt"[m)[62;116H3[51;77H[?25h[?25l[95m "[m)[62;116H4[51;78H[?25h[?25l[95m{"[m)[95m[46m{[m[52;10H[46m}[m[62;116H5[51;79H[?25h[?25l[95m1"[m)[95m{[m[52;10H}[62;116H6[51;80H[?25h[?25l[95m}"[m)[62;116H4[51;78H[?25h[?25l[95m[46m{[1C}[m[62;116H7[51;81H[?25h[?25l[95m,"[m)[95m{1}[m[62;116H8[51;82H[?25h[?25l[95m "[m)[62;116H9[51;83H[?25h[?25l[95m"[m)[51;84H[K[62;116H8[51;82H[?25h[?25l[95m"[m)[51;83H[K[51;78H[95m[46m{[1C}[m[62;116H7[51;81H[?25h[?25l[51;31H[46m([m[46C[95m{1}[m[1C[46m)[m[62;116H8[51;82H[?25h[?25l[46m,[m),[46m)[m[62;116H9[51;83H[?25h[?25l[46m [m) [46m)[m[62;115H80[51;84H[?25h[?25l[46mw[m)w[46m)[m[62;116H1[51;85H[?25h[?25l[46mi[m)i[46m)[m[62;116H2[51;86H[?25h[?25l[46md[m)d[46m)[m[62;116H3[51;87H[?25h[?25l[46mt[m)t[46m)[m[62;116H4[51;88H[?25h[?25l[46mh[m)h[46m)[m[62;116H5[51;89H[?25h[?25l[46m,[m),[46m)[m[62;116H6[51;90H[?25h[?25l[46m [m) [46m)[m[62;116H7[51;91H[?25h[?25l[46mh[m)h[46m)[m[62;116H8[51;92H[?25h[?25l[46me[m)e[46m)[m[62;116H9[51;93H[?25h[?25l[46mi[m)i[46m)[m[62;115H90[51;94H[?25h[?25l[46mg[m)g[46m)[m[62;116H1[51;95H[?25h[?25l[46mh[m)h[46m)[m[62;116H2[51;96H[?25h[?25l[46mt[m)t[46m)[m[62;116H3[51;97H[?25h[?25l[62;116H4[51;98H[?25h[?25l;[51;31H([65C)[62;116H5[51;99H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 62 [m    }
+[93m 63 
+ 64 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {[62;112H[K[62;112H51,95[10C8%[48;99H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 65 [m    }
+[93m 66 
+ 67 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {[62;112H[K[62;112H51,95[9C17%[45;99H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 68 [m    }
+[93m 69 
+ 70 [m    [38;5;121mprivate[m [38;5;121mdouble[m mybase [93m=[m [95m0[m;[62;112H[K[62;112H51,95[9C26%[42;99H[?25h[?25l[1;61r[1;1H[9M[1;62r[53;1H[93m 71 [m    [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;
+[93m 72 [m  }
+[93m 73 
+ 74 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 75 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mCircle[m[93m:[m IShape {
+[93m 76 [m    [38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {
+[93m 77 [m[8Cradius [93m=[m inRadius;
+[93m 78 [m    }
+[93m 79 [m[62;112H[K[62;112H51,95[9C52%[33;99H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 80 [m    [38;5;121mpublic[m [38;5;121mdouble[m Radius {
+[93m 81 [m[8C[93mget[m {[93mreturn[m radius;}
+[93m 82 [m[8C[93mset[m {radius [93m=[m [93mvalue[m;}[62;112H[K[62;112H51,95[9C61%[30;99H[?25h[?25l[43;28H[46m{[44;9H}[m[62;112H64,2[43;29H[?25h[?25l[44;9H[46m [m[45;9H}[46;9H[K[47;9H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[48;9H}[49;9H[K[50;26Hbase [93m=[m [95m0[m;[50;35H[K[51;7H  [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;[52;7H}[53;7H[K[54;7H[96m////////////////////////////////////////////////////////////////////////[m[55;7H[38;5;121mpublic[m [1C[38;5;121mlass[m [38;5;121mCircle[m[93m:[m IShape {[55;36H[K[56;9H[38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {[57;9H    radius [93m=[m inRadius;[58;9H}[59;9H[K[60;9H[38;5;121mpublic[m [38;5;121mdouble[m Radius {[60;31H[K[61;13H[93mget[m {[93mreturn[m radius;}[61;33H[K[43;28H{[44;9H [62;113H5,9 [10C0[44;13H[?25h[?25lge[62;115H11[44;15H[?25h[?25lt[62;116H2[44;16H[?25h[?25l[93mget[m{[46m{[45;9H}[m[62;116H3[44;17H[?25h[?25l}[62;116H2[44;16H[?25h[?25l[1C[46m}[m[45;9H}[62;116H4[44;18H[?25h[?25l[62;116H3[44;17H[?25h[?25l[46m [m} [46m}[m[62;116H4[44;18H[?25h[?25l[46mr[m}r[46m}[m[62;116H5[44;19H[?25h[?25l[46me[m}e[46m}[m[62;116H6[44;20H[?25h[?25l[46mt[m}t[46m}[m[62;116H7[44;21H[?25h[?25l[46mu[m}u[46m}[m[62;116H8[44;22H[?25h[?25l[46mr[m}r[46m}[m[62;116H9[44;23H[?25h[?25l[93mretur[m[93m[46mn[m}[93mn[m[46m}[m[62;115H20[44;24H[?25h[?25l[46m [m} [46m}[m[62;116H1[44;25H[?25h[?25l[95m[46m0[m}[95m0[m[46m}[m[62;116H2[44;26H[?25h[?25l[46m.[m}.[46m}[m[62;116H3[44;27H[?25h[?25l[95m.[m[95m[46m5[m}[95m5[m[46m}[m[62;116H4[44;28H[?25h[?25l[46m [m} [46m}[m[62;116H5[44;29H[?25h[?25l[93m[46m*[m}[93m*[m[46m}[m[62;116H6[44;30H[?25h[?25l[46m [m} [46m}[m[62;116H7[44;31H[?25h[?25l[46mm[m}m[46m}[m[62;116H8[44;32H[?25h[?25l[46my[m}y[46m}[m[62;116H9[44;33H[?25h[?25l[46mb[m}b[46m}[m[62;115H30[44;34H[?25h[?25l[46ma[m}a[46m}[m[62;116H1[44;35H[?25h[?25l[46ms[m}s[46m}[m[62;116H2[44;36H[?25h[?25l[46me[m}e[46m}[m[62;116H3[44;37H[?25h[?25l}[44;37H[K[44;36H[46m}[m[62;116H2[44;36H[?25h[?25l}[44;36H[K[44;35H[46m}[m[62;116H1[44;35H[?25h[?25l}[44;35H[K[44;34H[46m}[m[62;116H0[44;34H[?25h[?25l[43;28H[46m{[m[44;16H{[17C}[45;9H[46m}[m[62;113H4,25[43;29H[?25h[?25l{[45;9H}[62;113H3,1 [42;5H[?25h[?25l[38;57H[46m{[41;9H}[m[62;113H2,6[41;10H[?25h[?25l[38;57H{[41;9H}[62;113H1,29[40;33H[?25h[?25l[62;116H8[40;32H[?25h[?25l[62;116H5[40;29H[?25h[?25l[62;116H4[40;28H[?25h[?25l[62;116H3[40;27H[?25h[?25l[62;116H2[40;26H[?25h[?25l[62;115H19[40;23H[?25h[?25l[62;116H8[40;22H[?25h[?25l[62;116H7[40;21H[?25h[?25l[62;116H6[40;20H[?25h[?25l[62;116H5[40;19H[?25h[?25l[62;116H4[40;18H[?25h[?25l[62;116H3[40;17H[?25h[?25l[62;116H2[40;16H[?25h[?25leight [93m=[m inHeight;[40;32H[K[62;116H1[40;15H[?25h[?25l[62;113H0[39;15H[?25h[?25l[62;116H2[39;16H[?25h[?25l[62;113H1[40;16H[?25h[?25l[62;116H1[40;15H[?25h[?25lHeight [93m=[m inHeight;[62;116H2[40;16H[?25h[?25l[38;57H[46m{[41;9H}[m[62;113H2,6 [41;10H[?25h[?25l[38;57H{[41;9H}[62;113H3,1[42;5H[?25h[?25l[62;113H4,12[43;16H[?25h[?25l[62;116H3[43;17H[?25h[?25l[62;116H4[43;18H[?25h[?25l[62;113H5,16[44;20H[?25h[?25l[62;116H7[44;21H[?25h[?25l[62;115H20[44;24H[?25h[?25l[62;116H1[44;25H[?25h[?25l[62;116H4[44;28H[?25h[?25l[62;116H6[44;30H[?25h[?25l[62;116H9[44;33H[?25h[?25l[44;16H[46m{[17C}[m[62;115H30[44;34H[?25h[?25l}[44;34H[K[44;33H[46m}[m[62;115H29[44;33H[?25h[?25l[46mB[m}B[46m}[m[62;115H30[44;34H[?25h[?25l[46ma[m}a[46m}[m[62;116H1[44;35H[?25h[?25l[46ms[m}s[46m}[m[62;116H2[44;36H[?25h[?25l[46me[m}e[46m}[m[62;116H3[44;37H[?25h[?25l[46m [m} [46m}[m[62;116H4[44;38H[?25h[?25l[93m[46m*[m}[93m*[m[46m}[m[62;116H5[44;39H[?25h[?25l[46m [m} [46m}[m[62;116H6[44;40H[?25h[?25l[46mm[m}m[46m}[m[62;116H7[44;41H[?25h[?25l[46my[m}y[46m}[m[62;116H8[44;42H[?25h[?25l[46mH[m}H[46m}[m[62;116H9[44;43H[?25h[?25l[46me[m}e[46m}[m[62;115H40[44;44H[?25h[?25l[46mi[m}i[46m}[m[62;116H1[44;45H[?25h[?25l[46mg[m}g[46m}[m[62;116H2[44;46H[?25h[?25l[46mh[m}h[46m}[m[62;116H3[44;47H[?25h[?25l[46mt[m}t[46m}[m[62;116H4[44;48H[?25h[?25l[46m;[m};[46m}[m[62;116H5[44;49H[?25h[?25l[46m [m} [46m}[m[62;116H6[44;50H[?25h[?25l[43;28H[46m{[m[44;16H{[33C}[45;9H[46m}[m[62;113H6,6 [45;10H[?25h[?25l[43;28H{[45;9H}[62;113H7,1[46;5H[?25h[?25l[47;31H[46m{[48;9H}[m[62;113H8,28[47;32H[?25h[?25l[48;9H[46m [m[49;9H}[50;9H[K[51;26Hbase [93m=[m [95m0[m;[51;35H[K[52;7H  [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;[53;7H}[54;7H[K[55;7H[96m////////////////////////////////////////////////////////////////////////[m[56;7H[38;5;121mpublic[m [1C[38;5;121mlass[m [38;5;121mCircle[m[93m:[m IShape {[56;36H[K[57;9H[38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {[58;9H    radius [93m=[m inRadius;[59;9H}[60;9H[K[61;9H[38;5;121mpublic[m [38;5;121mdouble[m Radius {[61;31H[K[47;31H{[48;9H [62;113H9,9 [9C58[48;13H[?25h[62;1H[K[48;5H[?25l[62;102H^[[48;5H[?25h[?25l[62;102H  [48;13H[62;112H69,0-1[8C58%[48;5H[?25h[?25l[62;112H51,20 [30;24H[?25h[?25l[62;102Hy[30;24H[?25h[?25l[62;103Hy[30;24H[62;102H  [30;24H[?25h[?25l[47;31H[46m{[49;9H}[m[62;112H68,27[47;31H[?25h[?25l{[49;9H}[62;113H9,0-1[48;5H[?25h[?25l[62;102Hp[48;5H[62;102H [49;14H     Console.Writeline([95m"I'm a rectangle! I have width {0} and height {1}"[m, width, height);[50;9H}[51;9H[K[52;26Hbase [93m=[m [95m0[m;[52;35H[K[53;7H  [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;[54;7H}[55;7H[K[56;7H[96m////////////////////////////////////////////////////////////////////////[m[57;7H[38;5;121mpublic[m [1C[38;5;121mlass[m [38;5;121mCircle[m[93m:[m IShape {[57;36H[K[58;9H[38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {[59;9H    radius [93m=[m inRadius;[60;9H}[61;9H[K[62;112H70,10 [9C6[49;14H[?25h[?25l[62;102H~@k[49;14H[62;102H   [48;5H[62;112H69,0-1[48;5H[?25h[?25l[62;102Hd[48;5H[?25h[?25l[62;103Hd[48;5H[62;102H  [48;14HConsole.Writeline([95m"I'm a rectangle! I have width {0} and height {1}"[m, width, height);[49;9H}[49;14H[K[50;9H[K[51;9H[38;5;121mprivate[m [38;5;121mdouble[m mybase [93m=[m [95m0[m;[52;26Hheight [93m=[m [95m0[m;[53;7H}[53;9H[K[54;7H[K[55;7H[96m////////////////////////////////////////////////////////////////////////[m[56;7H[38;5;121mpublic[m [38;5;121mclass[m [38;5;121mCircle[m[93m:[m IShape {[56;36H[K[57;7H  [38;5;121mpubli[m[1C Circle([38;5;121mdouble[m inRadius) {[58;9H    radius [93m=[m inRadius;[58;31H[K[59;9H}[59;13H[K[60;9H[K[61;9H[38;5;121mpublic[m [38;5;121mdouble[m Radius {[62;115H10 [9C8[48;14H[?25h[?25l[62;102H~@k[48;14H[62;102H   [49;9H[47;31H[46m{[49;9H}[m[62;112H70,5 [49;9H[?25h[?25l[62;102H~@k[49;9H[62;102H   [48;14H[47;31H{[49;9H}[62;112H69,10[48;14H[?25h[?25l[62;102H~@k[48;14H[62;102H   [48;15H[62;116H1[48;15H[?25h[?25l[62;116H2[48;16H[?25h[?25l[62;116H3[48;17H[?25h[?25l[62;102H~@k[48;17H[62;102H   [48;18H[62;116H4[48;18H[?25h[?25l[62;102H~@k[48;18H[62;102H   [48;19H[62;116H5[48;19H[?25h[?25l[62;116H6[48;20H[?25h[?25l[62;116H7[48;21H[?25h[?25l[62;102H~@k[48;21H[62;102H   [48;22H[62;116H8[48;22H[?25h[?25l[62;116H9[48;23H[?25h[?25l[62;115H20[48;24H[?25h[?25l[62;102H~@k[48;24H[62;102H   [48;25H[62;116H1[48;25H[?25h[?25l[62;102H~@k[48;25H[62;102H   [48;26H[62;116H2[48;26H[?25h[?25l[62;116H3[48;27H[?25h[?25l[62;116H4[48;28H[?25h[?25l[62;102H~@k[48;28H[62;102H   [48;29H[62;116H5[48;29H[?25h[?25l[62;102H~@k[48;29H[62;102H   [48;30H[62;116H6[48;30H[?25h[?25le[46m([65C)[m[62;116H7[48;31H[?25h[?25l([65C)[62;116H8[48;32H[?25h[?25l[62;102H~@k[48;32H[62;102H   [48;33H[62;116H9[48;33H[?25h[?25l[62;102H~@k[48;33H[62;102H   [48;34H[62;115H30[48;34H[?25h[?25l[62;102H~@k[48;34H[62;102H   [48;35H[62;116H1[48;35H[?25h[?25l[62;102H~@k[48;35H[62;102H   [48;36H[62;116H2[48;36H[?25h[?25l[62;102H~@k[48;36H[62;102H   [48;37H[62;116H3[48;37H[?25h[?25l[62;102H~@k[48;37H[62;102H   [48;38H[62;116H4[48;38H[?25h[?25l[62;102H~@k[48;38H[62;102H   [48;39H[62;116H5[48;39H[?25h[?25l[62;102H~@k[48;39H[62;102H   [48;39H[62;102Hdl[48;39H[62;102H  [48;39H[95mectangle! I have width {0} and height {1}"[m, width, height);[48;98H[K[48;39H[?25h[?25l[62;102H~@k[48;39H[62;102H   [48;39H[62;102Hdl[48;39H[62;102H  [48;39H[95mctangle! I have width {0} and height {1}"[m, width, height);[48;97H[K[48;39H[?25h[?25l[62;102H~@k[48;39H[62;102H   [48;39H[62;102Hdl[48;39H[62;102H  [48;39H[95mtangle! I have width {0} and height {1}"[m, width, height);[48;96H[K[48;39H[?25h[?25l[62;102H~@k[48;39H[62;102H   [48;39H[62;102Hdl[48;39H[62;102H  [48;39H[95mangle! I have width {0} and height {1}"[m, width, height);[48;95H[K[48;39H[?25h[?25l[62;102H~@k[48;39H[62;102H   [48;39H[62;102Hdl[48;39H[62;102H  [48;39H[95mngle! I have width {0} and height {1}"[m, width, height);[48;94H[K[48;39H[?25h[?25l[62;102H~@k[48;39H[62;102H   [48;39H[62;102Hdl[48;39H[62;102H  [48;39H[95mgle! I have width {0} and height {1}"[m, width, height);[48;93H[K[48;39H[?25h[?25l[62;102H~@k[48;39H[62;102H   [48;39H[62;102Hdl[48;39H[62;102H  [48;39H[95mle! I have width {0} and height {1}"[m, width, height);[48;92H[K[48;39H[?25h[?25l[62;102H~@k[48;39H[62;102H   [48;39H[62;102Hdl[48;39H[62;102H  [48;39H[95me! I have width {0} and height {1}"[m, width, height);[48;91H[K[48;39H[?25h[?25l[62;102H~@k[48;39H[62;102H   [48;39H[62;102Hdl[48;39H[62;102H  [48;39H[95m! I have width {0} and height {1}"[m, width, height);[48;90H[K[48;39H[?25h[?25l[62;102Hi[48;39H[62;102H [48;39H[62;1H[1m-- INSERT --[m[62;112H[K[62;112H69,35[9C58%[48;39H[?25h[?25l[95mt! I have width {0} and height {1}"[m, width, height);[62;116H6[48;40H[?25h[?25l[95mr! I have width {0} and height {1}"[m, width, height);[62;116H7[48;41H[?25h[?25l[95mi! I have width {0} and height {1}"[m, width, height);[62;116H8[48;42H[?25h[?25l[95ma! I have width {0} and height {1}"[m, width, height);[62;116H9[48;43H[?25h[?25l[95mn! I have width {0} and height {1}"[m, width, height);[62;115H40[48;44H[?25h[?25l[95mg! I have width {0} and height {1}"[m, width, height);[62;116H1[48;45H[?25h[?25l[95ml! I have width {0} and height {1}"[m, width, height);[62;116H2[48;46H[?25h[?25l[95me! I have width {0} and height {1}"[m, width, height);[62;116H3[48;47H[?25h[?25l[62;116H4[48;48H[?25h[?25l[62;116H7[48;51H[?25h[?25l[62;116H8[48;52H[?25h[?25l[62;116H9[48;53H[?25h[?25l[62;115H50[48;54H[?25h[?25l[62;116H1[48;55H[?25h[?25l[62;116H2[48;56H[?25h[?25l[62;116H3[48;57H[?25h[?25l[62;116H4[48;58H[?25h[?25l[62;116H5[48;59H[?25h[?25l[62;116H6[48;60H[?25h[?25l[62;116H7[48;61H[?25h[?25l[95m {0} and height {1}"[m, width, height);[48;97H[K[62;116H6[48;60H[?25h[?25l[95m {0} and height {1}"[m, width, height);[48;96H[K[62;116H5[48;59H[?25h[?25l[95m {0} and height {1}"[m, width, height);[48;95H[K[62;116H4[48;58H[?25h[?25l[95m {0} and height {1}"[m, width, height);[48;94H[K[62;116H3[48;57H[?25h[?25l[95m {0} and height {1}"[m, width, height);[48;93H[K[62;116H2[48;56H[?25h[?25l[95mb {0} and height {1}"[m, width, height);[62;116H3[48;57H[?25h[?25l[95ma {0} and height {1}"[m, width, height);[62;116H4[48;58H[?25h[?25l[95ms {0} and height {1}"[m, width, height);[62;116H5[48;59H[?25h[?25l[95me {0} and height {1}"[m, width, height);[62;116H6[48;60H[?25h[?25l[1C[95m[46m{[1C}[m[62;116H7[48;61H[?25h[?25l[62;115H60[48;64H[?25h[?25l[95m{0}[m[62;116H1[48;65H[?25h[?25l[62;116H2[48;66H[?25h[?25l[62;116H5[48;69H[?25h[?25l[62;116H6[48;70H[?25h[?25l[62;116H7[48;71H[?25h[?25l[62;116H8[48;72H[?25h[?25l[62;116H9[48;73H[?25h[?25l[62;115H70[48;74H[?25h[?25l[62;116H1[48;75H[?25h[?25l[1C[95m[46m{[1C}[m[62;116H4[48;78H[?25h[?25l[62;116H5[48;79H[?25h[?25l[95m{1}[m[62;116H6[48;80H[?25h[?25l[62;116H7[48;81H[?25h[?25l[62;116H8[48;82H[?25h[?25l[62;116H9[48;83H[?25h[?25l[62;115H80[48;84H[?25h[?25l[62;116H1[48;85H[?25h[?25l[62;116H2[48;86H[?25h[?25l[62;116H1[48;85H[?25h[?25l[62;116H0[48;84H[?25h[?25l[62;115H79[48;83H[?25h[?25l[62;116H8[48;82H[?25h[?25lmwidth, height);[62;116H9[48;83H[?25h[?25lywidth, height);[62;115H80[48;84H[?25h[?25lidth, height);[48;98H[K[48;84H[?25h[?25ldth, height);[48;97H[K[48;84H[?25h[?25lth, height);[48;96H[K[48;84H[?25h[?25lh, height);[48;95H[K[48;84H[?25h[?25l, height);[48;94H[K[48;84H[?25h[?25la, height);[62;116H1[48;85H[?25h[?25ls, height);[62;116H2[48;86H[?25h[?25le, height);[62;116H3[48;87H[?25h[?25l, height);[48;96H[K[62;116H2[48;86H[?25h[?25l, height);[48;95H[K[62;116H1[48;85H[?25h[?25l, height);[48;94H[K[62;116H0[48;84H[?25h[?25lB, height);[62;116H1[48;85H[?25h[?25la, height);[62;116H2[48;86H[?25h[?25ls, height);[62;116H3[48;87H[?25h[?25le, height);[62;116H4[48;88H[?25h[?25l[62;116H5[48;89H[?25h[?25l[62;116H6[48;90H[?25h[?25lmheight);[62;116H7[48;91H[?25h[?25ltheight);[62;116H8[48;92H[?25h[?25lheight);[48;99H[K[62;116H7[48;91H[?25h[?25lyheight);[62;116H8[48;92H[?25h[?25leight);[48;99H[K[48;92H[?25h[?25lHeight);[62;116H9[48;93H[?25h[?25leight);[48;99H[K[62;116H8[48;92H[?25h[?25lheight);[62;116H9[48;93H[?25h[?25l[62;116H8[48;92H[?25h[?25l[62;116H7[48;91H[?25h[?25l[62;116H6[48;90H[?25h[?25l[62;116H5[48;89H[?25h[?25l[62;116H4[48;88H[?25h[?25l[62;116H3[48;87H[?25h[?25l[62;116H2[48;86H[?25h[?25l[62;116H1[48;85H[?25h[?25lase, myheight);[48;99H[K[62;116H0[48;84H[?25h[?25lbase, myheight);[62;116H1[48;85H[?25h[?25l[47;31H[46m{[49;9H}[m[62;113H8,28[47;32H[?25h[?25l{[49;9H}[62;113H7,1 [46;5H[?25h[?25l[43;28H[46m{[45;9H}[m[62;113H6,6[45;10H[?25h[?25l[43;28H{[45;9H}[62;113H7,1[46;5H[?25h[?25l[43;28H[46m{[45;9H}[m[62;113H6,6[45;10H[?25h[?25l[43;28H{[44;16H[46m{[33C}[m[45;9H}[62;113H5,47[44;51H[?25h[?25l[62;116H6[44;50H[?25h[?25l[44;16H{[33C}[62;116H5[44;49H[?25h[?25l[62;116H2[44;46H[?25h[?25l[62;116H1[44;45H[?25h[?25l[62;116H0[44;44H[?25h[?25l[62;115H39[44;43H[?25h[?25l[62;116H6[44;40H[?25h[?25l[62;116H7[44;41H[?25h[?25l[62;116H8[44;42H[?25h[?25l[62;116H9[44;43H[?25h[?25leight; }[44;50H[K[62;116H8[44;42H[?25h[?25lheight; }[62;116H9[44;43H[?25h[?25l[62;116H8[44;42H[?25h[?25l[62;116H5[44;39H[?25h[?25l[62;116H4[44;38H[?25h[?25l[62;116H3[44;37H[?25h[?25l[62;116H0[44;34H[?25h[?25l[62;115H29[44;33H[?25h[?25l[62;115H30[44;34H[?25h[?25lase [93m*[m myheight; }[44;50H[K[62;115H29[44;33H[?25h[?25lbase [93m*[m myheight; }[62;115H30[44;34H[?25h[?25l[43;28H[46m{[45;9H}[m[62;113H4,25[43;29H[?25h[?25l{[45;9H}[62;113H3,1 [42;5H[?25h[?25l[38;57H[46m{[41;9H}[m[62;113H2,6[41;10H[?25h[?25l[38;57H{[41;9H}[62;113H1,29[40;33H[?25h[?25l[62;116H8[40;32H[?25h[?25l[62;116H4[40;28H[?25h[?25l[62;116H3[40;27H[?25h[?25l[62;116H2[40;26H[?25h[?25l[62;116H1[40;25H[?25h[?25l[62;115H18[40;22H[?25h[?25l[62;116H7[40;21H[?25h[?25l[62;116H6[40;20H[?25h[?25l[62;116H5[40;19H[?25h[?25l[62;116H4[40;18H[?25h[?25l[62;116H3[40;17H[?25h[?25l[62;116H2[40;16H[?25h[?25leight [93m=[m inHeight;[40;32H[K[62;116H1[40;15H[?25h[?25lheight [93m=[m inHeight;[62;116H2[40;16H[?25h[?25l[62;113H0[39;16H[?25h[?25lase [93m=[m inBase;[39;28H[K[62;116H1[39;15H[?25h[?25lbase [93m=[m inBase;[62;116H2[39;16H[?25h[?25l[62;113H1[40;16H[?25h[?25l[62;113H4[43;16H[?25h[?25l[44;16H[46m{[33C}[m[62;113H5[44;16H[?25h[?25l[43;28H[46m{[m[44;16H{[33C}[45;9H[46m}[m[62;113H6,6 [45;10H[?25h[?25l[43;28H{[45;9H}[62;113H7,1[46;5H[?25h[?25l[62;113H8,12[47;16H[?25h[?25l[62;112H71,1 [50;5H[?25h[?25l[62;113H2,12[51;16H[?25h[?25l[62;113H3[52;16H[?25h[62;1H[K[52;15H[?25l[62;102H^[[52;15H[?25h[?25l[62;102H  [52;16H[62;112H73,11[9C58%[52;15H[?25h[?25l[62;102H:[52;15H[62;102H[K[62;1H:[?25hw[?25l"lab07.cs" 97L, 2441B written[52;15H[62;112H73,11[9C58%[62;112H[K[62;112H73,11[9C58%[52;15H[?25h[?25l[62;102H~@k[52;15H[62;102H   [53;7H[37;37H[46m{[53;7H}[m[62;113H4,3 [53;7H[?25h[?25l[37;37H{[53;7H}[62;113H5,0-1[54;5H[?25h[?25l[62;113H6,11 [55;15H[?25h[?25l[62;113H7[56;15H[?25h[?25l[62;102H~@k[56;15H[62;102H   [57;15H[62;113H8[57;15H[?25h[?25l[62;102H~@k[57;15H[62;102H   [58;15H[62;113H9[58;15H[?25h[?25l[62;102H~@k[58;15H[62;102H   [59;9H[57;40H[46m{[59;9H}[m[62;112H80,5 [59;9H[?25h[?25l[62;102H~@k[59;9H[62;102H   [60;5H[57;40H{[59;9H}[62;113H1,0-1[60;5H[?25h[?25l[62;102H~@k[60;5H[62;102H   [61;15H[62;113H2,11 [61;15H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 83 [m[8C[93mget[m {[93mreturn[m radius;}[62;1H[K[62;112H83,11[9C61%[61;15H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 84 [m[8C[93mset[m {radius [93m=[m [93mvalue[m;}[62;112H[K[62;112H84,11[9C63%[61;15H[?25h[?25l[62;102H~@k[61;15H[62;102H   [61;9H[1;61r[61;1H
+[1;62r[58;30H[46m{[m
+
+
+[93m 85 [m    [46m}[m[62;112H[K[62;112H85,5[10C66%[61;9H[?25h[?25l[62;102H~@k[61;9H[62;102H   [61;5H[1;61r[61;1H
+[1;62r[57;30H{[60;9H}
+[93m 86 [m[62;112H[K[62;112H86,0-1[8C69%[61;5H[?25h[?25l[62;102H~@k[61;5H[62;102H   [61;15H[1;61r[61;1H
+[1;62r[61;1H[93m 87 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {[62;112H[K[62;112H87,11[9C72%[61;15H[?25h[?25l[62;102H~@k[61;15H[62;102H   [61;9H[1;61r[61;1H
+[1;62r[60;28H[46m{[m
+[93m 88 [m    [46m}[m[62;112H[K[62;112H88,5[10C75%[61;9H[?25h[?25l[1;61r[61;1H
+[1;62r[59;28H{[60;9H}
+[93m 89 [m[62;112H[K[62;112H89,0-1[8C77%[61;5H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 90 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {[62;112H[K[62;112H90,11[9C80%[61;15H[?25h[?25l[62;102H~@k[61;15H[62;102H   [61;9H[1;61r[61;1H
+[1;62r[60;31H[46m{[m
+[93m 91 [m    [46m}[m[62;112H[K[62;112H91,5[10C83%[61;9H[?25h[?25l[62;102H~@k[61;9H[62;102H   [61;5H[1;61r[61;1H
+[1;62r[59;31H{[60;9H}
+[93m 92 [m[62;112H[K[62;112H92,0-1[8C86%[61;5H[?25h[?25l[62;102H~@k[61;5H[62;102H   [61;15H[1;61r[61;1H
+[1;62r[61;1H[93m 93 [m    [38;5;121mprivate[m [38;5;121mdouble[m radius [93m=[m [95m0[m;[62;112H[K[62;112H93,11[9C88%[61;15H[?25h[?25l[62;102H~@k[61;15H[62;102H   [61;8H[1;61r[61;1H
+[1;62r[61;1H[93m 94 [m  }[62;112H[K[62;112H94,4[10C91%[61;8H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 95 [m[62;112H[K[62;112H95,0-1[8C94%[61;5H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 96 [m[62;112H[K[62;112H96,0-1[8C97%[61;5H[?25h[?25l[62;102H~@k[61;5H[62;102H   [61;15H[1;61r[61;1H
+[1;62r[61;1H[93m 97 [m} [96m// end namespace [m[62;112H[K[62;112H97,11[9CBot[61;15H[?25h[?25l[62;102H~@k[61;15H[62;102H   [61;15H[?25h[?25l[62;102H~@k[61;15H[62;102H   [61;15H[?25h[?25l[62;102H~@k[61;15H[62;102H   [60;5H[62;113H6,0-1[60;5H[?25h[?25l[62;102H~@k[60;5H[62;102H   [59;5H[62;113H5[59;5H[?25h[?25l[62;102H~@k[59;5H[62;102H   [58;8H[62;113H4,4  [58;8H[?25h[?25l[62;102H~@k[58;8H[62;102H   [57;15H[62;113H3,11[57;15H[?25h[?25l[62;102H~@k[57;15H[62;102H   [56;5H[62;113H2,0-1[56;5H[?25h[?25l[62;102H~@k[56;5H[62;102H   [55;9H[54;31H[46m{[55;9H}[m[62;113H1,5  [55;9H[?25h[?25l[62;102Hi[55;9H[62;102H [55;9H[62;1H[1m-- INSERT --[m[62;112H[K[62;112H91,5[10CBot[55;9H[?25h[?25l[55;9H[K[56;9H}[57;9H[K[58;7H  [38;5;121mprivate[m [38;5;121mdouble[m radius [93m=[m [95m0[m;[59;7H}[61;5H[K[56;9H[46m}[m[62;113H2[12C97%[56;9H[?25h[62;1H[K[56;8H[?25l[62;102H^[[56;8H[?25h[?25l[62;102H  [56;9H[54;31H{[56;9H}[62;112H92,4[10C97%[56;8H[?25h[?25l[62;112H69,26[33;30H[?25h[?25l[62;102Hy[33;30H[?25h[?25l[62;103Hy[33;30H[62;102H  [33;30H[?25h[?25l[62;102H~@k[33;30H[62;102H   [34;9H[32;31H[46m{[34;9H}[m[62;112H70,5 [34;9H[?25h[?25l[62;102H~@k[34;9H[62;102H   [35;5H[32;31H{[34;9H}[62;113H1,0-1[35;5H[?25h[?25l[62;113H2,26 [36;30H[?25h[?25l[62;113H3[37;30H[?25h[?25l[62;102H~@k[37;30H[62;102H   [38;7H[22;37H[46m{[38;7H}[m[62;113H4,3 [38;7H[?25h[?25l[62;102H~@k[38;7H[62;102H   [39;5H[22;37H{[38;7H}[62;113H5,0-1[39;5H[?25h[?25l[62;113H6,26 [40;30H[?25h[?25l[62;113H7[41;30H[?25h[?25l[62;102H~@k[41;30H[62;102H   [42;30H[62;113H8[42;30H[?25h[?25l[62;102H~@k[42;30H[62;102H   [43;30H[62;113H9[43;30H[?25h[?25l[42;40H[46m{[44;9H}[m[62;112H80,5 [44;9H[?25h[?25l[42;40H{[44;9H}[62;113H1,0-1[45;5H[?25h[?25l[62;102H~@k[45;5H[62;102H   [46;30H[46m{[49;9H}[m[62;113H2,26 [46;30H[?25h[?25l[62;102H~@k[46;30H[62;102H   [47;30H[46;30H{[49;9H}[62;113H3[47;30H[?25h[?25l[62;102H~@k[47;30H[62;102H   [48;30H[62;113H4[48;30H[?25h[?25l[62;102H~@k[48;30H[62;102H   [49;9H[46;30H[46m{[49;9H}[m[62;113H5,5 [49;9H[?25h[?25l[62;102H~@k[49;9H[62;102H   [50;5H[46;30H{[49;9H}[62;113H6,0-1[50;5H[?25h[?25l[62;102H~@k[50;5H[62;102H   [51;28H[46m{[52;9H}[m[62;113H7,24 [51;28H[?25h[?25l[62;102H~@k[51;28H[62;102H   [52;9H[62;113H8,5 [52;9H[?25h[?25l[62;102H~@k[52;9H[62;102H   [53;5H[51;28H{[52;9H}[62;113H9,0-1[53;5H[?25h[?25l[62;102H~@k[53;5H[62;102H   [54;30H[62;112H90,26 [54;30H[?25h[?25l[62;102H~@k[54;30H[62;102H   [55;8H[62;113H1,4 [55;8H[?25h[?25l[62;102Hp[55;8H[62;102H [56;14H     Console.Writeline([95m"I'm a triangle! I have base {0} and height {1}"[m, mybase, myheight);[57;9H}[58;9H[K[59;7H  [38;5;121mprivate[m [38;5;121mdouble[m radius [93m=[m [95m0[m;[60;7H}[62;113H2,10[10C4[56;14H[?25h[?25l[62;102H~@k[56;14H[62;102H   [55;8H[62;113H1,4 [55;8H[?25h[?25l[62;102Hd[55;8H[?25h[?25l[62;103Hd[55;8H[62;102H  [55;14HConsole.Writeline([95m"I'm a triangle! I have base {0} and height {1}"[m, mybase, myheight);[56;9H}[56;14H[K[57;9H[K[58;9H[38;5;121mprivate[m [38;5;121mdouble[m radius [93m=[m [95m0[m;[59;7H}[59;9H[K[60;7H[K[62;115H10[10C7[55;14H[?25h[?25l[62;102Hi[55;14H[62;102H [55;14H[62;1H[1m-- INSERT --[m[62;112H[K[62;112H91,10[9C97%[55;14H[?25h[?25l[62;116H1[55;15H[?25h[?25l[62;115H37[55;41H[?25h[?25l[95m0iangle! I have base {0} and height {1}"[m, mybase, myheight);[62;116H8[55;42H[?25h[?25l[95miangle! I have base {0} and height {1}"[m, mybase, myheight);[55;100H[K[62;116H7[55;41H[?25h[?25l[95miangle! I have base {0} and height {1}"[m, mybase, myheight);[55;99H[K[62;116H6[55;40H[?25h[?25l[95miangle! I have base {0} and height {1}"[m, mybase, myheight);[55;98H[K[62;116H5[55;39H[?25h[?25l[95mangle! I have base {0} and height {1}"[m, mybase, myheight);[55;97H[K[55;39H[?25h[?25l[95mngle! I have base {0} and height {1}"[m, mybase, myheight);[55;96H[K[55;39H[?25h[?25l[95mgle! I have base {0} and height {1}"[m, mybase, myheight);[55;95H[K[55;39H[?25h[?25l[95mle! I have base {0} and height {1}"[m, mybase, myheight);[55;94H[K[55;39H[?25h[?25l[95me! I have base {0} and height {1}"[m, mybase, myheight);[55;93H[K[55;39H[?25h[?25l[95m! I have base {0} and height {1}"[m, mybase, myheight);[55;92H[K[55;39H[?25h[?25l[95mc! I have base {0} and height {1}"[m, mybase, myheight);[62;116H6[55;40H[?25h[?25l[95mi! I have base {0} and height {1}"[m, mybase, myheight);[62;116H7[55;41H[?25h[?25l[95mr! I have base {0} and height {1}"[m, mybase, myheight);[62;116H8[55;42H[?25h[?25l[95mc! I have base {0} and height {1}"[m, mybase, myheight);[62;116H9[55;43H[?25h[?25l[95ml! I have base {0} and height {1}"[m, mybase, myheight);[62;115H40[55;44H[?25h[?25l[95me! I have base {0} and height {1}"[m, mybase, myheight);[62;116H1[55;45H[?25h[?25l[62;116H2[55;46H[?25h[?25l[62;116H5[55;49H[?25h[?25l[62;116H6[55;50H[?25h[?25l[62;116H7[55;51H[?25h[?25l[62;115H50[55;54H[?25h[?25l[62;116H1[55;55H[?25h[?25l[62;116H2[55;56H[?25h[?25l[62;116H3[55;57H[?25h[?25l[62;116H4[55;58H[?25h[?25l[95m {0} and height {1}"[m, mybase, myheight);[55;97H[K[62;116H3[55;57H[?25h[?25l[95m {0} and height {1}"[m, mybase, myheight);[55;96H[K[62;116H2[55;56H[?25h[?25l[95m {0} and height {1}"[m, mybase, myheight);[55;95H[K[62;116H1[55;55H[?25h[?25l[95m {0} and height {1}"[m, mybase, myheight);[55;94H[K[62;116H0[55;54H[?25h[?25l[95mr {0} and height {1}"[m, mybase, myheight);[62;116H1[55;55H[?25h[?25l[95ma {0} and height {1}"[m, mybase, myheight);[62;116H2[55;56H[?25h[?25l[95md {0} and height {1}"[m, mybase, myheight);[62;116H3[55;57H[?25h[?25l[95mi {0} and height {1}"[m, mybase, myheight);[62;116H4[55;58H[?25h[?25l[95mu {0} and height {1}"[m, mybase, myheight);[62;116H5[55;59H[?25h[?25l[95ms {0} and height {1}"[m, mybase, myheight);[62;116H6[55;60H[?25h[?25l[1C[95m[46m{[1C}[m[62;116H7[55;61H[?25h[?25l[62;116H8[55;62H[?25h[?25l[62;116H9[55;63H[?25h[?25l[62;115H60[55;64H[?25h[?25l[95mand height {1}"[m, mybase, myheight);[55;99H[K[55;64H[?25h[?25l[95m height {1}"[m, mybase, myheight);[55;96H[K[55;64H[?25h[?25l[95mheight {1}"[m, mybase, myheight);[55;95H[K[55;64H[?25h[?25l[95meight {1}"[m, mybase, myheight);[55;94H[K[55;64H[?25h[?25l[95might {1}"[m, mybase, myheight);[55;93H[K[55;64H[?25h[?25l[95mght {1}"[m, mybase, myheight);[55;92H[K[55;64H[?25h[?25l[95mt {1}"[m, mybase, myheight);[55;90H[K[55;64H[?25h[?25l[95m {1}"[m, mybase, myheight);[55;89H[K[55;64H[?25h[?25l[95m{1}"[m, mybase, myheight);[55;88H[K[55;61H[95m{0}[m[95m[46m{[1C}[?25h[?25l1[m[95m}[m[95m[46m"[m, mybase, myheight);[55;87H[K[55;61H[95m[46m{[1C}[m[95m1}"[?25h[?25l}"[m, mybase, myheight);[55;86H[K[54;31H[46m{[m[55;61H[95m{0}[m[95m[46m}[?25h[?25l"[m, mybase, myheight);[55;85H[K[54;31H{[55;61H[95m[46m{[1C}[m[95m"[?25h[?25l{0}[m[62;116H1[55;65H[?25h[?25l[62;116H2[55;66H[?25h[?25l[62;116H3[55;67H[?25h[?25lybase, myheight);[55;84H[K[55;67H[?25h[?25lse, myheight);[55;81H[K[55;67H[?25h[?25le, myheight);[55;80H[K[55;67H[?25h[?25l, myheight);[55;79H[K[55;67H[?25h[?25l myheight);[55;78H[K[55;67H[?25h[?25lmyheight);[55;77H[K[55;67H[?25h[?25lyheight);[55;76H[K[55;67H[?25h[?25lheight);[55;75H[K[55;67H[?25h[?25leight);[55;74H[K[55;67H[?25h[?25light);[55;73H[K[55;67H[?25h[?25lght);[55;72H[K[55;67H[?25h[?25lht);[55;71H[K[55;67H[?25h[?25lt);[55;70H[K[55;67H[?25h[?25l);[55;69H[K[55;31H[46m([35C)[?25h[?25lr[m);r[46m)[m[62;116H4[55;68H[?25h[?25l[46ma[m);a[46m)[m[62;116H5[55;69H[?25h[?25l[46md[m);d[46m)[m[62;116H6[55;70H[?25h[?25l[46mi[m);i[46m)[m[62;116H7[55;71H[?25h[?25l[46mu[m);u[46m)[m[62;116H8[55;72H[?25h[?25l[46ms[m);s[46m)[m[62;116H9[55;73H[?25h[?25l[54;31H[46m{[m[55;31H([41C)[56;9H[46m}[m[62;113H0,28[54;32H[?25h[?25l{[56;9H}[62;112H89,1 [53;5H[?25h[?25l[51;28H[46m{[52;9H}[m[62;113H8,6[52;10H[?25h[?25l[62;115H5[52;9H[?25h[?25l[52;9H[K[53;9H}[54;9H[K[55;9H[38;5;121mpublic[m [38;5;121mvoid[m Display() {[55;32H[K[56;9H     Console.Writeline([95m"I'm a circle! I have radius {0}"[m, radius);[57;9H}[58;9H[K[59;7H  [38;5;121mprivate[m [38;5;121mdouble[m radius [93m=[m [95m0[m;[60;7H}[53;9H[46m}[m[62;113H9[13C4[53;9H[?25h[?25l[51;28H{[53;9H}[62;113H8[52;9H[?25h[?25l[62;115H9[52;13H[?25h[?25lg[62;115H10[52;14H[?25h[?25le[62;116H1[52;15H[?25h[?25lt[62;116H2[52;16H[?25h[?25l[93mget[m{[46m{[53;9H}[m[62;116H3[52;17H[?25h[?25l}[62;116H2[52;16H[?25h[?25l[1C[46m}[m[53;9H}[62;116H4[52;18H[?25h[?25l[62;116H3[52;17H[?25h[?25l[46m [m} [46m}[m[62;116H4[52;18H[?25h[?25l[46mr[m}r[46m}[m[62;116H5[52;19H[?25h[?25l[46me[m}e[46m}[m[62;116H6[52;20H[?25h[?25l[46mt[m}t[46m}[m[62;116H7[52;21H[?25h[?25l[46mu[m}u[46m}[m[62;116H8[52;22H[?25h[?25l[46mr[m}r[46m}[m[62;116H9[52;23H[?25h[?25l[93mretur[m[93m[46mn[m}[93mn[m[46m}[m[62;115H20[52;24H[?25h[?25l[46m [m} [46m}[m[62;116H1[52;25H[?25h[?25l[95m[46m3[m}[95m3[m[46m}[m[62;116H2[52;26H[?25h[?25l[46m.[m}.[46m}[m[62;116H3[52;27H[?25h[?25l[95m.[m[95m[46m1[m}[95m1[m[46m}[m[62;116H4[52;28H[?25h[?25l[95m[46m4[m}[95m4[m[46m}[m[62;116H5[52;29H[?25h[?25l[46m [m} [46m}[m[62;116H6[52;30H[?25h[?25l[93m[46m*[m}[93m*[m[46m}[m[62;116H7[52;31H[?25h[?25l[46m [m} [46m}[m[62;116H8[52;32H[?25h[?25l[46mr[m}r[46m}[m[62;116H9[52;33H[?25h[?25l[46ma[m}a[46m}[m[62;115H30[52;34H[?25h[?25l[46md[m}d[46m}[m[62;116H1[52;35H[?25h[?25l[46mi[m}i[46m}[m[62;116H2[52;36H[?25h[?25l[46mu[m}u[46m}[m[62;116H3[52;37H[?25h[?25l[46ms[m}s[46m}[m[62;116H4[52;38H[?25h[?25l[46m [m} [46m}[m[62;116H5[52;39H[?25h[?25l[93m[46m*[m}[93m*[m[46m}[m[62;116H6[52;40H[?25h[?25l[46m [m} [46m}[m[62;116H7[52;41H[?25h[?25l[46mr[m}r[46m}[m[62;116H8[52;42H[?25h[?25l[46ma[m}a[46m}[m[62;116H9[52;43H[?25h[?25l[46md[m}d[46m}[m[62;115H40[52;44H[?25h[?25l[46mi[m}i[46m}[m[62;116H1[52;45H[?25h[?25l[46mu[m}u[46m}[m[62;116H2[52;46H[?25h[?25l[46ms[m}s[46m}[m[62;116H3[52;47H[?25h[?25l[46m;[m};[46m}[m[62;116H4[52;48H[?25h[?25l[46m [m} [46m}[m[62;116H5[52;49H[?25h[?25l[1;61r[1;1H[15L[1;62r[1;1H[93m 22 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape1, shape1.Area);
+[93m 23 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape2, shape2.Area);
+[93m 24 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape3, shape3.Area);
+[93m 25 [m      shape1.Display();
+[93m 26 [m      shape2.Display();
+[93m 27 [m      shape3.Display();
+[93m 28 [m    }
+[93m 29 [m  }
+[93m 30 
+ 31 [m  [38;5;121mpublic[m [38;5;121minterface[m IShape {
+[93m 32 [m     [38;5;121mvoid[m Display ();
+[93m 33 
+ 34 [m     [38;5;121mdouble[m Area {
+[93m 35 [m[7C[93mget[m;    [96m// concrete classes must implement IShape.Area.Get()[m
+[93m 36 [m     }[62;112H[K[62;112H82,27[9C55%[61;31H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 19 [m      shape3.Radius [93m=[m [95m3.5f[m;
+[93m 20 [m      Console.WriteLine([95m"I set my Radius to '{0}'."[m, shape3.Radius);
+[93m 21 [m[62;112H[K[62;112H79,27[9C47%[61;31H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 16 [m      [38;5;121mdouble[m cirRadius [93m=[m [95m5.5f[m;
+[93m 17 [m      Circle shape3 [93m=[m [93mnew[m Circle(cirRadius);
+[93m 18 [m      [96m// test Radius property[m[62;112H[K[62;112H76,45[9C39%[61;49H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 13 [m      [38;5;121mdouble[m triBase [93m=[m [95m5.5f[m, triHeight [93m=[m [95m12.25f[m;
+[93m 14 [m      IShape shape2 [93m=[m [93mnew[m Triangle(triBase, triHeight);
+[93m 15 [m[62;112H[K[62;112H73,33[9C31%[61;37H[?25h[?25l[1;61r[1;1H[3L[1;62r[1;1H[93m 10 [m      [38;5;121mdouble[m rectWidth [93m=[m [95m8.75f[m, rectHeight [93m=[m [95m20.5f[m;
+[93m 11 [m      IShape shape1 [93m=[m [93mnew[m Rectangle(rectWidth, rectHeight);
+[93m 12 [m[59;31H[46m{[61;9H}[m[62;112H[K[62;112H70,6[10C23%[61;10H[?25h[?25l[1;61r[1;1H[9L[1;62r[1;1H[93m  1 [m[96m/* lab07.cs[m
+[93m  2 [m[96m * C# lab07 Modify this code [m
+[93m  3 [m[96m */[m
+[93m  4 
+  5 [m[93musing[m System;
+[93m  6 
+  7 [m[38;5;121mnamespace[m Assignment {
+[93m  8 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mApplication  [m{
+[93m  9 [m    [38;5;121mstatic[m [38;5;121mvoid[m Main() {[62;112H[K[62;112H61,29[9CTop[61;33H[[62;102H^[[61;33H[62;104H[[61;33H[?25h[?25l[62;102H   [61;33H [62;112H[K[62;112H61,29[9CTop[61;33H[?25h[?25l[62;112H[K[62;112H61,29[9CTop[61;33H[?25h[?25l[8;33H[46m{[29;7H}[m[62;112H29,4 [29;8H[?25h[62;1H[K[29;7H[?25l[62;102H^[[29;7H[?25h[?25l[62;102H  [29;8H[62;112H29,3[10CTop[29;7H[?25h[?25l[62;102H:[29;7H[62;102H[K[62;1H:[?25hwq[?25l[?1006;1000l[?1002l[?2004l[>4;m"lab07.cs" 99L, 2558B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ vi lab07.cs [8Pmake
+[?2004lmcs sample1.cs
+mcs sample2.cs
+mcs sample3.cs
+mcs sample4.cs
+mcs sample5.cs
+mcs sample6.cs
+mcs sample7.cs
+mcs lab07.cs
+[31mlab07.cs(51,18): error CS0117: `System.Console' does not contain a definition for `Writeline'[0m
+/usr/lib/mono/4.5/mscorlib.dll (Location of the symbol related to previous error)
+[31mlab07.cs(69,18): error CS0117: `System.Console' does not contain a definition for `Writeline'[0m
+/usr/lib/mono/4.5/mscorlib.dll (Location of the symbol related to previous error)
+[31mlab07.cs(92,18): error CS0117: `System.Console' does not contain a definition for `Writeline'[0m
+/usr/lib/mono/4.5/mscorlib.dll (Location of the symbol related to previous error)
+Compilation failed: 3 error(s), 0 warnings
+make: *** [Makefile:27: lab07] Error 1
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ makevi lab07.cs 
+[?2004l[?1006;1000h[?1002h[?1049h[22;0;0t[>4;2m[?1h=[?2004h[?1004h[1;62r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[62;1H"lab07.cs" 99L, 2558B[2;1H½[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H[93m  1 [m[96m/* lab07.cs[m
+[93m  2 [m[96m * C# lab07 Modify this code [m[2;34H[K[3;1H[93m  3 [m[96m */[m[3;8H[K[4;1H[93m  4 
+  5 [m[93musing[m System;
+[93m  6 
+  7 [m[38;5;121mnamespace[m Assignment {
+[93m  8 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mApplication  [m[46m{[m
+[93m  9 [m    [38;5;121mstatic[m [38;5;121mvoid[m Main() {
+[93m 10 [m      [38;5;121mdouble[m rectWidth [93m=[m [95m8.75f[m, rectHeight [93m=[m [95m20.5f[m;
+[93m 11 [m      IShape shape1 [93m=[m [93mnew[m Rectangle(rectWidth, rectHeight);
+[93m 12 
+ 13 [m      [38;5;121mdouble[m triBase [93m=[m [95m5.5f[m, triHeight [93m=[m [95m12.25f[m;
+[93m 14 [m      IShape shape2 [93m=[m [93mnew[m Triangle(triBase, triHeight);
+[93m 15 
+ 16 [m      [38;5;121mdouble[m cirRadius [93m=[m [95m5.5f[m;
+[93m 17 [m      Circle shape3 [93m=[m [93mnew[m Circle(cirRadius);
+[93m 18 [m      [96m// test Radius property[m
+[93m 19 [m      shape3.Radius [93m=[m [95m3.5f[m;
+[93m 20 [m      Console.WriteLine([95m"I set my Radius to '{0}'."[m, shape3.Radius);
+[93m 21 
+ 22 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape1, shape1.Area);
+[93m 23 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape2, shape2.Area);
+[93m 24 [m      Console.WriteLine([95m"area of type '{0}'[m[38;5;224m\t[m[95m: {1}"[m, shape3, shape3.Area);
+[93m 25 [m      shape1.Display();
+[93m 26 [m      shape2.Display();
+[93m 27 [m      shape3.Display();
+[93m 28 [m    }
+[93m 29 [m  [46m}[m
+[93m 30 
+ 31 [m  [38;5;121mpublic[m [38;5;121minterface[m IShape {
+[93m 32 [m     [38;5;121mvoid[m Display ();
+[93m 33 
+ 34 [m     [38;5;121mdouble[m Area {
+[93m 35 [m[7C[93mget[m;    [96m// concrete classes must implement IShape.Area.Get()[m
+[93m 36 [m     }
+[93m 37 [m  }
+[93m 38 
+ 39 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 40 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mRectangle[m[93m:[m IShape {
+[93m 41 [m     [38;5;121mpublic[m Rectangle([38;5;121mdouble[m inWidth, [38;5;121mdouble[m inHeight) {
+[93m 42 [m[8Cwidth [93m=[m inWidth;
+[93m 43 [m[8Cheight [93m=[m inHeight;
+[93m 44 [m     }
+[93m 45 
+ 46 [m     [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 47 [m[8C[93mget[m {[93mreturn[m width [93m*[m height;}
+[93m 48 [m     }
+[93m 49 
+ 50 [m     [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 51 [m[9CConsole.Writeline([95m"I'm a rectangle! I have width {0} and height {1}"[m, width, height);
+[93m 52 [m     }
+[93m 53 
+ 54 [m     [38;5;121mprivate[m [38;5;121mdouble[m width [93m=[m [95m0[m;
+[93m 55 [m     [38;5;121mprivate[m [38;5;121mdouble[m height [93m=[m [95m0[m;
+[93m 56 [m  }
+[93m 57 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 58 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mTriangle[m[93m:[m IShape {
+[93m 59 [m    [38;5;121mpublic[m Triangle([38;5;121mdouble[m inBase, [38;5;121mdouble[m inHeight) {
+[93m 60 [m[8Cmybase [93m=[m inBase;
+[93m 61 [m[8Cmyheight [93m=[m inHeight;[62;112H29,3[10CTop[29;7H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\[?12$p[?25l[8;33H{[29;7H}[62;112H51,23[51;27H[?25h[?25l[62;102H~@k[51;27H[62;102H   [51;27H[62;102Hdl[51;27H[62;102H  [51;27Hine([95m"I'm a rectangle! I have width {0} and height {1}"[m, width, height);[51;98H[K[51;27H[?25h[?25l[62;102Hi[51;27H[62;102H [51;27H[62;1H[1m-- INSERT --[m[62;13H[K[62;112H51,23[9CTop[51;27H[?25h[?25lLine([95m"I'm a rectangle! I have width {0} and height {1}"[m, width, height);[62;116H4[51;28H[?25h[?25l[50;32H[46m{[52;10H}[m[62;113H2,7 [52;11H[?25h[?25l[50;32H{[52;10H}[62;113H5,24[55;28H[?25h[?25l[40;38H[46m{[56;7H}[m[62;113H6,4 [56;8H[?25h[?25l[40;38H{[56;7H}[62;113H7,24[57;28H[?25h[?25l[62;113H8[58;28H[?25h[?25l[62;113H9[59;28H[?25h[?25l[1;61r[1;1H[8M[1;62r[54;1H[93m 62 [m    }
+[93m 63 
+ 64 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {
+[93m 65 [m[8C[93mget[m{ [93mreturn[m [95m0.5[m [93m*[m mybase [93m*[m myheight; }
+[93m 66 [m    }
+[93m 67 
+ 68 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {
+[93m 69 [m[9CConsole.Writeline([95m"I'm a triangle! I have base {0} and height {1}"[m, mybase, myheight);[62;112H[K[62;112H69,24[9C21%[61;28H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 70 [m    }[62;112H[K[62;112H70,6[10C23%[59;31H[46m{[61;9H}[?25h[?25l[1;61r[m[61;1H
+[1;62r[61;1H[93m 71 [m[62;112H[K[62;112H71,1[10C26%[58;31H{[60;9H}[61;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 72 [m    [38;5;121mprivate[m [38;5;121mdouble[m mybase [93m=[m [95m0[m;
+[93m 73 [m    [38;5;121mprivate[m [38;5;121mdouble[m myheight [93m=[m [95m0[m;
+[93m 74 [m  }[62;112H[K[62;112H74,4[10C34%[45;37H[46m{[61;7H}[?25h[?25l[1;61r[m[61;1H
+[1;62r[61;1H[93m 75 [m[62;112H[K[62;112H75,1[10C36%[44;37H{[60;7H}[61;5H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 76 [m  [96m////////////////////////////////////////////////////////////////////////[m
+[93m 77 [m  [38;5;121mpublic[m [38;5;121mclass[m [38;5;121mCircle[m[93m:[m IShape {
+[93m 78 [m    [38;5;121mpublic[m Circle([38;5;121mdouble[m inRadius) {[62;112H[K[62;112H78,24[9C44%[61;28H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 79 [m[8Cradius [93m=[m inRadius;[62;112H[K[62;112H79,24[9C47%[61;28H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 80 [m    }[62;112H[K[62;112H80,6[10C50%[59;40H[46m{[61;9H}[?25h[?25l[m[59;40H{[61;9H}[62;112H79,24[60;28H[?25h[?25l[62;113H8[59;28H[?25h[?25l[62;113H7[58;28H[?25h[?25l[62;113H6[57;28H[?25h[?25l[62;113H5,1 [56;5H[?25h[?25l[39;37H[46m{[55;7H}[m[62;113H4,4[55;8H[?25h[?25l[39;37H{[55;7H}[62;113H3,24[54;28H[?25h[?25l[62;113H2[53;28H[?25h[?25l[62;113H1,1 [52;5H[?25h[?25l[49;31H[46m{[51;9H}[m[62;113H0,6[51;10H[?25h[?25l[49;31H{[51;9H}[62;112H69,24[50;28H[?25h[?25line([95m"I'm a triangle! I have base {0} and height {1}"[m, mybase, myheight);[50;99H[K[62;116H3[50;27H[?25h[?25lLine([95m"I'm a triangle! I have base {0} and height {1}"[m, mybase, myheight);[62;116H4[50;28H[?25h[?25l[49;31H[46m{[51;9H}[m[62;112H70,6 [51;10H[?25h[?25l[49;31H{[51;9H}[62;113H3,24[54;28H[?25h[?25l[39;37H[46m{[55;7H}[m[62;113H4,4 [55;8H[?25h[?25l[39;37H{[55;7H}[62;113H5,1[56;5H[?25h[?25l[62;113H6,24[57;28H[?25h[?25l[62;113H7[58;28H[?25h[?25l[62;113H8[59;28H[?25h[?25l[62;113H9[60;28H[?25h[?25l[1;61r[1;1H[2M[1;62r[60;1H[93m 81 
+ 82 [m    [38;5;121mpublic[m [38;5;121mdouble[m Radius {[62;112H[K[62;112H82,24[9C55%[61;28H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 83 [m[8C[93mget[m {[93mreturn[m radius;}[62;112H[K[62;112H83,24[9C57%[61;28H[?25h[?25l[1;61r[1;1H[3M[1;62r[59;1H[93m 84 [m[8C[93mset[m {radius [93m=[m [93mvalue[m;}
+[93m 85 [m    }
+[93m 86 [m[62;112H[K[62;112H86,1[10C65%[61;5H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 87 [m    [38;5;121mpublic[m [38;5;121mdouble[m Area {[62;112H[K[62;112H87,24[9C68%[61;28H[?25h[?25l[1;61r[1;1H[2M[1;62r[60;1H[93m 88 [m[8C[93mget[m{ [93mreturn[m [95m3.14[m [93m*[m radius [93m*[m radius; }
+[93m 89 [m    }[62;112H[K[62;112H89,6[10C73%[59;28H[46m{[61;9H}[?25h[?25l[m[59;28H{[61;9H}[62;113H8,24[60;28H[?25h[?25l[59;28H[46m{[61;9H}[m[62;113H9,6 [61;10H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 90 [m[62;112H[K[62;112H90,1[10C76%[58;28H{[60;9H}[61;5H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 91 [m    [38;5;121mpublic[m [38;5;121mvoid[m Display() {[62;112H[K[62;112H91,24[9C78%[61;28H[46m()[?25h[?25l[1;61r[m[61;1H
+[1;62r[61;1H[93m 92 [m[9CConsole.Writeline([95m"I'm a circle! I have radius {0}"[m, radius);[62;112H[K[62;112H92,24[9C81%[60;28H()[61;28H[?25h[?25l[1;61r[61;1H
+[1;62r[61;1H[93m 93 [m    }[62;112H[K[62;112H93,6[10C84%[59;31H[46m{[61;9H}[?25h[?25l[m[59;31H{[61;9H}[62;113H2,24[60;28H[?25h[?25line([95m"I'm a circle! I have radius {0}"[m, radius);[60;74H[K[62;116H3[60;27H[?25h[?25lLine([95m"I'm a circle! I have radius {0}"[m, radius);[62;116H4[60;28H[?25h[62;1H[K[60;27H[?25l[62;102H^[[60;27H[?25h[?25l[62;102H  [60;28H[62;112H92,23[9C84%[60;27H[?25h[?25l[62;102H:[60;27H[62;102H[K[62;1H:[?25hwq[?25l[?1006;1000l[?1002l[?2004l[>4;m"lab07.cs" 99L, 2558B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[23;0;0t[?25h[>4;m[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ vi lab07.cs [8Pmake
+[?2004lmcs sample1.cs
+mcs sample2.cs
+mcs sample3.cs
+mcs sample4.cs
+mcs sample5.cs
+mcs sample6.cs
+mcs sample7.cs
+mcs lab07.cs
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ mono ./lab07.exe 
+[?2004lI set my Radius to '3.5'.
+area of type 'Assignment.Rectangle'	: 179.375
+area of type 'Assignment.Triangle'	: 33.6875
+area of type 'Assignment.Circle'	: 38.465
+I'm a rectangle! I have width 8.75 and height 20.5
+I'm a triangle! I have base 5.5 and height 12.25
+I'm a circle! I have radius 3.5
+[?2004h]0;crodriguez4@odin: ~/cs3500/lab07[01;32mcrodriguez4@odin[00m:[01;34m~/cs3500/lab07[00m$ exit
+[?2004lexit
+
+Script done on 2026-10-06 19:28:27-07:00 [COMMAND_EXIT_CODE="0"]

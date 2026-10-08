@@ -1,0 +1,35 @@
+body{
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images8/Cool-Black-Wallpaper.jpg");
+    color: white;
+}
+
+#Packages{
+ margin:10px 12px;
+}
+
+#services{
+    display:flex;
+    align-items: flex-end;
+}
+
+.table-dark{
+    border: 2px solid #EDC967;
+    border-collapse: collapse;
+}
+
+div#ex-services, #in-services {
+    margin-top: 40px!important;
+    margin-bottom: 20px!important;
+}
+
+#individual{
+    display: flex;
+}
+
+footer a{
+    color: #FCF4B4!important;
+    font-weight:500!important;
+}
+
+
+

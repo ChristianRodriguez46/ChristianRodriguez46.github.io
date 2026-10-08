@@ -1,0 +1,44 @@
+n = 4
+
++++ All stacky strings of parameter 4 are:
+ Stacky string     1: +-+-+-+-
+ Stacky string     2: +-+-++--
+ Stacky string     3: +-++--+-
+ Stacky string     4: +-++-+--
+ Stacky string     5: +-+++---
+ Stacky string     6: ++--+-+-
+ Stacky string     7: ++--++--
+ Stacky string     8: ++-+--+-
+ Stacky string     9: ++-+-+--
+ Stacky string    10: ++-++---
+ Stacky string    11: +++---+-
+ Stacky string    12: +++--+--
+ Stacky string    13: +++-+---
+ Stacky string    14: ++++----
+ There are 14 of them
+
++++ Stacky string counts by formula
+ C[4] = 14
+ C[16] = 35357670
+ C[32] = 55534064877048198
+
++++ All stacky permutations of length 4 are:
+ Stacky permutation     1: 1,2,3,4
+ Stacky permutation     2: 1,2,4,4
+ Stacky permutation     3: 1,3,3,4
+ Stacky permutation     4: 1,3,4,4
+ Stacky permutation     5: 1,4,4,4
+ Stacky permutation     6: 2,2,3,4
+ Stacky permutation     7: 2,2,4,4
+ Stacky permutation     8: 2,3,3,4
+ Stacky permutation     9: 2,3,4,4
+ Stacky permutation    10: 2,4,4,4
+ Stacky permutation    11: 3,3,3,4
+ Stacky permutation    12: 3,3,4,4
+ Stacky permutation    13: 3,4,4,4
+ Stacky permutation    14: 4,4,4,4
+ There are 14 of them
+
++++ Check for stacky permutations:
+ Permutation 4 3 1 2 is not stacky
+ Permutation 4 2 1 3 is not stacky

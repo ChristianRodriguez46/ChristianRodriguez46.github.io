@@ -1,0 +1,109 @@
+A List of Prolog Predicates   (from Dr. Botting at CSUSB)
+===========================    
+
+Arithmetic Operators:   
+
+*, /, +, -, unary -, // (integer division), mod, rem (remainder)
+
+!  Cut operator eliminates choices in a Prolog derivation tree
+
+fail predicate causes the failure of a rule 
+
+ 1. (semicolon): ;::infix= ; ::=(1st) or (2nd).
+    (comma): , ::infix= ; ::=(1st) and (2nd). :- ::infix=(1st) if (2nd).
+ 2. ->::infix= If (1st) then (2nd).
+ 3. <::infix= Less Than - numerical comparison. Evalutaes both sides..
+ 4. <=::infix= Less Than or Equal - numerical comparison. Evalutaes both sides..
+ 5. =::infix= True if both terms are the same, or makes them match..
+ 6. ==::infix= True if two terms X and Y are identical. Does not force unification..
+ 7. \==::infix= test for inequality of structures. No unification. =:= ::infix= Equal to - numerical comparison. Evaluates both sides. .
+ 8. =\=::infix= Unequal to - numerical comparison. Evaluates both sides. .
+ 9. >::infix= Greater Than - numerical comparison. Evaluates both sides..
+10. >=::infix= Greater than of equal - numerical comparison. Evaluates both sides..
+11. is::infix= Expression is evaluated and X becomes the value..
+12. abolish::= remove all clause/definitions of (_) from the data base.
+13. abort::= Probably terminates current query, or clause, or ... ..
+14. ancestors::= (_) instantiated to list of goals called up to this point..
+15. arg::= (3rd) either becomes or is the (1st)th argument in structure (2nd)..
+16. ascii::= (1st) is/becomes an atomic character with ascii code (2nd).
+17. assert::= Adds clause (_) somewhere in knowledge base..
+18. asserta::= Clause(_) is placed at the beginning of the database..
+19. assertz::= Clause(_) is placed at the end of the database..
+20. atom::= True if (_) is a non-numeric atom..
+21. atomic::= True if (_) is an atom or a number..
+22. body::= (2nd) is set to the body of (1st) ((1st)=Head:-(2nd)).
+23. char(n, a, Z)::= Z set to the nth character in atom a..
+24. close(FileName)::= close file, NOT standard input or output..
+25. conc(Var, term)::= Var is/becomes list [term]..
+26. concat(List, Var)::= Var is/becomes atom made up of elements of List..
+27. consult('filename')::= appends correct terms from file.
+28. consult(['filemane',...])::= consults listed files.. define(Atom(Args)) ::= experimental make unique definition of Atom.
+29. define(Atom, Body)::= experimental make unique definition of Atom..
+30. definition(X,Y)::= Y becomes a clause in definition of atom X..
+31. defop(Precedence, Type, Name)::= Define Name to be an operator, see documents..
+32. dump::=?? builtin( notOp, 0, 0, "dump", dump)..
+33. ed functor::= Starts up your EDITOR on the terms defining functor..
+34. ef file::= Lets you edit a file..
+35. eof::=?? builtin( notOp, 0, 0, "eof", p_eof). ??.
+36. file(FileName,ListOfAtoms)::=After consultation ListOfAtoms shows the predicates defined in FileName.
+37. first_clause(Head, Body)::= Find first clause that fits Head, Body.
+38. free(X)::=?? builtin( notOp, 0, 1, "free", p_free). ??.
+39. free_proc(X)::=?? builtin( notOp, 0, 1, "free_proc", p_free_proc). ??.
+40. functor(T, Functor, Arity)::= T becomes Functor of Arity Arguments.
+41. functor(Term,F,A)::= F becomes name and A the arity of Term..
+42. getc(C)::= C is or becomes the next character on the input.. get0(ASCII): -getc(Char), ascii(Char,ASCII). % gets ASCII code of next char
+43. goal(X,Y,Z)::=?? builtin( notOp, 0, 3, "goal", goal). ??.
+44. halt::= end of session, terminates Prolog..
+45. head(Clause, Head)::= sets Head to be the head of the clasue Clause.. help:- print('To exit input: halt!, To read the manual: man!'),... .
+46. integer(X)::= true if X is instantiated to an integer..
+47. length(List,L)::= L instantiated to number elements in List..
+48. listing::= outputs all user defined clauses on current output.. man:-system('man prolog').
+49. match_args(F,I,L)::= partial match of Ith,I+1th, args with elelements of L..
+50. member(Item, List)::= True if Member in List else generates Members in List..
+51. next_clause(X, Y)::= X must be a Clause in the data base, Y is set to the next..
+52. nl::= Outputs a new line character..
+53. nonvar(X)::= tests if X is currently instantiated to a non-variable term..
+54. not P::= Success if P fails , Variables in P can be uninstantiated..
+55. nth(X, N, L)::= true if Nth element of list L is X, Can set X, N, or L..
+56. numbervars(X,Y,Z)::=?? builtin( notOp, 0, 3, "numbervars", number_vars). ??.
+57. nvars(X,Y)::=?? builtin( notOp, 0, 2, "nvars", nvars). ??.
+58. offset(X,Y)::=?? builtin( notOp, 0, 2, "offset", offset). ??.
+59. op(Precedence, Type, [Name, ..Rest])::= declares list of operators..
+60. pp X::= Print out pretty version of definitions of atom X..
+61. prin(Term,...)::= Output Terms (no spaces between, no nl)..
+62. print(Term,...)::= Output Term with nl..
+63. prompt(Old, new)::= Sets the 'read' prompt to 'new', Old set to previous value...
+64. putc(C)::= Outputs ASCII character for C permanently..
+65. quoted(X)::=?? builtin( notOp, 0, 1, "quoted", quoted). ??.
+66. ratom(X)::= Read atom into X, test if next input atom is X..
+67. read(Term)::= Inputs complete, correct and terminated Term..
+68. read_from_this_file::=?? builtin( notOp, 0, 0, "read_from_this_file", read_in). ??. redefine(atom(Value),newatom(NewValue)) ::= replaces first definition of atom..
+69. redefine(Head,Body,NewHead,NewBody)::= replaces definition..
+70. remob(X)::=?? builtin( notOp, 0, 1, "remob", remob). Remove Object? ??.
+71. rename(X,Y)::=?? builtin( notOp, 0, 2, "rename", rename). ??.
+72. retract(Clause)::= remove first matching clause and unify variables..
+73. retract(Head)::= warning and then remove first unifiable clause..
+74. retract(Head, Body)::= remove first matching clause and unify variables..
+75. retract_head(Head)::= remove first matching clause and unify variables..
+76. save FileName::= Saves data base in file FileName (normally in quotes)..
+77. see(File)::= current input becomes File, and if necesary opens it..
+78. seeing(F)::= F becomes/is the current file..
+79. seen::= close current input file..
+80. sh::= escape temporarily to UNIX by spawning an interactive subshell..
+81. show X::= let user see documentatation..
+82. skip(C)::= Inputs data to match C or matches C to next input.
+83. spy predicate::= Start to trace the predicate..
+84. statistics::= outputs current figures on bindings etc..
+85. system(Command)::= Obeys UNIX command, system('cat help')..
+86. tab(N)::= Outputs N blanks (permanently)..
+87. tell(File)::= The current output becomes File (append mode)..
+88. telling(F)::= F is or becomes the name of the current output file..
+89. term(X,Y,Z)::=?? builtin( notOp, 0, 3, "term", pterm). ??.
+90. time::= turns on some kind of timing mechanism..
+91. told::= close output file.. trace [Predicate,Predicate, ..Rest] ::= turn on tracing of a list of predicates..
+92. univ(F,L)::= Makes functor F match elements of list L. F and/or L can be set..
+93. unlink_clause(X)::= Given X is instantiated to a clause then clause is removed..
+94. unspy predicate::= Stop tracing the predicate.. untrace [Predicate,Predicate, ..Rest] ::= turn off tracing of a list..
+95. var(X)::= true if X is an uninstantiated variable or unified with a variable..
+96. write(Term)::= outputs Term with no period or quotes etc.. 
+

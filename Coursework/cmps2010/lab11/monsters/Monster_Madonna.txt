@@ -1,0 +1,9 @@
+---------------------------
+Madonna the Monster
+---------------------------
+Name: Madonna
+Type: 
+Color: Hot Magenta
+Eyes: 2
+Arms: 4
+Legs: 0

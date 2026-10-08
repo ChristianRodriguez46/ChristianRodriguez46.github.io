@@ -1,0 +1,9 @@
+------------------------
+Alma the Monster
+------------------------
+TYPE: Hot
+COLOR: Cotton Candy
+NO. OF EYES: 1
+NO. OF ARMS: 5
+NO. of LEGS: 14
+------------------------

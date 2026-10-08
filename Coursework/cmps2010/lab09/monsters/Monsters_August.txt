@@ -1,0 +1,9 @@
+------------------------
+August the Monster
+------------------------
+TYPE: Smooth
+COLOR: Gold
+NO. OF EYES: 7
+NO. OF ARMS: 2
+NO. of LEGS: 3
+------------------------

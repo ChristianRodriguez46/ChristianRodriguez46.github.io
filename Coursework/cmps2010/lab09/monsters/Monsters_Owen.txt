@@ -1,0 +1,9 @@
+------------------------
+Owen the Monster
+------------------------
+TYPE: Creepy
+COLOR: Green Yellow
+NO. OF EYES: 6
+NO. OF ARMS: 1
+NO. of LEGS: 6
+------------------------

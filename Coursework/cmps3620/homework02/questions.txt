@@ -1,0 +1,26 @@
+Assigned questions: 
+    - Chapter 2: 2, 4, 6, 13, 16, 24, 30, 37, 44, 46
+
+2. A noiseless 4-kHz channel is sampled every 1 msec. What is the maximum data rate?
+    How does the maximum data rate change if the channel is noisy, with a signal-to-noise
+    ratio of 30 dB?
+
+4. If a binary signal is sent over a 3-kHz channel whose signal-to-noise ratio is 20 dB, what is the maximum achievable data rate?
+
+6. What are the advantages of fiber optics over copper as a transmission medium? Is there any downside of using fiber optics over copper?
+
+13. Calculate the end-to-end transit time for a packet for both GEO (altitude: 35,800 km),MEO(altitude: 18,000 km) and LEO (altitude: 750 km) satellites.
+
+16. Prove that in 4B/5B encoding, a signal transition will occur at least every four bit times.
+
+24. How many frequencies does a full-duplex QAM-64 modem use?
+
+30. What is the difference, if any, between the demodulator part of a modem and the coder part of a codec? 
+    (After all, both convert analog signals to digital ones.)
+
+37. Three packet-switching networks each contain n nodes. The first network has a star topology with a central switch, the second is a (bidirectional) ring,
+and the third is fully interconnected, with a wire from every node to every other node. What are the best-, average-, and worst-case transmission paths in hops?
+
+44. Suppose that A, B, and C are simultaneously transmitting 0 bits, using a CDMA system with the chip sequences of Fig. 2-28(a). What is the resulting chip sequence?
+
+46. A CDMA receiver gets the following chips: (−1+1−3+1−1 −3 +1 +1). Assuming the chip sequences defined in Fig. 2-28(a), which stations transmitted, and which bits did each one send?

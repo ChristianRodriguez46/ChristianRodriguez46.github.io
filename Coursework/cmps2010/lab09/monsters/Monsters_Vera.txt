@@ -1,0 +1,9 @@
+------------------------
+Vera the Monster
+------------------------
+TYPE: Creepy
+COLOR: Cornflower
+NO. OF EYES: 12
+NO. OF ARMS: 14
+NO. of LEGS: 5
+------------------------

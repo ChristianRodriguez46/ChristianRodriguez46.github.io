@@ -1,0 +1,9 @@
+------------------------
+Akeem the Monster
+------------------------
+TYPE: Rough
+COLOR: Forest Green
+NO. OF EYES: 8
+NO. OF ARMS: 15
+NO. of LEGS: 9
+------------------------

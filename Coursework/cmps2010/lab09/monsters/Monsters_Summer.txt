@@ -1,0 +1,9 @@
+------------------------
+Summer the Monster
+------------------------
+TYPE: Slimy
+COLOR: Jazzberry Jam
+NO. OF EYES: 2
+NO. OF ARMS: 10
+NO. of LEGS: 8
+------------------------

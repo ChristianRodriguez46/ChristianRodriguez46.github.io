@@ -1,0 +1,9 @@
+------------------------
+Byron the Monster
+------------------------
+TYPE: Slippery
+COLOR: Hot Magenta
+NO. OF EYES: 11
+NO. OF ARMS: 6
+NO. of LEGS: 9
+------------------------

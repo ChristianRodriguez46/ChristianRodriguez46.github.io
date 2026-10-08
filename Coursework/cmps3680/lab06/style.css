@@ -1,0 +1,82 @@
+.product {
+    background-color: lightgray;
+    width: 300px;
+    padding: 5px;
+    margin: 5px 0px;
+}
+
+/* TODO: Make you pages look pretty! */
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #727E8D;
+  margin: 150px auto;
+  padding: 50px;
+  height: auto;
+  width: 50%;
+  box-shadow: 0px 0px 25px 9px #8D8172;
+}
+label {
+  font-size: 25px;
+  color: white;
+}
+#id {
+}
+input[type="text"], input[type="tel"], input[type="number"], input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  font-size: 23px;
+}
+form {
+  width: 60%;
+}
+input[type="date"]{
+  font-size: 23px;
+}
+input[type="submit"] {
+  width: 133px;
+  height: 49px;
+  font-size: 100%;
+  border-color: #1aa1d1;
+  border-radius: 5px;
+}
+
+.n-container {
+    height: 43px;
+    position: fixed;
+    overflow: hidden;
+    top: 0px;
+    width: 100%;
+    padding: 7px;
+    text-decoration: none;
+    background-color: #969b9d;
+}
+
+ul.navbar {
+    list-style-type: none;
+    margin: 8px;
+    padding: 0px;
+    text-decoration: none;
+}
+
+li {
+    float: left;
+    padding: 10px 0px;
+    font-size: 31px;
+    line-height: 2.5px;
+}
+
+a {
+    color: white;
+    padding: 13px;
+    background: brown;
+    text-decoration: none;
+}
+
+#active {
+    background-color: white;
+    color: black;
+}

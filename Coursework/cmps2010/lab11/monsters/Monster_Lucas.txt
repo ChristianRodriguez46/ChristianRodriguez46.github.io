@@ -1,0 +1,9 @@
+---------------------------
+Lucas the Monster
+---------------------------
+Name: Lucas
+Type: 
+Color: Yellow Green
+Eyes: 3
+Arms: 7
+Legs: 0

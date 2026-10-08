@@ -1,0 +1,9 @@
+------------------------
+Theodore the Monster
+------------------------
+TYPE: Smooth
+COLOR: Cerulean
+NO. OF EYES: 12
+NO. OF ARMS: 8
+NO. of LEGS: 8
+------------------------

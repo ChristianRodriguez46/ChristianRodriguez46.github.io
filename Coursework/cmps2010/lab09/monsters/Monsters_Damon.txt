@@ -1,0 +1,9 @@
+------------------------
+Damon the Monster
+------------------------
+TYPE: Soft
+COLOR: Unmellow Yellow
+NO. OF EYES: 1
+NO. OF ARMS: 8
+NO. of LEGS: 5
+------------------------

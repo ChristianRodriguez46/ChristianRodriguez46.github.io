@@ -1,0 +1,13 @@
+
+numThread = 2  numRun = 10
+  run =  1  ET = 3326.327 ms
+  run =  2  ET = 3578.008 ms
+  run =  3  ET = 3241.963 ms
+  run =  4  ET = 2975.986 ms
+  run =  5  ET = 3036.348 ms
+  run =  6  ET = 2794.049 ms
+  run =  7  ET = 2958.569 ms
+  run =  8  ET = 3042.990 ms
+  run =  9  ET = 3287.879 ms
+  run = 10  ET = 3312.100 ms
+  AVG  ET = 3155.422 ms

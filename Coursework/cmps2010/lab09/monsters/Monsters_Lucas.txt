@@ -1,0 +1,9 @@
+------------------------
+Lucas the Monster
+------------------------
+TYPE: Thin
+COLOR: Antique Brass
+NO. OF EYES: 12
+NO. OF ARMS: 2
+NO. of LEGS: 7
+------------------------

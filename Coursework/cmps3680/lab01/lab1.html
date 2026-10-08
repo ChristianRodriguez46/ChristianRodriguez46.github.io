@@ -1,0 +1,115 @@
+<html> 
+    <head>
+        <title>Lab1</title>
+        <link type="text/css" rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div id="f-container">
+            <h1>Contact Form</h1>
+            <form name="contactForm" action="" onsubmit="return validateForm();" method="get" action="">
+                <div class="row">
+                    <div class="col-1">
+                        <label for="fName">*First Name</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" id="fName" name="fName"><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">   
+                        <label for="lName">*Last Name</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" id="lName" name="lName"><br><br>
+                    </div>
+                </div>
+                <div class="row"> 
+                    <div class="col-1">
+                        <label for="email">*Email Address</label>
+                    </div>
+
+                    <div class="col-2">   
+                        <input type="text" id="email" name="email"><br><br>
+                    </div>
+                </div>
+                <div class="row">    
+                    <div class="col-1">
+                        <label for="pNum">Telephone Number</label>
+                    </div>
+                    <div class="col-2">
+                        <input type="tel" id="pNum" name="pNum"><br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <label for="cs">Major</label>
+                    </div>
+
+                    <div class="col-2" >
+                        <input type="radio" id="cs" name="major" value="CS">
+                        <label for="cs" class="r-sec">CS</label>
+
+                        <input type="radio" id="ce" name="major" value="CE">
+                        <label for="ce" class="r-sec">CE</label>
+
+                        <input type="radio" id="ee" name="major" value="EE">
+                        <label for="ee" class="r-sec">EE</label>
+
+                        <input type="radio" id="other" name="major" value="Other"> 
+                        <label for="other" class="r-sec">OTHER</label>
+                        <br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <label for="comments">*Comments</label>
+                    </div>
+                    <div class="col-2">
+                        <textarea id="comments" name="comment"></textarea>
+                        <br><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>   
+            <div id="output"></div>            
+        </div>
+        <script src="./script-demo.js"></script>
+        <script>
+            if (window.location.search != ""){
+                console.log("the form is valid")
+
+                const queryString = window.location.search;
+                //ostring means output string
+                let html = "";
+
+                const urlParams = new URLSearchParams(queryString);
+
+                //grabs values from forms
+                const fName = urlParams.get('fName');
+                const lName = urlParams.get('lName');
+                const email = urlParams.get('email');
+                const pNum  = urlParams.get('pNum');
+                const major  = urlParams.get('major');
+                const comments  = urlParams.get('comment');
+
+                //build an output string
+                html += "First Name: " + fName + "<br>"
+                html += "Last Name: " + lName + "<br>"
+                html += "Email: " + email + "<br>"
+                if(pNum != ""){
+                    html += "Phone Number: " + pNum + "<br>";
+                }
+                if(major != null){
+                    html += "Major " + major + "<br>";
+                }
+                html += "Comment: " + comments + "<br>";
+
+                document.getElementById("output").classList.add('complete');
+                //writes 'output string' to the "output div"
+                document.getElementById("output").innerHTML = html;
+            };
+        </script>
+    </body>
+</html>

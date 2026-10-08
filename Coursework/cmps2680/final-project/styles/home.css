@@ -1,0 +1,81 @@
+body{
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/images8/Cool-Black-Wallpaper.jpg");
+}
+
+div#img_board {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-height:400px;
+    margin-bottom: 50px;
+    justify-content: center;
+    flex-direction: row;
+}
+
+img#main_img {
+    width: 78%;
+    max-width: 800px;
+    min-width: 250px;
+}
+
+/*About section*/
+div#description {
+    color: white;
+    background-color: #696969c7;
+    border-radius: 10px;
+}
+
+div#description > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+div > p {
+    font-family: "Rubik", san-serif;
+    margin:12px;
+    font-size:20px;
+}
+
+/* social media part*/
+#container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+div#insta_link {
+    display: flex;
+    width: 30%;
+    height: auto;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding: 30px;
+}
+
+img#insta_logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    background-color: beige;
+    border-radius: 18px;
+}
+
+/*Footer section*/
+
+hr.my-4 {
+    margin: 18px!important;
+}
+
+footer a{
+    color: #FCF4B4!important;
+    font-weight:500!important;
+}
+
+footer p {color:white;}
+

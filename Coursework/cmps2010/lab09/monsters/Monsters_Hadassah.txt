@@ -1,0 +1,9 @@
+------------------------
+Hadassah the Monster
+------------------------
+TYPE: Thick
+COLOR: Razzle Dazzle Rose
+NO. OF EYES: 10
+NO. OF ARMS: 15
+NO. of LEGS: 7
+------------------------

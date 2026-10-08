@@ -1,0 +1,9 @@
+------------------------
+Joan the Monster
+------------------------
+TYPE: Thin
+COLOR: Navy Blue
+NO. OF EYES: 9
+NO. OF ARMS: 3
+NO. of LEGS: 12
+------------------------

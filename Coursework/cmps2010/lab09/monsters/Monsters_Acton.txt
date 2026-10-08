@@ -1,0 +1,9 @@
+------------------------
+Acton the Monster
+------------------------
+TYPE: Soft
+COLOR: Fuchsia
+NO. OF EYES: 11
+NO. OF ARMS: 8
+NO. of LEGS: 8
+------------------------

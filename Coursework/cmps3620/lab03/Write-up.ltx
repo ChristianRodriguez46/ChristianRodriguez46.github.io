@@ -1,0 +1,140 @@
+%------------------------------------------------------------
+% Lab 3 Write-Up — Signals & I/O Multiplexing
+% CMPS 3620 — Computer Networks
+%------------------------------------------------------------
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}      % improved tables
+\usepackage{array}
+\usepackage{listings}      % code listings
+\usepackage{hyperref}      % optional: clickable links
+
+\title{Lab 3 Write-Up — Signals and select()}
+\author{Christian Rodriguez}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+%------------------------------------------------------------------
+\section{ What is the purpose of \texttt{SIGCHLD} and \texttt{SIGCHLD} according to the man page?}
+(from \texttt{man 7 signal})
+\begin{center}
+\begin{tabular}{@{} l c p{9cm} @{}}
+\toprule
+\textbf{Signal} & \textbf{Default} & \textbf{Purpose} \\ \midrule
+\texttt{SIGCHLD} & Ign &
+Delivered to a parent when a child process stops or terminates, allowing the
+parent to call \texttt{wait()/waitpid()} and reap the child. \\[4pt]
+\texttt{SIGQUIT} & Core &
+Generated from the controlling terminal (usually
+\texttt{Ctrl+\textbackslash}). Terminates the process and produces a core dump
+for debugging. \\ \bottomrule
+\end{tabular}
+\end{center}
+
+%------------------------------------------------------------------
+\section{Signals Marked ``Important'' in \texttt{show\_signals}}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{cccc}
+        \texttt{SIGHUP} & \texttt{SIGINT} & \texttt{SIGQUIT} & \texttt{SIGVTALRM} \\
+        \texttt{SIGSEGV} & \texttt{SIGALRM} & \texttt{SIGPROF} & \texttt{SIGTERM} \\
+        \texttt{SIGPOLL} & \texttt{SIGCHLD} & \texttt{SIGUSR1} & \texttt{SIGUSR2} \\
+    \end{tabular}
+    \caption{Signals the program treats as ``important''}
+\end{table}
+
+%------------------------------------------------------------------
+\section{Purposes of Three Other Signals}
+
+\begin{center}
+\begin{tabular}{@{} l c p{9cm} @{}}
+\toprule
+\textbf{Signal} & \textbf{Default} & \textbf{Purpose} \\ \midrule
+\texttt{SIGHUP}   & Term &
+Hang-up detected on controlling terminal or loss of controlling process.  Often
+prompts daemons to reload configuration. \\[4pt]
+\texttt{SIGSEGV}  & Core &
+Invalid memory reference (segmentation fault), e.g.\ dereferencing a bad
+pointer. \\[4pt]
+\texttt{SIGTERM}  & Term &
+Polite request for a process to terminate; default signal used by
+\texttt{kill}, permitting cleanup before exit. \\ \bottomrule
+\end{tabular}
+\end{center}
+
+%------------------------------------------------------------------
+\section{Role of \texttt{sigemptyset()} in the Code}
+\textit{\textless waiting on images\textgreater}
+
+%------------------------------------------------------------------
+\section{Use of \texttt{sigprocmask()} in the Code}
+\textit{\textless waiting on images\textgreater}
+
+%------------------------------------------------------------------
+\section{How is the SIGINT (CTRL-C) signal handler set up in main()}
+
+\begin{lstlisting}[language=C, caption={Setting up the CTRL-C handler}]
+ /* Create a signal handler for CTRL-C which is SIGINT */
+  signal(SIGINT, ctrlc_handler);
+\end{lstlisting}
+
+The call to \lstinline|signal()| registers \lstinline|ctrlc_handler| as the
+handler for \texttt{SIGINT}.  When the user presses \texttt{Ctrl+C}, the kernel
+delivers \texttt{SIGINT}; the handler increments the global counter
+\lstinline|ctrlc_hit| and prints how many times the signal has been received.
+
+%------------------------------------------------------------------
+\section{How does the code tell select() to watch stdin for activity?}
+
+\begin{lstlisting}[language=C]
+FD_ZERO(&readmask);
+FD_ZERO(&writemask);
+FD_ZERO(&exceptmask);
+
+FD_SET(0, &readmask);    /* watch stdin for readable data */
+FD_SET(0, &exceptmask);  /* watch stdin for exceptional conditions */
+\end{lstlisting}
+
+Placing file descriptor~0 in \lstinline|readmask| causes \texttt{select()} to
+return when keyboard input arrives; adding it to \lstinline|exceptmask| allows
+the program to handle exceptional states (e.g.\ hang-up).
+
+%------------------------------------------------------------------
+\section{Enabling Full-Duplex Communication}
+
+\subsection*{(a) Conceptual Approach}
+Employ an event-driven loop (\texttt{select()}, \texttt{poll()}, or
+\texttt{epoll()}) that watches \emph{both} the data socket and
+\texttt{stdin}. Whenever \texttt{select()} signals readiness on either
+descriptor, process that side immediately while the other remains
+non-blocking.  This yields simultaneous send/receive capability (full duplex).
+
+\subsection*{(b) Outline of Code Changes (no code yet)}
+\begin{enumerate}
+  \item Create a permanent \texttt{select()} loop in both programs.
+  \item Each iteration, build the descriptor sets:
+        \begin{itemize}
+          \item Add the data socket to \lstinline|readmask| (and optionally
+                \lstinline|exceptmask|).
+          \item Add \lstinline|STDIN_FILENO| (\texttt{0}) to \lstinline|readmask|.
+        \end{itemize}
+  \item After \texttt{select()} returns:
+        \begin{itemize}
+          \item If the socket is readable $\rightarrow$ \lstinline|recv()| and
+                process/display the data.
+          \item If \texttt{stdin} is readable $\rightarrow$ read the line and
+                \lstinline|send()| it immediately.
+        \end{itemize}
+  \item Set the socket non-blocking (or handle \texttt{EAGAIN}/\texttt{EWOULDBLOCK})
+        so one stalled I/O path never delays the other.
+  \item Graceful shutdown: when either side sends the termination token
+        (\texttt{"."}), close the socket and exit the loop.
+  \item Remove the existing prompt-then-wait half-duplex logic; the unified
+        \texttt{select()} loop supersedes it.
+\end{enumerate}
+
+\end{document}

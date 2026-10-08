@@ -1,0 +1,9 @@
+------------------------
+Jakeem the Monster
+------------------------
+TYPE: Skinny
+COLOR: Cerulean
+NO. OF EYES: 11
+NO. OF ARMS: 15
+NO. of LEGS: 7
+------------------------

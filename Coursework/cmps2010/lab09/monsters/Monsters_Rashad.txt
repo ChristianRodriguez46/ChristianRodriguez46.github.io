@@ -1,0 +1,9 @@
+------------------------
+Rashad the Monster
+------------------------
+TYPE: Slimy
+COLOR: Cotton Candy
+NO. OF EYES: 5
+NO. OF ARMS: 13
+NO. of LEGS: 10
+------------------------

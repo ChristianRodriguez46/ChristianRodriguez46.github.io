@@ -1,0 +1,9 @@
+------------------------
+Chester the Monster
+------------------------
+TYPE: Mushy
+COLOR: Scarlet
+NO. OF EYES: 5
+NO. OF ARMS: 2
+NO. of LEGS: 3
+------------------------

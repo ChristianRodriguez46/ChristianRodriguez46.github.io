@@ -1,0 +1,9 @@
+------------------------
+Alice the Monster
+------------------------
+TYPE: Squishy
+COLOR: Outer Space
+NO. OF EYES: 3
+NO. OF ARMS: 15
+NO. of LEGS: 14
+------------------------

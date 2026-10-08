@@ -1,0 +1,9 @@
+---------------------------
+Sage the Monster
+---------------------------
+Name: Sage
+Type: 
+Color: Wild Watermelon
+Eyes: 7
+Arms: 6
+Legs: 0

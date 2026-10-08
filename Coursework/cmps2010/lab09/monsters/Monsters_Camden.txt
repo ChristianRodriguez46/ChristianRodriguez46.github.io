@@ -1,0 +1,9 @@
+------------------------
+Camden the Monster
+------------------------
+TYPE: Dry
+COLOR: Aquamarine
+NO. OF EYES: 7
+NO. OF ARMS: 11
+NO. of LEGS: 9
+------------------------

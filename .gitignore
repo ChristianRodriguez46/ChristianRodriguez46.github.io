@@ -1,0 +1,11 @@
+# compiled programs and editor files
+a.out
+*.o
+*.exe
+*.swp
+*.swo
+*~
+.DS_Store
+
+# server logs
+error.log

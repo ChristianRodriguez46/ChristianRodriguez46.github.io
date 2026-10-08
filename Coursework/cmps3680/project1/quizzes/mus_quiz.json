@@ -1,0 +1,35 @@
+{
+  "name": "Music Quiz",
+  "questions": [
+    {
+      "id": "1",
+      "text": "Which of the following songs is not from the Beatles?",
+      "options": [null, "Like a rolling stone", "All you need is love", "Here comes the sun","Strawberry fields forever"],
+      "answer": "Like a rolling stone"
+    },
+    {
+      "id": "2",
+      "text": "Which song is Pharrell Williams known for?",
+      "options": [null, "Sad", "Angry", "Happy", "Hopeful"],
+      "answer": "Happy"
+    },
+    {
+      "id": "3",
+      "text": "Where was Bob Marley from??",
+      "options": [null, "Cuba", "Costa Rica", "Brazil", "Jamaica"],
+      "answer": "Jamaica"
+    },
+    {
+      "id": "4",
+      "text": "Of which group was Gwen Stefani the lead singer?",
+      "options": [null, "Pussycat Dolls", "TLC", "The Bangles", "No Doubt"],
+      "answer": "No Doubt"
+    },
+    {
+      "id": "5",
+      "text": "According to Cyndi Lauper what do girls just want to do?",
+      "options": [null, "Settle Down", "Have Fun", "Dance", "Kiss Boys"],
+      "answer": "Have Fun"
+    }
+  ]
+}

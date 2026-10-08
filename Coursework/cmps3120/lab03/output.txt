@@ -1,0 +1,12 @@
++++ Sorting the balls...
+
+    Number of black box queries = 18664911
+*** Great! You cracked it.
+
++++ Finding the matching boxes: Method 1...
+    Number of black box queries = 53047190
+*** Great! You cracked it.
+
++++ Finding the matching boxes: Method 2...
+    Number of black box queries = 18475732
+*** Great! You cracked it.

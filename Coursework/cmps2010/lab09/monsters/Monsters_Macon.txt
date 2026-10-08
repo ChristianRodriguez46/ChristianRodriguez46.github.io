@@ -1,0 +1,9 @@
+------------------------
+Macon the Monster
+------------------------
+TYPE: Squishy
+COLOR: Antique Brass
+NO. OF EYES: 0
+NO. OF ARMS: 9
+NO. of LEGS: 8
+------------------------

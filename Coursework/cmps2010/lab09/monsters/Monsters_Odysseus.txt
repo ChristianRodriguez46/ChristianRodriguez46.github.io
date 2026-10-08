@@ -1,0 +1,9 @@
+------------------------
+Odysseus the Monster
+------------------------
+TYPE: Squishy
+COLOR: Brown
+NO. OF EYES: 5
+NO. OF ARMS: 12
+NO. of LEGS: 13
+------------------------

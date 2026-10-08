@@ -1,0 +1,9 @@
+------------------------
+Latifah the Monster
+------------------------
+TYPE: Prickly
+COLOR: Jazzberry Jam
+NO. OF EYES: 11
+NO. OF ARMS: 1
+NO. of LEGS: 5
+------------------------
