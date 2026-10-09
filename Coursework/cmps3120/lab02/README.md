@@ -2,6 +2,8 @@
 
 **CMPS 3120 Algorithm Analysis**, Lab 2
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3120/lab02/](https://christianrodriguez46.github.io/Coursework/cmps3120/lab02/)
+
 ## What it does
 
 Finds a hidden number between 1 and 100 million four ways: linear search, random guessing, a search using about 2 lg N guesses, and one using about lg N guesses, where the black box only says whether each guess is closer than the last. Each game is timed so the strategies can be compared.

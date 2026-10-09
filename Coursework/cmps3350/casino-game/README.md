@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Team project
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/casino-game/](https://christianrodriguez46.github.io/Coursework/cmps3350/casino-game/)
+
 ## What it does
 
 - A casino built by a five-person team in C++ with OpenGL and X11. It has three games (slots, blackjack and dice) that share a chip balance, buttons and textures.

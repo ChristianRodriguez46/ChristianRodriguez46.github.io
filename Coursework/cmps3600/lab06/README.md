@@ -2,6 +2,8 @@
 
 **CMPS 3600 Operating Systems**, Lab 6
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3600/lab06/](https://christianrodriguez46.github.io/Coursework/cmps3600/lab06/)
+
 ## What it does
 
 - `bblab6.c` copies a file one character at a time through a shared buffer: a producer thread fills it and a consumer thread writes it to a log, with semaphores keeping them in step so no character is lost or repeated. `poem` is the sample input.

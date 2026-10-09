@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4: Exporting data; credit card validation | CMPS 2020 | Christian Rodriguez</title>
+    <meta name="description" content="Two exercises in polymorphism. Homework 1 saves the same county infection counts as JSON or CSV through two subclasses of an abstract CoronaData class. Lab 5 validates a credit card with the Luhn checksum and per-brand rules, using a factory function to pick the card class.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2020">CMPS 2020 Programming II: Data Structures</a></li>
+                        <li><span aria-current="page">Week 4</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2020 &middot; Week 4</p>
+                <h1 class="labpage__title" data-animate>Exporting data; credit card validation</h1>
+                <p class="labpage__lede" data-animate>Two exercises in polymorphism. Homework 1 saves the same county infection counts as JSON or CSV through two subclasses of an abstract <code>CoronaData</code> class. Lab 5 validates a credit card with the Luhn checksum and per-brand rules, using a factory function to pick the card class.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk04">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk04/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s sample code for homework 1 and wrote <code>CoronaDataJson</code> and <code>CoronaDataCsv</code>, each overriding the pure virtual <code>save_to_file</code>.</li><li>Formatted the counts with <code>fixed</code> and <code>setprecision(4)</code> and wrote the JSON brackets and commas by hand.</li><li>Implemented the Luhn check in <code>check_luhn</code> (the skeleton&#x27;s extra-credit item), doubling every second digit from the right.</li><li>Added the <code>Amex</code> and <code>Mastercard</code> classes with their own length, first-digit and security-code rules, and enabled them in the <code>create</code> factory function.</li><li>Answered the lab 4 questions in <code>lab04_2020TH_ChrRod.txt</code>.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Inheritance</li><li>Pure virtual functions</li><li>Factory functions</li><li>File output</li><li>JSON and CSV</li><li>Luhn algorithm</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Polymorphism</li><li>Factory functions</li><li>Writing JSON and CSV</li><li>Luhn checksum</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>bits/stdc++.h</code>, <code>fstream</code>, <code>iomanip</code>, <code>iostream</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -o hw01 hw01_2020TH_ChrRod.cpp</span>
+<span class="cmd">./hw01</span>
+<span class="cmd"></span>
+<span class="cmd">g++ -o lab05 lab05_2020TH_ChrRod.cpp</span>
+<span class="cmd">./lab05</span></code></pre>
+                <p><strong>Requires:</strong> A C++ compiler such as <code>g++</code> (Linux, macOS, or WSL on Windows).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Saving the county data as JSON</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./hw01</span>
+Choose output format (j = JSON, c = CSV): <span class="term__in">j</span>
+
+File is ready.</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of corona.json">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>corona.json</b></div>
+                        <pre class="term__body" tabindex="0">{
+ &quot;data&quot; : [
+   {&quot;name&quot; : &quot;Los Angeles&quot;, &quot;infections&quot; : &quot;255000.0000&quot; },
+   {&quot;name&quot; : &quot;Riverside&quot;, &quot;infections&quot; : &quot;55766.0000&quot; },
+   {&quot;name&quot; : &quot;Orange&quot;, &quot;infections&quot; : &quot;52166.0000&quot; },
+   {&quot;name&quot; : &quot;San Bernardino&quot;, &quot;infections&quot; : &quot;50709.0000&quot; },
+   {&quot;name&quot; : &quot;San Diego&quot;, &quot;infections&quot; : &quot;42950.0000&quot; }
+  ] 
+}</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">A Visa test number that passes the Luhn check</figcaption>
+                    <p class="snap__note">The program treats the current date as February 2024.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab05</span>
+Enter credit card number: <span class="term__in">4111111111111111</span>
+Enter card exp month and year <span class="term__in">12 2026</span>
+Enter validation code: <span class="term__in">123</span>
+Approved</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">The same number with its last digit changed is declined</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab05</span>
+Enter credit card number: <span class="term__in">4111111111111112</span>
+Enter card exp month and year <span class="term__in">12 2026</span>
+Enter validation code: <span class="term__in">123</span>
+Declined</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk04/hw01_2020TH_ChrRod.cpp"><code>hw01_2020TH_ChrRod.cpp</code></a></td><td>Homework 1: county data saved as JSON or CSV.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk04/corona.json"><code>corona.json</code></a></td><td>JSON written by <code>hw01</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk04/corona.csv"><code>corona.csv</code></a></td><td>CSV written by <code>hw01</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk04/lab04_2020TH_ChrRod.txt"><code>lab04_2020TH_ChrRod.txt</code></a></td><td>Short answers for lab 4, one per line.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk04/lab05_2020TH_ChrRod.cpp"><code>lab05_2020TH_ChrRod.cpp</code></a></td><td>Lab 5: credit card validation with a factory function.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2020"><a class="pager__prev" href="../../../Coursework/cmps2020/wk03/" rel="prev"><span>Previous</span>Week 3</a><a class="pager__next" href="../../../Coursework/cmps2020/wk05/" rel="next"><span>Next</span>Week 5</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

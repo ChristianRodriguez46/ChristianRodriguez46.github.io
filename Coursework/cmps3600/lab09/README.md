@@ -2,6 +2,8 @@
 
 **CMPS 3600 Operating Systems**, Lab 9
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3600/lab09/](https://christianrodriguez46.github.io/Coursework/cmps3600/lab09/)
+
 ## What it does
 
 - `bblab9.c` animates cars crossing an intersection in an X11 window, one thread per car. A mutex lets only one car into the intersection at a time; press **C** to see the collisions it prevents.

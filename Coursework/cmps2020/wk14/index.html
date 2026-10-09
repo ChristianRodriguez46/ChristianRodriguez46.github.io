@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 14: Binary search tree and searching | CMPS 2020 | Christian Rodriguez</title>
+    <meta name="description" content="Searching. Homework 3 is a binary search tree of integers that loads 25 sample values, adds one from the user, then finds and optionally deletes a value. Lab 18 searches a sorted list of 25 words by linear search, binary search or substring match from a menu.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2020">CMPS 2020 Programming II: Data Structures</a></li>
+                        <li><span aria-current="page">Week 14</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2020 &middot; Week 14</p>
+                <h1 class="labpage__title" data-animate>Binary search tree and searching</h1>
+                <p class="labpage__lede" data-animate>Searching. Homework 3 is a binary search tree of integers that loads 25 sample values, adds one from the user, then finds and optionally deletes a value. Lab 18 searches a sorted list of 25 words by linear search, binary search or substring match from a menu.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk14">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk14/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Wrote the <code>BST</code> class with recursive <code>add_node</code>, <code>find_node</code>, <code>show_node</code> (in order) and <code>destroy_node</code>, and a node count updated as nodes are created and deleted.</li><li>Wrote <code>delete_node</code>, which finds the node with a loop and replaces a node that has two children with the smallest value in its right subtree.</li><li>Wrote <code>find_item_linear</code>, <code>find_item_binary</code> and <code>find_matches</code> (using <code>string::find</code>) for lab 18, sorting the list first so binary search works.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Binary search trees</li><li>Recursion</li><li>Linear search</li><li>Binary search</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Binary search trees</li><li>Linear and binary search</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>iostream</code>, <code>string</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -o hw03 hw03_2020TH_ChrRod.cpp</span>
+<span class="cmd">./hw03</span>
+<span class="cmd"></span>
+<span class="cmd">g++ -o lab18 lab18_2020TH_ChrRod.cpp</span>
+<span class="cmd">./lab18</span></code></pre>
+                <p><strong>Requires:</strong> A C++ compiler such as <code>g++</code> (Linux, macOS, or WSL on Windows).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Adding 50 to the tree, then finding and deleting 45</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./hw03</span>
+Contents of the BST: 3 6 7 8 9 10 11 13 16 17 19 22 23 31 35 40 45 49 51 55 57 77 90 93 117
+
+Enter a new integer value: <span class="term__in">50</span>
+Contents of the BST after adding 50: 3 6 7 8 9 10 11 13 16 17 19 22 23 31 35 40 45 49 50 51 55 57 77 90 93 117
+Count of nodes in the BST: 26
+
+Enter a value to search in the BST: <span class="term__in">45</span>
+Value 45 found in the BST.
+
+Do you want to delete the value? (y/n): <span class="term__in">y</span>
+Value 45 deleted from the BST.
+
+Contents of the BST after deletion: 3 6 7 8 9 10 11 13 16 17 19 22 23 31 35 40 49 50 51 55 57 77 90 93 117
+Count of nodes in the BST: 25</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Binary, linear and partial-match searches</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab18</span>
+1- Search for a word using linear
+2- Search for a word using binary
+3- Search for a partial string
+4- Exit
+Action: <span class="term__in">2</span>
+
+Enter string: <span class="term__in">radium</span>
+Found radium
+
+1- Search for a word using linear
+2- Search for a word using binary
+3- Search for a partial string
+4- Exit
+Action: <span class="term__in">1</span>
+
+Enter string: <span class="term__in">zebra</span>
+zebra was not found
+
+1- Search for a word using linear
+2- Search for a word using binary
+3- Search for a partial string
+4- Exit
+Action: <span class="term__in">3</span>
+
+Enter partial search term: <span class="term__in">ran</span>
+Found brandy cranium crank
+
+1- Search for a word using linear
+2- Search for a word using binary
+3- Search for a partial string
+4- Exit
+Action: <span class="term__in">4</span></pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk14/hw03_2020TH_ChrRod.cpp"><code>hw03_2020TH_ChrRod.cpp</code></a></td><td>Homework 3: binary search tree with add, find and delete.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk14/lab18_2020TH_ChrRod.cpp"><code>lab18_2020TH_ChrRod.cpp</code></a></td><td>Lab 18: linear, binary and partial-match word search.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2020"><a class="pager__prev" href="../../../Coursework/cmps2020/wk13/" rel="prev"><span>Previous</span>Week 13</a><span class="pager__next"></span></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

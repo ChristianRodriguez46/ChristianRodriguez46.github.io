@@ -2,6 +2,8 @@
 
 **CMPS 3600 Operating Systems**, Lab 7
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3600/lab07/](https://christianrodriguez46.github.io/Coursework/cmps3600/lab07/)
+
 ## What it does
 
 `bblab7.c` runs five philosopher threads that share forks, using a mutex and semaphores so they can eat without deadlock, and prints who is eating at each step. `dotprod.c`, `mutex_test.c` and `volatile.c` are the week's examples.

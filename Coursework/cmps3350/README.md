@@ -30,7 +30,7 @@ Linux with `g++`. The graphics labs and the casino game also need X11 and OpenGL
 
 | File | What it is |
 |---|---|
-| [group8diagram.gif](group8diagram.gif) |  |
-| [mydiagram3.gif](mydiagram3.gif) |  |
+| [group8diagram.gif](group8diagram.gif) | Team data flow diagram for the lab 3 HTTPS client |
+| [mydiagram3.gif](mydiagram3.gif) | My flow diagram for the lab 3 HTTPS client |
 
 [All coursework](../)

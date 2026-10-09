@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 7
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk07/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk07/)
+
 ## What it does
 
 - `ilab01.cpp` builds a singly linked list of items with counts, then counts, shows and searches it.

@@ -2,6 +2,8 @@
 
 **CMPS 3640 Distributed and Parallel Computation**, Lab 1
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3640/lab01/](https://christianrodriguez46.github.io/Coursework/cmps3640/lab01/)
+
 ## What it does
 
 `ArrayOp.cpp` adds large arrays with a chosen number of threads and reports the elapsed time over ten runs and their average. `runlab` runs it with 0, 1, 2 and more threads in a row so the speedup can be compared; `output.txt` is a sample run.

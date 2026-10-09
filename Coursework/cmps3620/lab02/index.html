@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2: TCP client and server | CMPS 3620 | Christian Rodriguez</title>
+    <meta name="description" content="A TCP client and server that take turns. vcrec asks the system for a free port, prints it and waits; vcsend connects to it, and the two trade lines one at a time until either side sends a period.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3620">CMPS 3620 Computer Networks</a></li>
+                        <li><span aria-current="page">Lab 2</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3620 &middot; Lab 2</p>
+                <h1 class="labpage__title" data-animate>TCP client and server</h1>
+                <p class="labpage__lede" data-animate>A TCP client and server that take turns. <code>vcrec</code> asks the system for a free port, prints it and waits; <code>vcsend</code> connects to it, and the two trade lines one at a time until either side sends a period.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab02">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab02/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the course&#x27;s <code>vcrec.c</code> and <code>vcsend.c</code>, which only send from client to server.</li><li>Added a reply step to the server: after printing each line it reads one from the keyboard and sends it back with <code>send</code>.</li><li>Added a matching <code>recv</code> to the client, so it prints the reply before prompting again.</li><li>Handled a period from either side as the signal to close the connection, and a closed socket (<code>recv</code> returning 0) as the end of the session.</li><li>Recorded a test run between two terminals (<code>lab2.mp4</code>).</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>TCP sockets</li><li>socket, bind, listen, accept</li><li>connect, send, recv</li><li>Half-duplex</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li><code>socket</code>, <code>bind</code>, <code>listen</code>, <code>accept</code>, <code>connect</code></li><li>Half-duplex communication</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>arpa/inet.h</code></td><td>Address conversion such as <code>htons</code> and <code>inet_ntoa</code></td></tr><tr><td><code>netdb.h</code></td><td>Host name lookup (<code>gethostbyname</code>)</td></tr><tr><td><code>sys/socket.h</code></td><td>Sockets</td></tr><tr><td><code>sys/time.h</code></td><td>Time values for timeouts and timing</td></tr><tr><td><code>sys/types.h</code></td><td>System data types such as <code>pid_t</code></td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./vcrec</span>  <span class="cmt"># prints a port number</span>
+<span class="cmd">./vcsend localhost &lt;port&gt;</span>  <span class="cmt"># in a second terminal</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code>. Write-ups in <code>.tex</code>/<code>.ltx</code> build with any LaTeX distribution (<code>pdflatex</code>).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Half-duplex chat: vcsend sends a line, then waits for vcrec&#x27;s reply</figcaption>
+                    <p class="snap__note">vcrec runs in the background with its reply piped in, and its output is saved to server.log. The listen address it prints (any interface) is masked.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">printf &#x27;Hi, this is vcrec\n&#x27; | ./vcrec &gt; server.log &amp; sleep 1.5; ./vcsend 127.0.0.1 $(sed -n &#x27;s/.*port number: //p&#x27; server.log); wait</span>
+
+sender: hostname has been resolved.
+sender: Attempting to connect to server.
+sender: Waiting for handshake from vcrec...
+sender: Handshake received. Entering data loop.
+
+Enter a line of characters at the prompt.
+To exit the program, type just a period and hit enter.
+enter line&gt; <span class="term__in">Hello from vcsend</span>
+receiver--&gt; Hi, this is vcrec
+
+enter line&gt; <span class="term__in">.</span>
+sender: termination requested</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of server.log">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>server.log</b></div>
+                        <pre class="term__body" tabindex="0">
+receiver: process id: 7882 
+receiver: IP address: xxx
+receiver: port number: 60809
+
+receiver: Valid connection received.
+receiver: Sending handshake.
+receiver: Waiting for client....
+        received--&gt;Hello from vcsend 
+enter line&gt;         received--&gt;sender has ended connection - exiting.
+receiver: ending session also and exiting. </pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab02/vcrec.c"><code>vcrec.c</code></a></td><td>Server: gets a port from the system, accepts one client and replies to each line.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab02/vcsend.c"><code>vcsend.c</code></a></td><td>Client: connects to the server&#x27;s port, sends lines and prints the replies.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab02/Makefile"><code>Makefile</code></a></td><td>Builds <code>vcrec</code> and <code>vcsend</code> with debug output on.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab02/lab2.mp4"><code>lab2.mp4</code></a></td><td>Screen recording of the client and server talking in two terminals.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3620"><a class="pager__prev" href="../../../Coursework/cmps3620/lab01/" rel="prev"><span>Previous</span>Lab 1</a><a class="pager__next" href="../../../Coursework/cmps3620/lab03/" rel="next"><span>Next</span>Lab 3</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

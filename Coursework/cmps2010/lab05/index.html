@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5: File processing and prime numbers | CMPS 2010 | Christian Rodriguez</title>
+    <meta name="description" content="Two console programs. lab5-1.cpp copies a text file in uppercase with the vowels removed and spaces turned into underscores. lab5-2.cpp checks whether a whole number is prime and lists its factors.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2010">CMPS 2010 Programming Fundamentals</a></li>
+                        <li><span aria-current="page">Lab 5</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2010 &middot; Lab 5</p>
+                <h1 class="labpage__title" data-animate>File processing and prime numbers</h1>
+                <p class="labpage__lede" data-animate>Two console programs. <code>lab5-1.cpp</code> copies a text file in uppercase with the vowels removed and spaces turned into underscores. <code>lab5-2.cpp</code> checks whether a whole number is prime and lists its factors.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab05">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab05/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Read the input file one character at a time with <code>get()</code> and wrote each kept character with <code>put()</code>.</li><li>Took both file names as command-line arguments, printing a usage line when they are missing and an error when a file cannot be opened.</li><li>Split the prime checker into <code>getWholeNumber</code>, which fills a reference parameter and re-prompts until it gets a non-negative number, <code>isPrime</code> and <code>printFactors</code>.</li><li>Kept the earlier draft, <code>lab5-2-alt.cpp</code>, which prints its verdict from inside <code>isPrime</code>.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>File streams</li><li>Command-line arguments</li><li>cctype</li><li>Functions</li><li>Reference parameters</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>File streams (<code>ifstream</code>, <code>ofstream</code>)</li><li>Command-line arguments</li><li>Functions and reference parameters</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C standard library: <code>stdbool.h</code>.</p>
+                <p>C++ standard library: <code>cctype</code>, <code>cmath</code>, <code>cstdio</code>, <code>fstream</code>, <code>iostream</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -o lab5-1 lab5-1.cpp</span>
+<span class="cmd">./lab5-1 input.txt output.txt</span>
+<span class="cmd"></span>
+<span class="cmd">g++ -o lab5-2 lab5-2.cpp</span>
+<span class="cmd">./lab5-2</span></code></pre>
+                <p><strong>Requires:</strong> A C++ compiler such as <code>g++</code> (Linux, macOS, or WSL on Windows).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Checking whether 91 is prime</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab5-2</span>
+Please enter a WHOLE NUMBER: <span class="term__in">91</span>
+
+91 is NOT prime number!
+The factors of 91 are:
+1 7 13 91</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Rejecting a negative number, then checking 97</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab5-2</span>
+Please enter a WHOLE NUMBER: <span class="term__in">-4</span>
+Invalid number. Try again: <span class="term__in">97</span>
+
+97 is prime!
+The factors of 97 are:
+1 97</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Running without file names, then converting input.txt into output.txt</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab5-1; ./lab5-1 input.txt output.txt</span>
+USAGE: ./lab5-1 &lt;input_file&gt; &lt;output_file&gt;</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of input.txt">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>input.txt</b></div>
+                        <pre class="term__body" tabindex="0">Successful compile, successful compile,
+After coding for days I can finally smile!
+I have finally won! I have beaten the odds,
+&quot;But disaster awaits&quot;, warn the programming gods!
+It has all been a ruse, just one tragic deception,
+As my program cries out with a FatalException!</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of output.txt">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>output.txt</b></div>
+                        <pre class="term__body" tabindex="0">SCCSSFL_CMPL,_SCCSSFL_CMPL,
+FTR_CDNG_FR_DYS__CN_FNLLY_SML!
+_HV_FNLLY_WN!__HV_BTN_TH_DDS,
+&quot;BT_DSSTR_WTS&quot;,_WRN_TH_PRGRMMNG_GDS!
+T_HS_LL_BN__RS,_JST_N_TRGC_DCPTN,
+S_MY_PRGRM_CRS_T_WTH__FTLXCPTN!</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab05/lab5-1.cpp"><code>lab5-1.cpp</code></a></td><td>File converter: uppercase, no vowels, spaces to underscores.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab05/lab5-2.cpp"><code>lab5-2.cpp</code></a></td><td>Prime checker that lists the factors of the number.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab05/lab5-2-alt.cpp"><code>lab5-2-alt.cpp</code></a></td><td>Earlier draft of the prime checker.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab05/input.txt"><code>input.txt</code></a></td><td>Sample input for <code>lab5-1</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab05/output.txt"><code>output.txt</code></a></td><td>What <code>lab5-1</code> wrote for <code>input.txt</code>.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2010"><a class="pager__prev" href="../../../Coursework/cmps2010/lab04/" rel="prev"><span>Previous</span>Lab 4</a><a class="pager__next" href="../../../Coursework/cmps2010/lab06/" rel="next"><span>Next</span>Lab 6</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

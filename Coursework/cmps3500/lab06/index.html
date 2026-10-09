@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6: Prolog: facts, rules and queries | CMPS 3500 | Christian Rodriguez</title>
+    <meta name="description" content="Logic programming in GNU Prolog. The main program turns nine English statements about four animals into rules so the query likes(X,Y) can infer who likes whom, and adds rules for the largest of three numbers and the Towers of Hanoi move count. The other files are the instructor&#x27;s examples of family ">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3500">CMPS 3500 Programming Languages</a></li>
+                        <li><span aria-current="page">Lab 6</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3500 &middot; Lab 6</p>
+                <h1 class="labpage__title" data-animate>Prolog: facts, rules and queries</h1>
+                <p class="labpage__lede" data-animate>Logic programming in GNU Prolog. The main program turns nine English statements about four animals into rules so the query <code>likes(X,Y)</code> can infer who likes whom, and adds rules for the largest of three numbers and the Towers of Hanoi move count. The other files are the instructor&#x27;s examples of family trees, logical arguments, nested predicates and recursion.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab06">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Wrote the nine rules in <code>lab06.pl</code> (<code>fur</code>, <code>rat</code>, <code>cat</code>, <code>meows</code>, <code>bird</code>, <code>dog</code> and three <code>likes</code> rules) on top of the given facts.</li><li>Added <code>max2</code> and <code>max3</code>, and a recursive <code>moves(N,T)</code> that counts the moves needed to solve the Towers of Hanoi (31 for 5 discs).</li><li>Compiled <code>lab06.pl</code> with <code>gplc</code> into a program whose <code>initialization</code> directives run the three queries and exit.</li><li>Loaded the instructor&#x27;s <code>family.pl</code> in the <code>gprolog</code> interpreter and ran its queries.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>Prolog</li><li>GNU Prolog</li><li>Logic programming</li><li>Recursion</li><li>Backtracking</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Logic programming</li><li>Unification and backtracking</li><li>Recursion</li></ul>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">sudo apt install gprolog</span>  <span class="cmt"># once</span>
+<span class="cmd">make</span>
+<span class="cmd">./lab06</span></code></pre>
+                <p><strong>Requires:</strong> GNU Prolog (<code>gprolog</code> and <code>gplc</code>).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Compiling lab06.pl with gplc and running its three queries</figcaption>
+                    <p class="snap__note">Saved from a run on the course server.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0">$ gplc lab06.pl
+$ ./lab06
+Who likes whom?
+fido kitty
+kitty tweety
+kitty ratatat
+Move cnt for 5: 31
+Max(7,3,9)? 9
+#</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Querying the family tree in the GNU Prolog interpreter</figcaption>
+                    <p class="snap__note">Saved from a run on the course server, after loading family.pl with [family].</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0">| ?- female(shirley).
+
+yes
+| ?- parent(X,mildred).
+
+X = chester ?
+
+yes
+| ?- q1.
+parent irvin?chester
+
+yes
+| ?- q2.
+sibling irvin?clarence mildred
+
+yes
+| ?- q3.
+sisters?
+nora elizabeth
+elizabeth nora
+
+yes
+| ?- halt.</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/lab06.pl"><code>lab06.pl</code></a></td><td>The animal rules, <code>max3</code> and the Hanoi move count, with queries that run at start-up.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/lab06_output.log"><code>lab06_output.log</code></a></td><td><code>script</code> recording of the session.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/lab06_time.log"><code>lab06_time.log</code></a></td><td>Timing file for <code>scriptreplay</code> to play back <code>lab06_output.log</code>.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/Makefile"><code>Makefile</code></a></td><td>Builds <code>lab06</code>, <code>nested</code>, <code>family</code> and <code>math</code> with <code>gplc</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/animals.pl"><code>animals.pl</code></a></td><td>Propositional arguments and a fallacy written as Prolog rules.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/family.pl"><code>family.pl</code></a></td><td>Family tree facts with <code>father</code>, <code>sister</code>, <code>sibling</code>, <code>ancestor</code> and <code>cousin</code> rules.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/math.pl"><code>math.pl</code></a></td><td>Recursive arithmetic: factorial, power, square root, GCD, Fibonacci and Towers of Hanoi.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/nested.pl"><code>nested.pl</code></a></td><td>A <code>loves(X,Y)</code> knowledge base showing quantifiers and the closed-world assumption.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/predicates.txt"><code>predicates.txt</code></a></td><td>Reference list of Prolog operators and built-in predicates.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab06/readme.txt"><code>readme.txt</code></a></td><td>Notes on using <code>gprolog</code> and <code>gplc</code>.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3500"><a class="pager__prev" href="../../../Coursework/cmps3500/lab04/" rel="prev"><span>Previous</span>Lab 4</a><a class="pager__next" href="../../../Coursework/cmps3500/lab07/" rel="next"><span>Next</span>Lab 7</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

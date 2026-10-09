@@ -2,6 +2,8 @@
 
 **CMPS 2010 Programming Fundamentals**, Lab 6
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2010/lab06/](https://christianrodriguez46.github.io/Coursework/cmps2010/lab06/)
+
 ## What it does
 
 - `lab6-1.cpp` reads the numbers in `numbers.txt` into an array and prints them in reverse order. `extralab6.cpp` also prints their sum and average.

@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 2
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk02/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk02/)
+
 ## What it does
 
 - `lab01_2020TH_ChrRod.cpp` (lab 1) defines a `point` class and overloads `<`, `>`, `*` and `<<` to shift points and compute the area of the rectangle two points bound.

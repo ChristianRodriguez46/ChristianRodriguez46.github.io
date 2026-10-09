@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Lab 7
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/lab07/](https://christianrodriguez46.github.io/Coursework/cmps3350/lab07/)
+
 ## What it does
 
 A `Date` class that counts the days between two dates by stepping through the calendar, handling month lengths and leap years. With two dates on the command line it prints the difference; with none it runs a set of test dates and reports any errors.

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6: Telnet-style shell service | CMPS 3620 | Christian Rodriguez</title>
+    <meta name="description" content="A study of the course&#x27;s full networking package: a telnet-style shell service (s_daemon and s_sh), a raw-socket telnet client (s_tlnt), and datagram, pipe, session and diagnostic tools. The write-up explains how the shell manages its child processes and how the client draws a text interface.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3620">CMPS 3620 Computer Networks</a></li>
+                        <li><span aria-current="page">Lab 6</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3620 &middot; Lab 6</p>
+                <h1 class="labpage__title" data-animate>Telnet-style shell service</h1>
+                <p class="labpage__lede" data-animate>A study of the course&#x27;s full networking package: a telnet-style shell service (<code>s_daemon</code> and <code>s_sh</code>), a raw-socket telnet client (<code>s_tlnt</code>), and datagram, pipe, session and diagnostic tools. The write-up explains how the shell manages its child processes and how the client draws a text interface.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab06">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Built <code>s_sh</code> and <code>s_tlnt</code> with the lab&#x27;s <code>Makefile</code> and ran the shell from the command line.</li><li>Explained why <code>s_sh</code> watches <code>SIGCLD</code>: its handler calls <code>wait</code> so finished children do not become zombies and the job list stays correct.</li><li>Described how the built-in commands (<code>cd</code>, <code>history</code>, <code>jobs</code> and others) run inside the shell while everything else goes through <code>fork</code> and <code>exec</code>.</li><li>Explained how <code>process_esc</code> in <code>s_tlnt</code> turns escape sequences into cursor movement for full-screen programs, and how <code>header.h</code> lets the same code build on Windows and Unix.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>Sockets</li><li>Process management</li><li>Signals</li><li>Terminal control</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Network services</li><li>Process management</li><li>Reading a large C codebase</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>dirent.h</code></td><td>Reading directories</td></tr><tr><td><code>fcntl.h</code></td><td><code>open</code> and its flags</td></tr><tr><td><code>signal.h</code></td><td>Signals: <code>sigaction</code>, <code>kill</code> and signal sets</td></tr><tr><td><code>sys/stat.h</code></td><td>File permissions and <code>fstat</code></td></tr><tr><td><code>sys/types.h</code></td><td>System data types such as <code>pid_t</code></td></tr><tr><td><code>sys/wait.h</code></td><td><code>wait</code> and <code>waitpid</code> for child processes</td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr><tr><td><code>direct.h</code></td><td>Other system header</td></tr><tr><td><code>fnmatch.h</code></td><td>Other system header</td></tr><tr><td><code>io.h</code></td><td>Other system header</td></tr><tr><td><code>process.h</code></td><td>Other system header</td></tr></tbody></table></div>
+                <p>C standard library: <code>errno.h</code>, <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>.</p>
+                <p>Headers in this folder: <code>cleanup.c</code>, <code>diagnost.h</code>, <code>header.h</code>, <code>specio.h</code>, <code>startup.c</code>, <code>startup.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./s_sh</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code>. Write-ups in <code>.tex</code>/<code>.ltx</code> build with any LaTeX distribution (<code>pdflatex</code>).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">s_sh run from the command line: built-in commands and one external program</figcaption>
+                    <p class="snap__note">The Makefile builds with -DDEBUG, so the shell prints its fork and execve steps. The child_exit line comes from its SIGCLD handler.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./s_sh</span>
+
+s_sh&gt; <span class="term__in">help</span>
+
+s_sh internal commands:
+
+     cd   [directory]
+     dir  [directory]
+     envp [variable]
+     exit
+     help
+     pwd
+     tty
+     jobs
+     ! [repeat]
+     history
+s_sh&gt; <span class="term__in">/bin/echo hello from a child process</span>
+
+  raw_cmd[]: &quot;/bin/echo&quot; &quot;hello&quot; &quot;from&quot; &quot;a&quot; &quot;child&quot; &quot;process&quot;
+  cmdpath[] found: &quot;/bin/echo&quot; (st_mode=rwxr-xr-x uid=    0 gid=    0)
+args before fork/execve..
+  cmdpath[]=&quot;/bin/echo&quot;
+  cmd[ 0]=&quot;/bin/echo&quot;
+  cmd[ 1]=&quot;hello&quot;
+  cmd[ 2]=&quot;from&quot;
+  cmd[ 3]=&quot;a&quot;
+  cmd[ 4]=&quot;child&quot;
+  cmd[ 5]=&quot;process&quot;
+starting fork/execve.. parent in while(inline_opid == 8178) sigsuspend(0)..
+
+hello from a child process
+
+  child_exit: opid=8178 exited
+
+s_sh&gt; <span class="term__in">tty</span>
+
+I/O is from console /dev/pts/0
+s_sh&gt; <span class="term__in">history</span>
+
+   1 [intern] help
+   2 [  8178] /bin/echo hello from a child process
+   3 [intern] tty
+   4 [intern] history
+s_sh&gt; <span class="term__in">exit</span>
+
+returning to Unix..</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/Lab%20Writeup.md"><code>Lab Writeup.md</code></a></td><td>The write-up.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/Makefile"><code>Makefile</code></a></td><td>Builds <code>s_sh</code> and <code>s_tlnt</code> with debug output on.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/s_sh.c"><code>s_sh.c</code></a></td><td>A small shell with built-in commands, wildcards and job tracking.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/s_daemon.c"><code>s_daemon.c</code></a></td><td>Telnet-style daemon that starts <code>s_sh</code> for each connection.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/daemon.c"><code>daemon.c</code></a></td><td>Skeleton TCP daemon that forks a process per connection and logs what it receives.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/s_tlnt.c"><code>s_tlnt.c</code></a></td><td>Raw-socket telnet client.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/s_tndesq.c"><code>s_tndesq.c</code></a></td><td>An older version of the telnet client.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/s_getty.c"><code>s_getty.c</code></a></td><td>Raw-socket version of <code>getty</code> that hands a connection to a shell.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/terminal.c"><code>terminal.c</code></a></td><td>Terminal mode helpers (raw, cbreak, cooked) and a test program.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/specio.h"><code>specio.h</code></a></td><td>Terminal and socket settings for each supported system.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/telnet.h"><code>telnet.h</code></a></td><td>Telnet protocol constants (a vendor header with its own copyright notice).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/header.h"><code>header.h</code></a></td><td>Shared header that smooths over Windows and Unix socket differences.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/startup.c"><code>startup.c</code></a></td><td>Network setup shared by the programs (Windows and Unix).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/startup.h"><code>startup.h</code></a></td><td>Variables for <code>startup.c</code>, included by main modules only.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/cleanup.c"><code>cleanup.c</code></a></td><td>Network cleanup shared by the programs (Windows and Unix).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/vcrec.c"><code>vcrec.c</code></a></td><td>Original stream socket server from the package.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/vcsend.c"><code>vcsend.c</code></a></td><td>Original stream socket client from the package.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/dgrmrec.c"><code>dgrmrec.c</code></a></td><td>Datagram (UDP) receiver.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/dgrmsend.c"><code>dgrmsend.c</code></a></td><td>Datagram (UDP) sender.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/pipesend.c"><code>pipesend.c</code></a></td><td>Sends typed lines to a child process through a pipe.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/sessrecv.c"><code>sessrecv.c</code></a></td><td>NetBIOS session receiver for DOS.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/sesssend.c"><code>sesssend.c</code></a></td><td>NetBIOS session sender for DOS.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/gethost.c"><code>gethost.c</code></a></td><td>Looks up an address from a host name, or the reverse.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/digarp.c"><code>digarp.c</code></a></td><td>ARP and diagnostic tool adapted from BSD <code>arp</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/diagnost.c"><code>diagnost.c</code></a></td><td>Functions that print socket addresses, host entries and ICMP packets.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/diagnost.h"><code>diagnost.h</code></a></td><td>Declarations for <code>diagnost.c</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/g_stdio.c"><code>g_stdio.c</code></a></td><td>Buffered stream I/O over sockets (<code>g_open</code>, <code>g_gets</code> and others).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/g_stdio.h"><code>g_stdio.h</code></a></td><td>Declarations for <code>g_stdio.c</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/prc.c"><code>prc.c</code></a></td><td>Prints telnet negotiation codes.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/process.c"><code>process.c</code></a></td><td>Prints the context a process runs in (IDs, terminal, environment).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/ngraph.c"><code>ngraph.c</code></a></td><td>Reads a network graph file and analyzes it.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/makefile.unx"><code>makefile.unx</code></a></td><td>The package&#x27;s Makefile for Unix and Linux systems.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/makefile.msv"><code>makefile.msv</code></a></td><td>The package&#x27;s Makefile for Microsoft Visual C++.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab06/makefile.vc5"><code>makefile.vc5</code></a></td><td>The package&#x27;s Makefile for Visual C++ 5.0.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3620"><a class="pager__prev" href="../../../Coursework/cmps3620/lab05/" rel="prev"><span>Previous</span>Lab 5</a><span class="pager__next"></span></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

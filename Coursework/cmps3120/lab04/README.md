@@ -2,6 +2,8 @@
 
 **CMPS 3120 Algorithm Analysis**, Lab 4
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3120/lab04/](https://christianrodriguez46.github.io/Coursework/cmps3120/lab04/)
+
 ## What it does
 
 Builds a random binary tree of n nodes, encodes its shape as a string two different ways, and rebuilds the tree from each encoding to check that it matches the original.

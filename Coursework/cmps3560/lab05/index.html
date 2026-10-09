@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5: Expert system for choosing a training medium | CMPS 3560 | Christian Rodriguez</title>
+    <meta name="description" content="An interactive expert system in Prolog that recommends a training medium (workshop, lecture, videocassette or role play) from yes/no answers about the work environment, the job and whether feedback is required. It tries each recommendation in turn, asks only the questions it needs, and remembers eac">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3560">CMPS 3560 Artificial Intelligence</a></li>
+                        <li><span aria-current="page">Lab 5</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3560 &middot; Lab 5</p>
+                <h1 class="labpage__title" data-animate>Expert system for choosing a training medium</h1>
+                <p class="labpage__lede" data-animate>An interactive expert system in Prolog that recommends a training medium (workshop, lecture, videocassette or role play) from yes/no answers about the work environment, the job and whether feedback is required. It tries each recommendation in turn, asks only the questions it needs, and remembers each answer with <code>assert</code> so nothing is asked twice.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab05">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab05/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Adapted the animal-identification expert system from J. R. Fisher&#x27;s Prolog tutorial (linked in the file header), keeping its <code>ask</code>, <code>verify</code> and <code>undo</code> predicates.</li><li>Wrote the Media Advisor rules: <code>stimulus_situation</code> and <code>stimulus_response</code> classify the environment and the job, and each medium rule combines them with a feedback question.</li><li>Ordered <code>hypothesize</code> to try workshop, lecture, videocassette and role play, falling back to <code>unknown</code>, and cleared the stored answers with <code>undo</code> after each consultation.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>Prolog</li><li>Expert systems</li><li>Backward chaining</li><li>assert and retract</li><li>Interactive input</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Expert systems</li><li>Backward chaining</li><li>Interactive Prolog</li></ul>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">swipl lab5.pl</span>
+<span class="cmd">?- go.</span></code></pre>
+                <p><strong>Requires:</strong> Python 3 for the Python labs, <code>g++</code> for the C++ labs, and SWI-Prolog or GNU Prolog for labs 4 and 5.</p>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab05/lab5.pl"><code>lab5.pl</code></a></td><td>Media Advisor knowledge base, question handling and the <code>go</code> entry point.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3560"><a class="pager__prev" href="../../../Coursework/cmps3560/lab04/" rel="prev"><span>Previous</span>Lab 4</a><a class="pager__next" href="../../../Coursework/cmps3560/lab06/" rel="next"><span>Next</span>Lab 6</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

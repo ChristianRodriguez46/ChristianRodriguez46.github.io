@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5: Config file parser and templates | CMPS 2020 | Christian Rodriguez</title>
+    <meta name="description" content="Custom exceptions and function templates. Lab 6 reads config.ini line by line and throws a different exception class for each kind of malformed line. Lab 7 uses templates to read and print arrays of integers, doubles and strings, and to average the two numeric arrays.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2020">CMPS 2020 Programming II: Data Structures</a></li>
+                        <li><span aria-current="page">Week 5</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2020 &middot; Week 5</p>
+                <h1 class="labpage__title" data-animate>Config file parser and templates</h1>
+                <p class="labpage__lede" data-animate>Custom exceptions and function templates. Lab 6 reads <code>config.ini</code> line by line and throws a different exception class for each kind of malformed line. Lab 7 uses templates to read and print arrays of integers, doubles and strings, and to average the two numeric arrays.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk05">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk05/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Derived <code>ConfigFileMissingKey</code>, <code>ConfigFileBadKey</code> and <code>ConfigFileMissingSeparator</code> from a <code>ConfigFileError</code> base that extends <code>std::exception</code>, each overriding <code>what()</code>.</li><li>Wrote <code>is_comment</code>, <code>is_name_valid</code>, <code>contains_separator</code> and <code>is_missing_key</code>, and caught each exception type in <code>main</code>, ending with <code>catch (...)</code>. Because the key check runs first, a line that starts with <code>=</code> is reported as a bad key.</li><li>Wrote the templates <code>Input</code>, <code>showArray</code> and <code>average</code>, plus a <code>showArray</code> specialization for <code>string</code>.</li><li>Called each template with <code>int</code>, <code>double</code> and <code>string</code> arrays of ten values.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Exceptions</li><li>Inheritance</li><li>File input</li><li>Function templates</li><li>Template specialization</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Custom exceptions</li><li>Parsing text files</li><li>Function templates</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>fstream</code>, <code>iostream</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -o lab06 lab06_2020TH_ChrRod.cpp</span>
+<span class="cmd">./lab06</span>
+<span class="cmd"></span>
+<span class="cmd">g++ -o lab07 lab07_2020TH_ChrRod.cpp</span>
+<span class="cmd">./lab07</span></code></pre>
+                <p><strong>Requires:</strong> A C++ compiler such as <code>g++</code> (Linux, macOS, or WSL on Windows).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Checking config.ini line by line</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab06</span>
+name=Michael
+; this is a comment
+
+abc=200
+year=2020
+formula=x+y=z
+leagues=sea
+direction=bob
+flag=
+
+; comments are lines that start with semi-colons. They are ignored
+; a properly formed line is called a Key-Value pair (KV Pair)
+; key=value   &lt;== this is the format of a KV pair
+;
+; 1 is a valid KV pair
+; 2 is a valid line since it is a comment. These lines should be ignored or skipped
+; 3 does not trigger an error. It&#x27;s a blank line
+; 4 should throw ConfigFileMissingKey error
+; 5 is a valid KV pair
+; 6 is a valid KV pair despite the extra = (key is &#x27;formula&#x27;, value is &#x27;x+y=z&#x27;)
+; 7 should throw ConfigFileBadKey because 2000leagues starts with a digit
+; 8 is a valid KV pair. Value is simply blank
+; 9 should throw ConfigFileMissingSeparator
+Config file verified</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Stopping at a line with no = separator</figcaption>
+                    <p class="snap__note">config.ini was replaced with three short lines for this run.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab06</span>
+name=Michael
+year=2020
+direction
+Missing seperator</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of config.ini">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>config.ini</b></div>
+                        <pre class="term__body" tabindex="0">name=Michael
+year=2020
+direction
+flag=</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Reading, printing and averaging arrays with templates</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab07</span>
+Enter 10 integers:
+1. <span class="term__in">4</span>
+2. <span class="term__in">8</span>
+3. <span class="term__in">15</span>
+4. <span class="term__in">16</span>
+5. <span class="term__in">23</span>
+6. <span class="term__in">42</span>
+7. <span class="term__in">7</span>
+8. <span class="term__in">9</span>
+9. <span class="term__in">10</span>
+10. <span class="term__in">1</span>
+
+Enter 10 doubles:
+1. <span class="term__in">1.5</span>
+2. <span class="term__in">2.25</span>
+3. <span class="term__in">3</span>
+4. <span class="term__in">4.75</span>
+5. <span class="term__in">5</span>
+6. <span class="term__in">6.5</span>
+7. <span class="term__in">7</span>
+8. <span class="term__in">8.25</span>
+9. <span class="term__in">9</span>
+10. <span class="term__in">10.5</span>
+
+Enter 10 strings:
+1. <span class="term__in">red</span>
+2. <span class="term__in">orange</span>
+3. <span class="term__in">yellow</span>
+4. <span class="term__in">green</span>
+5. <span class="term__in">blue</span>
+6. <span class="term__in">indigo</span>
+7. <span class="term__in">violet</span>
+8. <span class="term__in">black</span>
+9. <span class="term__in">white</span>
+10. <span class="term__in">gray</span>
+
+4, 8, 15, 16, 23, 42, 7, 9, 10, 1
+Your average of the int array is: 13
+
+1.5, 2.25, 3, 4.75, 5, 6.5, 7, 8.25, 9, 10.5
+Your average of the double array is: 5.775
+
+red orange yellow green blue indigo violet black white gray</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk05/lab06_2020TH_ChrRod.cpp"><code>lab06_2020TH_ChrRod.cpp</code></a></td><td>Lab 6: config file checker with custom exceptions.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk05/lab07_2020TH_ChrRod.cpp"><code>lab07_2020TH_ChrRod.cpp</code></a></td><td>Lab 7: function templates for arrays.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk05/config.ini"><code>config.ini</code></a></td><td>The instructor&#x27;s sample configuration file. Its notes describe errors on lines 4, 7 and 9, but those lines have since been edited into valid pairs.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2020"><a class="pager__prev" href="../../../Coursework/cmps2020/wk04/" rel="prev"><span>Previous</span>Week 4</a><a class="pager__next" href="../../../Coursework/cmps2020/wk07/" rel="next"><span>Next</span>Week 7</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

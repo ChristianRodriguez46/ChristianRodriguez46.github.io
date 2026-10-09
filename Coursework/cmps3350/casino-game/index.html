@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team project: Casino game (team project) | CMPS 3350 | Christian Rodriguez</title>
+    <meta name="description" content="Ghetto Casino, a five-person team game in C++ with OpenGL and X11: slots, blackjack and dice share one chip balance, a textured menu and an animated intro. Christian wrote the dice game, where a cup shakes for seven seconds and the player bets on whether two dice total under, over or exactly 7.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3350">CMPS 3350 Software Engineering</a></li>
+                        <li><span aria-current="page">Team project</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3350 &middot; Team project</p>
+                <h1 class="labpage__title" data-animate>Casino game (team project)</h1>
+                <p class="labpage__lede" data-animate>Ghetto Casino, a five-person team game in C++ with OpenGL and X11: slots, blackjack and dice share one chip balance, a textured menu and an animated intro. Christian wrote the dice game, where a cup shakes for seven seconds and the player bets on whether two dice total under, over or exactly 7.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/casino-game">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Wrote the dice game in <code>crodriguez4.cpp</code>, with its state in a <code>Dice</code> struct (<code>include/dice.h</code>) and its public functions in <code>include/crodriguez4.h</code>.</li><li>Animated the cup in <code>Start_Dice</code>, which slides it side to side for seven seconds before <code>roll_dice</code> picks two dice, then <code>reveal_dice</code> scores the bet, pays 2x on a win and updates the win streak.</li><li>Built the betting screen (<code>renderBettingUI</code>, <code>processBettingInput</code>): four textured chips add or remove 5, 10, 25 or 100, a +/- toggle, a BET! button and a status line with balance, current bet and streak.</li><li>Sliced <code>diceSheet.png</code> (4 by 6 faces) and <code>chipSheet.png</code> into separate OpenGL textures in <code>loadDiceTextures</code> and <code>loadChipTextures</code>, so each die shows a random color.</li><li>Wrote the UNDER, EXACT and OVER choice buttons, the REVEAL and result screens with NEW BET and SAME BET, and an INFO button that toggles a rules overlay.</li><li>Also wrote <code>renderHands</code> and <code>renderTotals</code> for the blackjack table and a credits window (<code>show_credits</code>, C key) that opens its own X11 window in a forked child process.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>OpenGL</li><li>X11</li><li>Texture sprite sheets</li><li>Game state machines</li><li>Team development with Git</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Team development with Git</li><li>OpenGL textures and sprite sheets</li><li>Game state and UI</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>GL/gl.h</code></td><td>OpenGL drawing</td></tr><tr><td><code>GL/glu.h</code></td><td>GLU: OpenGL utility functions</td></tr><tr><td><code>GL/glut.h</code></td><td>GLUT header</td></tr><tr><td><code>GL/glx.h</code></td><td>GLX: OpenGL inside an X11 window</td></tr><tr><td><code>X11/Xatom.h</code></td><td>X11 atoms (used to catch the window&#x27;s close button)</td></tr><tr><td><code>X11/Xlib.h</code></td><td>Xlib: opening windows, drawing and reading events (X11)</td></tr><tr><td><code>X11/Xutil.h</code></td><td>X11 utility functions</td></tr><tr><td><code>X11/keysym.h</code></td><td>X11 key names such as <code>XK_Escape</code></td></tr><tr><td><code>sys/types.h</code></td><td>System data types such as <code>pid_t</code></td></tr><tr><td><code>sys/wait.h</code></td><td><code>wait</code> and <code>waitpid</code> for child processes</td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>math.h</code>, <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>.</p>
+                <p>C++ standard library: <code>algorithm</code>, <code>array</code>, <code>chrono</code>, <code>cmath</code>, <code>cstdio</code>, <code>cstdlib</code>, <code>cstring</code>, <code>ctime</code>, <code>fstream</code>, <code>iostream</code>, <code>map</code>, <code>random</code>, <code>vector</code>.</p>
+                <p>Headers in this folder: <code>dice.h</code>, <code>global.h</code>, <code>image.h</code>, <code>include/blackjack.h</code>, <code>include/bolayvar.h</code>, <code>include/button.h</code>, <code>include/crodriguez4.h</code>, <code>include/dice.h</code>, <code>include/fonts.h</code>, <code>include/global.h</code>, <code>include/hchen_functions.h</code>, <code>include/image.h</code>, <code>include/phil_funcs.h</code>, <code>include/reel.h</code>, <code>include/x11.h</code>, <code>reel.h</code>, <code>time.h</code>.</p>
+                <p>Linked with <code>-lX11</code> (Xlib), <code>-lGL</code> (OpenGL), <code>-lGLU</code> (GLU), <code>-lm</code> (math library), <code>libggfonts.a</code> (prebuilt library in this folder).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./main</span></code></pre>
+                <p><strong>Requires:</strong> X11, OpenGL and GLU development files plus the GLUT header that <code>main.cpp</code> includes (<code>sudo apt install libx11-dev libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev</code>), and ImageMagick, whose <code>convert</code> command the game runs to load its PNG images.</p>
+                <aside class="callout" aria-label="X11">
+                    <p class="callout__title">This program opens an X11 window with OpenGL graphics</p>
+                    <p>It needs an X server on the computer you are looking at. On Linux that is already part of the
+                    desktop. On a Mac or a Windows PC, or when the program runs on another machine over SSH, see
+                    <a href="../../../Coursework/cmps3600/x11-setup.html">Setting up X11</a> for what to install and how to check it works.</p>
+                </aside>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Main menu after skipping the intro, with the pointer over DICE</figcaption>
+                    
+                    <a class="snap__shot" href="../../../Coursework/snapshots/cmps3350/casino-game/gl-1.webp"><img src="../../../Coursework/snapshots/cmps3350/casino-game/gl-1.webp" alt="Screenshot: Main menu after skipping the intro, with the pointer over DICE" width="1280" height="720" loading="lazy"></a>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Dice betting screen with a $125 bet (25 and 100 chips) and the rules overlay open</figcaption>
+                    
+                    <a class="snap__shot" href="../../../Coursework/snapshots/cmps3350/casino-game/gl-2.webp"><img src="../../../Coursework/snapshots/cmps3350/casino-game/gl-2.webp" alt="Screenshot: Dice betting screen with a $125 bet (25 and 100 chips) and the rules overlay open" width="1280" height="720" loading="lazy"></a>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Team project files (the notes say who wrote what)</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/.gitignore"><code>.gitignore</code></a></td><td>Git ignore rules carried over from the team repository.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/Makefile"><code>Makefile</code></a></td><td>Builds <code>main</code> from all the source files, the font library, X11, GL and GLU.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/main.cpp"><code>main.cpp</code></a></td><td>Game loop, texture loading and input routing between the menu and the three games. Started from the instructor&#x27;s <code>background.cpp</code> framework.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/crodriguez4.cpp"><code>crodriguez4.cpp</code></a></td><td>Christian&#x27;s dice game: cup animation, betting, choice, reveal and result screens, rules overlay, blackjack hand drawing and the credits window.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/akoli.cpp"><code>akoli.cpp</code></a></td><td>Slot machine: three textured 3D reels drawn with GLU cylinders that spin on Space and pay out chips on a match.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/bolayvar.cpp"><code>bolayvar.cpp</code></a></td><td>Menu drawing and button hover/click handling, the blackjack table, chips and card drawing, the frame-by-frame team intro (<code>t8Intro</code>) and Esc handling.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/hchen.cpp"><code>hchen.cpp</code></a></td><td>Logo intro with fading menu, the menu INFO screen and the blackjack rules: dealing, hit, stand, double, dealer play and payouts.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/button.cpp"><code>button.cpp</code></a></td><td>Defines the menu button positions shared by the team.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/blackjack.h"><code>include/blackjack.h</code></a></td><td><code>Card</code> and <code>Blackjack</code> types: the shoe, both hands, bets and game flags.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/bolayvar.h"><code>include/bolayvar.h</code></a></td><td>Declarations for the menu and blackjack functions in <code>bolayvar.cpp</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/button.h"><code>include/button.h</code></a></td><td><code>Button</code> class (a position) and the shared menu buttons.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/crodriguez4.h"><code>include/crodriguez4.h</code></a></td><td>Public interface of the dice game: texture loaders, input handlers and render functions.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/dice.h"><code>include/dice.h</code></a></td><td><code>Dice</code> struct: cup animation values, dice values, the player&#x27;s choice and the flags for each dice screen.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/global.h"><code>include/global.h</code></a></td><td><code>Global</code> class shared by all games: window size, textures, chip balance, current bet and win streak.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/hchen_functions.h"><code>include/hchen_functions.h</code></a></td><td>Declarations for the intro, info screen and blackjack logic in <code>hchen.cpp</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/phil_funcs.h"><code>include/phil_funcs.h</code></a></td><td>Declarations for the slot machine in <code>akoli.cpp</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/reel.h"><code>include/reel.h</code></a></td><td><code>Reel</code> struct for one spinning slot reel.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/x11.h"><code>include/x11.h</code></a></td><td><code>X11_wrapper</code> class declaration shared by the game files.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/blackjacktable.png"><code>images/blackjacktable.png</code></a></td><td>Blackjack table background.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/cardsSheet.png"><code>images/cardsSheet.png</code></a></td><td>Sprite sheet of playing cards.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/chipSheet.png"><code>images/chipSheet.png</code></a></td><td>Strip of four poker chips (blue, green, yellow, red) sliced by <code>loadChipTextures</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/cup.png"><code>images/cup.png</code></a></td><td>Dice cup on a green background that the game makes transparent.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/cyl_side_tex.png"><code>images/cyl_side_tex.png</code></a></td><td>Texture for the ends of the slot reels.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/cyl_spinner_tex.png"><code>images/cyl_spinner_tex.png</code></a></td><td>Texture for the slot reel axle.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/diceSheet.png"><code>images/diceSheet.png</code></a></td><td>4 by 6 sheet of dice faces (four colors, six faces) sliced by <code>loadDiceTextures</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/dicetable.png"><code>images/dicetable.png</code></a></td><td>Background for the dice game.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/logo.png"><code>images/logo.png</code></a></td><td>Ghetto Casino logo.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/menu_bg.png"><code>images/menu_bg.png</code></a></td><td>Menu background.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/menu_bg_devscreen.png"><code>images/menu_bg_devscreen.png</code></a></td><td>Alternate menu background that the code does not load.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/menu_button.png"><code>images/menu_button.png</code></a></td><td>Menu button texture.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/reelFaceSheet.png"><code>images/reelFaceSheet.png</code></a></td><td>Sheet of slot reel symbols.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/reels_tex.png"><code>images/reels_tex.png</code></a></td><td>Symbol strip wrapped around each 3D slot reel.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/shoe.png"><code>images/shoe.png</code></a></td><td>Card shoe drawn on the blackjack table.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/slot_face.png"><code>images/slot_face.png</code></a></td><td>Slot machine cabinet drawn over the reels.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/images/t8.png"><code>images/t8.png</code></a></td><td>Sprite sheet with the frames of the opening team intro.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/image.cpp"><code>image.cpp</code></a></td><td>Image loader: converts a PNG to PPM with ImageMagick&#x27;s <code>convert</code> and reads the pixels.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/libggfonts.a"><code>libggfonts.a</code></a></td><td>The instructor&#x27;s bitmap font library used for all on-screen text.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/fonts.h"><code>include/fonts.h</code></a></td><td>Header for the instructor&#x27;s font library.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/casino-game/include/image.h"><code>include/image.h</code></a></td><td><code>Image</code> class used to load textures.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3350"><span class="pager__prev"></span><a class="pager__next" href="../../../Coursework/cmps3350/group8diagram.gif.html" rel="next"><span>Next</span>group8diagram.gif</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

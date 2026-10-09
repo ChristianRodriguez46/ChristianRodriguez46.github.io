@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5: Rebuilding a BST from its preorder listing | CMPS 3120 | Christian Rodriguez</title>
+    <meta name="description" content="Builds a random binary search tree of three-digit keys, stores its preorder listing in an array, and rebuilds the tree from that array in O(n) time with two explicit stacks. It then checks that the result is a BST and looks up inorder and preorder successors, including keys that have none.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3120">CMPS 3120 Algorithm Analysis</a></li>
+                        <li><span aria-current="page">Lab 5</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3120 &middot; Lab 5</p>
+                <h1 class="labpage__title" data-animate>Rebuilding a BST from its preorder listing</h1>
+                <p class="labpage__lede" data-animate>Builds a random binary search tree of three-digit keys, stores its preorder listing in an array, and rebuilds the tree from that array in O(n) time with two explicit stacks. It then checks that the result is a BST and looks up inorder and preorder successors, including keys that have none.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab05">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/lab05/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s skeleton and filled in the right-subtree check in <code>isBST</code> and the right-child case in <code>preorderSuccessor</code>.</li><li>Ran the skeleton&#x27;s tests, which compare the rebuilt tree&#x27;s preorder listing with the array and look up successors for random keys and for keys with no successor.</li><li>Saved a run with n = 100 in <code>output.txt</code>, where the listings match and the tree passes the BST check.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>Binary search trees</li><li>Tree traversals</li><li>Explicit stacks</li><li>Recursion</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Binary search trees</li><li>Tree traversals</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>, <code>time.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">gcc -o lab5 Asg5.c</span>
+<span class="cmd">./lab5 100</span></code></pre>
+                <p><strong>Requires:</strong> A C compiler such as <code>gcc</code>. The assignment needs Python 3 with NumPy, SciPy and Matplotlib.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Rebuilding a 40-key BST from its preorder listing</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab5 40</span>
+    n = 40
+
++++ Array storing preorder listing of keys
+    855 368 154 149 118 170 259 185 188 254 216 323 817 786 624 440 589 457 515
+    472 494 510 583 609 617 758 658 746 740 717 741 833 836 909 890 962 932 926
+    934 981
+
++++ Preorder listing of the keys in the constructed tree
+    855 368 154 149 118 170 259 185 188 254 216 323 817 786 624 440 589 457 515
+    472 494 510 583 609 617 758 658 746 740 717 741 833 836 909 890 962 932 926
+    934 981
+
++++ The constructed tree is a BST...
+
+    Inorder successor of 926 is 932
+    Inorder successor of 981 does not exist
+    Inorder successor of 981 does not exist
+
+    Preorder successor of 216 is 323
+    Preorder successor of 890 is 962
+    Preorder successor of 981 does not exist</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/lab05/Asg5.c"><code>Asg5.c</code></a></td><td>BST builder, stack-based rebuild from preorder, BST check and successor searches.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/lab05/output.txt"><code>output.txt</code></a></td><td>Saved run with n = 100.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3120"><a class="pager__prev" href="../../../Coursework/cmps3120/lab04/" rel="prev"><span>Previous</span>Lab 4</a><a class="pager__next" href="../../../Coursework/cmps3120/lab06/" rel="next"><span>Next</span>Lab 6</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

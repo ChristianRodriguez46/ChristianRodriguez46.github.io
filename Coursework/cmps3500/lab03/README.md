@@ -2,6 +2,8 @@
 
 **CMPS 3500 Programming Languages**, Lab 3
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3500/lab03/](https://christianrodriguez46.github.io/Coursework/cmps3500/lab03/)
+
 ## What it does
 
 - `testada.adb` demonstrates Ada's strong typing, scoping rules and arrays, reading numbers from `infile.txt` and writing `outfile.txt`.

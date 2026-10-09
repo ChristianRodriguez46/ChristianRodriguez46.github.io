@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 7: Mamdani fuzzy inference | CMPS 3560 | Christian Rodriguez</title>
+    <meta name="description" content="Extends the lab 6 fuzzy sets into Mamdani inference with three rules about distance and temperature that recommend no water, a bottle or a lot. Each rule&#x27;s strength scales its output set, the scaled sets are combined with max, and their centroid over 0 to 2 liters is the answer: 1.21 L for 2 km at 8">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3560">CMPS 3560 Artificial Intelligence</a></li>
+                        <li><span aria-current="page">Lab 7</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3560 &middot; Lab 7</p>
+                <h1 class="labpage__title" data-animate>Mamdani fuzzy inference</h1>
+                <p class="labpage__lede" data-animate>Extends the lab 6 fuzzy sets into Mamdani inference with three rules about distance and temperature that recommend no water, a bottle or a lot. Each rule&#x27;s strength scales its output set, the scaled sets are combined with <code>max</code>, and their centroid over 0 to 2 liters is the answer: 1.21 L for 2 km at 80F.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab07">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab07/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Kept the membership functions and tests from lab 6, which the script still prints first.</li><li>Added the fuzzy sets <code>none</code>, <code>alot</code>, <code>medium</code> and <code>long</code> and redefined <code>short</code>, <code>moderate</code> and <code>hot</code> from the lab&#x27;s appendix.</li><li>Wrote <code>mamdani_inference(L, T)</code>: rule 1 uses <code>short</code> distance, rule 2 takes the <code>min</code> of <code>medium</code> distance and <code>moderate</code> temperature, and rule 3 takes the <code>max</code> of <code>long</code> distance and <code>hot</code> temperature.</li><li>Aggregated the rules with <code>max</code> at 21 points from 0 to 2 and defuzzified with a weighted average (the centroid).</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>Python</li><li>Fuzzy logic</li><li>Mamdani inference</li><li>Defuzzification</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Mamdani inference</li><li>Defuzzification</li></ul>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">python3 lab7.py</span></code></pre>
+                <p><strong>Requires:</strong> Python 3 for the Python labs, <code>g++</code> for the C++ labs, and SWI-Prolog or GNU Prolog for labs 4 and 5.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Mamdani inference for 2 km at 80F</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">python3 lab7.py</span>
+0.0
+1.0
+0.0
+0.5
+0.0
+0.2
+0.2
+0.5
+1.0
+1.0
+The user walked 3 km and it is 80F. Fuzzy system recommends: 0.5 bottles of water.
+Mamdani Inference: Distance = 2km, Temp = 80F =&gt; Recommended water: 1.21L</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab07/lab7.py"><code>lab7.py</code></a></td><td>Lab 6 code plus the full fuzzy sets and <code>mamdani_inference</code>.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3560"><a class="pager__prev" href="../../../Coursework/cmps3560/lab06/" rel="prev"><span>Previous</span>Lab 6</a><a class="pager__next" href="../../../Coursework/cmps3560/lab08/" rel="next"><span>Next</span>Lab 8</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

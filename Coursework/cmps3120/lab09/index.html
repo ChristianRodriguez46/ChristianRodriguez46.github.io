@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 9: Binary search for hidden positions | CMPS 3120 | Christian Rodriguez</title>
+    <meta name="description" content="Finds the positions of 10 hidden 1 bits among 65,536 using only range queries to a black box: an OR query says whether a range holds any of them, and an XOR query says whether it holds an odd number. A queue of intervals and binary search locate them one at a time, and the saved run finds all 10 wit">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3120">CMPS 3120 Algorithm Analysis</a></li>
+                        <li><span aria-current="page">Lab 9</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3120 &middot; Lab 9</p>
+                <h1 class="labpage__title" data-animate>Binary search for hidden positions</h1>
+                <p class="labpage__lede" data-animate>Finds the positions of 10 hidden 1 bits among 65,536 using only range queries to a black box: an OR query says whether a range holds any of them, and an XOR query says whether it holds an odd number. A queue of intervals and binary search locate them one at a time, and the saved run finds all 10 with 85 OR and 74 XOR queries.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab09">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/lab09/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s skeleton, which has the interval queue and <code>binsearch</code>, and filled in the marked lines in <code>findpos</code>, including the swap in the bubble sort that puts the 10 positions in order.</li><li>Linked against the instructor&#x27;s black-box object file (not included), which provides <code>registerme</code>, <code>rangequery</code> and <code>verifysoln</code>.</li><li>Saved a run in <code>output.txt</code> where all 10 positions are verified.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>Binary search</li><li>Queues</li><li>Range queries</li><li>Parity</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Binary search</li><li>Query-based algorithms</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">gcc -o lab9 asgn9.c blackboxA.o</span>  <span class="cmt"># blackboxA.o is from the course server</span>
+<span class="cmd">./lab9</span></code></pre>
+                <p><strong>Requires:</strong> A C compiler such as <code>gcc</code>. The assignment needs Python 3 with NumPy, SciPy and Matplotlib.</p>
+                <aside class="callout callout--note" aria-label="Note"><p>Links against an instructor-provided object file that is not included here, so this lab only builds on the course server. <code>output.txt</code> shows a complete run.</p></aside>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Finding 10 hidden positions among 65,536</figcaption>
+                    <p class="snap__note">Saved from a run on the course server.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab9</span>
+
++++ Registering you ... done
+
++++ Verifying your solutions
+
+--- Your solution   487 is correct
+--- Your solution  2681 is correct
+--- Your solution 12300 is correct
+--- Your solution 23677 is correct
+--- Your solution 24683 is correct
+--- Your solution 32436 is correct
+--- Your solution 32437 is correct
+--- Your solution 47917 is correct
+--- Your solution 52133 is correct
+--- Your solution 55037 is correct
+
+*** You made  85   OR queries
+*** You made  74  XOR queries
+
+*** Your point is 10</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/lab09/asgn9.c"><code>asgn9.c</code></a></td><td>Interval queue, OR and XOR binary search, and the final sort.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/lab09/output.txt"><code>output.txt</code></a></td><td>Saved run from the course server (the instructor&#x27;s black-box object file is not included, so it only builds there).</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3120"><a class="pager__prev" href="../../../Coursework/cmps3120/lab08/" rel="prev"><span>Previous</span>Lab 8</a><a class="pager__next" href="../../../Coursework/cmps3120/sensor-network-assignment/" rel="next"><span>Next</span>Assignment</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

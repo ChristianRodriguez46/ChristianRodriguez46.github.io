@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final project: Car detailing site with PHP and MySQL | CMPS 3680 | Christian Rodriguez</title>
+    <meta name="description" content="Wise Choice Detailing, a site for a mobile car detailing business, rebuilt from the CMPS 2680 front end with a PHP and MySQL backend. Customers book an appointment that the server validates and saves under a random 10-character order number, and the contact form checks that order number against the ">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3680">CMPS 3680 Server-Side Web</a></li>
+                        <li><span aria-current="page">Final project</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3680 &middot; Final project</p>
+                <h1 class="labpage__title" data-animate>Car detailing site with PHP and MySQL</h1>
+                <p class="labpage__lede" data-animate>Wise Choice Detailing, a site for a mobile car detailing business, rebuilt from the CMPS 2680 front end with a PHP and MySQL backend. Customers book an appointment that the server validates and saves under a random 10-character order number, and the contact form checks that order number against the database before emailing the message. A sign-up and sign-in page with hashed passwords was started but not finished.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/final-project">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Wrote <code>booking.php</code>, which posts the appointment form back to itself, checks every field with the functions in <code>validate.php</code> (<code>validFname</code>, <code>validEmail</code>, <code>validZip</code>, <code>validPnum</code>, <code>validYear</code> and others) and requires a package or at least one service through <code>validateOrder</code>.</li><li>Saved bookings in <code>sql/sqlTools.php</code>: <code>addOrder</code> makes the order number with <code>random_int</code> in <code>generateRandomString</code>, stores the exterior and interior service lists as JSON columns and inserts the row with a prepared statement. <code>getUniqueOrder</code> reads it back and <code>printUniqueOrder</code> shows the confirmation under the form.</li><li>Wrote the contact handler <code>contact.php</code>, with validators in <code>scripts/mail.php</code>: it cleans each field with <code>cleanData</code>, checks the email, phone and order number formats, confirms the order exists with <code>checkOrderNumber</code> and sends the message with <code>mail()</code>.</li><li>Started accounts in <code>login.php</code>: one form switches between sign-up and sign-in with jQuery, sign-up hashes the password with <code>password_hash</code>, and sign-in is written to check it with <code>password_verify</code> and store the user in <code>$_SESSION</code>. The <code>users</code> table is defined in <code>sql/create.php</code>.</li><li>Added queries for pages still to come, such as <code>getOrder</code> (all appointments, marked for an admin view), <code>getUserOrder</code> (one customer&#x27;s appointments), <code>removeOrder</code> and <code>dumpOrders</code>, and tried them in <code>sql/test.php</code>.</li><li>Reworked the CMPS 2680 pages: the links now go to <code>booking.php</code>, the scripts moved into <code>scripts/</code>, and the gallery became 11 before-and-after photo sliders driven by a range input and a CSS <code>--position</code> variable.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>PHP</li><li>MySQL</li><li>mysqli prepared statements</li><li>Password hashing</li><li>PHP sessions</li><li>Bootstrap 5</li><li>jQuery</li><li>Server-side validation</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>PHP and MySQL</li><li>Password hashing and sessions</li><li>Server-side validation</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>Uses Bootstrap, jQuery, mysqli (PHP MySQL extension).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd"></span>  <span class="cmt"># one time: create a MySQL database and user, then put them in config.php</span>
+<span class="cmd">php sql/create.php</span>  <span class="cmt"># creates the table</span>
+<span class="cmd">php -S localhost:8000</span>
+<span class="cmd"></span>  <span class="cmt"># open http://localhost:8000/home.html</span></code></pre>
+                <p><strong>Requires:</strong> PHP 7.4 or later; labs 5, 6 and the final project also need MySQL (or MariaDB) and the PHP <code>mysqli</code> extension. Run each folder with PHP&#x27;s built-in server: <code>php -S localhost:8000</code>.</p>
+                <aside class="callout callout--note" aria-label="Note"><p>The database login for this project is in <code>sql/config.php</code>. <code>sql/create.php</code> defines both the <code>appointments</code> and <code>users</code> tables. The <code>appointments</code> statement is commented out because that table already existed on the course server; uncomment it on a fresh database. The contact form needs a mail server to actually send email.</p></aside>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Server-side checks on a booking with a bad first name, email and year and no service picked</figcaption>
+                    <p class="snap__note">The form was posted to booking.php with curl, and only the error lines of the returned page are shown. A booking that passes these checks is saved to MySQL, which is not available here.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">php -S 127.0.0.1:5243 &gt;/dev/null 2&gt;&amp;1 &amp; sleep 0.5; curl -s -d &#x27;fname=J0hn&amp;lname=Doe&amp;email=john@mail&amp;address=12 Main St&amp;city=Bakersfield&amp;zip=93301&amp;phone=661-555-0100&amp;make=Toyota&amp;model=Camry&amp;year=24&amp;date=2026-10-20&amp;time=10:30&#x27; 127.0.0.1:5243/booking.php | pandoc -f html -t plain | grep -E &#x27;Invalid|must&#x27;; kill %1</span>
+Invalid first name
+Invalid email
+Invalid year
+You must select at least one service!</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Contact form checks on a bad email, phone number and order number</figcaption>
+                    <p class="snap__note">Posted to contact.php with curl, and only the error lines of the returned page are shown. A well-formed order number is looked up in MySQL, which is not available here.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">php -S 127.0.0.1:5244 &gt;/dev/null 2&gt;&amp;1 &amp; sleep 0.5; curl -s -d &#x27;fname=Ana&amp;lname=Lopez&amp;email=ana-at-mail.com&amp;pnum=5550100&amp;orderNumber=A12&amp;message=Can I move my appointment?&#x27; 127.0.0.1:5244/contact.php | pandoc -f html -t plain | grep Invalid; kill %1</span>
+Invalid email address
+Invalid phone number
+Invalid order number input</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/home.html"><code>home.html</code></a></td><td>Home page with a rotating banner photo, the owner&#x27;s About section and an Instagram embed.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/service.html"><code>service.html</code></a></td><td>Package and individual service price tables.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/booking.php"><code>booking.php</code></a></td><td>Appointment form that is validated on the server, saved to MySQL and confirmed with its order number.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/validate.php"><code>validate.php</code></a></td><td><code>cleanData</code> and the booking validators (<code>validFname</code>, <code>validZip</code>, <code>validTime</code>, <code>validateOrder</code> and others).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/gallery.html"><code>gallery.html</code></a></td><td>Eleven before-and-after photo sliders.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/contact.html"><code>contact.html</code></a></td><td>Contact form (name, email, phone, order number and message) that posts to <code>contact.php</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/contact.php"><code>contact.php</code></a></td><td>Validates the contact form, checks the order number in MySQL and emails the message with <code>mail()</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/login.php"><code>login.php</code></a></td><td>Unfinished sign-up and sign-in page with hashed passwords and a PHP session.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/scripts/mail.php"><code>scripts/mail.php</code></a></td><td>Validators for the contact form (<code>cleanData</code>, <code>validEmail</code>, <code>validPnum</code>, <code>validOrderNumber</code>).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/scripts/booking.js"><code>scripts/booking.js</code></a></td><td>Query-string summary and service check from the CMPS 2680 booking page. <code>booking.php</code> still loads it, but none of it runs on the PHP version.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/scripts/contact.js"><code>scripts/contact.js</code></a></td><td>Earlier client-side contact handler. Its script tag is commented out in <code>contact.html</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/scripts/gallery.js"><code>scripts/gallery.js</code></a></td><td>Moves each slider&#x27;s divider by setting <code>--position</code> from the range input.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/scripts/home.js"><code>scripts/home.js</code></a></td><td>Swaps the banner photo every 6 seconds.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/sql/config.php"><code>sql/config.php</code></a></td><td>Database login (placeholders in this copy).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/sql/sqlTools.php"><code>sql/sqlTools.php</code></a></td><td>Database functions for appointments, order number lookups and users, with prepared statements wherever user input is involved.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/sql/create.php"><code>sql/create.php</code></a></td><td>Defines the <code>appointments</code> and <code>users</code> tables and runs the <code>users</code> statement (the <code>appointments</code> one is commented out).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/sql/drop.php"><code>sql/drop.php</code></a></td><td>Drops both tables.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/sql/test.php"><code>sql/test.php</code></a></td><td>Scratch tests for the database and validation functions, most of them commented out.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/styles/home.css"><code>styles/home.css</code></a></td><td>Home page styles.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/styles/services.css"><code>styles/services.css</code></a></td><td>Services page styles.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/styles/booking.css"><code>styles/booking.css</code></a></td><td>Booking form and confirmation styles.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/styles/gallery.css"><code>styles/gallery.css</code></a></td><td>Gallery grid and the slider overlay.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/styles/contact.css"><code>styles/contact.css</code></a></td><td>Contact page styles.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/styles/User.css"><code>styles/User.css</code></a></td><td>Sign-up and sign-in page styles.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/final-project/images"><code>images/mPic*.png</code></a></td><td>Banner photos the home page rotates through.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/final-project/images/before"><code>images/before/*.png</code></a></td><td>Before photos for the gallery sliders.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/final-project/images/after"><code>images/after/*.png</code></a></td><td>After photos for the gallery sliders.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/media/logo.JPG"><code>media/logo.JPG</code></a></td><td>Business logo on the contact page.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/final-project/media/insta_logo.png"><code>media/insta_logo.png</code></a></td><td>Instagram icon.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3680"><span class="pager__prev"></span><a class="pager__next" href="../../../Coursework/cmps3680/lab01/" rel="next"><span>Next</span>Lab 1</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

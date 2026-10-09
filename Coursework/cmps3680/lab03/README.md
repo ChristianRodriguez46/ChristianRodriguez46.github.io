@@ -2,6 +2,8 @@
 
 **CMPS 3680 Server-Side Web**, Lab 3
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3680/lab03/](https://christianrodriguez46.github.io/Coursework/cmps3680/lab03/)
+
 ## What it does
 
 A small storefront built from reusable `header.php` and `footer.php` includes. `products.php` reads `products.json`, sorts the items and lists them; `eproducts.php` is a variation.

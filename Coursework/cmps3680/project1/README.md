@@ -2,6 +2,8 @@
 
 **CMPS 3680 Server-Side Web**, Project 1
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3680/project1/](https://christianrodriguez46.github.io/Coursework/cmps3680/project1/)
+
 ## What it does
 
 `takeQuiz.php?q=geo` (or `mov`, `mus`) loads a geography, movie or music quiz from `quizzes/*.json` and renders it as a form; `gradeQuiz.php` scores the submitted answers. The quiz name is validated before any file is opened.

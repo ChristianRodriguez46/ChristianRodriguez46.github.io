@@ -2,6 +2,8 @@
 
 **CMPS 2010 Programming Fundamentals**, Lab 1
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2010/lab01/](https://christianrodriguez46.github.io/Coursework/cmps2010/lab01/)
+
 ## What it does
 
 - `helo.cpp` and `lab1-1.cpp` print a greeting and a short introduction.

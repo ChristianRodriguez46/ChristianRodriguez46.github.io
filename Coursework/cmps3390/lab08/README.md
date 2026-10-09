@@ -2,6 +2,8 @@
 
 **CMPS 3390 Application Development**, Lab 8
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3390/lab08/](https://christianrodriguez46.github.io/Coursework/cmps3390/lab08/)
+
 ## What it does
 
 Two PHP endpoints that take a JSON body:

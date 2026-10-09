@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 8: Threads, fork and exec | CMPS 3600 | Christian Rodriguez</title>
+    <meta name="description" content="Five threads pass a semaphore &quot;baton&quot; in a fixed order even though they are created in reverse. Afterward the program removes its semaphore by running ipcrm with execve, either in place of itself (0) or from a forked child (1).">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3600">CMPS 3600 Operating Systems</a></li>
+                        <li><span aria-current="page">Lab 8</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3600 &middot; Lab 8</p>
+                <h1 class="labpage__title" data-animate>Threads, fork and exec</h1>
+                <p class="labpage__lede" data-animate>Five threads pass a semaphore &quot;baton&quot; in a fixed order even though they are created in reverse. Afterward the program removes its semaphore by running <code>ipcrm</code> with <code>execve</code>, either in place of itself (<code>0</code>) or from a forked child (<code>1</code>).</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab08">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s <code>xlab8.c</code>, which sets up the baton threads and leaves the cleanup to the student.</li><li>Added a usage message with examples for each option.</li><li>Built the <code>ipcrm -s &lt;semid&gt;</code> argument list and ran it with <code>execve</code>.</li><li>With <code>1</code>, forked a child to run <code>ipcrm</code> and had the parent wait for it and print its exit status; with <code>0</code>, called <code>execve</code> directly, so the program is replaced and nothing after it runs.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>execve</li><li>fork</li><li>POSIX threads</li><li>System V semaphores</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li><code>execve</code></li><li>Thread synchronization</li><li>Cleaning up IPC resources</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>pthread.h</code></td><td>POSIX threads and mutexes</td></tr><tr><td><code>sys/ipc.h</code></td><td>System V IPC keys (<code>ftok</code>)</td></tr><tr><td><code>sys/sem.h</code></td><td>System V semaphores</td></tr><tr><td><code>sys/types.h</code></td><td>System data types such as <code>pid_t</code></td></tr><tr><td><code>sys/wait.h</code></td><td><code>wait</code> and <code>waitpid</code> for child processes</td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>.</p>
+                <p>Linked with <code>-lpthread</code> (POSIX threads).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./lab8 1</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code> and POSIX threads. The graphical labs also need the X11 development headers (<code>sudo apt install libx11-dev libxext-dev</code> on Ubuntu). Every folder has a <code>Makefile</code>.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Threads pass a semaphore baton in order, then a forked child runs ipcrm to remove the semaphore</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab8 1</span>
+Lab-8 is running...
+created 4
+created 3
+created 2
+created 1
+created 0
+[0][1][2][3][4]
+joined tv1
+joined tv2
+joined tv3
+joined tv4
+joined tv5
+Added code to cleanup semaphores with a fork.
+Executing ipcrm.
+icprm child exited on status: 0</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">With 0, the program itself is replaced by ipcrm through execve</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab8 0</span>
+Lab-8 is running...
+created 4
+created 3
+created 2
+created 1
+[0][1][2][3][4]created 0
+
+joined tv1
+joined tv2
+joined tv3
+joined tv4
+joined tv5
+Added code to cleanup semaphores.
+Executing ipcrm.</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/bblab8.c"><code>bblab8.c</code></a></td><td>The lab: baton-passing threads, then semaphore cleanup with <code>execve</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/Makefile"><code>Makefile</code></a></td><td>Builds <code>lab8</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/foo"><code>foo</code></a></td><td>Empty file used by <code>ftok</code> to build the IPC key.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/xlab8.c"><code>xlab8.c</code></a></td><td>The instructor&#x27;s starter for the lab.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/cleanipc.sh"><code>cleanipc.sh</code></a></td><td>Removes a user&#x27;s leftover semaphores, queues and shared memory.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/fork-exec.c"><code>fork-exec.c</code></a></td><td>Example: <code>execve</code> in a forked child.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/nofork-exec.c"><code>nofork-exec.c</code></a></td><td>Example: <code>execve</code> replacing the current process.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/myexec.c"><code>myexec.c</code></a></td><td>Example: running another program with <code>execve</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/myecho.c"><code>myecho.c</code></a></td><td>Example: prints its command-line arguments (used with <code>myexec</code>).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/sample1.c"><code>sample1.c</code></a></td><td>Example: <code>execve</code> of <code>/bin/ls</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/notes8.c"><code>notes8.c</code></a></td><td>Example: a tiny program to inspect in <code>gdb</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab08/memory.c"><code>memory.c</code></a></td><td>Reading material: <code>mm/memory.c</code> from an early Linux kernel.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3600"><a class="pager__prev" href="../../../Coursework/cmps3600/lab07/" rel="prev"><span>Previous</span>Lab 7</a><a class="pager__next" href="../../../Coursework/cmps3600/lab09/" rel="next"><span>Next</span>Lab 9</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

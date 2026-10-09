@@ -25,3 +25,6 @@ does not run PHP.
   [anime.js 3.2.2](https://animejs.com/) from cdnjs; the site works without it, and animations are
   skipped when the visitor's system has "Reduce motion" turned on.
 - Each file starts with a comment block that lists its sections and common problems to check.
+- The lab pages (`Coursework/<course>/<lab>/index.html`) are generated from page data by
+  `build_lab_pages.py` in my build kit, which is kept outside this repository. To change a lab page,
+  edit its data there and rerun the script instead of editing the HTML.

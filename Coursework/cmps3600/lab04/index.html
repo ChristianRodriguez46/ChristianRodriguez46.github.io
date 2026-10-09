@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4: Shared memory and message queues | CMPS 3600 | Christian Rodriguez</title>
+    <meta name="description" content="A parent and child that talk through two System V IPC channels. The parent writes a number into shared memory, which the child polls for, then sends a word through a message queue. The child writes both to log. A second program, myxwindow.c, forks a child X11 window and notices when it closes.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3600">CMPS 3600 Operating Systems</a></li>
+                        <li><span aria-current="page">Lab 4</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3600 &middot; Lab 4</p>
+                <h1 class="labpage__title" data-animate>Shared memory and message queues</h1>
+                <p class="labpage__lede" data-animate>A parent and child that talk through two System V IPC channels. The parent writes a number into shared memory, which the child polls for, then sends a word through a message queue. The child writes both to <code>log</code>. A second program, <code>myxwindow.c</code>, forks a child X11 window and notices when it closes.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab04">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Built one IPC key with <code>ftok</code> from the <code>foo</code> file and used it for both <code>shmget</code> and <code>msgget</code>.</li><li>Had the child poll the shared integer with <code>usleep</code> until the parent changes it, then block on <code>msgrcv</code> for the word.</li><li>Removed the queue in the child and the shared memory in the parent with <code>msgctl</code> and <code>shmctl</code>, so nothing is left behind.</li><li>Extended the instructor&#x27;s X11 window in <code>myxwindow.c</code>: <strong>C</strong> forks a child window, <strong>A</strong> switches the colors, and a <code>SIGCHLD</code> handler shows &quot;Child has died&quot; in the parent window.</li><li>Wrote <code>practice/myshared.c</code>, a first shared memory test.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>Shared memory</li><li>Message queues</li><li>ftok</li><li>X11</li><li>SIGCHLD</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Shared memory (<code>shmget</code>)</li><li>Message queues (<code>msgget</code>)</li><li>IPC keys with <code>ftok</code></li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>X11/Xlib.h</code></td><td>Xlib: opening windows, drawing and reading events (X11)</td></tr><tr><td><code>X11/keysym.h</code></td><td>X11 key names such as <code>XK_Escape</code></td></tr><tr><td><code>sys/file.h</code></td><td><code>open</code> and its flags</td></tr><tr><td><code>sys/ipc.h</code></td><td>System V IPC keys (<code>ftok</code>)</td></tr><tr><td><code>sys/msg.h</code></td><td>System V message queues</td></tr><tr><td><code>sys/shm.h</code></td><td>System V shared memory</td></tr><tr><td><code>sys/types.h</code></td><td>System data types such as <code>pid_t</code></td></tr><tr><td><code>sys/wait.h</code></td><td><code>wait</code> and <code>waitpid</code> for child processes</td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>.</p>
+                <p>Linked with <code>-lX11</code> (Xlib).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./lab4</span>
+<span class="cmd">cat log</span>
+<span class="cmd">./cleanipc.sh $USER</span>  <span class="cmt"># if a run is interrupted</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code> and POSIX threads. The graphical labs also need the X11 development headers (<code>sudo apt install libx11-dev libxext-dev</code> on Ubuntu). Every folder has a <code>Makefile</code>.</p>
+                <aside class="callout" aria-label="X11">
+                    <p class="callout__title">This program opens an X11 window</p>
+                    <p>It needs an X server on the computer you are looking at. On Linux that is already part of the
+                    desktop. On a Mac or a Windows PC, or when the program runs on another machine over SSH, see
+                    <a href="../../../Coursework/cmps3600/x11-setup.html">Setting up X11</a> for what to install and how to check it works.</p>
+                </aside>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Parent passes a number through shared memory and a word through a message queue</figcaption>
+                    <p class="snap__note">The child writes both values to log, which is printed at the end.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab4 &amp;&amp; cat log</span>
+
+Enter a 2-digit number: <span class="term__in">83</span>
+
+Enter a word: <span class="term__in">System-V</span>
+
+child terminated with code 0
+
+83
+System-V</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/bblab4.c"><code>bblab4.c</code></a></td><td>The lab: a number through shared memory and a word through a message queue.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/myxwindow.c"><code>myxwindow.c</code></a></td><td>X11 window that forks a child window and reacts to <code>SIGCHLD</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/Makefile"><code>Makefile</code></a></td><td>Builds the lab (<code>lab4</code>), <code>myxwindow</code> and the examples.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/foo"><code>foo</code></a></td><td>Empty file used by <code>ftok</code> to build the IPC key.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/log"><code>log</code></a></td><td>Output from an earlier run.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/myinput"><code>myinput</code></a></td><td>Sample input: a number and a word.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/practice/myshared.c"><code>practice/myshared.c</code></a></td><td>Practice: create, write and remove a shared memory segment.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/practice/myxwindow.c"><code>practice/myxwindow.c</code></a></td><td>An earlier version of <code>myxwindow.c</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/practice/foo"><code>practice/foo</code></a></td><td>Empty file used by <code>ftok</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/practice/Makefile"><code>practice/Makefile</code></a></td><td>Builds the practice programs.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/cleanipc.sh"><code>cleanipc.sh</code></a></td><td>Removes a user&#x27;s leftover semaphores, queues and shared memory: <code>./cleanipc.sh $USER</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/msg_rcv.c"><code>msg_rcv.c</code></a></td><td>Example: receiving from a message queue.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/msg_send.c"><code>msg_send.c</code></a></td><td>Example: sending to a message queue.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/shared_mem.c"><code>shared_mem.c</code></a></td><td>Example: a parent and child sharing memory.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/shm_io.c"><code>shm_io.c</code></a></td><td>Example: writing and reading shared memory.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/sigset.c"><code>sigset.c</code></a></td><td>Example: POSIX signal sets.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/sigset2.c"><code>sigset2.c</code></a></td><td>Example: signals between a parent and child with signal sets.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab04/strings.c"><code>strings.c</code></a></td><td>Example: C strings and where variables live in memory.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3600"><a class="pager__prev" href="../../../Coursework/cmps3600/lab03/" rel="prev"><span>Previous</span>Lab 3</a><a class="pager__next" href="../../../Coursework/cmps3600/lab05/" rel="next"><span>Next</span>Lab 5</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

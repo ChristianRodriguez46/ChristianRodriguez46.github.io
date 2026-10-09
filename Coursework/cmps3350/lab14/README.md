@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Lab 14
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/lab14/](https://christianrodriguez46.github.io/Coursework/cmps3350/lab14/)
+
 ## What it does
 
 `vrlab14.cpp` is an OpenGL rocket-landing game: thrust with **Up** (or **T**), rotate with **Left** and **Right**, and set the rocket down gently on the landing zone.

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6: Product manager with MySQL | CMPS 3680 | Christian Rodriguez</title>
+    <meta name="description" content="The product manager moved from the JSON file to MySQL. Adding, listing, removing and clearing products go through sql/sqlTools.php with prepared statements, and product IDs are kept unique by a lookup before each insert and a UNIQUE column.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3680">CMPS 3680 Server-Side Web</a></li>
+                        <li><span aria-current="page">Lab 6</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3680 &middot; Lab 6</p>
+                <h1 class="labpage__title" data-animate>Product manager with MySQL</h1>
+                <p class="labpage__lede" data-animate>The product manager moved from the JSON file to MySQL. Adding, listing, removing and clearing products go through <code>sql/sqlTools.php</code> with prepared statements, and product IDs are kept unique by a lookup before each insert and a <code>UNIQUE</code> column.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab06">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Rewrote the storage functions in <code>sql/sqlTools.php</code> (<code>addProduct</code>, <code>removeProduct</code>, <code>dumpProducts</code>, <code>getProducts</code>, <code>uniqueID</code>) on top of <code>mysqli</code>, with prepared statements for every query that takes user input.</li><li>Switched <code>add.php</code> and <code>remove.php</code> to the new functions and renamed the form keys to lowercase <code>id</code>, <code>vendor</code> and <code>quantity</code>.</li><li>Made <code>internalId</code> <code>UNIQUE</code> and renamed <code>name</code> to <code>productName</code> in the <code>CREATE TABLE</code> statement.</li><li>Loosened <code>validProductName</code> to allow spaces, apostrophes and hyphens.</li><li>Tested the queries from the command line with <code>sql/test.php</code>, which lists the products and checks two IDs with <code>uniqueID</code>.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>PHP</li><li>MySQL</li><li>mysqli</li><li>Prepared statements</li><li>SQL</li><li>Server-side validation</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>CRUD with MySQL</li><li>Prepared statements</li><li>Moving from files to a database</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>Uses mysqli (PHP MySQL extension).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd"></span>  <span class="cmt"># one time: create a MySQL database and user, then put them in config.php</span>
+<span class="cmd">php sql/create.php</span>  <span class="cmt"># creates the table</span>
+<span class="cmd">php -S localhost:8000</span>
+<span class="cmd"></span>  <span class="cmt"># open http://localhost:8000/add.php</span></code></pre>
+                <p><strong>Requires:</strong> PHP 7.4 or later; labs 5, 6 and the final project also need MySQL (or MariaDB) and the PHP <code>mysqli</code> extension. Run each folder with PHP&#x27;s built-in server: <code>php -S localhost:8000</code>.</p>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/add.php"><code>add.php</code></a></td><td>Add form and product list, now backed by MySQL.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/remove.php"><code>remove.php</code></a></td><td>Remove-by-ID form and Dump button, now backed by MySQL.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/validate.php"><code>validate.php</code></a></td><td>Field validators, with a looser product name check.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/data/products.json"><code>data/products.json</code></a></td><td>JSON storage from lab 4, no longer used.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/config.php"><code>config.php</code></a></td><td>MySQL login used by the web pages (placeholders in this copy).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/sql/config.php"><code>sql/config.php</code></a></td><td>Copy of the MySQL login for running the scripts from inside <code>sql/</code> (placeholders in this copy).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/sql/sqlTools.php"><code>sql/sqlTools.php</code></a></td><td>Connection helpers and the product queries.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/sql/create.php"><code>sql/create.php</code></a></td><td>Creates the <code>product</code> table.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/sql/drop.php"><code>sql/drop.php</code></a></td><td>Drops the <code>product</code> table.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/sql/test.php"><code>sql/test.php</code></a></td><td>Lists the products and checks two IDs (the insert tests are commented out).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/style.css"><code>style.css</code></a></td><td>Styles from lab 4.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab06/productTools.php"><code>productTools.php</code></a></td><td>Instructor&#x27;s JSON file helpers from lab 4, no longer used.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3680"><a class="pager__prev" href="../../../Coursework/cmps3680/lab05/" rel="prev"><span>Previous</span>Lab 5</a><a class="pager__next" href="../../../Coursework/cmps3680/lab10/" rel="next"><span>Next</span>Lab 10</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

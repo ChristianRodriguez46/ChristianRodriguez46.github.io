@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 8
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk08/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk08/)
+
 ## What it does
 
 - `lab09_2020TH_ChrRod.cpp` (lab 9) is the browser-history stack again, this time backed by an array.

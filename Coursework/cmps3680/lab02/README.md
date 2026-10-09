@@ -2,6 +2,8 @@
 
 **CMPS 3680 Server-Side Web**, Lab 2
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3680/lab02/](https://christianrodriguez46.github.io/Coursework/cmps3680/lab02/)
+
 ## What it does
 
 `lab2.php` generates a multiplication table with a PHP function and prints the contents of `lorem.txt` read with `file_get_contents`. `pratice.php` and `test.php` are warm-ups.

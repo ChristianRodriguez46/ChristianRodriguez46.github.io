@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 12: Hash function collisions | CMPS 2020 | Christian Rodriguez</title>
+    <meta name="description" content="A look at hash collisions. The program reads all 172,820 words in enable1.txt, hashes each by summing its letter positions (a = 1, b = 2 and so on) modulo 320, and reports how many words land at every index and which index is busiest.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2020">CMPS 2020 Programming II: Data Structures</a></li>
+                        <li><span aria-current="page">Week 12</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2020 &middot; Week 12</p>
+                <h1 class="labpage__title" data-animate>Hash function collisions</h1>
+                <p class="labpage__lede" data-animate>A look at hash collisions. The program reads all 172,820 words in <code>enable1.txt</code>, hashes each by summing its letter positions (a = 1, b = 2 and so on) modulo 320, and reports how many words land at every index and which index is busiest.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk12">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk12/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Wrote <code>calcHash</code>, which adds <code>c - &#x27;a&#x27; + 1</code> for each character and takes the sum modulo 320.</li><li>Counted hits per index in a 320-entry array while reading the word list with <code>fin &gt;&gt; word</code>.</li><li>Printed the full table and found the index with the most collisions (93, with 1,965 words).</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Hash functions</li><li>File input</li><li>Arrays</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Hash functions</li><li>Collision analysis</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>fstream</code>, <code>iostream</code>, <code>string</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -o lab14 lab14_2020TH_ChrRod.cpp</span>
+<span class="cmd">./lab14</span></code></pre>
+                <p><strong>Requires:</strong> A C++ compiler such as <code>g++</code> (Linux, macOS, or WSL on Windows).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Hashing all 172,820 words into 320 buckets</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab14</span>
+Collisions at index 0: 0
+Collisions at index 1: 0
+Collisions at index 2: 1
+Collisions at index 3: 2
+Collisions at index 4: 2
+Collisions at index 5: 1
+Collisions at index 6: 4
+Collisions at index 7: 4
+Collisions at index 8: 4
+Collisions at index 9: 9
+Collisions at index 10: 9
+Collisions at index 11: 6
+Collisions at index 12: 8
+Collisions at index 13: 18
+Collisions at index 14: 12
+Collisions at index 15: 16
+Collisions at index 16: 18
+Collisions at index 17: 36
+Collisions at index 18: 27
+Collisions at index 19: 30
+Collisions at index 20: 40
+… 293 more lines …
+Collisions at index 314: 0
+Collisions at index 315: 0
+Collisions at index 316: 0
+Collisions at index 317: 1
+Collisions at index 318: 0
+Collisions at index 319: 1
+Hash value that has the most collisions: 93
+Largest number of collisions: 1965</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk12/lab14_2020TH_ChrRod.cpp"><code>lab14_2020TH_ChrRod.cpp</code></a></td><td>Lab 14: hash collision counter.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk12/enable1.txt"><code>enable1.txt</code></a></td><td>The ENABLE word list, one lowercase word per line.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2020"><a class="pager__prev" href="../../../Coursework/cmps2020/wk10/" rel="prev"><span>Previous</span>Week 10</a><a class="pager__next" href="../../../Coursework/cmps2020/wk13/" rel="next"><span>Next</span>Week 13</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

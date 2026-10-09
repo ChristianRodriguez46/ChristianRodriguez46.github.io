@@ -2,6 +2,8 @@
 
 **CMPS 3120 Algorithm Analysis**, Lab 9
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3120/lab09/](https://christianrodriguez46.github.io/Coursework/cmps3120/lab09/)
+
 ## What it does
 
 Finds the positions of hidden values using a black-box query on ranges, combining binary search with parity (AND/OR) queries. The black box verifies each answer.

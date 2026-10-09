@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2: Mad Libs and math functions | CMPS 2010 | Christian Rodriguez</title>
+    <meta name="description" content="Two programs that read from the keyboard. lab2-1.cpp asks for seven words and phrases and prints a short Mad Libs story built from them. lab2-2.cpp reads a decimal number and prints its sine, cosine, tangent, exponent, natural log and square root in right-aligned columns.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2010">CMPS 2010 Programming Fundamentals</a></li>
+                        <li><span aria-current="page">Lab 2</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2010 &middot; Lab 2</p>
+                <h1 class="labpage__title" data-animate>Mad Libs and math functions</h1>
+                <p class="labpage__lede" data-animate>Two programs that read from the keyboard. <code>lab2-1.cpp</code> asks for seven words and phrases and prints a short Mad Libs story built from them. <code>lab2-2.cpp</code> reads a decimal number and prints its sine, cosine, tangent, exponent, natural log and square root in right-aligned columns.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab02">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab02/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Read single words with <code>cin &gt;&gt;</code> and a whole phrase with <code>getline</code>, calling <code>cin.ignore()</code> first to drop the leftover newline.</li><li>Built the story by splicing the answers into fixed sentences.</li><li>Called <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>exp</code>, <code>log</code> and <code>sqrt</code> from <code>&lt;cmath&gt;</code>.</li><li>Lined up the results with <code>setw</code>, <code>right</code>, <code>showpoint</code> and <code>setprecision(7)</code> from <code>&lt;iomanip&gt;</code>.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>cin and getline</li><li>cmath</li><li>iomanip formatting</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Reading input with <code>cin</code> and <code>getline</code></li><li><code>&lt;cmath&gt;</code> functions</li><li>Formatting with <code>setw</code> and <code>setprecision</code></li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>cmath</code>, <code>iomanip</code>, <code>iostream</code>, <code>string</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -o lab2-1 lab2-1.cpp</span>
+<span class="cmd">./lab2-1</span>
+<span class="cmd"></span>
+<span class="cmd">g++ -o lab2-2 lab2-2.cpp</span>
+<span class="cmd">./lab2-2</span></code></pre>
+                <p><strong>Requires:</strong> A C++ compiler such as <code>g++</code> (Linux, macOS, or WSL on Windows).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Filling in the Mad Libs story</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab2-1</span>
+Enter a name: <span class="term__in">Rosa</span>
+Enter an occupation ending in er: <span class="term__in">baker</span>
+Enter an adjective: <span class="term__in">sleepy</span>
+Enter a verb: <span class="term__in">dance</span>
+Enter a number: <span class="term__in">12</span>
+Enter an animal (plural): <span class="term__in">llamas</span>
+Enter an excited phrase: <span class="term__in">Holy guacamole</span>
+
+
+This is the tale of Rosa the baker.
+One day Rosa felt sleepy so they decided to dance.
+But right when Rosa was about to dance they encountered a pack of 12 wild llamas!
+Rosa ran away screaming &quot;Holy guacamole!&quot;
+
+THE END</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Math functions of 2.5 in aligned columns</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab2-2</span>
+Please enter a decimal number: <span class="term__in">2.5</span>
+
+SIN:                                     0.5984721
+COSINE:                                 -0.8011436
+TANGENT:                               -0.7470223
+EXPONENT:                                12.18249
+LOG:                                     0.9162907
+SQUARE ROOT:                              1.581139</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab02/lab2-1.cpp"><code>lab2-1.cpp</code></a></td><td>Mad Libs story from seven answers.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab02/lab2-2.cpp"><code>lab2-2.cpp</code></a></td><td>Table of math functions for one decimal number.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2010"><a class="pager__prev" href="../../../Coursework/cmps2010/lab01/" rel="prev"><span>Previous</span>Lab 1</a><a class="pager__next" href="../../../Coursework/cmps2010/lab03/" rel="next"><span>Next</span>Lab 3</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

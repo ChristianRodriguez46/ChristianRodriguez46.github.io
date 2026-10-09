@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6: Greedy connections with a min-heap | CMPS 3120 | Christian Rodriguez</title>
+    <meta name="description" content="Picks K connections between neighboring points on a line, with no point used twice, so that the total gap length is small. A plain greedy pass with a min-heap is compared with a version that corrects its mistakes: after choosing (l, r) it adds a virtual connection (l-1, r+1) to the heap, whose cost ">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3120">CMPS 3120 Algorithm Analysis</a></li>
+                        <li><span aria-current="page">Lab 6</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3120 &middot; Lab 6</p>
+                <h1 class="labpage__title" data-animate>Greedy connections with a min-heap</h1>
+                <p class="labpage__lede" data-animate>Picks K connections between neighboring points on a line, with no point used twice, so that the total gap length is small. A plain greedy pass with a min-heap is compared with a version that corrects its mistakes: after choosing (l, r) it adds a virtual connection (l-1, r+1) to the heap, whose cost is the price of swapping that gap for the two gaps beside it.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3120/lab06">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/lab06/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s skeleton (its first line lists the lines to fill in) and filled in the right endpoint of each heap node in <code>initheap</code>.</li><li>Wrote the step in <code>greedyec</code> that replaces each virtual connection (l, r) with the real connections (l, l+1) and (r-1, r).</li><li>Saved a run with N = 100 and K = 40 in <code>output.txt</code>: plain greedy costs 376 and the corrected version 374.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>Min-heap</li><li>Priority queues</li><li>Greedy algorithms</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Heaps</li><li>Greedy algorithms</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>, <code>time.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">gcc -o lab6 lab6-1.c</span>
+<span class="cmd">./lab6 100 40</span></code></pre>
+                <p><strong>Requires:</strong> A C compiler such as <code>gcc</code>. The assignment needs Python 3 with NumPy, SciPy and Matplotlib.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Choosing 40 connections among 100 points</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab6 100 40</span>
+    N = 100
+    K = 40
+    13 20 10 19 14 14 12 13 15 16  9 16 19 17 18 12  8  6 15 13 17  6 10  9 18
+    11 10 19 17 13  9  9 12 14  7  5  8 14 14 18 10 18 13  8 14 10 16 17 12 10
+     9  8 11 14 12  9  5 17  7 17 10 12  5 17  5  8 18  8 17 11  5  6  8 13 10
+    17 19  5 14 10 10 18 13 16 12 20 20 12 17  7  8  6 14  8 18 14 11 15 18
+
+*** Part 1: Greedy algorithm
+--- Adding connections
+    (64,65): 5 (70,71): 5 (35,36): 5 (77,78): 5 (56,57): 5 (62,63): 5
+    (17,18): 6 (21,22): 6 (91,92): 6 (89,90): 7 (58,59): 7 (67,68): 8
+    (72,73): 8 (43,44): 8 (93,94): 8 (51,52): 8 (31,32): 9 (10,11): 9
+    (23,24): 9 (45,46):10 (74,75):10 (79,80):10 (40,41):10 (49,50):10
+    (26,27):10 (60,61):10 ( 2, 3):10 (96,97):11 (15,16):12 (84,85):12
+    (87,88):12 (54,55):12 ( 6, 7):12 ( 0, 1):13 (19,20):13 (82,83):13
+    (29,30):13 (33,34):14 (37,38):14 ( 4, 5):14
+    Total cost = 374
+
+*** Part 2: Greedy algorithm with error correction
+--- Adding connections
+    ( 0, 1):13 ( 2, 3):10 ( 4, 5):14 ( 6, 7):12 (10,11): 9 (15,16):12
+    (17,18): 6 (19,20):13 (21,22): 6 (23,24): 9 (26,27):10 (30,31): 9
+    (32,33):12 (34,35): 7 (36,37): 8 (38,39):14 (40,41):10 (43,44): 8
+    (45,46):10 (49,50):10 (51,52): 8 (54,55):12 (56,57): 5 (58,59): 7
+    (60,61):10 (62,63): 5 (64,65): 5 (67,68): 8 (70,71): 5 (72,73): 8
+    (74,75):10 (77,78): 5 (79,80):10 (82,83):13 (84,85):12 (87,88):12
+    (89,90): 7 (91,92): 6 (93,94): 8 (96,97):11
+    Total cost = 369</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/lab06/lab6-1.c"><code>lab6-1.c</code></a></td><td>Heap functions, the plain greedy algorithm and the error-correcting version.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3120/lab06/output.txt"><code>output.txt</code></a></td><td>Saved run with N = 100 and K = 40.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3120"><a class="pager__prev" href="../../../Coursework/cmps3120/lab05/" rel="prev"><span>Previous</span>Lab 5</a><a class="pager__next" href="../../../Coursework/cmps3120/lab07/" rel="next"><span>Next</span>Lab 7</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

@@ -2,6 +2,8 @@
 
 **CMPS 3560 Artificial Intelligence**, Lab 4
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3560/lab04/](https://christianrodriguez46.github.io/Coursework/cmps3560/lab04/)
+
 ## What it does
 
 `lab4.pro` writes a small rule chain in Prolog (`x` leads to `y`, `y` leads to `z`) over a set of facts, to query which rules can be proven.

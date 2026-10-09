@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3: Signals and select() | CMPS 3620 | Christian Rodriguez</title>
+    <meta name="description" content="A study of signal masks and select() using the course&#x27;s select.c, which blocks SIGCHLD and SIGQUIT, catches Ctrl-C and waits on the keyboard with a 30-second timeout. The write-up explains how the program works and plans how select() can make the lab 2 chat full-duplex.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3620">CMPS 3620 Computer Networks</a></li>
+                        <li><span aria-current="page">Lab 3</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3620 &middot; Lab 3</p>
+                <h1 class="labpage__title" data-animate>Signals and select()</h1>
+                <p class="labpage__lede" data-animate>A study of signal masks and <code>select()</code> using the course&#x27;s <code>select.c</code>, which blocks <code>SIGCHLD</code> and <code>SIGQUIT</code>, catches Ctrl-C and waits on the keyboard with a 30-second timeout. The write-up explains how the program works and plans how <code>select()</code> can make the lab 2 chat full-duplex.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab03">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab03/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Built and ran <code>select.c</code>, trying Ctrl-C, typed input and the timeout.</li><li>Answered the questions in <code>Write-Up-Questions.md</code> from the man pages and the code: what <code>SIGCHLD</code> and <code>SIGQUIT</code> are for, how <code>sigemptyset</code> and <code>sigprocmask</code> build and apply the mask, and how the Ctrl-C handler is installed.</li><li>Explained how <code>FD_SET</code> puts standard input in the read set that <code>select()</code> watches.</li><li>Outlined the changes for lab 4: watch the socket and the keyboard in one <code>select()</code> call and handle whichever is ready.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>Signals</li><li>sigprocmask</li><li>select()</li><li>LaTeX</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Signal masks</li><li>I/O multiplexing with <code>select()</code></li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>signal.h</code></td><td>Signals: <code>sigaction</code>, <code>kill</code> and signal sets</td></tr><tr><td><code>sys/select.h</code></td><td><code>select()</code> for waiting on several file descriptors</td></tr><tr><td><code>sys/types.h</code></td><td>System data types such as <code>pid_t</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>errno.h</code>, <code>stdio.h</code>, <code>string.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">gcc -o select select.c</span>
+<span class="cmd">./select</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code>. Write-ups in <code>.tex</code>/<code>.ltx</code> build with any LaTeX distribution (<code>pdflatex</code>).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">select() waits on the keyboard while SIGCHLD and SIGQUIT are blocked, and Ctrl-C is caught</figcaption>
+                    <p class="snap__note">Ctrl-C runs the handler instead of ending the program, and a period on its own line exits.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./select</span>
+
+Current Signal Mask: 0000000000000000000000000000000
+
+New Signal Mask: 0010000000000000100000000000000 QUIT CHLD
+
+Process ID: 7903
+
+Enter a string at the prompt or wait for timeout.
+Enter just a period on a line by itself to exit.
+
+Try entering CTRL-C, CTRL-D and other signals at the prompt.
+Also open a second terminal and try sending signals via kill, such as:
+    kill -SIGCHLD 7903
+    kill -SIGQUIT 7903
+    kill -SIGINT 7903
+    kill -SIGHUP 7903
+    kill -SIGTERM 7903
+NOTE: Some of the above will terminate the program. Restart to try more.
+
+enter a line&gt; <span class="term__in">hello</span>
+You typed: hello
+enter a line&gt; <span class="term__in">^C</span>
+ctrlc_handler: ^C hit 1 times
+You typed:
+enter a line&gt; <span class="term__in">.</span>
+Exiting select() loop at user&#x27;s request...</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">First page of the write-up on signal masks and select()</figcaption>
+                    <p class="snap__note">Page 1 of <code>Write-up.ltx</code>, built with pdflatex.</p>
+                    <a class="snap__shot" href="../../../Coursework/snapshots/cmps3620/lab03/02-writeup.png"><img src="../../../Coursework/snapshots/cmps3620/lab03/02-writeup.png" alt="Screenshot: First page of the write-up on signal masks and select()" width="771" height="1028" loading="lazy"></a>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab03/Write-up.ltx"><code>Write-up.ltx</code></a></td><td>The write-up (LaTeX).</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab03/select.c"><code>select.c</code></a></td><td>The course&#x27;s example of signal masks and <code>select()</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab03/Write-Up-Questions.md"><code>Write-Up-Questions.md</code></a></td><td>The questions the write-up answers.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3620"><a class="pager__prev" href="../../../Coursework/cmps3620/lab02/" rel="prev"><span>Previous</span>Lab 2</a><a class="pager__next" href="../../../Coursework/cmps3620/lab04/" rel="next"><span>Next</span>Lab 4</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

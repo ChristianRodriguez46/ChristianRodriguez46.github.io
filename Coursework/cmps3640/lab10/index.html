@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 10: C++ threads | CMPS 3640 | Christian Rodriguez</title>
+    <meta name="description" content="Three short exercises with C++ std::thread: starting and joining two threads, splitting an array addition between two threads and timing it against a single loop, and summing an array with four threads that combine their partial sums under a mutex. In the run below the two-thread addition comes out ">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3640">CMPS 3640 Distributed and Parallel Computation</a></li>
+                        <li><span aria-current="page">Lab 10</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3640 &middot; Lab 10</p>
+                <h1 class="labpage__title" data-animate>C++ threads</h1>
+                <p class="labpage__lede" data-animate>Three short exercises with C++ <code>std::thread</code>: starting and joining two threads, splitting an array addition between two threads and timing it against a single loop, and summing an array with four threads that combine their partial sums under a mutex. In the run below the two-thread addition comes out slower than the single loop, because it runs first and pays for the first writes to the 400 MB result array.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3640/lab10">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab10/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Wrote <code>Lab10_Activity1.cpp</code>, which starts one thread printing 1 to 10 and another printing A to N, and joins both before exiting.</li><li>Wrote <code>Lab10_Activity2.cpp</code>, which adds two 100-million-element arrays with one thread per half, then repeats the addition in one loop and prints both times and the speedup.</li><li>Wrote <code>Lab10_Activity3.cpp</code>, which creates four threads in a loop, has each sum its section into a local variable, adds that to a shared total under a <code>std::mutex</code>, and checks the result against the expected sum.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>std::thread</li><li>std::mutex</li><li>Partial sums</li><li>Timing with std::chrono</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li><code>std::thread</code></li><li>Partial sums</li><li>Joining threads</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>mutex</code></td><td>C++ mutexes</td></tr><tr><td><code>thread</code></td><td>C++ threads (<code>std::thread</code>)</td></tr></tbody></table></div>
+                <p>C++ standard library: <code>chrono</code>, <code>iostream</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -pthread -o act1 Lab10_Activity1.cpp &amp;&amp; ./act1</span>
+<span class="cmd">g++ -pthread -o act3 Lab10_Activity3.cpp &amp;&amp; ./act3</span></code></pre>
+                <p><strong>Requires:</strong> <code>g++</code> with OpenMP (<code>-fopenmp</code>) and POSIX threads (<code>-pthread</code>), standard on Linux.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Two threads printing numbers and letters</figcaption>
+                    <p class="snap__note">Two threads plus the main thread. Their output can interleave on other runs.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./act1</span>
+Starting both threads...
+1 2 3 4 5 6 7 8 9 10
+A B C D E F G H I J K L M N
+Both threads finished.</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Adding 100-million-element arrays with two threads</figcaption>
+                    <p class="snap__note">Two threads. The parallel run goes first and pays for first touching the 400 MB result array, so the speedup comes out below 1.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./act2</span>
+Array size        : 100000000 elements
+Parallel time     : 287.818 ms
+Sequential time   : 174.331 ms
+Speedup (seq/par) : 0.605699x</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Summing a million ones with four threads</figcaption>
+                    <p class="snap__note">Four threads.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./act3</span>
+Array size    : 1000000
+Num threads   : 4
+Computed sum  : 1000000
+Expected sum  : 1000000
+Result correct: YES</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab10/Lab10_Activity1.cpp"><code>Lab10_Activity1.cpp</code></a></td><td>Two threads printing numbers and letters.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab10/Lab10_Activity2.cpp"><code>Lab10_Activity2.cpp</code></a></td><td>Array addition split between two threads, compared with a sequential loop.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab10/Lab10_Activity3.cpp"><code>Lab10_Activity3.cpp</code></a></td><td>Four-thread sum with local partial sums and a mutex.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3640"><a class="pager__prev" href="../../../Coursework/cmps3640/lab07/" rel="prev"><span>Previous</span>Lab 7</a><span class="pager__next"></span></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

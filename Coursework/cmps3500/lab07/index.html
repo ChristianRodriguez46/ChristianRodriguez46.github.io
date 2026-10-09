@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 7: C# compared with C++ | CMPS 3500 | Christian Rodriguez</title>
+    <meta name="description" content="C# with the Mono compiler: seven sample programs on namespaces, arrays, properties, interfaces, parameter modes and events, notes on how C# differs from C++, and a shape program built on an IShape interface. The lab07.cs in this folder is the starter file; the recorded session shows the finished ver">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3500">CMPS 3500 Programming Languages</a></li>
+                        <li><span aria-current="page">Lab 7</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3500 &middot; Lab 7</p>
+                <h1 class="labpage__title" data-animate>C# compared with C++</h1>
+                <p class="labpage__lede" data-animate>C# with the Mono compiler: seven sample programs on namespaces, arrays, properties, interfaces, parameter modes and events, notes on how C# differs from C++, and a shape program built on an <code>IShape</code> interface. The <code>lab07.cs</code> in this folder is the starter file; the recorded session shows the finished version printing each shape&#x27;s area.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab07">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Built the instructor&#x27;s seven C# samples with <code>mcs</code> through the provided <code>Makefile</code>.</li><li>Completed <code>lab07.cs</code> on the course server: constructors, <code>Area</code> properties and <code>Display</code> methods for <code>Rectangle</code>, <code>Triangle</code> and <code>Circle</code>, and a <code>Radius</code> property with <code>get</code> and <code>set</code>.</li><li>Worked through the compiler errors along the way (properties with no accessors, a misspelled <code>Console.Writeline</code>) until it built and ran under <code>mono</code>.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C#</li><li>Mono</li><li>Interfaces</li><li>Properties</li><li>Comparing languages</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>C#</li><li>Interfaces</li><li>Comparing language designs</li></ul>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">sudo apt install mono-mcs</span>  <span class="cmt"># once</span>
+<span class="cmd">make sample5</span>
+<span class="cmd">mono sample5.exe</span></code></pre>
+                <p><strong>Requires:</strong> Mono (<code>mcs</code> and <code>mono</code>) or the .NET SDK.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Building the samples and the finished lab07.cs with mcs, then running it with mono</figcaption>
+                    <p class="snap__note">Saved from a run on the course server. The finished lab07.cs is not in this folder, which holds the starter file.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0">$ make
+mcs sample1.cs
+mcs sample2.cs
+mcs sample3.cs
+mcs sample4.cs
+mcs sample5.cs
+mcs sample6.cs
+mcs sample7.cs
+mcs lab07.cs
+$ mono ./lab07.exe
+I set my Radius to &#x27;3.5&#x27;.
+area of type &#x27;Assignment.Rectangle&#x27;	: 179.375
+area of type &#x27;Assignment.Triangle&#x27;	: 33.6875
+area of type &#x27;Assignment.Circle&#x27;	: 38.465
+I&#x27;m a rectangle! I have width 8.75 and height 20.5
+I&#x27;m a triangle! I have base 5.5 and height 12.25
+I&#x27;m a circle! I have radius 3.5</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/lab07_output.log"><code>lab07_output.log</code></a></td><td><code>script</code> recording of the session, including the finished <code>lab07.cs</code> run.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/lab07_time.log"><code>lab07_time.log</code></a></td><td>Timing file for <code>scriptreplay</code> to play back <code>lab07_output.log</code>.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/C%23_v_C%2B%2B.txt"><code>C#_v_C++.txt</code></a></td><td>Notes on how C# differs from C++: entry point, parameter modes, garbage collection, properties, interfaces and more.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/Makefile"><code>Makefile</code></a></td><td>Builds the seven samples and <code>lab07</code> with <code>mcs</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/README"><code>README</code></a></td><td>How to compile with <code>mcs</code> and run with <code>mono</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/lab07.cs"><code>lab07.cs</code></a></td><td>Starter file for the shapes task, with empty method and property bodies (it does not compile as is).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/sample1.cs"><code>sample1.cs</code></a></td><td>Namespaces, classes and the <code>Main</code> entry point.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/sample2.cs"><code>sample2.cs</code></a></td><td>Console input and output, random numbers and primitive types.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/sample3.cs"><code>sample3.cs</code></a></td><td>Arrays and <code>foreach</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/sample4.cs"><code>sample4.cs</code></a></td><td>Constructors, destructors and properties.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/sample5.cs"><code>sample5.cs</code></a></td><td>Interfaces.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/sample6.cs"><code>sample6.cs</code></a></td><td>Parameter passing: value, <code>out</code> and <code>ref</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab07/sample7.cs"><code>sample7.cs</code></a></td><td>Events and delegates.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3500"><a class="pager__prev" href="../../../Coursework/cmps3500/lab06/" rel="prev"><span>Previous</span>Lab 6</a><span class="pager__next"></span></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

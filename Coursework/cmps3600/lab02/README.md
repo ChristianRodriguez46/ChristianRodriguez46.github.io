@@ -2,6 +2,8 @@
 
 **CMPS 3600 Operating Systems**, Lab 2
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3600/lab02/](https://christianrodriguez46.github.io/Coursework/cmps3600/lab02/)
+
 ## What it does
 
 `bblab2.c` forks a child process that computes the nth Fibonacci number and writes it to a log, while the parent waits and reports the child's exit code. The other files are the week's examples of `fork`, `wait`, `alarm` and `perror`.

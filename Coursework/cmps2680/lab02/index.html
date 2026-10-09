@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2: Linked pages and images | CMPS 2680 | Christian Rodriguez</title>
+    <meta name="description" content="Three linked pages: an index, an about-me page and an image page. The about page practices text-formatting tags and an ordered list, and the image page mixes local and remote images, one of them wrapped in a link.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2680">CMPS 2680 Client-Side Web</a></li>
+                        <li><span aria-current="page">Lab 2</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2680 &middot; Lab 2</p>
+                <h1 class="labpage__title" data-animate>Linked pages and images</h1>
+                <p class="labpage__lede" data-animate>Three linked pages: an index, an about-me page and an image page. The about page practices text-formatting tags and an ordered list, and the image page mixes local and remote images, one of them wrapped in a link.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="lab2.html">Live demo</a><a class="button button--secondary" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/lab02">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/lab02/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Built <code>lab2.html</code> as an index with an unordered list of relative links to the other two pages and one external link.</li><li>Wrote <code>about.html</code> with three heading levels, an ordered list and two paragraphs marked up with <code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;del&gt;</code>, <code>&lt;ins&gt;</code>, <code>&lt;mark&gt;</code> and <code>&lt;small&gt;</code>.</li><li>Placed three images on <code>images.html</code> (an animated GIF loaded from a remote URL, a local GIF and a JPEG) and sized them with the <code>width</code> attribute.</li><li>Turned the <code>csub.png</code> logo into a link and gave it <code>alt</code> text.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>HTML</li><li>Links</li><li>Images</li><li>Lists</li><li>Text formatting tags</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Links between pages</li><li>Images</li><li>Headings and lists</li></ul>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>Open <code>lab2.html</code> in a browser, or use the live demo above.</p>
+                <p><strong>Requires:</strong> Any modern web browser. No server or build step is needed.</p>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/lab02/lab2.html"><code>lab2.html</code></a></td><td>Index page with links to the other two pages.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/lab02/about.html"><code>about.html</code></a></td><td>About-me page with an ordered list and formatted paragraphs.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/lab02/images.html"><code>images.html</code></a></td><td>Image page with three pictures and a linked logo.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/lab02/corgi-dog-puppies.jpg"><code>corgi-dog-puppies.jpg</code></a></td><td>Photo shown on <code>images.html</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/lab02/ruckus.gif"><code>ruckus.gif</code></a></td><td>Animated GIF shown on <code>images.html</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/lab02/csub.png"><code>csub.png</code></a></td><td>Department logo used as a link on <code>images.html</code>.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2680"><a class="pager__prev" href="../../../Coursework/cmps2680/lab01/" rel="prev"><span>Previous</span>Lab 1</a><a class="pager__next" href="../../../Coursework/cmps2680/lab03/" rel="next"><span>Next</span>Lab 3</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

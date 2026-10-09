@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: Timing a multithreaded array operation | CMPS 3640 | Christian Rodriguez</title>
+    <meta name="description" content="Times the instructor&#x27;s array benchmark, which computes cos(A[i]) + sin(B[i]) for 20 million elements either in one loop or split into equal blocks across std::thread workers. Each setting runs ten times and prints the average, and a small Bash script steps through the thread counts so the speedup ca">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3640">CMPS 3640 Distributed and Parallel Computation</a></li>
+                        <li><span aria-current="page">Lab 1</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3640 &middot; Lab 1</p>
+                <h1 class="labpage__title" data-animate>Timing a multithreaded array operation</h1>
+                <p class="labpage__lede" data-animate>Times the instructor&#x27;s array benchmark, which computes <code>cos(A[i]) + sin(B[i])</code> for 20 million elements either in one loop or split into equal blocks across <code>std::thread</code> workers. Each setting runs ten times and prints the average, and a small Bash script steps through the thread counts so the speedup can be compared.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3640/lab01">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab01/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Used the instructor&#x27;s <code>ArrayOp.cpp</code> (credited to Yi Zhao in its header), which takes the thread count as its only argument and treats 0 as the sequential version.</li><li>Ran it through <code>runlab</code>, a Bash loop that calls <code>./ArrayOp</code> with 0, 1, 2 and up to n - 1 threads in a row (<code>bash runlab n</code>).</li><li>Saved a 2-thread run in <code>output.txt</code>: ten runs averaging about 3.16 seconds.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>std::thread</li><li>Data decomposition</li><li>Benchmarking</li><li>Bash</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Threads</li><li>Measuring speedup</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>thread</code></td><td>C++ threads (<code>std::thread</code>)</td></tr></tbody></table></div>
+                <p>C standard library: <code>math.h</code>, <code>stdio.h</code>.</p>
+                <p>C++ standard library: <code>chrono</code>, <code>vector</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -O2 -pthread -o ArrayOp ArrayOp.cpp</span>
+<span class="cmd">./ArrayOp 2</span>
+<span class="cmd">bash runlab 5</span>  <span class="cmt"># threads 0 to 4</span></code></pre>
+                <p><strong>Requires:</strong> <code>g++</code> with OpenMP (<code>-fopenmp</code>) and POSIX threads (<code>-pthread</code>), standard on Linux.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Timing the array operation sequentially and with 1 and 2 threads</figcaption>
+                    <p class="snap__note">Run on a 2-core machine: runlab 3 runs ./ArrayOp with 0 (sequential), 1 and 2 threads.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">bash runlab 3</span>
+
+Running: ./ArrayOp
+
+numThread = 0  numRun = 10
+  run =  1  ET = 2532.884 ms
+  run =  2  ET = 2477.968 ms
+  run =  3  ET = 2520.504 ms
+  run =  4  ET = 2497.455 ms
+  run =  5  ET = 2488.255 ms
+  run =  6  ET = 2514.318 ms
+  run =  7  ET = 2731.520 ms
+  run =  8  ET = 2530.764 ms
+  run =  9  ET = 2532.626 ms
+  run = 10  ET = 2669.742 ms
+  AVG  ET = 2549.604 ms
+
+Running: ./ArrayOp 1
+
+numThread = 1  numRun = 10
+  run =  1  ET = 2774.910 ms
+  run =  2  ET = 3319.531 ms
+  run =  3  ET = 3049.400 ms
+  run =  4  ET = 2615.074 ms
+  run =  5  ET = 2546.568 ms
+  run =  6  ET = 2597.129 ms
+  run =  7  ET = 2559.941 ms
+  run =  8  ET = 2537.849 ms
+  run =  9  ET = 2514.102 ms
+  run = 10  ET = 2522.254 ms
+  AVG  ET = 2703.676 ms
+
+Running: ./ArrayOp 2
+
+numThread = 2  numRun = 10
+  run =  1  ET = 1424.489 ms
+  run =  2  ET = 1348.902 ms
+  run =  3  ET = 1486.889 ms
+  run =  4  ET = 1403.553 ms
+  run =  5  ET = 1284.786 ms
+  run =  6  ET = 1288.981 ms
+  run =  7  ET = 1302.216 ms
+  run =  8  ET = 1301.090 ms
+  run =  9  ET = 1347.410 ms
+  run = 10  ET = 1347.758 ms
+  AVG  ET = 1353.608 ms</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Saved run with 2 threads</figcaption>
+                    <p class="snap__note">Saved from a run on the course server with 2 threads.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./ArrayOp 2</span>
+
+numThread = 2  numRun = 10
+  run =  1  ET = 3326.327 ms
+  run =  2  ET = 3578.008 ms
+  run =  3  ET = 3241.963 ms
+  run =  4  ET = 2975.986 ms
+  run =  5  ET = 3036.348 ms
+  run =  6  ET = 2794.049 ms
+  run =  7  ET = 2958.569 ms
+  run =  8  ET = 3042.990 ms
+  run =  9  ET = 3287.879 ms
+  run = 10  ET = 3312.100 ms
+  AVG  ET = 3155.422 ms</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab01/runlab"><code>runlab</code></a></td><td>Bash script that runs <code>./ArrayOp</code> with 0 to n - 1 threads.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab01/output.txt"><code>output.txt</code></a></td><td>Saved run with 2 threads.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab01/ArrayOp.cpp"><code>ArrayOp.cpp</code></a></td><td>Instructor&#x27;s benchmark: sequential or threaded array operation, ten timed runs and the average.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3640"><span class="pager__prev"></span><a class="pager__next" href="../../../Coursework/cmps3640/lab02/" rel="next"><span>Next</span>Lab 2</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 4
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk04/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk04/)
+
 ## What it does
 
 - `hw01_2020TH_ChrRod.cpp` (homework 1) stores county infection counts in a `CoronaData` class and saves them through two subclasses, one writing `corona.json` and one writing `corona.csv`. The two files here are its output.

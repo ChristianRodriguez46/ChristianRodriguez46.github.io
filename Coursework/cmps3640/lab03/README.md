@@ -2,6 +2,8 @@
 
 **CMPS 3640 Distributed and Parallel Computation**, Lab 3
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3640/lab03/](https://christianrodriguez46.github.io/Coursework/cmps3640/lab03/)
+
 ## What it does
 
 - Approximates pi by integrating 4/(1+x²) from 0 to 1 and reports the error and time.

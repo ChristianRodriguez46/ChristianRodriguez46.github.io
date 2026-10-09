@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 10
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk10/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk10/)
+
 ## What it does
 
 - `lab12_2020TH_ChrRod.cpp` (lab 12) implements a doubly linked deque and derives a `Queue` and a `Stack` from it.

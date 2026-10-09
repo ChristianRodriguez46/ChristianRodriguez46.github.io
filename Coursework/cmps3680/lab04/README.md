@@ -2,6 +2,8 @@
 
 **CMPS 3680 Server-Side Web**, Lab 4
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3680/lab04/](https://christianrodriguez46.github.io/Coursework/cmps3680/lab04/)
+
 ## What it does
 
 `add.php` is a form for adding a product (ID, name, vendor, phone, quantity, last purchase date); `validate.php` checks every field on the server, and `productTools.php` saves products to `data/products.json`. `remove.php` deletes a product by ID or clears them all.

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 8: Pocket perceptron | CMPS 3560 | Christian Rodriguez</title>
+    <meta name="description" content="A perceptron in C++ that separates the last 50 rows of the normalized Iris data (+1) from the first 100 (-1). It shuffles the samples every epoch, updates the weights on each mistake, and keeps the weights from the best epoch (the pocket algorithm). The classes are not linearly separable, so trainin">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3560">CMPS 3560 Artificial Intelligence</a></li>
+                        <li><span aria-current="page">Lab 8</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3560 &middot; Lab 8</p>
+                <h1 class="labpage__title" data-animate>Pocket perceptron</h1>
+                <p class="labpage__lede" data-animate>A perceptron in C++ that separates the last 50 rows of the normalized Iris data (+1) from the first 100 (-1). It shuffles the samples every epoch, updates the weights on each mistake, and keeps the weights from the best epoch (the pocket algorithm). The classes are not linearly separable, so training runs the full 1,000 epochs and ends near 90% accuracy.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab08">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab08/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Loaded the CSV into <code>Sample</code> records with a bias input of 1, checked for exactly 150 rows with <code>assert</code>, and printed the first and last rows.</li><li>Initialized the weights at random in [-0.5, 0.5] with <code>mt19937</code> and reshuffled the data each epoch with <code>std::shuffle</code>.</li><li>Applied the perceptron rule <code>w += α·y·x</code> with α = 0.05 whenever the hard limiter&#x27;s ±1 output was wrong, and printed the misclassifications for each epoch.</li><li>Kept the weights from the epoch with the fewest misclassifications and printed that accuracy and weight vector at the end.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Perceptrons</li><li>Pocket algorithm</li><li>Linear classification</li><li>Make</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Perceptrons</li><li>Linear classification</li><li>Training loops</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>algorithm</code>, <code>array</code>, <code>cassert</code>, <code>fstream</code>, <code>iomanip</code>, <code>iostream</code>, <code>random</code>, <code>sstream</code>, <code>string</code>, <code>vector</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./perceptron iris_full_normalized.csv</span></code></pre>
+                <p><strong>Requires:</strong> Python 3 for the Python labs, <code>g++</code> for the C++ labs, and SWI-Prolog or GNU Prolog for labs 4 and 5.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Training the pocket perceptron on 150 Iris samples</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./perceptron iris_full_normalized.csv</span>
+Loaded 150 samples.
+First row:  [-0.555547, 0.249986, -0.864461, -0.916725]  → -1
+ Last row:  [-1, -1, -1, -1]  → 1
+Epoch    1 | Misclassifications: 58
+Epoch    2 | Misclassifications: 46
+Epoch    3 | Misclassifications: 28
+Epoch    4 | Misclassifications: 39
+Epoch    5 | Misclassifications: 32
+Epoch    6 | Misclassifications: 30
+Epoch    7 | Misclassifications: 30
+Epoch    8 | Misclassifications: 21
+Epoch    9 | Misclassifications: 29
+Epoch   10 | Misclassifications: 24
+Epoch   11 | Misclassifications: 30
+Epoch   12 | Misclassifications: 27
+Epoch   13 | Misclassifications: 27
+Epoch   14 | Misclassifications: 25
+Epoch   15 | Misclassifications: 24
+Epoch   16 | Misclassifications: 25
+Epoch   17 | Misclassifications: 28
+Epoch   18 | Misclassifications: 26
+Epoch   19 | Misclassifications: 27
+Epoch   20 | Misclassifications: 21
+Epoch   21 | Misclassifications: 25
+Epoch   22 | Misclassifications: 26
+Epoch   23 | Misclassifications: 23
+Epoch   24 | Misclassifications: 33
+Epoch   25 | Misclassifications: 29
+… 967 more lines …
+Epoch  993 | Misclassifications: 29
+Epoch  994 | Misclassifications: 25
+Epoch  995 | Misclassifications: 24
+Epoch  996 | Misclassifications: 26
+Epoch  997 | Misclassifications: 22
+Epoch  998 | Misclassifications: 27
+Epoch  999 | Misclassifications: 24
+Epoch 1000 | Misclassifications: 24
+
+Best (pocket) accuracy: 90.67%
+Best weights [θ, β1…β4]: [0.0434, 0.1958, -0.1456, -0.5881, 0.5693]</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab08/perceptron.cpp"><code>perceptron.cpp</code></a></td><td>CSV loader, pocket perceptron training loop and final report.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab08/Makefile"><code>Makefile</code></a></td><td>Builds <code>perceptron</code> with <code>-std=c++11 -Wall</code>.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab08/iris_full_normalized.csv"><code>iris_full_normalized.csv</code></a></td><td>150 Iris samples with four scaled features and a label: -1 for the first 100 rows, +1 for the last 50.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3560"><a class="pager__prev" href="../../../Coursework/cmps3560/lab07/" rel="prev"><span>Previous</span>Lab 7</a><a class="pager__next" href="../../../Coursework/cmps3560/lab09/" rel="next"><span>Next</span>Lab 9</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

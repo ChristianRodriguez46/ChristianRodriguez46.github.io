@@ -2,6 +2,8 @@
 
 **CMPS 3640 Distributed and Parallel Computation**, Lab 7
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3640/lab07/](https://christianrodriguez46.github.io/Coursework/cmps3640/lab07/)
+
 ## What it does
 
 `seq_histogram.cpp` counts values into 10 bins sequentially; `par_histogram.cpp` does the same with an OpenMP parallel loop and one lock per bin. `lab7.md` reports the timings: the parallel version ran about 39 times slower, and the write-up explains why (tiny work per iteration, high lock contention and synchronization overhead).

@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Lab 1
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/lab01/](https://christianrodriguez46.github.io/Coursework/cmps3350/lab01/)
+
 ## What it does
 
 - `lab1.cpp` opens an X11 window and moves a box back and forth with OpenGL, bouncing off the window edges.

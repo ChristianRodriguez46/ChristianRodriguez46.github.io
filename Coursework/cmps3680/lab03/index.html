@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3: Templated product catalog | CMPS 3680 | Christian Rodriguez</title>
+    <meta name="description" content="A storefront page for &quot;Juan&#x27;s Services&quot; put together from header.php and footer.php includes. The products are read from products.json, sorted by quantity with uasort and printed as cards.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3680">CMPS 3680 Server-Side Web</a></li>
+                        <li><span aria-current="page">Lab 3</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3680 &middot; Lab 3</p>
+                <h1 class="labpage__title" data-animate>Templated product catalog</h1>
+                <p class="labpage__lede" data-animate>A storefront page for &quot;Juan&#x27;s Services&quot; put together from <code>header.php</code> and <code>footer.php</code> includes. The products are read from <code>products.json</code>, sorted by quantity with <code>uasort</code> and printed as cards.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab03">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab03/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Split the page into <code>header.php</code> and <code>footer.php</code> and assembled it in <code>home.php</code> with <code>require_once</code>.</li><li>Decoded <code>products.json</code> with <code>json_decode</code> and sorted the products by quantity with <code>uasort</code> and the <code>&lt;=&gt;</code> operator.</li><li>Printed each product as a card in <code>products.php</code>, then wrote <code>eproducts.php</code>, which builds the same cards with heredoc strings and is the version <code>home.php</code> uses.</li><li>Laid out the cards with flexbox in <code>style.css</code>.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>PHP</li><li>JSON</li><li>Includes</li><li>Heredoc strings</li><li>Sorting</li><li>CSS flexbox</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>PHP includes</li><li>Reading JSON</li><li>Sorting arrays</li></ul>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">php -S localhost:8000</span>
+<span class="cmd"></span>  <span class="cmt"># open http://localhost:8000/home.php</span></code></pre>
+                <p><strong>Requires:</strong> PHP 7.4 or later; labs 5, 6 and the final project also need MySQL (or MariaDB) and the PHP <code>mysqli</code> extension. Run each folder with PHP&#x27;s built-in server: <code>php -S localhost:8000</code>.</p>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab03/home.php"><code>home.php</code></a></td><td>The page: includes the header, <code>eproducts.php</code> and the footer.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab03/header.php"><code>header.php</code></a></td><td>Shared page header.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab03/footer.php"><code>footer.php</code></a></td><td>Shared page footer.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab03/products.php"><code>products.php</code></a></td><td>First version of the product list: reads, sorts and prints the cards.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab03/eproducts.php"><code>eproducts.php</code></a></td><td>Product list built with heredoc strings (the one <code>home.php</code> uses).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab03/favicon.png"><code>favicon.png</code></a></td><td>Browser tab icon.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab03/style.css"><code>style.css</code></a></td><td>Header, footer and product card styles.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab03/products.json"><code>products.json</code></a></td><td>Instructor&#x27;s product data: name, vendor, quantity, price, description and an image URL.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3680"><a class="pager__prev" href="../../../Coursework/cmps3680/lab02/" rel="prev"><span>Previous</span>Lab 2</a><a class="pager__next" href="../../../Coursework/cmps3680/lab04/" rel="next"><span>Next</span>Lab 4</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

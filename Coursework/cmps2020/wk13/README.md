@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 13
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk13/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk13/)
+
 ## What it does
 
 - `lab15_2020TR_ChrRod.cpp` (lab 15) prints and frees the browser-history stack recursively.

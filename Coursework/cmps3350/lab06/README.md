@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Lab 6
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/lab06/](https://christianrodriguez46.github.io/Coursework/cmps3350/lab06/)
+
 ## What it does
 
 `waterlab6.cpp` spawns water particles that fall with gravity and bounce off five boxes placed down the screen, rendered with OpenGL. `test.cpp` is a working copy.

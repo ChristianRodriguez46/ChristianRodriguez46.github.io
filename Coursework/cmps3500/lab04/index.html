@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4: Fortran 77 | CMPS 3500 | Christian Rodriguez</title>
+    <meta name="description" content="Fortran on the course server: array statistics with formatted output (DO loops in array1.f, Fortran 90 whole-array operations in array2.f and allocatable arrays in array3.f), a circle calculator, and two debugging challenges about fixed-format columns and implicit typing.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3500">CMPS 3500 Programming Languages</a></li>
+                        <li><span aria-current="page">Lab 4</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3500 &middot; Lab 4</p>
+                <h1 class="labpage__title" data-animate>Fortran 77</h1>
+                <p class="labpage__lede" data-animate>Fortran on the course server: array statistics with formatted output (DO loops in <code>array1.f</code>, Fortran 90 whole-array operations in <code>array2.f</code> and allocatable arrays in <code>array3.f</code>), a circle calculator, and two debugging challenges about fixed-format columns and implicit typing.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab04">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Built and ran the instructor&#x27;s array and circle examples with the provided <code>Makefile</code>.</li><li>Fixed all 13 tests in <code>formatfix.f</code> by moving statements, labels, comments and continuation marks into the right fixed-format columns, so it compiles and prints OK 1 to OK 13.</li><li>Fixed <code>implicitbug.f</code>, which printed an average of 0 and a variance of 38.5, by declaring every variable and correcting typos as the task asked; it now prints 5.5 and 8.25.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>Fortran</li><li>gfortran</li><li>Fixed-format source</li><li>Formatted output</li><li>Debugging</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Fortran 77 fixed format</li><li>Implicit typing</li><li>Formatted I/O</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>Linked with <code>libm.a</code> (prebuilt library in this folder).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">sudo apt install gfortran</span>  <span class="cmt"># once</span>
+<span class="cmd">make</span>
+<span class="cmd">./array1</span></code></pre>
+                <p><strong>Requires:</strong> <code>gfortran</code>.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Building the examples, then running array1 and the circle calculator</figcaption>
+                    <p class="snap__note">Saved from a run on the course server.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0">$ make
+gfortran -o circle circleinput.f
+gfortran -o array1 array1.f
+gfortran -o array2 array2.f
+gfortran -o array3 array3.f
+$ ls
+Makefile  array1  array1.f  array2  array2.f  array3  array3.f  array3.in  circle  circle.f  circleinput.f  formatfix.f  implicitbug.f  lab04_output.log  lab04_time.log
+$ ./array1
+  RESULTS FOR FULL C ARRAY
+ AVERAGE OF ALL ELEMENTS IN C =    7.500
+ MINIMUM OF ALL ELEMENTS IN C =    2.000
+ MAXIMUM OF ALL ELEMENTS IN C =   13.000
+ C =
+  0.20E+01  0.30E+01  0.40E+01  0.60E+01  0.70E+01  0.80E+01  0.90E+01  0.11E+02
+  0.12E+02  0.13E+02
+
+
+ RESULTS FOR ELEMENTS 2 THROUGH 9 OF C
+ AVERAGE OF SELECTED ELEMENTS IN C =    7.500
+ MINIMUM OF SELECTED ELEMENTS IN C =    3.000
+ MAXIMUM OF SELECTED ELEMENTS IN C =   12.000
+ C =
+  3.00E+00  4.00E+00  6.00E+00  7.00E+00  8.00E+00  9.00E+00  1.10E+01  1.20E+01
+
+  RESULTS OF LOG(A)
+ C =
+  0.00E+00  6.93E-01  1.10E+00  0.00E+00  1.61E+00  1.79E+00  1.95E+00  2.08E+00
+  2.20E+00  2.30E+00
+$ ./circle
+ INPUT A VALUE FOR THE RADIUS, R NOW... INPUT -1 TO END THE PROGRAM
+45
+ FOR A CIRCLE OF RADIUS   45.0000000     THE CIRCUMFERENCE IS   282.743103     AND THE AREA IS    6361.71973
+ INPUT A VALUE FOR THE RADIUS, R NOW... INPUT -1 TO END THE PROGRAM
+40
+ FOR A CIRCLE OF RADIUS   40.0000000     THE CIRCUMFERENCE IS   251.327209     AND THE AREA IS    5026.54395
+ INPUT A VALUE FOR THE RADIUS, R NOW... INPUT -1 TO END THE PROGRAM
+-1
+ GOOD BYE</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">formatfix.f after fixing its column errors: all 13 tests print OK</figcaption>
+                    <p class="snap__note">Saved from a run on the course server.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0">$ gfortran -Wall -std=legacy -o formatfix formatfix.f
+$ ./formatfix
+ OK 1
+ OK 2
+ OK 3         123
+ OK 4          15
+ OK 5
+ OK 6 NEG
+ OK 7FORTRAN 77 fixed-format continuation test
+ OK 8          21
+ OK 9
+ OK 10          42
+OK 11
+ OK 12 HELLO
+ OK 13: a message that is long enough to need continuation in fixed form</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">implicitbug.f before and after declaring every variable</figcaption>
+                    <p class="snap__note">Saved from a run on the course server.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0">$ ./implicitbug
+ N   =          10
+ AVG =   0.00000000
+ VAR =   38.5000000
+ Expected AVG near 5.5, VAR near 8.25
+$ vi implicitbug.f
+[full-screen editor session omitted]
+$ gfortran -Wall -std=legacy -o implicitbug implicitbug.f
+$ ./implicitbug
+ N   =          10
+ AVG =   5.50000000
+ VAR =   8.25000000
+ Expected AVG near 5.5, VAR near 8.25</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/formatfix.f"><code>formatfix.f</code></a></td><td>Fixed-format challenge, fixed so all 13 subroutines print OK.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/implicitbug.f"><code>implicitbug.f</code></a></td><td>Implicit-typing challenge, fixed so the average and variance are correct.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/lab04_output.log"><code>lab04_output.log</code></a></td><td><code>script</code> recording of the session.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/lab04_time.log"><code>lab04_time.log</code></a></td><td>Timing file for <code>scriptreplay</code> to play back <code>lab04_output.log</code>.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/Makefile"><code>Makefile</code></a></td><td>Builds <code>circle</code>, <code>array1</code>, <code>array2</code> and <code>array3</code> with <code>gfortran</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/array1.f"><code>array1.f</code></a></td><td>Fortran 77: adds two arrays in a DO loop and prints the average, minimum and maximum with FORMAT statements.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/array2.f"><code>array2.f</code></a></td><td>The same analysis with Fortran 90 array syntax, <code>SUM</code>, <code>MINVAL</code>, <code>MAXVAL</code> and <code>WHERE</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/array3.f"><code>array3.f</code></a></td><td>Allocatable arrays sized by counting the lines in <code>array3.in</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/array3.in"><code>array3.in</code></a></td><td>Fourteen pairs of numbers read by <code>array3</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/circle.f"><code>circle.f</code></a></td><td>Circumference and area for a fixed radius of 4.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab04/circleinput.f"><code>circleinput.f</code></a></td><td>Circle calculator that asks for radii until you enter -1.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3500"><a class="pager__prev" href="../../../Coursework/cmps3500/lab03/" rel="prev"><span>Previous</span>Lab 3</a><a class="pager__next" href="../../../Coursework/cmps3500/lab06/" rel="next"><span>Next</span>Lab 6</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

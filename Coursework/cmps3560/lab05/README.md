@@ -2,6 +2,8 @@
 
 **CMPS 3560 Artificial Intelligence**, Lab 5
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3560/lab05/](https://christianrodriguez46.github.io/Coursework/cmps3560/lab05/)
+
 ## What it does
 
 `lab5.pl` is an interactive Prolog expert system. It asks yes/no questions about the training situation and recommends a medium: workshop, lecture, videocassette or role play.

@@ -2,6 +2,8 @@
 
 **CMPS 2010 Programming Fundamentals**, Lab 8
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2010/lab08/](https://christianrodriguez46.github.io/Coursework/cmps2010/lab08/)
+
 ## What it does
 
 - `guided-lab8.cpp` keeps a small inventory (book, pencil, paper) and a hand. A menu lets you grab an item, move it, or show everything, passing the items around with pointers.

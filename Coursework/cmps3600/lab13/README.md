@@ -2,6 +2,8 @@
 
 **CMPS 3600 Operating Systems**, Lab 13
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3600/lab13/](https://christianrodriguez46.github.io/Coursework/cmps3600/lab13/)
+
 ## What it does
 
 `bbcars.c` continues the lab 9 traffic simulation: press **A** to add a car and **D** to remove one while it runs (up to eight), and **C** to show collisions. `donut.c` is a spinning ASCII-art donut.

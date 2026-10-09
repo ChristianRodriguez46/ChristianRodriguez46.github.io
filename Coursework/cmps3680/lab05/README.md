@@ -2,6 +2,8 @@
 
 **CMPS 3680 Server-Side Web**, Lab 5
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3680/lab05/](https://christianrodriguez46.github.io/Coursework/cmps3680/lab05/)
+
 ## What it does
 
 The lab 4 app plus a `sql/` folder: `sqlTools.php` opens and closes a MySQL connection, `create.php` and `drop.php` create and remove the `product` table, and `test.php` checks the connection. Products are still stored in JSON in this lab.

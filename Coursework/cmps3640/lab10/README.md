@@ -2,6 +2,8 @@
 
 **CMPS 3640 Distributed and Parallel Computation**, Lab 10
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3640/lab10/](https://christianrodriguez46.github.io/Coursework/cmps3640/lab10/)
+
 ## What it does
 
 Three activities with `std::thread`:

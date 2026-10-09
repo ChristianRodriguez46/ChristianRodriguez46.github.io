@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: Network diagnostic tools | CMPS 3620 | Christian Rodriguez</title>
+    <meta name="description" content="A write-up on the standard network diagnostic tools, run from the course server: dig for forward, reverse and SOA lookups, ping for round-trip times, traceroute for the route off campus, ss for listening sockets, and telnet to test a remote port.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3620">CMPS 3620 Computer Networks</a></li>
+                        <li><span aria-current="page">Lab 1</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3620 &middot; Lab 1</p>
+                <h1 class="labpage__title" data-animate>Network diagnostic tools</h1>
+                <p class="labpage__lede" data-animate>A write-up on the standard network diagnostic tools, run from the course server: <code>dig</code> for forward, reverse and SOA lookups, <code>ping</code> for round-trip times, <code>traceroute</code> for the route off campus, <code>ss</code> for listening sockets, and <code>telnet</code> to test a remote port.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab01">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab01/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Ran each tool against several hostnames and addresses and saved the output in <code>outputs.txt</code>.</li><li>Compared a reverse lookup written as an <code>in-addr.arpa</code> name with the plain dotted form, which returns NXDOMAIN and the root zone&#x27;s SOA record.</li><li>Explained in <code>lab-writeup.tex</code> what each result shows: the CNAME and authority sections, sub-10 ms pings, hops that do not answer, and why most listening sockets are on port 53.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>dig</li><li>ping</li><li>traceroute</li><li>ss</li><li>telnet</li><li>DNS</li><li>LaTeX</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>DNS</li><li>ICMP and routing</li><li>Sockets on a live system</li></ul>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">pdflatex lab-writeup.tex</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code>. Write-ups in <code>.tex</code>/<code>.ltx</code> build with any LaTeX distribution (<code>pdflatex</code>).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Two ways to look up the SOA record for the 209.9.224 reverse zone</figcaption>
+                    <p class="snap__note">Saved from a run on the course server. The in-addr.arpa form returns the zone&#x27;s SOA record, while the plain form gets NXDOMAIN and the root zone&#x27;s SOA.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0">    ----------------------------
+    command: dig soa 224.9.209.in-addr.arpa
+    ----------------------------
+
+    ; &lt;&lt;&gt;&gt; DiG 9.18.33-1~deb12u2-Debian &lt;&lt;&gt;&gt; soa 224.9.209.in-addr.arpa
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 33351
+    ;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: 90fbf69826f8687f01000000684ba2d7032c0f3ea2d4682d (good)
+    ;; QUESTION SECTION:
+    ;224.9.209.in-addr.arpa.                IN      SOA
+
+    ;; ANSWER SECTION:
+    224.9.209.in-addr.arpa. 3600    IN      SOA     ns1.dfw.databank.com. ipadmin.databank.com. 2024070214 7200 3600 1209600 3600
+
+    ;; Query time: 187 msec
+    ;; SERVER: 136.168.x.x#53(136.168.x.x) (UDP)
+    ;; WHEN: Thu Jun 12 21:02:31 PDT 2025
+    ;; MSG SIZE  rcvd: 155
+
+    =====================================================================
+
+    ----------------------------
+    command: dig soa 209.9.224
+    ----------------------------
+
+    ; &lt;&lt;&gt;&gt; DiG 9.18.33-1~deb12u2-Debian &lt;&lt;&gt;&gt; soa 209.9.224
+    ;; global options: +cmd
+    ;; Got answer:
+    ;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NXDOMAIN, id: 44336
+    ;; flags: qr rd ra ad; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+    ;; OPT PSEUDOSECTION:
+    ; EDNS: version: 0, flags:; udp: 1232
+    ; COOKIE: aaef945a2ed7be4a01000000684ba28e8fcc6a03608b6dc2 (good)
+    ;; QUESTION SECTION:
+    ;209.9.224.                     IN      SOA
+
+    ;; AUTHORITY SECTION:
+    .                       2016    IN      SOA     a.root-servers.net. nstld.verisign-grs.com. 2025061202 1800 900 604800 86400
+
+    ;; Query time: 0 msec
+    ;; SERVER: 136.168.x.x#53(136.168.x.x) (UDP)
+    ;; WHEN: Thu Jun 12 21:01:18 PDT 2025
+    ;; MSG SIZE  rcvd: 141</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Pinging www.google.com from the course server</figcaption>
+                    <p class="snap__note">Saved from a run on the course server. Google&#x27;s address is masked.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0">    ----------------------------
+    command: ping www.google.com
+    ----------------------------
+
+
+    PING www.google.com (xxx) 56(84) bytes of data.
+    64 bytes from lax31s19-in-f4.1e100.net (xxx): icmp_seq=1 ttl=115 time=9.49 ms
+    64 bytes from lax31s19-in-f4.1e100.net (xxx): icmp_seq=2 ttl=115 time=9.70 ms
+    64 bytes from lax31s19-in-f4.1e100.net (xxx): icmp_seq=3 ttl=115 time=9.77 ms
+    64 bytes from lax31s19-in-f4.1e100.net (xxx): icmp_seq=4 ttl=115 time=9.88 ms
+    64 bytes from lax31s19-in-f4.1e100.net (xxx): icmp_seq=5 ttl=115 time=9.44 ms
+… 21 more lines …
+
+    --- www.google.com ping statistics ---
+    26 packets transmitted, 26 received, 0% packet loss, time 25031ms
+    rtt min/avg/max/mdev = 9.378/9.659/9.939/0.170 ms</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab01/lab-writeup.tex"><code>lab-writeup.tex</code></a></td><td>The write-up (LaTeX).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab01/outputs.txt"><code>outputs.txt</code></a></td><td>Output of every command the write-up discusses, with campus addresses masked.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3620"><a class="pager__prev" href="../../../Coursework/cmps3620/homework02/" rel="prev"><span>Previous</span>Homework 2</a><a class="pager__next" href="../../../Coursework/cmps3620/lab02/" rel="next"><span>Next</span>Lab 2</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

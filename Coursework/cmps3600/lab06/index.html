@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6: Producer and consumer threads | CMPS 3600 | Christian Rodriguez</title>
+    <meta name="description" content="The producer-consumer problem with two threads and a one-character buffer. The producer reads a file one character at a time and the consumer writes each one to log. Two System V semaphores make them take turns, so no character is lost or written twice.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3600">CMPS 3600 Operating Systems</a></li>
+                        <li><span aria-current="page">Lab 6</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3600 &middot; Lab 6</p>
+                <h1 class="labpage__title" data-animate>Producer and consumer threads</h1>
+                <p class="labpage__lede" data-animate>The producer-consumer problem with two threads and a one-character buffer. The producer reads a file one character at a time and the consumer writes each one to <code>log</code>. Two System V semaphores make them take turns, so no character is lost or written twice.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab06">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s <code>echo.c</code>, which has no synchronization and drops or repeats characters.</li><li>Created a two-semaphore set, one for the producer and one for the consumer, and gave each thread its own grab and release operations.</li><li>Had each thread release the other&#x27;s semaphore after its turn, so the two strictly alternate.</li><li>Took the number of characters to copy from the command line, capped at the length of <code>poem</code>.</li><li>Kept <code>bbphase2.c</code>, phase 2 of the semester project (see lab 15), and wrote <code>practice/mythreads.c</code>, two threads that alternate with POSIX semaphores.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>POSIX threads</li><li>System V semaphores</li><li>Producer-consumer</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>POSIX threads</li><li>Producer-consumer problem</li><li>Semaphores</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>X11/Xlib.h</code></td><td>Xlib: opening windows, drawing and reading events (X11)</td></tr><tr><td><code>X11/keysym.h</code></td><td>X11 key names such as <code>XK_Escape</code></td></tr><tr><td><code>pthread.h</code></td><td>POSIX threads and mutexes</td></tr><tr><td><code>semaphore.h</code></td><td>POSIX semaphores</td></tr><tr><td><code>signal.h</code></td><td>Signals: <code>sigaction</code>, <code>kill</code> and signal sets</td></tr><tr><td><code>sys/fcntl.h</code></td><td><code>open</code> and its flags</td></tr><tr><td><code>sys/file.h</code></td><td><code>open</code> and its flags</td></tr><tr><td><code>sys/ipc.h</code></td><td>System V IPC keys (<code>ftok</code>)</td></tr><tr><td><code>sys/sem.h</code></td><td>System V semaphores</td></tr><tr><td><code>sys/shm.h</code></td><td>System V shared memory</td></tr><tr><td><code>sys/stat.h</code></td><td>File permissions and <code>fstat</code></td></tr><tr><td><code>sys/syscall.h</code></td><td>Raw system calls such as <code>gettid</code></td></tr><tr><td><code>sys/types.h</code></td><td>System data types such as <code>pid_t</code></td></tr><tr><td><code>sys/wait.h</code></td><td><code>wait</code> and <code>waitpid</code> for child processes</td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>errno.h</code>, <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>, <code>time.h</code>.</p>
+                <p>Linked with <code>-lX11</code> (Xlib), <code>-lpthread</code> (POSIX threads).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./bblab6</span>
+<span class="cmd">cat log</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code> and POSIX threads. The graphical labs also need the X11 development headers (<code>sudo apt install libx11-dev libxext-dev</code> on Ubuntu). Every folder has a <code>Makefile</code>.</p>
+                <aside class="callout" aria-label="X11">
+                    <p class="callout__title">This program opens an X11 window</p>
+                    <p>It needs an X server on the computer you are looking at. On Linux that is already part of the
+                    desktop. On a Mac or a Windows PC, or when the program runs on another machine over SSH, see
+                    <a href="../../../Coursework/cmps3600/x11-setup.html">Setting up X11</a> for what to install and how to check it works.</p>
+                </aside>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Producer and consumer threads copy a short text through a one-character buffer</figcaption>
+                    <p class="snap__note">Run with a three-line sample text in place of poem. Each character passes through the shared buffer once, in order.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./bblab6 113 &amp;&amp; cat log</span>
+consumer thread pid: 2001 tid: 2002
+
+Producer and consumer threads
+take turns with a one-character buffer,
+so every character arrives once, in order.</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/bblab6.c"><code>bblab6.c</code></a></td><td>The lab: producer and consumer threads kept in step with semaphores.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/bbphase2.c"><code>bbphase2.c</code></a></td><td>Phase 2 of the semester project (the same file is in lab 15).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/Makefile"><code>Makefile</code></a></td><td>Builds <code>bblab6</code>, phase 2 and the examples.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/practice/execve.c"><code>practice/execve.c</code></a></td><td>Practice: the X11 window that starts a child window with <code>fork</code> and <code>execve</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/practice/mythreads.c"><code>practice/mythreads.c</code></a></td><td>Practice: two threads taking turns with POSIX semaphores.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/practice/Makefile"><code>practice/Makefile</code></a></td><td>Builds the practice programs.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/cleanipc.sh"><code>cleanipc.sh</code></a></td><td>Removes a user&#x27;s leftover semaphores, queues and shared memory.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/poem"><code>poem</code></a></td><td>Sample input: a short poem provided with the lab.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/create_thread.c"><code>create_thread.c</code></a></td><td>Example: <code>pthread_create</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/echo.c"><code>echo.c</code></a></td><td>Example: the producer-consumer program without synchronization.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/sample1.c"><code>sample1.c</code></a></td><td>Example: creating threads.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/sample2.c"><code>sample2.c</code></a></td><td>Example: <code>pthread_join</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/sample3.c"><code>sample3.c</code></a></td><td>Example: a mutex around screen output.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/sem_ctrl.c"><code>sem_ctrl.c</code></a></td><td>Example: reading a semaphore&#x27;s value with <code>semctl</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/threads1.c"><code>threads1.c</code></a></td><td>Example: passing a structure to a thread and getting its return code.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab06/timedwait.c"><code>timedwait.c</code></a></td><td>Example: a mutex and a condition variable with <code>pthread_cond_timedwait</code>.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3600"><a class="pager__prev" href="../../../Coursework/cmps3600/lab05/" rel="prev"><span>Previous</span>Lab 5</a><a class="pager__next" href="../../../Coursework/cmps3600/lab07/" rel="next"><span>Next</span>Lab 7</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 9
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk09/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk09/)
+
 ## What it does
 
 - `lab10_2020TH_ChrRod.cpp` (lab 10) is a print spooler: a queue of print jobs built on a linked list.

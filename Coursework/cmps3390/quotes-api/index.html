@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes API: Quotes API | CMPS 3390 | Christian Rodriguez</title>
+    <meta name="description" content="A small JSON API that returns a random quote from a book, a movie or a game. The category comes from the query string and is checked against a whitelist, and anything else gets HTTP 400 and a JSON error.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3390">CMPS 3390 Application Development</a></li>
+                        <li><span aria-current="page">Quotes API</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3390 &middot; Quotes API</p>
+                <h1 class="labpage__title" data-animate>Quotes API</h1>
+                <p class="labpage__lede" data-animate>A small JSON API that returns a random quote from a book, a movie or a game. The category comes from the query string and is checked against a whitelist, and anything else gets HTTP 400 and a JSON error.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3390/quotes-api">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3390/quotes-api/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Validated <code>$_GET[&#x27;category&#x27;]</code> against the whitelist <code>[&quot;book&quot;, &quot;movie&quot;, &quot;game&quot;]</code> with <code>in_array</code>, with separate errors for a missing and an unknown category.</li><li>Loaded <code>docs/&lt;category&gt;.json</code>, decoded it with <code>json_decode</code> and picked an entry with <code>rand</code>.</li><li>Wrote <code>jsonErr</code> and <code>jsonRes</code> helpers that set the <code>Content-Type: application/json</code> header and the status code before sending the body.</li><li>Built the file path only from a whitelisted name, so the query string cannot point the script at other files.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>PHP</li><li>JSON</li><li>REST API</li><li>Query parameters</li><li>Input validation</li><li>HTTP status codes</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>REST-style endpoints</li><li>Input validation with a whitelist</li><li>JSON responses</li></ul>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">php -S localhost:8000</span>
+<span class="cmd"></span>
+<span class="cmd"></span>  <span class="cmt"># in another terminal</span>
+<span class="cmd">curl &#x27;localhost:8000/index.php?category=movie&#x27;</span>
+<span class="cmd"></span>  <span class="cmt"># returns a random quote, e.g. {&quot;quote&quot;:&quot;May the Force be with you.&quot;,&quot;author&quot;:&quot;Star Wars&quot;}</span></code></pre>
+                <p><strong>Requires:</strong> PHP 7.4 or later for the PHP labs (its built-in server is enough). <code>g++</code> for lab 1.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Asking for a random quote from each category</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">php -S 127.0.0.1:5111 &gt;/dev/null 2&gt;&amp;1 &amp; sleep 0.6; for c in movie game book; do curl -s -w &#x27;\nHTTP status: %{http_code}\n&#x27; &quot;127.0.0.1:5111/index.php?category=$c&quot;; done; kill %1</span>
+{&quot;quote&quot;:&quot;Life is like a box of chocolates. You never know what you&#x27;re gonna get.&quot;,&quot;author&quot;:&quot;Forrest Gump&quot;}
+HTTP status: 200
+{&quot;quote&quot;:&quot;I used to be an adventurer like you, then I took an arrow in the knee.&quot;,&quot;author&quot;:&quot;The Elder Scrolls V: Skyrim&quot;}
+HTTP status: 200
+{&quot;quote&quot;:&quot;There is no greater agony than bearing an untold story inside you.&quot;,&quot;author&quot;:&quot;I Know Why the Caged Bird Sings by Maya Angelou&quot;}
+HTTP status: 200</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Requests with no category and with an unknown one</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">php -S 127.0.0.1:5112 &gt;/dev/null 2&gt;&amp;1 &amp; sleep 0.6; curl -s -w &#x27;\nHTTP status: %{http_code}\n&#x27; &quot;127.0.0.1:5112/index.php&quot;; curl -s -w &#x27;\nHTTP status: %{http_code}\n&#x27; &quot;127.0.0.1:5112/index.php?category=music&quot;; kill %1</span>
+{&quot;error&quot;:&quot;No category provided&quot;}
+HTTP status: 400
+{&quot;error&quot;:&quot;Invalid category provided&quot;}
+HTTP status: 400</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3390/quotes-api/index.php"><code>index.php</code></a></td><td>The endpoint: validates <code>category</code> and returns a random quote.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3390/quotes-api/docs/book.json"><code>docs/book.json</code></a></td><td>19 book quotes, each with <code>quote</code> and <code>author</code> (title and writer).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3390/quotes-api/docs/movie.json"><code>docs/movie.json</code></a></td><td>20 movie quotes with the film as <code>author</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3390/quotes-api/docs/game.json"><code>docs/game.json</code></a></td><td>20 video game quotes with the game as <code>author</code>.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3390"><a class="pager__prev" href="../../../Coursework/cmps3390/lab08/" rel="prev"><span>Previous</span>Lab 8</a><a class="pager__next" href="../../../Coursework/cmps3390/version.php.html" rel="next"><span>Next</span>version.php</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Lab 3
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/lab03/](https://christianrodriguez46.github.io/Coursework/cmps3350/lab03/)
+
 ## What it does
 
 - `lab3-ssl.cpp` opens a TCP socket, negotiates TLS with OpenSSL, sends an HTTP `GET`, and prints the page it receives. `lab3-ssl.c` is the instructor's original C version.

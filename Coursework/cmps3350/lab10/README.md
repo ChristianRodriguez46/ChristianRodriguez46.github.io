@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Lab 10
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/lab10/](https://christianrodriguez46.github.io/Coursework/cmps3350/lab10/)
+
 ## What it does
 
 `laba3.cpp` reads a word list and prints the words that contain exactly one non-vowel letter, with a total. `Sample.cpp` is the starter code for reading words from a file.

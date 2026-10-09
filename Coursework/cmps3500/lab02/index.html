@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2: C++ templates and exceptions | CMPS 3500 | Christian Rodriguez</title>
+    <meta name="description" content="A C++ class template, List, with a fixed capacity of 10 that throws a custom RangeError exception on bad indexes. The test program fills an int list and a double list with as many random values as the command line asks for, and sizes over 10 trigger exceptions that are caught and written to a log fi">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3500">CMPS 3500 Programming Languages</a></li>
+                        <li><span aria-current="page">Lab 2</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3500 &middot; Lab 2</p>
+                <h1 class="labpage__title" data-animate>C++ templates and exceptions</h1>
+                <p class="labpage__lede" data-animate>A C++ class template, <code>List</code>, with a fixed capacity of 10 that throws a custom <code>RangeError</code> exception on bad indexes. The test program fills an <code>int</code> list and a <code>double</code> list with as many random values as the command line asks for, and sizes over 10 trigger exceptions that are caught and written to a <code>log</code> file instead of ending the program.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3500/lab02">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s <code>List</code> template, <code>RangeError</code> class and test program, copied from the course examples.</li><li>Added the throwing function&#x27;s name (<code>__func__</code>) to <code>RangeError</code> and its message, so each error says where it came from.</li><li>Wrapped the <code>add</code>, <code>swap</code> and <code>max</code> calls in <code>main</code> in <code>try</code>/<code>catch</code> blocks, so a size of 12 runs to the end instead of aborting with an uncaught exception.</li><li>Redirected <code>stderr</code> to a file named <code>log</code> with <code>freopen</code>, starting it with a header line.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Class templates</li><li>Exception handling</li><li>Custom exception classes</li><li>I/O redirection</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Class templates</li><li>Exception handling</li><li>Redirecting <code>stderr</code></li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>, <code>time.h</code>.</p>
+                <p>C++ standard library: <code>cstring</code>, <code>iomanip</code>, <code>iostream</code>, <code>stdexcept</code>, <code>string</code>.</p>
+                <p>Headers in this folder: <code>list.h</code>, <code>range_error.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./lab02 8</span>
+<span class="cmd">./lab02 12</span>  <span class="cmt"># forces range errors; see the log file</span></code></pre>
+                <p><strong>Requires:</strong> Linux. Each lab uses a different language toolchain, listed in its README; every folder has a <code>Makefile</code>.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">A list of 8 random values: every method runs without errors</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab02 8</span>
+
+Santa Claus Lab02 Size: 8
+=============================
+Sorted integer List of size 8
+      4      8     16     18     18     35     41     49
+Sorted float List of size 8
+    2.7    4.7    5.0    8.7   12.7   16.3   16.7   16.7
+Swap first and last elements in fList
+ 16.7   4.7   5.0   8.7  12.7  16.3  16.7   2.7
+The element at pos 0 is larger than the element at pos 7 in fList
+Testing implicit copy constructor and assignment operator.
+ 16.7   4.7   5.0   8.7  12.7  16.3  16.7   2.7
+ 16.7   4.7   5.0   8.7  12.7  16.3  16.7   2.7
+
+Testing range error conditions: swap(-1,size-1)
+Testing code after catch, file lab02.cpp, line 119</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of log">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>log</b></div>
+                        <pre class="term__body" tabindex="0">Name: Santa Claus, LAB 02, Log file 
+=============================
+RangeError exception thrown, file: list.h, function: swap, lineno: 104, index: 7
+RangeError caught in swap, file: lab02.cpp, line: 110</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Size 12 on the course server: range errors are caught and written to the log file</figcaption>
+                    <p class="snap__note">Saved from a run on the course server.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0">$ make
+g++ -g -o lab02 lab02.cpp
+$ ./lab02 12
+
+Santa Claus Lab02 Size: 12
+=============================
+Sorted integer List of size 10
+      7     10     11     12     26     32     34     40     43     51
+Sorted float List of size 10
+    3.3   10.3   10.7   12.7   14.3   14.7   17.0   17.7   18.7   19.0
+Swap first and last elements in fList
+  3.3  10.3  10.7  12.7  14.3  14.7  17.0  17.7  18.7  19.0
+The element at pos Testing implicit copy constructor and assignment operator.
+  3.3  10.3  10.7  12.7  14.3  14.7  17.0  17.7  18.7  19.0
+  3.3  10.3  10.7  12.7  14.3  14.7  17.0  17.7  18.7  19.0
+
+Testing range error conditions: swap(-1,size-1)
+Testing code after catch, file lab02.cpp, line 119
+$ cat log
+Name: Santa Claus, LAB 02, Log file
+=============================
+RangeError exception thrown, file: list.h, function: add, lineno: 55, index: 10
+RangerError caught in add, file: lab02.cpp, line: 51
+RangeError exception thrown, file: list.h, function: add, lineno: 55, index: 10
+RangerError caught in add, file: lab02.cpp, line: 60
+RangeError exception thrown, file: list.h, function: add, lineno: 55, index: 10
+RangerError caught in add, file: lab02.cpp, line: 51
+RangeError exception thrown, file: list.h, function: add, lineno: 55, index: 10
+RangerError caught in add, file: lab02.cpp, line: 60
+RangeError exception thrown, file: list.h, function: swap, lineno: 104, index: 11
+RangeError caught in swap, file: lab02.cpp, line: 81
+RangeError exception thrown, file: list.h, function: max, lineno: 124, index: 10
+RangerError caught in max, file: lab02.cpp, line: 94
+RangeError exception thrown, file: list.h, function: swap, lineno: 104, index: 11
+RangeError caught in swap, file: lab02.cpp, line: 110</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/lab02.cpp"><code>lab02.cpp</code></a></td><td>Test program: fills, sorts, prints, swaps and copies two lists, catching every <code>RangeError</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/list.h"><code>list.h</code></a></td><td><code>List&lt;T&gt;</code> template with <code>add</code>, <code>print</code>, <code>getSize</code>, <code>swap</code>, <code>max</code> and a bubble <code>sort</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/range_error.h"><code>range_error.h</code></a></td><td><code>RangeError</code> exception class that records the file, function, line and index.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/log"><code>log</code></a></td><td>Error log written by a run with size 12.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/lab02_output.log"><code>lab02_output.log</code></a></td><td><code>script</code> recording of the main session: editing, building and test runs.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/lab02_time.log"><code>lab02_time.log</code></a></td><td>Timing file for <code>scriptreplay</code> to play back <code>lab02_output.log</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/lab02_edit_output.log"><code>lab02_edit_output.log</code></a></td><td><code>script</code> recording of a second session with the final edits and runs.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/lab02_edits.log"><code>lab02_edits.log</code></a></td><td>Timing file for <code>scriptreplay</code> to play back <code>lab02_edit_output.log</code>.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3500/lab02/Makefile"><code>Makefile</code></a></td><td>Builds <code>lab02</code> with <code>g++ -g</code>.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3500"><a class="pager__prev" href="../../../Coursework/cmps3500/lab01/" rel="prev"><span>Previous</span>Lab 1</a><a class="pager__next" href="../../../Coursework/cmps3500/lab03/" rel="next"><span>Next</span>Lab 3</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

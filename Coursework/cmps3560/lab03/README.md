@@ -2,6 +2,8 @@
 
 **CMPS 3560 Artificial Intelligence**, Lab 3
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3560/lab03/](https://christianrodriguez46.github.io/Coursework/cmps3560/lab03/)
+
 ## What it does
 
 `lab3.py` implements the forward-chaining entailment algorithm `PL-FC-ENTAILS` for a knowledge base of Horn clauses, tracking how many premises of each rule are still unproven and which symbols have been inferred, and checks whether the goal `duck` follows.

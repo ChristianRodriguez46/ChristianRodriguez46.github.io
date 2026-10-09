@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 10: Monster class | CMPS 2010 | Christian Rodriguez</title>
+    <meta name="description" content="Lab 9&#x27;s monster cards rebuilt around a Monster class. The struct becomes a class with private fields and a getter and setter for each, declared in Monster.h and defined in Monster.cpp, and Main.cpp uses them to generate monsters and write their cards.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2010">CMPS 2010 Programming Fundamentals</a></li>
+                        <li><span aria-current="page">Lab 10</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2010 &middot; Lab 10</p>
+                <h1 class="labpage__title" data-animate>Monster class</h1>
+                <p class="labpage__lede" data-animate>Lab 9&#x27;s monster cards rebuilt around a <code>Monster</code> class. The struct becomes a class with private fields and a getter and setter for each, declared in <code>Monster.h</code> and defined in <code>Monster.cpp</code>, and <code>Main.cpp</code> uses them to generate monsters and write their cards.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab10">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab10/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Turned the <code>Monster</code> struct into a class with private fields and a <code>get</code>/<code>set</code> pair for each one, split across <code>Monster.h</code> and <code>Monster.cpp</code>.</li><li>Marked the getters <code>const</code>.</li><li>Updated <code>genMonster</code>, <code>displayMonster</code> and <code>makeMonsterCards</code> in <code>Main.cpp</code>, carried over from the lab 9 skeleton, to go through the setters and getters.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Classes</li><li>Encapsulation</li><li>Header files</li><li>Separate compilation</li><li>File output</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Classes</li><li>Header and source files</li><li>Encapsulation</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>cstdlib</code>, <code>fstream</code>, <code>iostream</code>, <code>string</code>.</p>
+                <p>Headers in this folder: <code>Monster.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -o monster_cards Main.cpp Monster.cpp</span>
+<span class="cmd">./monster_cards</span></code></pre>
+                <p><strong>Requires:</strong> A C++ compiler such as <code>g++</code> (Linux, macOS, or WSL on Windows).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Making three monster cards with the Monster class</figcaption>
+                    <p class="snap__note">Monsters are random, so each run is different. The monsters/ folder was emptied first.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./monster_cards &amp;&amp; cat monsters/*.txt</span>
+---------------------------
+McKenzie the Monster
+---------------------------
+TYPE: Prickly
+COLOR: Hot Magenta
+NO. OF EYES: 15
+NO. OF ARMS: 4
+NO. OF LEGS: 15
+---------------------------
+How many monsters do you want?  <span class="term__in">3</span>
+------------------------
+Meghan the Monster
+------------------------
+TYPE: Smooth
+COLOR: Blue Violet
+NO. OF EYES: 14
+NO. OF ARMS: 11
+NO. of LEGS: 10
+------------------------
+------------------------
+Mollie the Monster
+------------------------
+TYPE: Skinny
+COLOR: Timberwolf
+NO. OF EYES: 9
+NO. OF ARMS: 7
+NO. of LEGS: 10
+------------------------
+------------------------
+Renee the Monster
+------------------------
+TYPE: Wet
+COLOR: Royal Purple
+NO. OF EYES: 11
+NO. OF ARMS: 15
+NO. of LEGS: 1
+------------------------</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab10/Main.cpp"><code>Main.cpp</code></a></td><td>Generators, display and card writer from lab 9, now using the class.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab10/Monster.h"><code>Monster.h</code></a></td><td><code>Monster</code> class declaration.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab10/Monster.cpp"><code>Monster.cpp</code></a></td><td>Getter and setter definitions.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab10/monsters"><code>monsters/*.txt</code></a></td><td>Monster cards written by an earlier run.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2010"><a class="pager__prev" href="../../../Coursework/cmps2010/lab09/" rel="prev"><span>Previous</span>Lab 9</a><a class="pager__next" href="../../../Coursework/cmps2010/lab11/" rel="next"><span>Next</span>Lab 11</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

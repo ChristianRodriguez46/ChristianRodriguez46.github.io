@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Lab 2
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/lab02/](https://christianrodriguez46.github.io/Coursework/cmps3350/lab02/)
+
 ## What it does
 
 `lab2.cpp` moves the box in two dimensions. **W** speeds it up and **S** slows it down without letting it reverse; **Esc** quits. Text is drawn with the course font library.

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 11: Memory-mapped files | CMPS 3600 | Christian Rodriguez</title>
+    <meta name="description" content="Copying part of a file through memory maps. bblab11.c maps the input file with mmap, rounding the offset down to a page boundary as mmap requires, copies the requested bytes into an anonymous mapping and writes them to the output file.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3600">CMPS 3600 Operating Systems</a></li>
+                        <li><span aria-current="page">Lab 11</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3600 &middot; Lab 11</p>
+                <h1 class="labpage__title" data-animate>Memory-mapped files</h1>
+                <p class="labpage__lede" data-animate>Copying part of a file through memory maps. <code>bblab11.c</code> maps the input file with <code>mmap</code>, rounding the offset down to a page boundary as <code>mmap</code> requires, copies the requested bytes into an anonymous mapping and writes them to the output file.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab11">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab11/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s <code>maptest.c</code>, which prints part of a file to the screen.</li><li>Changed the arguments to <code>&lt;infile&gt; &lt;outfile&gt; &lt;offset&gt; &lt;length&gt;</code>, with offset and length optional.</li><li>Rejected offsets past the end of the file and trimmed lengths that run past it.</li><li>Added a second mapping with <code>MAP_SHARED | MAP_ANONYMOUS</code>, copied into it with <code>memcpy</code>, wrote it to the output file and unmapped both.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>mmap</li><li>Virtual memory</li><li>Page alignment</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li><code>mmap</code></li><li>Virtual memory</li><li>Page alignment</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>fcntl.h</code></td><td><code>open</code> and its flags</td></tr><tr><td><code>sys/mman.h</code></td><td>Memory-mapped files (<code>mmap</code>)</td></tr><tr><td><code>sys/stat.h</code></td><td>File permissions and <code>fstat</code></td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>.</p>
+                <p>Linked with <code>-lpthread</code> (POSIX threads).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./lab11 article out.txt 5 25</span>
+<span class="cmd">cat out.txt</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code> and POSIX threads. The graphical labs also need the X11 development headers (<code>sudo apt install libx11-dev libxext-dev</code> on Ubuntu). Every folder has a <code>Makefile</code>.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Copying 60 bytes from offset 3 of article into out.txt through memory maps</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab11 article out.txt 3 60</span>
+filesize: 2088 bytes
+pa_offset 0
+pid: 7505 pagesize: 4096
+60 bytes written to file.</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of out.txt">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>out.txt</b></div>
+                        <pre class="term__body" tabindex="0">operating system (OS) is system software that manages comput</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">An offset past the end of the file is rejected</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab11 article out.txt 5000 10</span>
+filesize: 2088 bytes
+pa_offset 4096
+offset is past end of file</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab11/bblab11.c"><code>bblab11.c</code></a></td><td>The lab: copies a byte range from one file to another through memory maps.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab11/Makefile"><code>Makefile</code></a></td><td>Builds <code>lab11</code> and <code>maptest</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab11/log3"><code>log3</code></a></td><td>Output from an earlier run with offset 3.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab11/maptest.c"><code>maptest.c</code></a></td><td>The instructor&#x27;s example the lab starts from.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab11/article"><code>article</code></a></td><td>Sample input: a paragraph about operating systems.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3600"><a class="pager__prev" href="../../../Coursework/cmps3600/lab10/" rel="prev"><span>Previous</span>Lab 10</a><a class="pager__next" href="../../../Coursework/cmps3600/lab13/" rel="next"><span>Next</span>Lab 13</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

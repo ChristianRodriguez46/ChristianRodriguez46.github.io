@@ -2,6 +2,8 @@
 
 **CMPS 3390 Application Development**, Quotes API
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3390/quotes-api/](https://christianrodriguez46.github.io/Coursework/cmps3390/quotes-api/)
+
 ## What it does
 
 `index.php` returns a random quote as JSON from one of three categories: `book`, `movie` or `game`. The quotes live in `docs/<category>.json`. A missing or unknown category returns HTTP 400 with a JSON error.

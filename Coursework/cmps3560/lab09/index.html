@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 9: Multiclass neural network | CMPS 3560 | Christian Rodriguez</title>
+    <meta name="description" content="A small neural network written from scratch in C++ that classifies the three Iris species: 4 inputs, 3 sigmoid hidden neurons and 3 sigmoid outputs, trained with backpropagation and stochastic gradient descent. It prints the mean absolute deviation error every epoch and the final training accuracy, ">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3560">CMPS 3560 Artificial Intelligence</a></li>
+                        <li><span aria-current="page">Lab 9</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3560 &middot; Lab 9</p>
+                <h1 class="labpage__title" data-animate>Multiclass neural network</h1>
+                <p class="labpage__lede" data-animate>A small neural network written from scratch in C++ that classifies the three Iris species: 4 inputs, 3 sigmoid hidden neurons and 3 sigmoid outputs, trained with backpropagation and stochastic gradient descent. It prints the mean absolute deviation error every epoch and the final training accuracy, which landed between 94% and 99% in test runs here.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3560/lab09">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab09/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Wrote the forward pass, backpropagation (<code>sgd</code>), and the <code>mad</code> and <code>accuracy</code> helpers by hand, with fixed-size <code>std::array</code> weight matrices for the 3 by 5 hidden layer and 3 by 4 output layer.</li><li>Initialized the weights with Xavier-uniform limits, sqrt(6 / (fan in + fan out)), and shuffled the data once with <code>mt19937</code>.</li><li>Trained for up to 1,000 epochs with α = 0.05, doubled it after epoch 100, and stopped early if training accuracy reached 100%.</li><li>Read one-hot labels from <code>iris.csv</code>, three label columns after the four features.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Neural networks</li><li>Backpropagation</li><li>Stochastic gradient descent</li><li>Xavier initialization</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Neural networks</li><li>Backpropagation</li><li>Multiclass classification</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>algorithm</code>, <code>array</code>, <code>cmath</code>, <code>fstream</code>, <code>iomanip</code>, <code>iostream</code>, <code>random</code>, <code>sstream</code>, <code>string</code>, <code>vector</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -std=c++17 -O2 -o lab9_nn lab9_nn.cpp</span>
+<span class="cmd">./lab9_nn iris.csv</span></code></pre>
+                <p><strong>Requires:</strong> Python 3 for the Python labs, <code>g++</code> for the C++ labs, and SWI-Prolog or GNU Prolog for labs 4 and 5.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Training the 4-3-3 network on Iris</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab9_nn iris.csv</span>
+Loaded 150 samples.
+Epoch   1, sample 150: [0.41, 0.30, 0.32]
+Epoch   1 Results: MAD = 1.3488
+Epoch   2, sample 300: [0.34, 0.33, 0.34]
+Epoch   2 Results: MAD = 1.3351
+Epoch   3, sample 450: [0.32, 0.34, 0.35]
+Epoch   3 Results: MAD = 1.3358
+Epoch   4, sample 600: [0.31, 0.35, 0.35]
+Epoch   4 Results: MAD = 1.3373
+Epoch   5, sample 750: [0.32, 0.35, 0.35]
+Epoch   5 Results: MAD = 1.3396
+Epoch   6, sample 900: [0.32, 0.34, 0.34]
+Epoch   6 Results: MAD = 1.3382
+Epoch   7, sample 1050: [0.33, 0.33, 0.33]
+Epoch   7 Results: MAD = 1.3246
+Epoch   8, sample 1200: [0.35, 0.31, 0.31]
+Epoch   8 Results: MAD = 1.3029
+Epoch   9, sample 1350: [0.37, 0.29, 0.29]
+Epoch   9 Results: MAD = 1.2777
+Epoch  10, sample 1500: [0.41, 0.28, 0.27]
+Epoch  10 Results: MAD = 1.2498
+Epoch  11, sample 1650: [0.45, 0.27, 0.25]
+Epoch  11 Results: MAD = 1.2199
+Epoch  12, sample 1800: [0.48, 0.25, 0.23]
+Epoch  12 Results: MAD = 1.1892
+Epoch  13, sample 1950: [0.52, 0.24, 0.22]
+Epoch  13 Results: MAD = 1.1592
+Epoch  14, sample 2100: [0.55, 0.23, 0.21]
+… 1964 more lines …
+Epoch 996 Results: MAD = 0.1162
+Epoch 997, sample 149550: [0.98, 0.02, 0.00]
+Epoch 997 Results: MAD = 0.1161
+Epoch 998, sample 149700: [0.98, 0.02, 0.00]
+Epoch 998 Results: MAD = 0.1159
+Epoch 999, sample 149850: [0.98, 0.02, 0.00]
+Epoch 999 Results: MAD = 0.1159
+Epoch 1000, sample 150000: [0.98, 0.02, 0.00]
+Epoch 1000 Results: MAD = 0.1159
+
+Final training accuracy: 98.67 %</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab09/lab9_nn.cpp"><code>lab9_nn.cpp</code></a></td><td>Network, training loop, MAD and accuracy reporting.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab09/Makefile"><code>Makefile</code></a></td><td>Build file. Its rule is named <code>perceptron</code>, as in lab 8, so <code>make</code> falls back to the default C++ rule and builds <code>lab9_nn</code> without the listed flags.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3560/lab09/iris.csv"><code>iris.csv</code></a></td><td>The 150 Iris samples: four measurements and a one-hot species label.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3560"><a class="pager__prev" href="../../../Coursework/cmps3560/lab08/" rel="prev"><span>Previous</span>Lab 8</a><a class="pager__next" href="../../../Coursework/cmps3560/lab10/" rel="next"><span>Next</span>Lab 10</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

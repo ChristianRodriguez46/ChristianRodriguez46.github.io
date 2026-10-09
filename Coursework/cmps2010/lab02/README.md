@@ -2,6 +2,8 @@
 
 **CMPS 2010 Programming Fundamentals**, Lab 2
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2010/lab02/](https://christianrodriguez46.github.io/Coursework/cmps2010/lab02/)
+
 ## What it does
 
 - `lab2-1.cpp` asks for a name, an occupation, an adjective, a verb, a number, an animal and a phrase, then prints a short story built from the answers.

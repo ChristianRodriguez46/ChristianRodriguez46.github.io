@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 12
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk12/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk12/)
+
 ## What it does
 
 `lab14_2020TH_ChrRod.cpp` (lab 14) hashes every word in `enable1.txt` (about 172,000 English words), counts collisions per index, and reports the busiest index.

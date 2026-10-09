@@ -2,6 +2,8 @@
 
 **CMPS 3600 Operating Systems**, Lab 3
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3600/lab03/](https://christianrodriguez46.github.io/Coursework/cmps3600/lab03/)
+
 ## What it does
 
 `bblab3.c` installs handlers for `SIGTERM` and `SIGUSR1` with `sigaction`. The parent forks a child, which writes the first half of a message to a log, suspends until `SIGUSR1` arrives, then finishes the message. The other files are examples of signal masks, handlers and `read`/`write`.

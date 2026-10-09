@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 10: Calling a web API with jQuery | CMPS 3680 | Christian Rodriguez</title>
+    <meta name="description" content="A page that calls the instructor&#x27;s JSON-RPC style web API with jQuery. Three small forms send a greeting, an addition and a GIF search as JSON POST requests, and each reply, or the server&#x27;s error message, is written into the page.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3680">CMPS 3680 Server-Side Web</a></li>
+                        <li><span aria-current="page">Lab 10</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3680 &middot; Lab 10</p>
+                <h1 class="labpage__title" data-animate>Calling a web API with jQuery</h1>
+                <p class="labpage__lede" data-animate>A page that calls the instructor&#x27;s JSON-RPC style web API with jQuery. Three small forms send a greeting, an addition and a GIF search as JSON POST requests, and each reply, or the server&#x27;s error message, is written into the page.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="lab10.html">Live demo</a><a class="button button--secondary" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3680/lab10">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab10/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s page, which marks the three sections to connect, and wrote <code>script.js</code>.</li><li>Wrote <code>sendRequest</code>, which posts a request object as JSON with <code>$.ajax</code> and hands the reply to <code>displayResult</code> or <code>displayError</code>.</li><li>Built the request objects (<code>method</code>, <code>params</code>, <code>id</code> and <code>jsonrpc: &quot;2.0&quot;</code>) in the three button handlers.</li><li>Matched each reply to its section by <code>id</code> in <code>displayResult</code>, setting the text for the greeting and the sum and the image <code>src</code> for the GIF.</li><li>Showed the error message from the response in a hidden <code>#error</code> box that <code>displayError</code> reveals.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>JavaScript</li><li>jQuery</li><li>AJAX</li><li>JSON</li><li>JSON-RPC</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>AJAX</li><li>JSON requests</li><li>jQuery</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>Uses jQuery.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>Open <code>lab10.html</code> in a browser, or use the live demo above.</p>
+                <p><strong>Requires:</strong> PHP 7.4 or later; labs 5, 6 and the final project also need MySQL (or MariaDB) and the PHP <code>mysqli</code> extension. Run each folder with PHP&#x27;s built-in server: <code>php -S localhost:8000</code>.</p>
+                <aside class="callout callout--note" aria-label="Note"><p>It calls the instructor&#x27;s server at paul.cs3680.com, so it only works while that server is online.</p></aside>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab10/script.js"><code>script.js</code></a></td><td>Request building, <code>$.ajax</code> call and response handling.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab10/style.css"><code>style.css</code></a></td><td>Page styles.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3680/lab10/lab10.html"><code>lab10.html</code></a></td><td>Instructor&#x27;s page with the three forms and response areas.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3680"><a class="pager__prev" href="../../../Coursework/cmps3680/lab06/" rel="prev"><span>Previous</span>Lab 6</a><a class="pager__next" href="../../../Coursework/cmps3680/project1/" rel="next"><span>Next</span>Project 1</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

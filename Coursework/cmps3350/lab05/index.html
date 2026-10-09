@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5: Unit testing with build flags | CMPS 3350 | Christian Rodriguez</title>
+    <meta name="description" content="One C++ file that builds three ways with preprocessor flags: a production build that runs w on the server, a who build, and a unit-test build that reads a saved listing. Each build sorts the user names and reports how many users have 1, 2, 3 or more logins.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3350">CMPS 3350 Software Engineering</a></li>
+                        <li><span aria-current="page">Lab 5</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3350 &middot; Lab 5</p>
+                <h1 class="labpage__title" data-animate>Unit testing with build flags</h1>
+                <p class="labpage__lede" data-animate>One C++ file that builds three ways with preprocessor flags: a production build that runs <code>w</code> on the server, a <code>who</code> build, and a unit-test build that reads a saved listing. Each build sorts the user names and reports how many users have 1, 2, 3 or more logins.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab05">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab05/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Wrote <code>dslab5.cpp</code>, choosing the data source with <code>#ifdef WHO_TEST</code>, <code>#elif defined(UNIT_TEST)</code> and <code>#else</code>.</li><li>Parsed the user name from each line, sorted the names with <code>bubbleSort</code> and counted logins per user, then built a frequency table of login counts.</li><li>Wrote <code>testing.cpp</code> to practice the same idea: built with <code>-D UNIT_TEST</code> it checks <code>multiply</code> against a known answer instead of reading input.</li><li>Wrote a <code>Makefile</code> that builds all five variants.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Conditional compilation</li><li>Unit testing</li><li>Sorting</li><li>Linux commands</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Conditional compilation</li><li>Unit tests</li><li>Parsing command output</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C standard library: <code>time.h</code>.</p>
+                <p>C++ standard library: <code>cstdlib</code>, <code>fstream</code>, <code>iostream</code>, <code>string</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./ulab5 file.txt</span>  <span class="cmt"># unit-test build reads saved data</span>
+<span class="cmd">./dslab5</span>  <span class="cmt"># production build runs w on this machine</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>g++</code>. The graphics labs and the casino game also need X11 and OpenGL (<code>sudo apt install libx11-dev libgl1-mesa-dev libglu1-mesa-dev</code> on Ubuntu). Every folder has a <code>Makefile</code>, so <code>make</code> builds everything in it.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Unit-test build reading the instructor&#x27;s test file</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./ulab5 ggfile6.txt</span>
+Unit test Login statistic
+Current time: Thu Oct  8 08:27:46 2026
+
+1 login: 2 users
+3 logins: 4 users
+5 logins: 6 users
+7 logins: 8 users
+9 logins: 10 users</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Unit-test build reading a saved who listing</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./ulab5 file.txt</span>
+Unit test Login statistic
+Current time: Thu Oct  8 08:27:46 2026
+
+1 login: 28 users
+2 logins: 10 users
+3 logins: 5 users
+4 logins: 1 users</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">testing.cpp built normally, then with -D UNIT_TEST</figcaption>
+                    <p class="snap__note">The first run asks for a number; the unit-test build uses 5 and checks the result.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./testing; ./utest</span>
+Enter a number: <span class="term__in">7</span>
+700
+500
+multiply function - ok</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab05/Makefile"><code>Makefile</code></a></td><td>Builds <code>testing</code>, <code>utest</code>, <code>dslab5</code>, <code>ulab5</code> and <code>wlab5</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab05/dslab5.cpp"><code>dslab5.cpp</code></a></td><td>Login statistics program with production, <code>who</code> and unit-test builds.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab05/testing.cpp"><code>testing.cpp</code></a></td><td>Small program whose unit-test build checks <code>multiply</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab05/file.txt"><code>file.txt</code></a></td><td>Saved <code>who</code> listing used as test data, with other user names and addresses masked.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab05/ggfile6.txt"><code>ggfile6.txt</code></a></td><td>The instructor&#x27;s test listing, built so the expected counts are easy to check.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3350"><a class="pager__prev" href="../../../Coursework/cmps3350/lab03/" rel="prev"><span>Previous</span>Lab 3</a><a class="pager__next" href="../../../Coursework/cmps3350/lab06/" rel="next"><span>Next</span>Lab 6</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

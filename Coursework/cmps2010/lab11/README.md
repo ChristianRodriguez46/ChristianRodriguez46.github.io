@@ -2,6 +2,8 @@
 
 **CMPS 2010 Programming Fundamentals**, Lab 11
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2010/lab11/](https://christianrodriguez46.github.io/Coursework/cmps2010/lab11/)
+
 ## What it does
 
 Adds constructors to the `Monster` class: the default constructor builds a random monster from the name, type and color lists in `GLOBALS.h`, and a second constructor sets every field. `Main.cpp` allocates a dynamic array of monsters and writes a card for each into `monsters/`.

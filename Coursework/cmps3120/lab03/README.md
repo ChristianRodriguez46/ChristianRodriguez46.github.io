@@ -2,6 +2,8 @@
 
 **CMPS 3120 Algorithm Analysis**, Lab 3
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3120/lab03/](https://christianrodriguez46.github.io/Coursework/cmps3120/lab03/)
+
 ## What it does
 
 Sorts a set of balls with merge sort using only a black-box comparison, then finds matching boxes two ways with quicksort-style partitioning, counting how many black-box queries each method needs.

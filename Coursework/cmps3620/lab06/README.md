@@ -2,6 +2,8 @@
 
 **CMPS 3620 Computer Networks**, Lab 6
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3620/lab06/](https://christianrodriguez46.github.io/Coursework/cmps3620/lab06/)
+
 ## What it does
 
 Studies a larger networking package: a shell (`s_sh.c`) served over the network and a matching client (`s_tlnt.c`), plus datagram, session and diagnostic utilities. `Lab Writeup.md` explains how the shell tracks child processes with `SIGCLD`, implements internal commands, and manages terminals.

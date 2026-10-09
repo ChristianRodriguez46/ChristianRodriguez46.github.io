@@ -2,6 +2,8 @@
 
 **CMPS 3120 Algorithm Analysis**, Assignment
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3120/sensor-network-assignment/](https://christianrodriguez46.github.io/Coursework/cmps3120/sensor-network-assignment/)
+
 ## What it does
 
 - Places 5 cluster heads and N low-end sensor nodes (50 by default) in a 100 by 100 area. Nodes are first assigned at random and the program measures hop counts with breadth-first search over the communication graph. Tabu search then reassigns nodes to lower the total hop count.

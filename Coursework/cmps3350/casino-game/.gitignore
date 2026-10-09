@@ -52,3 +52,6 @@ CMakeUserPresets.json
 
 # External projects
 *-prefix/
+
+# This folder builds with the plain Makefile above (not CMake), so keep it in the repository
+!Makefile

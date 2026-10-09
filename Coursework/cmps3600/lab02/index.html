@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2: Processes with fork and wait | CMPS 3600 | Christian Rodriguez</title>
+    <meta name="description" content="bblab2.c forks a child process that computes a Fibonacci number recursively and writes it, with a timestamp, to log. The parent waits for the child and prints its PID and exit code. The rest of the folder is the week&#x27;s examples of fork, wait, signals and error handling.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3600">CMPS 3600 Operating Systems</a></li>
+                        <li><span aria-current="page">Lab 2</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3600 &middot; Lab 2</p>
+                <h1 class="labpage__title" data-animate>Processes with fork and wait</h1>
+                <p class="labpage__lede" data-animate><code>bblab2.c</code> forks a child process that computes a Fibonacci number recursively and writes it, with a timestamp, to <code>log</code>. The parent waits for the child and prints its PID and exit code. The rest of the folder is the week&#x27;s examples of <code>fork</code>, <code>wait</code>, signals and error handling.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab02">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Read the term number from the command line and printed a usage message when it is missing.</li><li>Forked a child that opens <code>log</code>, writes the time with <code>strftime</code>, then writes <code>fib(n)</code>.</li><li>Had the child exit with the term number as its exit code, and the parent read it back with <code>wait</code>, <code>WIFEXITED</code> and <code>WEXITSTATUS</code>.</li><li>Wrote <code>practice/myfork.c</code>, a small fork-and-wait exercise.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>fork</li><li>wait</li><li>Exit status</li><li>Recursion</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li><code>fork</code> and <code>wait</code></li><li>Exit status</li><li>Process logs</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>sys/file.h</code></td><td><code>open</code> and its flags</td></tr><tr><td><code>sys/wait.h</code></td><td><code>wait</code> and <code>waitpid</code> for child processes</td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>, <code>time.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./lab2 9</span>
+<span class="cmd">cat log</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code> and POSIX threads. The graphical labs also need the X11 development headers (<code>sudo apt install libx11-dev libxext-dev</code> on Ubuntu). Every folder has a <code>Makefile</code>.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Child process computes the 20th Fibonacci number and exits with code 20</figcaption>
+                    <p class="snap__note">The parent prints the child&#x27;s PID and exit code, and the child writes the time and the result to log.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab2 20</span>
+my child (5435) exited with code: 20</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of log">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>log</b></div>
+                        <pre class="term__body" tabindex="0">2026:10:08 08:27:37
+fib sequence number 20 = 6765</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Running without an argument prints the usage message</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab2</span>
+Usage: ./lab2 &lt;n&gt;
+    for 9th fibonacci, enter: ./lab2 9</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/bblab2.c"><code>bblab2.c</code></a></td><td>The lab: a child computes a Fibonacci number and the parent reports its exit code.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/Makefile"><code>Makefile</code></a></td><td>Builds the lab (<code>lab2</code>) and every example.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/errfile"><code>errfile</code></a></td><td><code>strace</code> output from running <code>fork3</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/practice/myfork.c"><code>practice/myfork.c</code></a></td><td>Practice: fork a child, wait for it and print its exit code.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/alarm.c"><code>alarm.c</code></a></td><td>Example: a <code>SIGALRM</code> handler set up with <code>sigaction</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/fork-wait.c"><code>fork-wait.c</code></a></td><td>Example: a parent sends signals to its child and waits for it.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/fork1.c"><code>fork1.c</code></a></td><td>Example: cloning a process with <code>fork</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/fork2.c"><code>fork2.c</code></a></td><td>Example: a child inherits variables but shares open file descriptors.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/fork3.c"><code>fork3.c</code></a></td><td>Example: how a child becomes a zombie.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/fork4.c"><code>fork4.c</code></a></td><td>Example: how a child becomes an orphan.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab02/perror.c"><code>perror.c</code></a></td><td>Example: reporting system call errors with <code>perror</code>.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3600"><a class="pager__prev" href="../../../Coursework/cmps3600/lab01/" rel="prev"><span>Previous</span>Lab 1</a><a class="pager__next" href="../../../Coursework/cmps3600/lab03/" rel="next"><span>Next</span>Lab 3</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

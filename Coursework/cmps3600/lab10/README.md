@@ -2,9 +2,11 @@
 
 **CMPS 3600 Operating Systems**, Lab 10
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3600/lab10/](https://christianrodriguez46.github.io/Coursework/cmps3600/lab10/)
+
 ## What it does
 
-`bblab10.c` computes a dot product with several threads, using a mutex to protect the running total, and has a child process send a partial sum back to the parent through a pipe. The other files explore page faults, cache behavior and resource limits.
+`bblab10.c` computes a dot product with eight threads. Each thread writes its partial sum into a pipe, and a forked child process reads the pipe and adds the parts. The other files explore page faults, cache behavior and resource limits.
 
 ## How to run
 

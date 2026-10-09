@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Lab 9
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/lab09/](https://christianrodriguez46.github.io/Coursework/cmps3350/lab09/)
+
 ## What it does
 
 - `rand.cpp` estimates a probability over 10 million random draws.

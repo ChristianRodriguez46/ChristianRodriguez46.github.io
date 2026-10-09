@@ -2,6 +2,8 @@
 
 **CMPS 3600 Operating Systems**, Lab 1
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3600/lab01/](https://christianrodriguez46.github.io/Coursework/cmps3600/lab01/)
+
 ## What it does
 
 `lab1.c` rewrites a C++ program (`lab1.cpp`) in C using only low-level system calls: it reads your name and a number with `read`, computes the sum from 1 to that number, and writes the results to a file named `log` with `open` and `write`. `xwin89.c` is a starter X11 program.

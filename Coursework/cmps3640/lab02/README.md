@@ -2,6 +2,8 @@
 
 **CMPS 3640 Distributed and Parallel Computation**, Lab 2
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3640/lab02/](https://christianrodriguez46.github.io/Coursework/cmps3640/lab02/)
+
 ## What it does
 
 `HelloWorldOMP.cpp` prints from every thread in an OpenMP parallel region. `ArrayOpOMP.cpp` rewrites the lab 1 array operation with OpenMP and times it for a given thread count.

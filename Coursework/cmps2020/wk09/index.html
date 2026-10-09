@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 9: Queues and a ring buffer | CMPS 2020 | Christian Rodriguez</title>
+    <meta name="description" content="Two queues. Lab 10 is a print spooler that keeps jobs in a linked list and prints them oldest first. Lab 11 is a ring buffer on a four-slot dynamic array, driven by a menu that enqueues and dequeues names.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2020">CMPS 2020 Programming II: Data Structures</a></li>
+                        <li><span aria-current="page">Week 9</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2020 &middot; Week 9</p>
+                <h1 class="labpage__title" data-animate>Queues and a ring buffer</h1>
+                <p class="labpage__lede" data-animate>Two queues. Lab 10 is a print spooler that keeps jobs in a linked list and prints them oldest first. Lab 11 is a ring buffer on a four-slot dynamic array, driven by a menu that enqueues and dequeues names.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2020/wk09">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk09/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Wrote <code>enqueue</code> to add each job at the head and <code>dequeue</code> to walk to the tail and remove it, with separate cases for one, two and more nodes.</li><li>Freed the remaining jobs in <code>deallocate</code>, called from the destructor.</li><li>Wrote the ring buffer&#x27;s <code>enqueue</code>, <code>dequeue</code>, <code>isEmpty</code> and <code>isFull</code>, wrapping the <code>front</code> and <code>back</code> indexes with <code>% size</code>.</li><li>Kept one slot empty to tell a full buffer from an empty one, so four slots hold three names.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Queues</li><li>Linked lists</li><li>Circular buffers</li><li>Dynamic memory</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Queues</li><li>Circular buffers</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>iostream</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -o lab10 lab10_2020TH_ChrRod.cpp</span>
+<span class="cmd">./lab10</span>
+<span class="cmd"></span>
+<span class="cmd">g++ -o lab11 lab11_2020TH_ChrRod.cpp</span>
+<span class="cmd">./lab11</span></code></pre>
+                <p><strong>Requires:</strong> A C++ compiler such as <code>g++</code> (Linux, macOS, or WSL on Windows).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Printing four queued jobs, oldest first</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab10</span>
+Pending jobs:
+lab9.cpp
+document(1).doc
+Fwd: Direct Deposit
+Comm100 Paper.docx
+
+Printing...
+Comm100 Paper.docx printed
+
+Pending jobs:
+lab9.cpp
+document(1).doc
+Fwd: Direct Deposit
+
+Printing...
+Fwd: Direct Deposit printed
+
+Pending jobs:
+lab9.cpp
+document(1).doc
+
+Printing...
+document(1).doc printed
+
+Pending jobs:
+lab9.cpp
+
+Printing...
+lab9.cpp printed
+
+Pending jobs:
+
+No jobs</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Filling the ring buffer until it turns a name away, then freeing a slot</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab11</span>
+e - Enqueue
+d - Dequeue
+q - Quit
+Action: <span class="term__in">e</span>
+Name: <span class="term__in">Ana</span>
+Added Ana
+Ana
+-------------
+e - Enqueue
+d - Dequeue
+q - Quit
+Action: <span class="term__in">e</span>
+Name: <span class="term__in">Ben</span>
+Added Ben
+Ana Ben
+-------------
+e - Enqueue
+d - Dequeue
+q - Quit
+Action: <span class="term__in">e</span>
+Name: <span class="term__in">Cal</span>
+Added Cal
+Ana Ben Cal
+-------------
+e - Enqueue
+d - Dequeue
+q - Quit
+Action: <span class="term__in">e</span>
+Name: <span class="term__in">Dee</span>
+Dee was not added. Queue full
+Ana Ben Cal
+-------------
+e - Enqueue
+d - Dequeue
+q - Quit
+Action: <span class="term__in">d</span>
+Dequeued Ana
+Ben Cal
+-------------
+e - Enqueue
+d - Dequeue
+q - Quit
+Action: <span class="term__in">e</span>
+Name: <span class="term__in">Dee</span>
+Added Dee
+Ben Cal Dee
+-------------
+e - Enqueue
+d - Dequeue
+q - Quit
+Action: <span class="term__in">q</span>
+Ben Cal Dee
+-------------</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk09/lab10_2020TH_ChrRod.cpp"><code>lab10_2020TH_ChrRod.cpp</code></a></td><td>Lab 10: print spooler queue on a linked list.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2020/wk09/lab11_2020TH_ChrRod.cpp"><code>lab11_2020TH_ChrRod.cpp</code></a></td><td>Lab 11: ring buffer with an enqueue and dequeue menu.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2020"><a class="pager__prev" href="../../../Coursework/cmps2020/wk08/" rel="prev"><span>Previous</span>Week 8</a><a class="pager__next" href="../../../Coursework/cmps2020/wk10/" rel="next"><span>Next</span>Week 10</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

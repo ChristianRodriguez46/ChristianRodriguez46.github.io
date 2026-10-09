@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 5
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk05/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk05/)
+
 ## What it does
 
 - `lab06_2020TH_ChrRod.cpp` (lab 6) loads `config.ini`, skips comments, and stores `key=value` pairs. Bad lines raise custom exceptions (missing key, bad key, missing separator) derived from `std::exception`.

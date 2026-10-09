@@ -21,7 +21,10 @@ The browsable version, with live demos, is at
 | [CMPS 3680](cmps3680/) | Server-Side Web | PHP, MySQL, JavaScript |
 
 Every course folder has a README listing its labs, and every lab folder has a README explaining what
-the program does and how to build and run it. Lab folders are named `lab01`, `lab02` and so on;
+the program does and how to build and run it. Each lab also has a web page (`index.html` in its folder)
+with a summary, what I did, the libraries it uses, how to build and run it, snapshots of real runs and a
+note on every file. Screenshots shown on those pages are in `snapshots/`. The X11 graphics labs link to
+[cmps3600/x11-setup.html](cmps3600/x11-setup.html), which explains how to set up X11 to run them. Lab folders are named `lab01`, `lab02` and so on;
 CMPS 2020 is organized by week (`wk02` to `wk14`).
 
 CMPS 2650 (Linux) was done at the command line, so its answers are a web page,

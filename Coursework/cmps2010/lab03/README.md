@@ -2,6 +2,8 @@
 
 **CMPS 2010 Programming Fundamentals**, Lab 3
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2010/lab03/](https://christianrodriguez46.github.io/Coursework/cmps2010/lab03/)
+
 ## What it does
 
 - `lab3-1.cpp` picks a random number from -10 to 10 and gives hints (positive or negative, even or odd, near zero or not) until you guess it. `3lab-2.cpp` is the same game with a range of -20 to 20.

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final project: Car detailing site | CMPS 2680 | Christian Rodriguez</title>
+    <meta name="description" content="A five-page Bootstrap site for a mobile car detailing business: home, services, booking, gallery and contact. The booking form pairs Bootstrap&#x27;s validation styles with its own check that a package or service is chosen, then shows an appointment summary read back from the URL.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2680">CMPS 2680 Client-Side Web</a></li>
+                        <li><span aria-current="page">Final project</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2680 &middot; Final project</p>
+                <h1 class="labpage__title" data-animate>Car detailing site</h1>
+                <p class="labpage__lede" data-animate>A five-page Bootstrap site for a mobile car detailing business: home, services, booking, gallery and contact. The booking form pairs Bootstrap&#x27;s validation styles with its own check that a package or service is chosen, then shows an appointment summary read back from the URL.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="home.html">Live demo</a><a class="button button--secondary" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/final-project">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Built five pages that share a dark Bootstrap navbar and footer, with one stylesheet per page in <code>styles/</code>.</li><li>Wrote <code>home.js</code>, which cycles the home page&#x27;s image board through three photos every six seconds with <code>setTimeout</code>.</li><li>Wrote the booking logic in <code>script.js</code>: <code>validateForm</code> blocks submission until a package or individual service is picked, and on reload <code>displayPersonalInfo</code>, <code>formatDateTime</code> and <code>displayCheckedValues</code> turn the query string into an appointment summary.</li><li>Added Bootstrap&#x27;s starter validation snippet so empty required fields show their <code>invalid-feedback</code> messages after a failed submit.</li><li>Used jQuery in <code>gallery.js</code> to open a before or after photo in a full-screen overlay (<code>fadeIn</code> and <code>fadeOut</code>), and in <code>contact.js</code> to check that all three fields are filled before showing a thank-you message.</li><li>Laid out the price list on <code>service.html</code> as striped dark Bootstrap tables for the Bronze, Silver and Gold packages and the individual services.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Bootstrap 5</li><li>jQuery</li><li>Form validation</li><li>Query strings</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Bootstrap layout</li><li>Form validation</li><li>JavaScript image viewers</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>Uses Bootstrap, jQuery.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>Open <code>home.html</code> in a browser, or use the live demo above.</p>
+                <p><strong>Requires:</strong> Any modern web browser. No server or build step is needed.</p>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/home.html"><code>home.html</code></a></td><td>Home page: rotating image board, about section and an embedded Instagram feed.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/home.js"><code>home.js</code></a></td><td>Rotates the image board every six seconds.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/service.html"><code>service.html</code></a></td><td>Package table (Bronze, Silver, Gold) and individual service prices.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/booking.html"><code>booking.html</code></a></td><td>Booking form: contact details, car, date and time, package and services.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/script.js"><code>script.js</code></a></td><td>Booking validation and the appointment summary built from the URL.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/gallery.html"><code>gallery.html</code></a></td><td>Before-and-after photo cards with View buttons.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/gallery.js"><code>gallery.js</code></a></td><td>jQuery overlay that shows a photo enlarged.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/contact.html"><code>contact.html</code></a></td><td>Contact form and Instagram link.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/contact.js"><code>contact.js</code></a></td><td>jQuery check for empty fields and the thank-you message.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/final-project/styles"><code>styles/*.css</code></a></td><td>One stylesheet per page (<code>home</code>, <code>services</code>, <code>booking</code>, <code>gallery</code>, <code>contact</code>).</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/final-project/images"><code>images/mPic*.png</code></a></td><td>Photos for the home page image board.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/final-project/images/before"><code>images/before/*.png</code></a></td><td>Before photos for the gallery.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2680/final-project/images/after"><code>images/after/*.png</code></a></td><td>After photos for the gallery.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/media/logo.JPG"><code>media/logo.JPG</code></a></td><td>Business logo on the contact page.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/media/insta_logo.png"><code>media/insta_logo.png</code></a></td><td>Instagram icon.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/experiments/e1.html"><code>experiments/e1.html</code></a></td><td>Earlier draft of the booking page.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/experiments/script1.js"><code>experiments/script1.js</code></a></td><td>Earlier draft of the booking script.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/experiments/style1.css"><code>experiments/style1.css</code></a></td><td>Earlier single stylesheet covering all the pages.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2680/final-project/experiments/form-check.js"><code>experiments/form-check.js</code></a></td><td>Bootstrap&#x27;s starter form-validation script, kept for reference.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2680"><span class="pager__prev"></span><a class="pager__next" href="../../../Coursework/cmps2680/lab01/" rel="next"><span>Next</span>Lab 1</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

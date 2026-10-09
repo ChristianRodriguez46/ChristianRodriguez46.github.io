@@ -2,6 +2,8 @@
 
 **CMPS 3500 Programming Languages**, Lab 6
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3500/lab06/](https://christianrodriguez46.github.io/Coursework/cmps3500/lab06/)
+
 ## What it does
 
 - `lab06.pl` turns nine logical statements about four animals into Prolog rules so the query `likes(X,Y)` can infer which animals like each other.

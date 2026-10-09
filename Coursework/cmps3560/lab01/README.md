@@ -2,6 +2,8 @@
 
 **CMPS 3560 Artificial Intelligence**, Lab 1
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3560/lab01/](https://christianrodriguez46.github.io/Coursework/cmps3560/lab01/)
+
 ## What it does
 
 `expsys.cpp` reads `iris.csv` into a 2-D array and classifies each flower as Versicolor or Virginica with a hand-written rule on petal length, then prints each prediction next to the true label.

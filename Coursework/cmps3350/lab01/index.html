@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: OpenGL bouncing box | CMPS 3350 | Christian Rodriguez</title>
+    <meta name="description" content="The instructor&#x27;s OpenGL and X11 starter program: a window with a box that slides back and forth, reversing at each edge. A second version shifts the box&#x27;s color after each bounce based on how quickly the bounces come.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3350">CMPS 3350 Software Engineering</a></li>
+                        <li><span aria-current="page">Lab 1</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3350 &middot; Lab 1</p>
+                <h1 class="labpage__title" data-animate>OpenGL bouncing box</h1>
+                <p class="labpage__lede" data-animate>The instructor&#x27;s OpenGL and X11 starter program: a window with a box that slides back and forth, reversing at each edge. A second version shifts the box&#x27;s color after each bounce based on how quickly the bounces come.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab01">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab01/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the instructor&#x27;s sample (<code>lab1.cpp</code>) and changed its background color.</li><li>Wrote <code>test.cpp</code>, which times each wall collision with <code>clock()</code> and blends the box toward a new color, printing the timing and color values every frame.</li><li>Wrote <code>waitlist.cpp</code>, a one-line warm-up program, and a <code>Makefile</code> with a target for each program.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>OpenGL</li><li>X11</li><li>Makefiles</li><li>Collision detection</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>OpenGL rendering loop</li><li>X11 windows and events</li><li>Collision detection</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>GL/glx.h</code></td><td>GLX: OpenGL inside an X11 window</td></tr><tr><td><code>X11/Xlib.h</code></td><td>Xlib: opening windows, drawing and reading events (X11)</td></tr><tr><td><code>X11/keysym.h</code></td><td>X11 key names such as <code>XK_Escape</code></td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>stdio.h</code>.</p>
+                <p>C++ standard library: <code>cmath</code>, <code>cstdlib</code>, <code>cstring</code>, <code>ctime</code>, <code>iostream</code>.</p>
+                <p>Linked with <code>-lX11</code> (Xlib), <code>-lGL</code> (OpenGL).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./lab1</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>g++</code>. The graphics labs and the casino game also need X11 and OpenGL (<code>sudo apt install libx11-dev libgl1-mesa-dev libglu1-mesa-dev</code> on Ubuntu). Every folder has a <code>Makefile</code>, so <code>make</code> builds everything in it.</p>
+                <aside class="callout" aria-label="X11">
+                    <p class="callout__title">This program opens an X11 window with OpenGL graphics</p>
+                    <p>It needs an X server on the computer you are looking at. On Linux that is already part of the
+                    desktop. On a Mac or a Windows PC, or when the program runs on another machine over SSH, see
+                    <a href="../../../Coursework/cmps3600/x11-setup.html">Setting up X11</a> for what to install and how to check it works.</p>
+                </aside>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Running the warm-up program</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./program</span>
+The waitlist is large!</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab01/Makefile"><code>Makefile</code></a></td><td>Builds <code>program</code>, <code>lab1</code> and <code>test</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab01/lab1.cpp"><code>lab1.cpp</code></a></td><td>OpenGL box bouncing between the left and right edges of a 400 by 200 window.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab01/test.cpp"><code>test.cpp</code></a></td><td>Copy of <code>lab1.cpp</code> whose box color changes with the time between collisions.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab01/waitlist.cpp"><code>waitlist.cpp</code></a></td><td>Prints one line of text.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3350"><a class="pager__prev" href="../../../Coursework/cmps3350/group8diagram.gif.html" rel="prev"><span>Previous</span>group8diagram.gif</a><a class="pager__next" href="../../../Coursework/cmps3350/lab02/" rel="next"><span>Next</span>Lab 2</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

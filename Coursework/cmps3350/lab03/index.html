@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3: HTTPS requests in C++ | CMPS 3350 | Christian Rodriguez</title>
+    <meta name="description" content="A C++ client that fetches a web page over HTTPS: it opens a TCP socket, negotiates TLS with OpenSSL, prints the server&#x27;s certificate subject and then the page. The folder also has a small PHP page that greets you or does arithmetic with a URL parameter.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3350">CMPS 3350 Software Engineering</a></li>
+                        <li><span aria-current="page">Lab 3</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3350 &middot; Lab 3</p>
+                <h1 class="labpage__title" data-animate>HTTPS requests in C++</h1>
+                <p class="labpage__lede" data-animate>A C++ client that fetches a web page over HTTPS: it opens a TCP socket, negotiates TLS with OpenSSL, prints the server&#x27;s certificate subject and then the page. The folder also has a small PHP page that greets you or does arithmetic with a URL parameter.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3350/lab03">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab03/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Ported the instructor&#x27;s C program (<code>lab3-ssl.c</code>) to C++ so it builds with <code>g++</code> and OpenSSL 3, leaving a comment with the original line at each fix.</li><li>Fixed <code>MAX_READ_ERRORS</code> with a <code>#define</code>, made the <code>SSL_METHOD</code> pointer <code>const</code>, replaced <code>SSLv23_client_method</code> with <code>TLS_client_method</code> and removed deprecated calls.</li><li>Wrote <code>lab3.php</code>, which reads <code>param</code> from the query string and prints a greeting for <code>hello</code> or <code>param*3+4</code> otherwise.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>OpenSSL</li><li>Sockets</li><li>HTTP</li><li>PHP</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Sockets</li><li>TLS with OpenSSL</li><li>HTTP requests</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>arpa/inet.h</code></td><td>Address conversion such as <code>htons</code> and <code>inet_ntoa</code></td></tr><tr><td><code>fcntl.h</code></td><td><code>open</code> and its flags</td></tr><tr><td><code>netdb.h</code></td><td>Host name lookup (<code>gethostbyname</code>)</td></tr><tr><td><code>openssl/crypto.h</code></td><td>OpenSSL</td></tr><tr><td><code>openssl/err.h</code></td><td>OpenSSL error messages</td></tr><tr><td><code>openssl/pem.h</code></td><td>OpenSSL certificates</td></tr><tr><td><code>openssl/ssl.h</code></td><td>OpenSSL: TLS connections</td></tr><tr><td><code>openssl/x509.h</code></td><td>OpenSSL certificates</td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>stdio.h</code>, <code>string.h</code>.</p>
+                <p>Linked with <code>-lssl</code> (OpenSSL), <code>-lcrypto</code> (OpenSSL crypto).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">sudo apt install libssl-dev</span>  <span class="cmt"># once</span>
+<span class="cmd">make</span>
+<span class="cmd">./lab3 www.example.com index.html</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>g++</code>. The graphics labs and the casino game also need X11 and OpenGL (<code>sudo apt install libx11-dev libgl1-mesa-dev libglu1-mesa-dev</code> on Ubuntu). Every folder has a <code>Makefile</code>, so <code>make</code> builds everything in it.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Requesting lab3.php with two different param values</figcaption>
+                    <p class="snap__note">The PHP built-in server runs the page and curl prints the HTML it returns.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">php -S 127.0.0.1:5350 &gt;/dev/null 2&gt;&amp;1 &amp; sleep 0.8; curl -s &#x27;http://127.0.0.1:5350/lab3.php?param=hello&#x27;; echo; curl -s &#x27;http://127.0.0.1:5350/lab3.php?param=12&#x27;; echo; kill $!</span>
+param is: hello&lt;br&gt;Hello student!&lt;br&gt;&lt;br&gt;&lt;img src=&quot;mydiagram8.gif&quot; style=width:600px;height:auto;/&gt;
+param is: 12&lt;br&gt;number:40&lt;br&gt;&lt;br&gt;&lt;img src=&quot;mydiagram8.gif&quot; style=width:600px;height:auto;/&gt;</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab03/Makefile"><code>Makefile</code></a></td><td>Builds <code>original</code> from the C file and <code>lab3</code> from the C++ file.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab03/lab3-ssl.cpp"><code>lab3-ssl.cpp</code></a></td><td>Christian&#x27;s C++ version with the compiler errors and warnings fixed.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab03/lab3.php"><code>lab3.php</code></a></td><td>PHP page that echoes <code>param</code> and either greets you or computes <code>param*3+4</code>.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3350/lab03/lab3-ssl.c"><code>lab3-ssl.c</code></a></td><td>The instructor&#x27;s original HTTPS client in C.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3350"><a class="pager__prev" href="../../../Coursework/cmps3350/lab02/" rel="prev"><span>Previous</span>Lab 2</a><a class="pager__next" href="../../../Coursework/cmps3350/lab05/" rel="next"><span>Next</span>Lab 5</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

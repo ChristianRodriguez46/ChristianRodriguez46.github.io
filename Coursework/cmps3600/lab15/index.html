@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 15: Semester project | CMPS 3600 | Christian Rodriguez</title>
+    <meta name="description" content="The semester project, built in phases on the instructor&#x27;s X11 framework. Phase 2 launches programs from a window with fork and execve, phase 3 shows live CPU usage, and phase 4 runs the traffic simulation with a statistics window in a separate process fed through IPC.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3600">CMPS 3600 Operating Systems</a></li>
+                        <li><span aria-current="page">Lab 15</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3600 &middot; Lab 15</p>
+                <h1 class="labpage__title" data-animate>Semester project</h1>
+                <p class="labpage__lede" data-animate>The semester project, built in phases on the instructor&#x27;s X11 framework. Phase 2 launches programs from a window with <code>fork</code> and <code>execve</code>, phase 3 shows live CPU usage, and phase 4 runs the traffic simulation with a statistics window in a separate process fed through IPC.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3600/lab15">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Phase 2 (<code>bbphase2.c</code>): pressing <strong>C</strong> forks and runs the same program again with <code>execve</code> to open a child window. <strong>A</strong> and <strong>B</strong> send it <code>SIGUSR1</code> (change color) and <code>SIGUSR2</code> (close), <strong>X</strong> starts or stops <code>xeyes</code>, and a <code>SIGCHLD</code> handler tracks which one ended.</li><li>Phase 3 (<code>bbphase3.c</code>): read <code>/proc/stat</code> and drew a smoothed usage bar for each core.</li><li>Phase 4 (<code>bbphase4.c</code>): pressing <strong>W</strong> forks and runs the program again with a marker argument, and the new process becomes the statistics window.</li><li>Sent the collision count and each car&#x27;s pass count through a message queue (<code>msgsnd</code> with <code>IPC_NOWAIT</code>), kept a summary in shared memory, and sent the parent window&#x27;s position through a non-blocking pipe so the stats window follows it.</li><li>Added a pause key (<strong>P</strong>) with an on-screen banner, and kept <code>phase4_bak.c</code> as a backup from before that change.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>X11</li><li>fork and execve</li><li>Message queues</li><li>Shared memory</li><li>Pipes</li><li>POSIX threads</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Processes and threads together</li><li>Shared memory</li><li>X11 graphics</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>X11/Xatom.h</code></td><td>X11 atoms (used to catch the window&#x27;s close button)</td></tr><tr><td><code>X11/Xlib.h</code></td><td>Xlib: opening windows, drawing and reading events (X11)</td></tr><tr><td><code>X11/extensions/Xdbe.h</code></td><td>X11 double-buffer extension for smooth animation</td></tr><tr><td><code>X11/keysym.h</code></td><td>X11 key names such as <code>XK_Escape</code></td></tr><tr><td><code>fcntl.h</code></td><td><code>open</code> and its flags</td></tr><tr><td><code>pthread.h</code></td><td>POSIX threads and mutexes</td></tr><tr><td><code>signal.h</code></td><td>Signals: <code>sigaction</code>, <code>kill</code> and signal sets</td></tr><tr><td><code>sys/file.h</code></td><td><code>open</code> and its flags</td></tr><tr><td><code>sys/ipc.h</code></td><td>System V IPC keys (<code>ftok</code>)</td></tr><tr><td><code>sys/msg.h</code></td><td>System V message queues</td></tr><tr><td><code>sys/shm.h</code></td><td>System V shared memory</td></tr><tr><td><code>sys/wait.h</code></td><td><code>wait</code> and <code>waitpid</code> for child processes</td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>math.h</code>, <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>, <code>time.h</code>.</p>
+                <p>Linked with <code>-lX11</code> (Xlib), <code>-lXext</code> (X11 extensions (double buffering)), <code>-lpthread</code> (POSIX threads).</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./bbphase4</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code> and POSIX threads. The graphical labs also need the X11 development headers (<code>sudo apt install libx11-dev libxext-dev</code> on Ubuntu). Every folder has a <code>Makefile</code>.</p>
+                <aside class="callout" aria-label="X11">
+                    <p class="callout__title">This program opens an X11 window</p>
+                    <p>It needs an X server on the computer you are looking at. On Linux that is already part of the
+                    desktop. On a Mac or a Windows PC, or when the program runs on another machine over SSH, see
+                    <a href="../../../Coursework/cmps3600/x11-setup.html">Setting up X11</a> for what to install and how to check it works.</p>
+                </aside>
+                <aside class="callout callout--note" aria-label="Build note"><p class="callout__title">Build note</p><p>Built with plain <code>make</code>, <code>bbphase4</code> stops right away with &quot;stack smashing detected&quot; on current Ubuntu: <code>render()</code> appends every car&#x27;s pass count to a 100-character string with <code>strcat</code>, which overflows it. Build with <code>-fno-stack-protector</code> added to the <code>gcc</code> line (as in the snapshot), or delete the unused <code>strcat(str, temp);</code> line in <code>render()</code>.</p></aside>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Phase 4: the statistics window opened with W shows the counts it gets through a message queue</figcaption>
+                    <p class="snap__note">The capture screen has no window manager, so the stats window sits over the corner of the main window. Built with -fno-stack-protector for the same render() buffer overrun as lab 9.</p>
+                    <a class="snap__shot" href="../../../Coursework/snapshots/cmps3600/lab15/01-phase4-stats.png"><img src="../../../Coursework/snapshots/cmps3600/lab15/01-phase4-stats.png" alt="Screenshot: Phase 4: the statistics window opened with W shows the counts it gets through a message queue" width="460" height="460" loading="lazy"></a>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/bbphase4.c"><code>bbphase4.c</code></a></td><td>Phase 4: the traffic simulation with a separate statistics window.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/phase4_bak.c"><code>phase4_bak.c</code></a></td><td>Backup of phase 4 from before the pause feature.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/bbphase3.c"><code>bbphase3.c</code></a></td><td>Phase 3: live CPU usage per core.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/bbphase2.c"><code>bbphase2.c</code></a></td><td>Phase 2: launching a child window and <code>xeyes</code> from the main window.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/myxwindow.c"><code>myxwindow.c</code></a></td><td>The lab 4 window program, kept as the starting point.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/Makefile"><code>Makefile</code></a></td><td>Builds all four programs.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/foo"><code>foo</code></a></td><td>Empty file used by <code>ftok</code> to build the IPC key.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/log"><code>log</code></a></td><td>Empty log file the program writes to.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3600/lab15/cleanipc.sh"><code>cleanipc.sh</code></a></td><td>Removes a user&#x27;s leftover semaphores, queues and shared memory.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3600"><a class="pager__prev" href="../../../Coursework/cmps3600/lab13/" rel="prev"><span>Previous</span>Lab 13</a><a class="pager__next" href="../../../Coursework/cmps3600/templates/" rel="next"><span>Next</span>Templates</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

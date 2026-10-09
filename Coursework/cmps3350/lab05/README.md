@@ -2,6 +2,8 @@
 
 **CMPS 3350 Software Engineering**, Lab 5
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3350/lab05/](https://christianrodriguez46.github.io/Coursework/cmps3350/lab05/)
+
 ## What it does
 
 - `testing.cpp` shows how one source file can build as a normal program or as a unit test by compiling with `-D UNIT_TEST`.

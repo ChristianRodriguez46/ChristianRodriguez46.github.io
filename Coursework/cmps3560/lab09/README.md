@@ -2,6 +2,8 @@
 
 **CMPS 3560 Artificial Intelligence**, Lab 9
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3560/lab09/](https://christianrodriguez46.github.io/Coursework/cmps3560/lab09/)
+
 ## What it does
 
 `lab9_nn.cpp` builds a neural network from scratch (4 inputs, a hidden layer of 3 neurons, 3 outputs) with Xavier weight initialization, trained by stochastic gradient descent, and trains it to classify the three Iris species. It reports the mean absolute deviation error and accuracy as it trains.

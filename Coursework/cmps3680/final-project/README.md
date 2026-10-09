@@ -2,6 +2,8 @@
 
 **CMPS 3680 Server-Side Web**, Final project
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3680/final-project/](https://christianrodriguez46.github.io/Coursework/cmps3680/final-project/)
+
 ## What it does
 
 The CMPS 2680 car detailing site rebuilt with a backend:

@@ -2,6 +2,8 @@
 
 **CMPS 3390 Application Development**, Lab 1
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3390/lab01/](https://christianrodriguez46.github.io/Coursework/cmps3390/lab01/)
+
 ## What it does
 
 A minimal C++ app (`app.cpp`) used to practice the Git and GitHub workflow: staging and committing, branching and merging, pushing and pulling, and forking with pull requests. The original lab README is kept as `README-original.md`.

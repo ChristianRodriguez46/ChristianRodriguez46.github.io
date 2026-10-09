@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4: Full-duplex chat with select() | CMPS 3620 | Christian Rodriguez</title>
+    <meta name="description" content="The lab 2 chat made full-duplex. Each side calls select() on both the keyboard and the socket, so either person can type at any time and incoming lines are printed as soon as they arrive.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3620">CMPS 3620 Computer Networks</a></li>
+                        <li><span aria-current="page">Lab 4</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3620 &middot; Lab 4</p>
+                <h1 class="labpage__title" data-animate>Full-duplex chat with select()</h1>
+                <p class="labpage__lede" data-animate>The lab 2 chat made full-duplex. Each side calls <code>select()</code> on both the keyboard and the socket, so either person can type at any time and incoming lines are printed as soon as they arrive.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab04">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab04/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Replaced the take-turns loop in both programs with a <code>select()</code> loop over <code>STDIN_FILENO</code> and the connected socket, rebuilding the <code>fd_set</code> with <code>FD_ZERO</code> and <code>FD_SET</code> each time.</li><li>Read and printed from the socket when <code>FD_ISSET</code> reports it ready, and sent a typed line when the keyboard is ready.</li><li>Kept the period as the way to end the chat from either side, and stripped newlines with <code>strcspn</code>.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>TCP sockets</li><li>select()</li><li>Full-duplex</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Full-duplex sockets</li><li><code>select()</code></li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>arpa/inet.h</code></td><td>Address conversion such as <code>htons</code> and <code>inet_ntoa</code></td></tr><tr><td><code>netdb.h</code></td><td>Host name lookup (<code>gethostbyname</code>)</td></tr><tr><td><code>sys/select.h</code></td><td><code>select()</code> for waiting on several file descriptors</td></tr><tr><td><code>sys/socket.h</code></td><td>Sockets</td></tr><tr><td><code>sys/time.h</code></td><td>Time values for timeouts and timing</td></tr><tr><td><code>sys/types.h</code></td><td>System data types such as <code>pid_t</code></td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./vcrec</span>
+<span class="cmd">./vcsend localhost &lt;port&gt;</span>  <span class="cmt"># in a second terminal</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code>. Write-ups in <code>.tex</code>/<code>.ltx</code> build with any LaTeX distribution (<code>pdflatex</code>).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Full-duplex chat: both sides send whenever they like</figcaption>
+                    <p class="snap__note">vcrec runs in the background, its lines are fed in on a timer, and its output is saved to server.log. It ends the chat by sending a period. The listen address it prints (any interface) is masked.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">(sleep 8; echo &#x27;Hi, this is vcrec&#x27;; sleep 0.5; echo &#x27;Both sides can type at any time&#x27;; sleep 1.5; echo .) | ./vcrec &gt; server.log &amp; sleep 1.5; ./vcsend 127.0.0.1 $(sed -n &#x27;s/.*port number: //p&#x27; server.log); wait</span>
+
+sender: hostname has been resolved.
+sender: Attempting to connect to server.
+sender: Waiting for handshake from vcrec...
+sender: Handshake received. Entering data loop.
+
+Enter a line of characters at the prompt.
+To exit the program, type just a period and hit enter.
+enter line&gt; <span class="term__in">Hello from vcsend</span>
+enter line&gt; <span class="term__in">A second line before any reply</span>
+enter line&gt; receiver--&gt; Hi, this is vcrec
+
+enter line&gt; receiver--&gt; Both sides can type at any time
+
+enter line&gt; sender: receiver requested termination - exiting.</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of server.log">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>server.log</b></div>
+                        <pre class="term__body" tabindex="0">
+receiver: process id: 8027 
+receiver: IP address: xxx
+receiver: port number: 43285
+
+receiver: Valid connection received.
+receiver: Sending handshake.
+receiver: Waiting for client....
+enter line&gt;         received--&gt;Hello from vcsend 
+enter line&gt;         received--&gt;A second line before any reply 
+enter line&gt; enter line&gt; enter line&gt; receiver: ending session also and exiting. </pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab04/vcrec.c"><code>vcrec.c</code></a></td><td>Server: full-duplex chat with <code>select()</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab04/vcsend.c"><code>vcsend.c</code></a></td><td>Client: full-duplex chat with <code>select()</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab04/Makefile"><code>Makefile</code></a></td><td>Builds <code>vcrec</code> and <code>vcsend</code> with debug output on.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3620"><a class="pager__prev" href="../../../Coursework/cmps3620/lab03/" rel="prev"><span>Previous</span>Lab 3</a><a class="pager__next" href="../../../Coursework/cmps3620/lab05/" rel="next"><span>Next</span>Lab 5</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

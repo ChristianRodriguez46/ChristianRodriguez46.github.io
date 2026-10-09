@@ -2,6 +2,8 @@
 
 **CMPS 2010 Programming Fundamentals**, Lab 5
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2010/lab05/](https://christianrodriguez46.github.io/Coursework/cmps2010/lab05/)
+
 ## What it does
 
 - `lab5-1.cpp` reads a text file one character at a time, converts it to uppercase, drops the vowels, replaces spaces with underscores, and writes the result to a second file. `input.txt` and `output.txt` are a sample run.

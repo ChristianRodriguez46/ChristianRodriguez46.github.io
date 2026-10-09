@@ -2,6 +2,8 @@
 
 **CMPS 3600 Operating Systems**, Templates
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3600/templates/](https://christianrodriguez46.github.io/Coursework/cmps3600/templates/)
+
 ## What it does
 
 `sample.c` and `baseProg.cpp` are my blank starting points for new C and C++ programs.

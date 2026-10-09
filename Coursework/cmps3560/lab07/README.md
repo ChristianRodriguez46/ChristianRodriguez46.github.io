@@ -2,6 +2,8 @@
 
 **CMPS 3560 Artificial Intelligence**, Lab 7
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3560/lab07/](https://christianrodriguez46.github.io/Coursework/cmps3560/lab07/)
+
 ## What it does
 
 `lab7.py` extends lab 6 into a full Mamdani fuzzy inference system: fuzzify the inputs, apply the rule base, aggregate the outputs, and defuzzify to a single recommendation.

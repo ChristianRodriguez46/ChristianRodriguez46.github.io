@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6: Arrays from files and random names | CMPS 2010 | Christian Rodriguez</title>
+    <meta name="description" content="Arrays filled from a file and from random picks. lab6-1.cpp reads up to 100 integers from numbers.txt and prints them in reverse, and extralab6.cpp adds their sum and average. lab6-2.cpp prints random first and last names, and Fall25/ holds 2025 rewrites of both programs with a Makefile.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps2010">CMPS 2010 Programming Fundamentals</a></li>
+                        <li><span aria-current="page">Lab 6</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 2010 &middot; Lab 6</p>
+                <h1 class="labpage__title" data-animate>Arrays from files and random names</h1>
+                <p class="labpage__lede" data-animate>Arrays filled from a file and from random picks. <code>lab6-1.cpp</code> reads up to 100 integers from <code>numbers.txt</code> and prints them in reverse, and <code>extralab6.cpp</code> adds their sum and average. <code>lab6-2.cpp</code> prints random first and last names, and <code>Fall25/</code> holds 2025 rewrites of both programs with a <code>Makefile</code>.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps2010/lab06">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab06/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Read the numbers into an <code>int</code> array with <code>while (inputFile &gt;&gt; array[count])</code> and printed them with a loop that counts down from <code>count - 1</code>.</li><li>Added the sum and average in <code>extralab6.cpp</code>.</li><li>Wrote <code>genFirstName</code> and <code>genLastName</code>, which pick from ten-name arrays with <code>rand() % 10</code>, and took the name count from <code>argv[1]</code> with <code>atoi</code> (10 when no argument is given).</li><li>Rewrote both programs in fall 2025 with a <code>Makefile</code> that builds <code>p1</code> and <code>p2</code> with <code>-Wall</code>.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>Arrays</li><li>File input</li><li>Command-line arguments</li><li>rand</li><li>Make</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Arrays</li><li>Reading numbers from a file</li><li><code>argc</code>/<code>argv</code></li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <p>C++ standard library: <code>cstdio</code>, <code>cstdlib</code>, <code>fstream</code>, <code>iostream</code>, <code>string</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -o lab6-1 lab6-1.cpp</span>
+<span class="cmd">./lab6-1 numbers.txt</span>
+<span class="cmd"></span>
+<span class="cmd">g++ -o lab6-2 lab6-2.cpp</span>
+<span class="cmd">./lab6-2 5</span>
+<span class="cmd"></span>
+<span class="cmd"></span>  <span class="cmt"># or, for the fall 2025 versions</span>
+<span class="cmd">cd Fall25 &amp;&amp; make</span>
+<span class="cmd">./p1 numbers.txt</span>
+<span class="cmd">./p2 5</span></code></pre>
+                <p><strong>Requires:</strong> A C++ compiler such as <code>g++</code> (Linux, macOS, or WSL on Windows).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Printing numbers.txt in reverse order</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./lab6-1 numbers.txt</span>
+243
+324
+-9
+-45
+-23
+0
+12
+6574
+290
+56
+-37
+104
+91
+72</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">The extra-credit version with a sum and average</figcaption>
+                    
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./extralab6 numbers.txt</span>
+243
+324
+-9
+-45
+-23
+0
+12
+6574
+290
+56
+-37
+104
+91
+72
+SUM: 7652
+AVERAGE: 546.571</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Fall 2025 rewrite: random names, asked for 5</figcaption>
+                    <p class="snap__note">Names are random, so each run is different. The loop runs to count inclusive, so asking for 5 prints six names.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./p2 5</span>
+Chris Rodriguez
+Jerry Stokes
+Jackie Stokes
+Jerry Rosario
+Cartmen Stuart
+Jerry Rosario</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab06/lab6-1.cpp"><code>lab6-1.cpp</code></a></td><td>Prints the numbers from a file in reverse order.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab06/extralab6.cpp"><code>extralab6.cpp</code></a></td><td>Extra credit: reverse order plus sum and average.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab06/lab6-2.cpp"><code>lab6-2.cpp</code></a></td><td>Random name generator.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab06/numbers.txt"><code>numbers.txt</code></a></td><td>Sample numbers for <code>lab6-1</code> and <code>extralab6</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab06/Fall25/Makefile"><code>Fall25/Makefile</code></a></td><td>Builds the 2025 versions as <code>p1</code> and <code>p2</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab06/Fall25/lab6-1.cpp"><code>Fall25/lab6-1.cpp</code></a></td><td>2025 rewrite of the reverse-order program.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab06/Fall25/lab6-2.cpp"><code>Fall25/lab6-2.cpp</code></a></td><td>2025 rewrite of the name generator with new name lists.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps2010/lab06/Fall25/numbers.txt"><code>Fall25/numbers.txt</code></a></td><td>Copy of the sample numbers.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 2010"><a class="pager__prev" href="../../../Coursework/cmps2010/lab05/" rel="prev"><span>Previous</span>Lab 5</a><a class="pager__next" href="../../../Coursework/cmps2010/lab08/" rel="next"><span>Next</span>Lab 8</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

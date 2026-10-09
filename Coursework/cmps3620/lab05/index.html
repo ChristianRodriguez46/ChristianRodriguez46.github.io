@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5: Multi-client server | CMPS 3620 | Christian Rodriguez</title>
+    <meta name="description" content="A server that handles several clients at once. simple_daemon.c accepts connections in a loop and forks a child for each one; the child runs simple_shell.c and passes data between it and the socket through two pipes. The write-up explains how it works.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3620">CMPS 3620 Computer Networks</a></li>
+                        <li><span aria-current="page">Lab 5</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3620 &middot; Lab 5</p>
+                <h1 class="labpage__title" data-animate>Multi-client server</h1>
+                <p class="labpage__lede" data-animate>A server that handles several clients at once. <code>simple_daemon.c</code> accepts connections in a loop and forks a child for each one; the child runs <code>simple_shell.c</code> and passes data between it and the socket through two pipes. The write-up explains how it works.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3620/lab05">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab05/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Built the course&#x27;s daemon and shell and connected to them from several terminals at once.</li><li>Answered the write-up in <code>Lab write up.md</code>: why each client gets its own process and pipes, why Ctrl-C in a telnet session does not end it, and which signals shut the daemon down cleanly.</li><li>Traced how the server notices <code>quit</code>: the shell exits, its pipe closes, and <code>read</code> returns 0.</li><li>Related the design to how <code>sshd</code> forks a process for every login.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C</li><li>Sockets</li><li>fork</li><li>Pipes</li><li>Signals</li><li>Concurrent servers</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Concurrent servers with <code>fork</code></li><li>Pipes</li><li>Daemon signal handling</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>arpa/inet.h</code></td><td>Address conversion such as <code>htons</code> and <code>inet_ntoa</code></td></tr><tr><td><code>signal.h</code></td><td>Signals: <code>sigaction</code>, <code>kill</code> and signal sets</td></tr><tr><td><code>sys/select.h</code></td><td><code>select()</code> for waiting on several file descriptors</td></tr><tr><td><code>sys/socket.h</code></td><td>Sockets</td></tr><tr><td><code>sys/time.h</code></td><td>Time values for timeouts and timing</td></tr><tr><td><code>sys/types.h</code></td><td>System data types such as <code>pid_t</code></td></tr><tr><td><code>sys/wait.h</code></td><td><code>wait</code> and <code>waitpid</code> for child processes</td></tr><tr><td><code>unistd.h</code></td><td>POSIX calls such as <code>read</code>, <code>write</code>, <code>fork</code>, <code>pipe</code> and <code>sleep</code></td></tr></tbody></table></div>
+                <p>C standard library: <code>errno.h</code>, <code>stdio.h</code>, <code>stdlib.h</code>, <code>string.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">make</span>
+<span class="cmd">./s_daemon</span>  <span class="cmt"># prints a port number</span>
+<span class="cmd">telnet localhost &lt;port&gt;</span>  <span class="cmt"># in other terminals</span></code></pre>
+                <p><strong>Requires:</strong> Linux with <code>gcc</code>. Write-ups in <code>.tex</code>/<code>.ltx</code> build with any LaTeX distribution (<code>pdflatex</code>).</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">A client connects to s_daemon and talks to the simple shell it starts</figcaption>
+                    <p class="snap__note">nc stands in for telnet, which is not installed on the capture machine. After quit, Ctrl-D closes nc and kill stops the daemon, which shuts down through its SIGTERM handler. The listen address it prints (any interface) is masked.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./s_daemon &gt; daemon.log &amp; D=$!; sleep 1.5; nc -q 1 127.0.0.1 $(sed -n &#x27;s/.*port number: //p&#x27; daemon.log); kill $D; wait</span>
+child: Preparing shell for communication...
+
+s_sh&gt; <span class="term__in">echo hello over TCP</span>
+hello over TCP
+
+
+s_sh&gt; <span class="term__in">ls</span>
+Directory listing disabled for security reasons.
+
+s_sh&gt; <span class="term__in">who</span>
+who command not found.
+
+s_sh&gt; <span class="term__in">quit</span>
+Goodbye!</pre>
+                    </div>
+                    <div class="term term--file" role="group" aria-label="Contents of daemon.log">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>daemon.log</b></div>
+                        <pre class="term__body" tabindex="0">
+daemon: process id: 8102 
+daemon: IP address: xxx
+daemon: port number: 43739
+
+daemon: waiting for connections.
+
+daemon: Valid connection received.
+daemon: Searching for free child slot...
+daemon: spawned child 8106.
+
+daemon: waiting for connections.
+child: simple shell is spawned, communicating with client.
+child: simple shell has exited.
+child: closing pipes and socket
+Process 8106 is exiting.
+daemon: 8106 child exited, zeroing slot for child.
+daemon: Termination signal received...
+daemon: Telling each child process to terminate.
+daemon: Closing listening socket and exiting.</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>My work</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab05/Makefile"><code>Makefile</code></a></td><td>Builds <code>s_daemon</code> and <code>s_sh</code>.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab05/Lab%20write%20up.md"><code>Lab write up.md</code></a></td><td>The write-up.</td></tr></tbody></table></div>
+                <div class="labsec__table" tabindex="0"><table><caption>Provided by the instructor or the course</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab05/simple_daemon.c"><code>simple_daemon.c</code></a></td><td>The course&#x27;s multi-client server: one forked child and two pipes per client.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3620/lab05/simple_shell.c"><code>simple_shell.c</code></a></td><td>The course&#x27;s minimal shell (<code>echo</code>, a disabled <code>ls</code>, and <code>quit</code>) that each child runs.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3620"><a class="pager__prev" href="../../../Coursework/cmps3620/lab04/" rel="prev"><span>Previous</span>Lab 4</a><a class="pager__next" href="../../../Coursework/cmps3620/lab06/" rel="next"><span>Next</span>Lab 6</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

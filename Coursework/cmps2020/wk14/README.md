@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 14
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk14/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk14/)
+
 ## What it does
 
 - `hw03_2020TH_ChrRod.cpp` (homework 3) is a binary search tree class that adds, finds, deletes and prints values in order, starting from 25 sample values and then asking you for more.

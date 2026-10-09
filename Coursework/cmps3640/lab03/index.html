@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 3: Computing pi in parallel | CMPS 3640 | Christian Rodriguez</title>
+    <meta name="description" content="Approximates pi by integrating 4/(1+x²) from 0 to 1 with the midpoint rule, first sequentially and then in two OpenMP versions that split the steps among threads in different ways. Each version prints its error against pi and the time taken.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
+    <script>document.documentElement.classList.add('js');</script>
+    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../../../style/main.css">
+    <link rel="stylesheet" href="../../../style/coursework.css">
+    <meta name="generator" content="build_lab_pages.py">
+</head>
+
+<body class="labpage-body">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            </a>
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+            <ul class="globalnav__menu" id="nav-menu" role="list">
+                <li><a href="../../../index.html">Home</a></li>
+                <li><a href="../../../index.html#about">About</a></li>
+                <li><a href="../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+        <div class="labpage">
+            <header class="labpage__hero">
+                <nav class="crumbs" aria-label="Breadcrumb">
+                    <ol role="list">
+                        <li><a href="../../../Coursework/">Coursework</a></li>
+                        <li><a href="../../../Coursework/#cmps3640">CMPS 3640 Distributed and Parallel Computation</a></li>
+                        <li><span aria-current="page">Lab 3</span></li>
+                    </ol>
+                </nav>
+                <p class="labpage__eyebrow">CMPS 3640 &middot; Lab 3</p>
+                <h1 class="labpage__title" data-animate>Computing pi in parallel</h1>
+                <p class="labpage__lede" data-animate>Approximates pi by integrating 4/(1+x²) from 0 to 1 with the midpoint rule, first sequentially and then in two OpenMP versions that split the steps among threads in different ways. Each version prints its error against pi and the time taken.</p>
+                <div class="labpage__actions" data-animate><a class="button" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Coursework/cmps3640/lab03">View code on GitHub</a><a class="link-chevron" href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab03/README.md">README</a></div>
+            </header>
+
+            <section class="labsec" id="did" aria-labelledby="did-title">
+                <h2 class="labsec__title" id="did-title">What I did</h2>
+                <ul><li>Started from the sequential <code>pi.cpp</code> (its header credits Tim Mattson), which uses 1,000 steps and compares against 3.14159.</li><li>Wrote <code>pi_4A.cpp</code>, where thread <code>id</code> takes steps <code>id</code>, <code>id + NT</code>, <code>id + 2·NT</code> and so on, and <code>pi_4B.cpp</code>, where each thread takes one block from <code>id * N / NT</code> to <code>(id + 1) * N / NT</code> and the last thread also takes any remainder.</li><li>Kept one partial sum per thread in a shared <code>cumsum</code> array, recorded the real team size from thread 0, and added the partial sums after the parallel region.</li><li>Used 1,000,000 steps and compared against <code>atan(1) * 4</code> in both parallel versions.</li></ul>
+            </section>
+            <section class="labsec" id="used" aria-labelledby="used-title">
+                <h2 class="labsec__title" id="used-title">What I used</h2>
+                <ul class="chips" role="list" aria-label="Languages, tools and concepts"><li>C++</li><li>OpenMP</li><li>Work decomposition</li><li>Partial sums</li><li>Numerical integration</li></ul>
+                <p class="labsec__lead">Concepts:</p>
+                <ul><li>Work decomposition</li><li>Partial sums</li><li>Numerical integration</li></ul>
+            </section>
+            <section class="labsec" id="libraries" aria-labelledby="libraries-title">
+                <h2 class="labsec__title" id="libraries-title">Libraries</h2>
+                <div class="labsec__table" tabindex="0"><table><thead><tr><th scope="col">Header or module</th><th scope="col">What it is for</th></tr></thead><tbody><tr><td><code>omp.h</code></td><td>OpenMP parallel loops and timers</td></tr></tbody></table></div>
+                <p>C standard library: <code>math.h</code>, <code>stdio.h</code>.</p>
+            </section>
+            <section class="labsec" id="run" aria-labelledby="run-title">
+                <h2 class="labsec__title" id="run-title">How to build and run</h2>
+                <p>From the folder with the code:</p>
+                <pre class="shell" tabindex="0"><code><span class="cmd">g++ -fopenmp -O2 -o pi pi.cpp &amp;&amp; ./pi</span>
+<span class="cmd">g++ -fopenmp -O2 -o 4a pi_4A.cpp &amp;&amp; ./4a</span>
+<span class="cmd">g++ -fopenmp -O2 -o 4b pi_4B.cpp &amp;&amp; ./4b</span></code></pre>
+                <p><strong>Requires:</strong> <code>g++</code> with OpenMP (<code>-fopenmp</code>) and POSIX threads (<code>-pthread</code>), standard on Linux.</p>
+            </section>
+            <section class="labsec" id="snapshots" aria-labelledby="snapshots-title">
+                <h2 class="labsec__title" id="snapshots-title">Snapshots</h2>
+                <p class="labsec__lead">Real runs of the program, captured in a terminal or on a virtual screen.</p>
+                <figure class="snap">
+                    <figcaption class="snap__title">Sequential version with 1,000 steps</figcaption>
+                    <p class="snap__note">One thread. The number printed is the error against PI = 3.14159, not pi itself.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">./pi</span>
+
+ pi with 1000 steps is 0.000003 in 0.000002 seconds</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Round-robin version (pi_4A) with 1, 2 and 4 threads</figcaption>
+                    <p class="snap__note">1, 2 and 4 threads (OMP_NUM_THREADS) on a 2-core machine, 1,000,000 steps.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">for t in 1 2 4; do echo &quot;OMP_NUM_THREADS=$t&quot;; OMP_NUM_THREADS=$t ./4a; done</span>
+OMP_NUM_THREADS=1
+
+ pi with 1000000 steps has error 0.000000 in 0.001449 seconds
+ OMP_NUM_THREADS=2
+
+ pi with 1000000 steps has error 0.000000 in 0.000808 seconds
+ OMP_NUM_THREADS=4
+
+ pi with 1000000 steps has error 0.000000 in 0.001229 seconds</pre>
+                    </div>
+                </figure>
+                <figure class="snap">
+                    <figcaption class="snap__title">Block version (pi_4B) with 1, 2 and 4 threads</figcaption>
+                    <p class="snap__note">1, 2 and 4 threads (OMP_NUM_THREADS) on a 2-core machine, 1,000,000 steps.</p>
+                    <div class="term" role="group" aria-label="Terminal output">
+                        <div class="term__bar" aria-hidden="true"><span></span><span></span><span></span><b>Terminal</b></div>
+                        <pre class="term__body" tabindex="0"><span class="term__prompt">for t in 1 2 4; do echo &quot;OMP_NUM_THREADS=$t&quot;; OMP_NUM_THREADS=$t ./4b; done</span>
+OMP_NUM_THREADS=1
+
+ pi with 1000000 steps has error 0.000000 in 0.001483 seconds
+ OMP_NUM_THREADS=2
+
+ pi with 1000000 steps has error 0.000000 in 0.000863 seconds
+ OMP_NUM_THREADS=4
+
+ pi with 1000000 steps has error 0.000000 in 0.001247 seconds</pre>
+                    </div>
+                </figure>
+            </section>
+            <section class="labsec" id="files" aria-labelledby="files-title">
+                <h2 class="labsec__title" id="files-title">Files</h2>
+                <div class="labsec__table" tabindex="0"><table><caption>Files</caption><thead><tr><th scope="col">File</th><th scope="col">What it is</th></tr></thead><tbody><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab03/pi.cpp"><code>pi.cpp</code></a></td><td>Sequential version with 1,000 steps.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab03/pi_4A.cpp"><code>pi_4A.cpp</code></a></td><td>Parallel version with round-robin steps.</td></tr><tr><td><a href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Coursework/cmps3640/lab03/pi_4B.cpp"><code>pi_4B.cpp</code></a></td><td>Parallel version with one contiguous block per thread.</td></tr></tbody></table></div>
+            </section>
+            <nav class="pager" aria-label="Other labs in CMPS 3640"><a class="pager__prev" href="../../../Coursework/cmps3640/lab02/" rel="prev"><span>Previous</span>Lab 2</a><a class="pager__next" href="../../../Coursework/cmps3640/lab07/" rel="next"><span>Next</span>Lab 7</a></nav>
+        </div>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- anime.js powers the animations; main.js works without it -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" defer></script>
+    <script src="../../../js/main.js" defer></script>
+</body>
+
+</html>

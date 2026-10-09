@@ -2,6 +2,8 @@
 
 **CMPS 3560 Artificial Intelligence**, Lab 8
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3560/lab08/](https://christianrodriguez46.github.io/Coursework/cmps3560/lab08/)
+
 ## What it does
 
 `perceptron.cpp` trains a perceptron on the normalized Iris data set, shuffling the samples each epoch and keeping the best weights seen so far (the *pocket* algorithm). It prints the weights and accuracy as training progresses.

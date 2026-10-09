@@ -2,6 +2,8 @@
 
 **CMPS 3120 Algorithm Analysis**, Lab 6
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps3120/lab06/](https://christianrodriguez46.github.io/Coursework/cmps3120/lab06/)
+
 ## What it does
 
 Generates random gaps between N points and uses a min-heap to greedily add the cheapest connections until K are chosen.

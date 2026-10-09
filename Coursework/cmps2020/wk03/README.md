@@ -2,6 +2,8 @@
 
 **CMPS 2020 Programming II: Data Structures**, Week 3
 
+Read this lab with snapshots and notes on every file: [https://christianrodriguez46.github.io/Coursework/cmps2020/wk03/](https://christianrodriguez46.github.io/Coursework/cmps2020/wk03/)
+
 ## What it does
 
 - `lab02_2020Th_ChrRod.cpp` (lab 2) is a one-line board game. Each step is a struct marked as a plain tile, coins, oil, glue or a bandit; you choose to step or hop and the program reacts to whatever you land on.
