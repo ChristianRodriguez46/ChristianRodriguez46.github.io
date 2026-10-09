@@ -33,7 +33,8 @@
    - The hero stays blank for 2.5 seconds, then pops in: this file
      failed before the intro ran. The console will show the error.
    - The menu button does nothing: the button needs id="nav-toggle" and
-     the menu list needs id="nav-menu".
+     the menu (the links and the CV button) needs id="nav-menu". The
+     navigation markup is the same on every page.
    - The course bar never highlights: every course <section> needs an id
      that matches a course bar link, for example id="cmps2680" for
      href="#cmps2680".
@@ -75,11 +76,12 @@
 
 
     /* ---------- 1. Mobile menu ---------- */
-    // The button (#nav-toggle) controls the list (#nav-menu). On screens
-    // narrower than 834px the CSS turns the list into a full-screen panel
-    // that is shown while it has the class "is-open".
+    // The button (#nav-toggle) controls the menu (#nav-menu: the links and
+    // the CV button). On screens narrower than 834px the CSS turns the menu
+    // into a full-screen panel that is shown while it has the class "is-open".
     var toggle = document.getElementById('nav-toggle');
     var menu = document.getElementById('nav-menu');
+    var menuItems = menu ? menu.querySelectorAll('li, .globalnav__cv') : [];
 
     function setMenuOpen(open) {
         toggle.setAttribute('aria-expanded', String(open));
@@ -87,11 +89,12 @@
         menu.classList.toggle('is-open', open);
         document.body.classList.toggle('menu-open', open); // stops the page behind from scrolling
 
-        // Slide the links down one after another as the panel opens.
+        // Slide the links (and the CV button) down one after another as
+        // the panel opens.
         if (open && canAnimate) {
-            anime.remove(menu.querySelectorAll('li'));
+            anime.remove(menuItems);
             anime({
-                targets: menu.querySelectorAll('li'),
+                targets: menuItems,
                 opacity: [0, 1],
                 translateY: [-10, 0],
                 delay: anime.stagger(45),
@@ -127,7 +130,7 @@
                 setMenuOpen(false);
                 // Clear the inline styles left by the slide-in animation.
                 if (canAnimate) {
-                    anime.set(menu.querySelectorAll('li'), { opacity: 1, translateY: 0 });
+                    anime.set(menuItems, { opacity: 1, translateY: 0 });
                 }
             }
         });

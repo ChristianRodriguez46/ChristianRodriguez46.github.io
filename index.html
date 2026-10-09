@@ -13,8 +13,9 @@
          (shown anyway after 2.5 seconds if the scripts fail) -->
     <script>document.documentElement.classList.add('js');</script>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Inter: used on devices without Apple's San Francisco font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,49 +24,18 @@
 
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="style/main.css">
-    <style>
-        /* CV (PDF) link: an outlined pill so it stands out in the nav bar */
-        .globalnav .globalnav__menu a.globalnav__cv {
-            padding: 4px 12px;
-            margin: 4px 0;
-            font-weight: 600;
-            color: var(--link);
-            border: 1px solid currentColor;
-            border-radius: var(--radius-pill);
-            opacity: 1;
-            transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
-
-            &:hover {
-                color: var(--on-blue);
-                background: var(--blue);
-                border-color: var(--blue);
-            }
-
-            /* In the phone menu it is a full-size row like the other links */
-            @media (max-width: 833px) {
-                margin: 0;
-                padding: 14px 0;
-                border: 0;
-                border-radius: 0;
-
-                &:hover {
-                    color: var(--link);
-                    background: none;
-                }
-            }
-        }
-    </style>
 </head>
 
 <body>
     <!-- Lets keyboard users jump past the navigation -->
     <a class="skip-link" href="#main">Skip to main content</a>
 
-    <!-- ========= NAVIGATION ========= -->
+    <!-- ========= NAVIGATION (same on every page; see section 4 of style/main.css) ========= -->
     <header class="globalnav" role="banner">
         <nav class="globalnav__inner" role="navigation" aria-label="Primary">
-            <a class="globalnav__logo" href="#home" aria-label="Christian Rodriguez, home">
-                <img src="images/logo.png" alt="" width="28" height="28">
+            <a class="globalnav__brand" href="#home" aria-label="Christian Rodriguez, home">
+                <img class="globalnav__logo" src="images/logo.svg" alt="" width="30" height="30">
+                <span class="globalnav__name" aria-hidden="true">Christian Rodriguez</span>
             </a>
 
             <!-- Menu button: only visible on small screens (main.js) -->
@@ -75,16 +45,18 @@
                 <span class="globalnav__toggle-bar" aria-hidden="true"></span>
             </button>
 
-            <ul class="globalnav__menu" id="nav-menu" role="list">
-                <li><a href="#home" aria-current="page">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="./Projects/Hangman/">Projects</a></li>
-                <li><a href="./Coursework/">Coursework</a></li>
+            <div class="globalnav__menu" id="nav-menu">
+                <ul class="globalnav__links" role="list">
+                    <li><a href="#home" aria-current="page">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="Projects/Hangman/">Projects</a></li>
+                    <li><a href="Coursework/">Coursework</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
                 <!-- CV: opens the PDF in a new tab, where its links are clickable -->
-                <li><a class="globalnav__cv" href="./resume/Christian_Rodriguez_Resume.pdf" target="_blank"
-                        rel="noopener" aria-label="CV, PDF, opens in a new tab">CV (PDF)</a></li>
-            </ul>
+                <a class="globalnav__cv" href="resume/Christian_Rodriguez_Resume.pdf" target="_blank" rel="noopener"
+                    aria-label="CV, PDF, opens in a new tab">CV (PDF)</a>
+            </div>
         </nav>
     </header>
 
@@ -92,7 +64,7 @@
 
         <!-- ========= HERO ========= -->
         <section id="home" class="hero" role="region" aria-labelledby="hero-title">
-            <img class="hero__icon" src="images/logo.png" alt="" width="128" height="128" data-animate="icon">
+            <img class="hero__icon" src="images/logo.svg" alt="" width="128" height="128" data-animate="icon">
             <h1 class="hero__title" id="hero-title" data-animate>
                 Hello, I'm <span class="hero__name">Christian Rodriguez</span>
             </h1>
@@ -176,11 +148,14 @@
             <p class="band__body">
                 Feel free to reach out by email at
                 <a href="mailto:crodriguez4643@gmail.com">crodriguez4643@gmail.com</a>.
-                You can also connect on GitHub.
+                You can also connect on GitHub or download my CV.
             </p>
             <div class="band__actions">
                 <a class="button" href="mailto:crodriguez4643@gmail.com">Send an email</a>
                 <a class="button button--secondary" href="https://github.com/ChristianRodriguez46">Open GitHub</a>
+                <!-- "download" saves the PDF under this file name instead of opening it -->
+                <a class="button button--secondary" href="resume/Christian_Rodriguez_Resume.pdf"
+                    download="Christian_Rodriguez_CV.pdf">Download CV</a>
             </div>
         </section>
     </main>
@@ -188,12 +163,13 @@
     <!-- ========= FOOTER ========= -->
     <footer class="footer" role="contentinfo">
         <div class="footer__inner">
-            <p>&copy; 2026 Christian Rodriguez. All rights reserved.</p>
+            <p>&copy; 2026 Christian Rodriguez.</p>
             <nav aria-label="Footer">
                 <ul class="footer__links" role="list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="./Projects/Hangman/">Projects</a></li>
-                    <li><a href="./Coursework/">Coursework</a></li>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
+                    <li><a href="Projects/Hangman/">Projects</a></li>
+                    <li><a href="Coursework/">Coursework</a></li>
+                    <li><a href="resume/Christian_Rodriguez_Resume.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
                     <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
                     <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
                 </ul>

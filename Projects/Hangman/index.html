@@ -5,11 +5,60 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Hangman Game</title>
+        <link rel="icon" type="image/svg+xml" href="../../images/logo.svg">
+        <link rel="icon" type="image/png" sizes="512x512" href="../../images/logo.png">
+        <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+        <!-- main.css is loaded for the site's navigation bar, then the game's own style.css.
+             The rules below undo main.css's page-wide settings so the game looks as before. -->
+        <link rel="stylesheet" href="../../style/main.css">
         <link rel="stylesheet" href="./style.css">
+        <style>
+            :root { color-scheme: light; }
+            body {
+                padding-top: calc(var(--nav-h) + 1rem);
+                min-height: 0;
+                font-size: 16px;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #000;
+            }
+        </style>
     </head>
 
     <body>
-        <div class="game-container">
+    <!-- Lets keyboard users jump past the navigation -->
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ========= NAVIGATION (same on every page; see section 4 of style/main.css) ========= -->
+    <header class="globalnav globalnav--dark" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__brand" href="../../index.html" aria-label="Christian Rodriguez, home">
+                <img class="globalnav__logo" src="../../images/logo.svg" alt="" width="30" height="30">
+                <span class="globalnav__name" aria-hidden="true">Christian Rodriguez</span>
+            </a>
+
+            <!-- Menu button: only visible on small screens (main.js) -->
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+
+            <div class="globalnav__menu" id="nav-menu">
+                <ul class="globalnav__links" role="list">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../index.html#about">About</a></li>
+                    <li><a href="../../Projects/Hangman/" aria-current="page">Projects</a></li>
+                    <li><a href="../../Coursework/">Coursework</a></li>
+                    <li><a href="../../index.html#contact">Contact</a></li>
+                </ul>
+                <!-- CV: opens the PDF in a new tab, where its links are clickable -->
+                <a class="globalnav__cv" href="../../resume/Christian_Rodriguez_Resume.pdf" target="_blank" rel="noopener"
+                    aria-label="CV, PDF, opens in a new tab">CV (PDF)</a>
+            </div>
+        </nav>
+    </header>
+        <div class="game-container" id="main">
             <div class="game-inner">
                 <!-- Alphabet Buttons -->
                 <div class="letters"></div>
@@ -124,6 +173,8 @@
                 if ([...hintSlots.children].every(s => s.textContent))
                     winOverlay.classList.add('active');
             });
-        </script>          
+        </script>
+        <!-- Site script: opens and closes the navigation menu on phones -->
+        <script src="../../js/main.js" defer></script>
     </body>
 </html>

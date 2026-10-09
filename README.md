@@ -7,7 +7,7 @@ My portfolio site, served by GitHub Pages at
 index.html          home page
 style/              site styles (main.css, coursework.css)
 js/                 site scripts
-images/             logo and site images
+images/             logo (logo.svg, plus PNG copies for older browsers and phones)
 Projects/           personal projects (Hangman)
 Coursework/         labs and projects by course, with an index page
 .nojekyll           tells GitHub Pages to serve every file as-is
@@ -21,6 +21,8 @@ does not run PHP.
 - Plain HTML, CSS and JavaScript, no build step. Edit a file, commit, push.
 - `style/main.css` holds the design tokens (colors, type, sizes) at the top, with a dark theme
   that follows the visitor's system setting. Both stylesheets use native CSS nesting.
+- Every page has the same navigation bar (logo, links and a CV (PDF) button). Its look is in section 4
+  of `style/main.css`.
 - `js/main.js` runs the mobile menu, the course bar highlight and the animations. Animations use
   [anime.js 3.2.2](https://animejs.com/) from cdnjs; the site works without it, and animations are
   skipped when the visitor's system has "Reduce motion" turned on.

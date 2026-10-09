@@ -10,7 +10,9 @@
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <!-- Lets main.css hide the intro until it animates (shown anyway after 2.5 seconds) -->
     <script>document.documentElement.classList.add('js');</script>
-    <link rel="icon" type="image/png" href="../../../images/logo.png">
+    <link rel="icon" type="image/svg+xml" href="../../../images/logo.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="../../../images/logo.png">
+    <link rel="apple-touch-icon" href="../../../images/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -20,25 +22,36 @@
 </head>
 
 <body class="labpage-body">
+    <!-- Lets keyboard users jump past the navigation -->
     <a class="skip-link" href="#main">Skip to main content</a>
 
+    <!-- ========= NAVIGATION (same on every page; see section 4 of style/main.css) ========= -->
     <header class="globalnav" role="banner">
         <nav class="globalnav__inner" role="navigation" aria-label="Primary">
-            <a class="globalnav__logo" href="../../../index.html" aria-label="Christian Rodriguez, home">
-                <img src="../../../images/logo.png" alt="" width="28" height="28">
+            <a class="globalnav__brand" href="../../../index.html" aria-label="Christian Rodriguez, home">
+                <img class="globalnav__logo" src="../../../images/logo.svg" alt="" width="30" height="30">
+                <span class="globalnav__name" aria-hidden="true">Christian Rodriguez</span>
             </a>
+
+            <!-- Menu button: only visible on small screens (main.js) -->
             <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
                 aria-controls="nav-menu" aria-label="Open menu">
                 <span class="globalnav__toggle-bar" aria-hidden="true"></span>
                 <span class="globalnav__toggle-bar" aria-hidden="true"></span>
             </button>
-            <ul class="globalnav__menu" id="nav-menu" role="list">
-                <li><a href="../../../index.html">Home</a></li>
-                <li><a href="../../../index.html#about">About</a></li>
-                <li><a href="../../../index.html#contact">Contact</a></li>
-                <li><a href="../../../Projects/Hangman/">Projects</a></li>
-                <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
-            </ul>
+
+            <div class="globalnav__menu" id="nav-menu">
+                <ul class="globalnav__links" role="list">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li><a href="../../../index.html#about">About</a></li>
+                    <li><a href="../../../Projects/Hangman/">Projects</a></li>
+                    <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="../../../index.html#contact">Contact</a></li>
+                </ul>
+                <!-- CV: opens the PDF in a new tab, where its links are clickable -->
+                <a class="globalnav__cv" href="../../../resume/Christian_Rodriguez_Resume.pdf" target="_blank" rel="noopener"
+                    aria-label="CV, PDF, opens in a new tab">CV (PDF)</a>
+            </div>
         </nav>
     </header>
 
@@ -137,6 +150,7 @@ Result correct: YES</pre>
                     <li><a href="../../../index.html">Home</a></li>
                     <li><a href="../../../Projects/Hangman/">Projects</a></li>
                     <li><a href="../../../Coursework/" aria-current="page">Coursework</a></li>
+                    <li><a href="../../../resume/Christian_Rodriguez_Resume.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
                     <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
                     <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
                 </ul>
