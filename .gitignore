@@ -9,3 +9,7 @@ a.out
 
 # server logs
 error.log
+
+# development tools and scratch space (never published)
+node_modules/
+.studio/
