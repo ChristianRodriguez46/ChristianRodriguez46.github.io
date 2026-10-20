@@ -10,6 +10,10 @@ tests and development tools, and a tiny local web server to play it while you wo
 
 ## Prerequisites
 
+**Checked on your laptop on 2026-10-19:** Git 2.34.1, Node v24.14.0, npm 11.9.0, Python 3.10.12,
+VS Code 1.142.0, repo at `~/REPO/ChristianRodriguez46.github.io`. Everything below is already
+installed; the install steps are here for a new machine.
+
 Run every command in this guide in your **WSL (Ubuntu) terminal**, not PowerShell.
 
 | Tool | Version | Install (official source) | Verify |
@@ -40,20 +44,20 @@ either works, because the game itself doesn't run on Node.
 
 ### Where your files should live
 
-Keep the repo **inside the Linux file system**, for example `~/projects/ChristianRodriguez46.github.io`,
-not under `/mnt/c/...`. Linux tools run much faster there, and file watching works.
+Keep the repo **inside the Linux file system**, as yours already is at
+`~/REPO/ChristianRodriguez46.github.io`, not under `/mnt/c/...`. Linux tools run much faster there, and file watching works.
 
 ```bash
 pwd                 # should start with /home/<you>, not /mnt/c
 git remote -v       # should show ChristianRodriguez46/ChristianRodriguez46.github.io
 ```
 
-If your clone is on the C: drive today, clone a fresh copy into `~/projects` and work there.
+If a clone is ever on the C: drive, clone a fresh copy into `~/REPO` and work there.
 
 ## 1. Get the code
 
 ```bash
-mkdir -p ~/projects && cd ~/projects
+mkdir -p ~/REPO && cd ~/REPO
 git clone https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io.git
 cd ChristianRodriguez46.github.io
 git pull            # if you already had it
@@ -85,7 +89,7 @@ Serve the **repository root** (not the game folder), so the shared nav styles at
 resolve the same way they do on GitHub Pages:
 
 ```bash
-cd ~/projects/ChristianRodriguez46.github.io
+cd ~/REPO/ChristianRodriguez46.github.io
 python3 -m http.server 4101
 ```
 
@@ -98,7 +102,7 @@ Why a server at all: browsers refuse to load ES modules from `file://` paths, so
 ## 6. Run the tests *(scaffold)*
 
 ```bash
-cd ~/projects/ChristianRodriguez46.github.io/Projects/Breakaway
+cd ~/REPO/ChristianRodriguez46.github.io/Projects/Breakaway
 npm test            # runs node --test
 ```
 
@@ -107,7 +111,7 @@ Passing looks like a summary ending in `# fail 0`.
 ## 7. Open it in your editor
 
 ```bash
-cd ~/projects/ChristianRodriguez46.github.io
+cd ~/REPO/ChristianRodriguez46.github.io
 code .
 ```
 
