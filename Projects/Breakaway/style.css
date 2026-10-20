@@ -1,0 +1,104 @@
+/* =============================================================
+   Projects/Breakaway/style.css
+   Styles for the Breakaway game page. main.css (loaded first) styles
+   the shared navigation bar; everything here is scoped to the game.
+
+   Look: an NHL broadcast. White ice, painted lines, a score bug above
+   the action, the red goal light as the one loud moment. One arena
+   look in both light and dark system themes (DESIGN_PLAN.md).
+
+   Sections in this file
+     1. Design tokens (orchestrator-owned; change values here only)
+     2. Page base and accessibility helpers        (slice C)
+     3. Play layout: strip, rink, help, touch      (slice C)
+     4. Panels, dialogs, buttons, choices          (slice C)
+     5. Banner and the goal-light moment           (slice C)
+     6. Reduced motion                              (slice C)
+
+   Troubleshooting
+   - A color is wrong on the canvas: the canvas reads the --bk-* tokens
+     once when it builds the rink layer; change the token, then resize
+     or reload to rebuild the layer.
+   - The site's blue focus ring shows inside the game: a rule is
+     missing the .breakaway scope; the game ring is --bk-focus.
+   - Red text on the dark arena fails contrast (3.09:1): red is for
+     the goal light, banner plate and strip flash only, never text.
+   ============================================================= */
+
+
+/* ---------- 1. Design tokens ---------- */
+.breakaway {
+    color-scheme: dark;
+
+    /* Rink and arena colors (DESIGN_PLAN §2; contrast checked there) */
+    --bk-ice: #eef3f6;
+    --bk-red: #c8102e;
+    --bk-blue: #0b3d91;
+    --bk-kick: #f2c200;
+    --bk-arena: #11161d;
+    --bk-panel: #20252c;
+    --bk-panel-hover: #2b3139;
+    --bk-ink: #eef3f6;          /* text on arena/panel */
+    --bk-ink-2: #9ea3a8;        /* secondary text */
+    --bk-line: #42474d;         /* hairline dividers, decorative only */
+    --bk-crease: #a9c7e8;       /* canvas paint only */
+    --bk-board: #d9dfe4;        /* top of the boards on the canvas */
+    --bk-puck: #0a0c0f;
+    --bk-white: #ffffff;
+    --bk-scratch: rgb(17 22 29 / 0.06); /* skate marks on the ice */
+    --bk-scrim: rgb(17 22 29 / 0.86);   /* panels over the rink */
+    --bk-focus: #f2c200;
+
+    /* Type: system faces only; no downloaded fonts */
+    --bk-font-ui: var(--font-text);
+    --bk-font-display: var(--font-display);
+    --bk-size-label: 12px;
+    --bk-size-body: 16px;
+    --bk-size-score: 22px;      /* 28px at >= 834px */
+    --bk-size-banner: 36px;     /* 44px at >= 834px */
+    --bk-size-title: clamp(44px, 12vw, 64px);
+
+    /* Shape and size */
+    --bk-radius-control: 10px;  /* buttons: rounded keys, not site pills */
+    --bk-radius-plate: 4px;     /* banners, strip cells: broadcast plates */
+    --bk-radius-panel: 14px;    /* panels and dialogs */
+    --bk-target-min: 44px;
+    --bk-stick-size: 132px;
+    --bk-shoot-size: 88px;
+    --bk-deke-size: 64px;
+    --bk-strip-max: 900px;
+    --bk-help-w: 280px;
+
+    /* Spacing (4px base) */
+    --bk-space-1: 4px;
+    --bk-space-2: 8px;
+    --bk-space-3: 12px;
+    --bk-space-4: 16px;
+    --bk-space-6: 24px;
+    --bk-space-8: 32px;
+
+    /* Timing (ms values are also read by JS) */
+    --bk-banner-ms: 1200;
+    --bk-flash-half-ms: 250;    /* 2 flashes per second, under the 3/s limit */
+    --bk-goal-light-ms: 1500;
+}
+
+@media (min-width: 834px) {
+    .breakaway {
+        --bk-size-score: 28px;
+        --bk-size-banner: 44px;
+    }
+}
+
+
+/* ---------- 2. Page base and accessibility helpers ---------- */
+/* Slice C: undo main.css page-wide settings for the game page (see Hangman's inline block),
+   then style the game from section 2 down. */
+.bk-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}

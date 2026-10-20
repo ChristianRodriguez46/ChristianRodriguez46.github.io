@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-motion="full">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Breakaway | Christian Rodriguez</title>
+    <meta name="description" content="Skate in alone on an AI goalie and try to score. A browser hockey game built with JavaScript and Canvas.">
+    <meta name="theme-color" content="#11161d">
+    <link rel="icon" type="image/svg+xml" href="../../images/logo.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="../../images/logo.png">
+    <link rel="apple-touch-icon" href="../../images/apple-touch-icon.png">
+    <!-- main.css styles the shared navigation bar; style.css is the game. No web fonts are loaded. -->
+    <link rel="stylesheet" href="../../style/main.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="breakaway-page">
+    <!-- Lets keyboard users jump past the navigation -->
+    <a class="skip-link" href="#main">Skip to the game</a>
+
+    <!-- ========= NAVIGATION (same on every page; see section 4 of style/main.css) ========= -->
+    <header class="globalnav globalnav--dark" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__brand" href="../../index.html" aria-label="Christian Rodriguez, home">
+                <img class="globalnav__logo" src="../../images/logo.svg" alt="" width="30" height="30">
+                <span class="globalnav__name" aria-hidden="true">Christian Rodriguez</span>
+            </a>
+
+            <!-- Menu button: only visible on small screens (main.js) -->
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+
+            <div class="globalnav__menu" id="nav-menu">
+                <ul class="globalnav__links" role="list">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../index.html#about">About</a></li>
+                    <li><a href="../" aria-current="page">Projects</a></li>
+                    <li><a href="../../Coursework/">Coursework</a></li>
+                    <li><a href="../../index.html#contact">Contact</a></li>
+                </ul>
+                <!-- CV: opens the PDF in a new tab, where its links are clickable -->
+                <a class="globalnav__cv" href="../../resume/Christian_Rodriguez_Resume.pdf" target="_blank" rel="noopener"
+                    aria-label="CV, PDF, opens in a new tab">CV (PDF)</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ========= GAME ROOT =========
+         data-screen drives which panel shows (start | howto | settings | playing | paused | summary | gameover).
+         Slice C fills each section from UX_COPY.md; ids and data-testid values are the test contract
+         (CONTRACTS.md §5). -->
+    <main id="main" class="breakaway" data-screen="start" tabindex="-1">
+        <noscript><p class="bk-noscript">Breakaway needs JavaScript to run. Turn it on in your browser settings, then reload this page.</p></noscript>
+
+        <div class="bk-play">
+            <!-- Scoreboard: HTML text so screen readers and zoom work -->
+            <section class="bk-strip" id="strip" aria-label="Scoreboard"></section>
+
+            <div class="bk-rink-cell" id="rink-cell">
+                <canvas id="rink" class="bk-rink" data-testid="rink-canvas" role="img" aria-label="Hockey rink"
+                    aria-describedby="rink-description">Your browser can't draw the rink. Try a current version of Chrome, Edge, Firefox or Safari.</canvas>
+                <p class="bk-visually-hidden" id="rink-description"></p>
+                <div class="bk-banner" id="banner" data-testid="banner" hidden></div>
+            </div>
+
+            <aside class="bk-help" id="help" aria-label="Controls"></aside>
+
+            <div class="bk-touch" id="touch-controls" data-testid="touch-controls" hidden></div>
+        </div>
+
+        <!-- Panels over the dimmed rink -->
+        <section class="bk-panel" id="screen-start" data-panel="start" aria-labelledby="start-title"></section>
+        <section class="bk-panel" id="screen-howto" data-panel="howto" aria-labelledby="howto-title" hidden></section>
+        <section class="bk-panel" id="screen-settings" data-panel="settings" aria-labelledby="settings-title" hidden></section>
+        <section class="bk-panel" id="screen-summary" data-panel="summary" aria-labelledby="summary-title" hidden></section>
+        <section class="bk-panel" id="screen-gameover" data-panel="gameover" aria-labelledby="gameover-title" hidden></section>
+
+        <!-- Modal dialogs: showModal() traps focus and makes the page behind inert -->
+        <dialog class="bk-dialog" id="pause-dialog" data-testid="pause-dialog" aria-labelledby="pause-title"></dialog>
+        <dialog class="bk-dialog" id="reset-dialog" data-testid="reset-dialog" aria-labelledby="reset-title"></dialog>
+
+        <!-- One polite live region; text is replaced, not appended -->
+        <p class="bk-visually-hidden" id="live-region" data-testid="live-region" aria-live="polite" aria-atomic="true"></p>
+    </main>
+
+    <script type="module" src="./src/browser/main.js"></script>
+    <!-- Site script: opens and closes the navigation menu on phones -->
+    <script src="../../js/main.js" defer></script>
+</body>
+
+</html>
