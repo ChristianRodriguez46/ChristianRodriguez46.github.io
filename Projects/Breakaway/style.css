@@ -569,14 +569,24 @@ body.breakaway-page {
         display: contents;
     }
 
-    .bk-strip__stats {
-        display: flex;
-        justify-content: flex-start;
-        gap: var(--bk-space-6);
+    .bk-strip__round {
+        grid-area: 1 / 1;
     }
 
     .bk-markers {
+        grid-area: 1 / 2;
         gap: 6px;
+    }
+
+    .bk-strip__stats {
+        grid-area: 1 / 3;
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--bk-space-6);
+    }
+
+    .bk-strip__buttons {
+        grid-area: 1 / 4;
     }
 
     .bk-rink-cell {
@@ -637,6 +647,7 @@ body.breakaway-page {
     }
 
     .bk-strip__stats {
+        grid-area: auto;
         display: grid;
         grid-template-columns: repeat(2, auto);
         gap: var(--bk-space-1) var(--bk-space-3);

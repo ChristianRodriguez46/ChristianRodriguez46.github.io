@@ -137,6 +137,7 @@ export function createUi({ root, strings }) {
     for (const panel of root.querySelectorAll('[data-panel]')) {
         if (panel instanceof HTMLElement && panel.dataset.panel) panels[panel.dataset.panel] = panel;
     }
+    const overlay = root.querySelector('#overlay');
     /** @type {Map<string, HTMLElement|null>} */
     const dialogOpeners = new Map();
     let lastClockMark = Infinity;
@@ -154,14 +155,18 @@ export function createUi({ root, strings }) {
         root.dataset.screen = name;
         for (const [panelName, panel] of Object.entries(panels)) panel.hidden = panelName !== name;
         if (isQuiet) return;
-        if (focusTarget && !focusTarget.hidden) { focusTarget.focus(); return; }
+        // The nav is sticky: show the game from its top and focus without the browser's own
+        // scroll, which would tuck the strip or a panel heading under the nav.
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        if (overlay) overlay.scrollTop = 0;
+        if (focusTarget && !focusTarget.hidden) { focusTarget.focus({ preventScroll: true }); return; }
         if (name === 'playing') { root.focus({ preventScroll: true }); return; }
         const panel = panels[name];
         if (!panel) return;
         const heading = panel.querySelector('h1, h2');
         if (heading instanceof HTMLElement) {
             if (!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex', '-1');
-            heading.focus();
+            heading.focus({ preventScroll: true });
         }
     }
 
