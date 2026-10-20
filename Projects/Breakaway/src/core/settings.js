@@ -24,7 +24,8 @@
    ============================================================= */
 
 import {
-    CONTROL_SCHEMES, STARTING_LEVELS, MOTION_PREFERENCES, DEFAULT_SETTINGS, SCHEMA_VERSION
+    CONTROL_SCHEMES as SCHEME_LIST, STARTING_LEVELS as LEVEL_LIST, MOTION_PREFERENCES as MOTION_LIST,
+    DEFAULT_SETTINGS, SCHEMA_VERSION
 } from './constants.js';
 
 /** @typedef {import('./types.js').Settings} Settings */
@@ -33,7 +34,13 @@ import {
 /** @typedef {import('./types.js').ControlScheme} ControlScheme */
 /** @typedef {import('./types.js').StartingLevel} StartingLevel */
 
+/** @typedef {import('./types.js').MotionPreference} MotionPreference */
+
 /* ---------- 1. Small type checks ---------- */
+
+const CONTROL_SCHEMES = /** @type {readonly ControlScheme[]} */ (SCHEME_LIST);
+const STARTING_LEVELS = /** @type {readonly StartingLevel[]} */ (LEVEL_LIST);
+const MOTION_PREFERENCES = /** @type {readonly MotionPreference[]} */ (MOTION_LIST);
 
 /** @param {unknown} value @returns {value is Record<string, unknown>} */
 function isPlainObject(value) {

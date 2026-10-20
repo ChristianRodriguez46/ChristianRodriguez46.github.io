@@ -7,6 +7,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 ## [Unreleased]
 
 ### Added
+- Physics (`src/core/collision.js`, `rink.js`, `skater.js`, `puck.js`): skating with acceleration,
+  glide and turning; dekes; shots for all three control schemes; puck friction; bounces off the
+  boards, corners and posts; swept collision tests so a fast puck can't pass through a post or the
+  goalie between steps; a goal counts only when the whole puck crosses the line between the posts.
 - Project setup: page shell with the site's navigation bar, design tokens, `package.json` scripts
   for tests (`node --test`), type checking (`tsc` over JSDoc types), linting and browser tests.
 - `src/core/constants.js`: every tunable number in one place, with the rink in real NHL feet and
