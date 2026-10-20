@@ -7,6 +7,17 @@
    face the puck, so the puck has to beat its ends. ARCHITECTURE §6
    has the state table this file follows.
 
+   How the tier numbers are read (decided in slice B; see
+   .studio/reports/builder-b.md)
+   - saveReachFt / diveReachFt run from the goalie's center to the
+     outer edge of the pads, so the segment half-length is
+     reach - GOALIE_BODY_RADIUS_FT (the body radius is part of it).
+   - angleErrorFt is the sideways misread at the goalie's stance.
+     getSquareUpPoint shifts the perceived puck, so the offset is
+     scaled by (puck distance / stance depth) before it is passed in.
+   - A poke roll needs both the carried puck and the skater within
+     pokeRangeFt, so a skater standing off at range isn't stripped.
+
    Sections in this file
      1. Helpers (where the goalie may stand, sides, moving)
      2. createGoalie
@@ -68,8 +79,8 @@ const NET_CENTER = Object.freeze({ x: CENTER_X_FT, y: GOAL_LINE_Y_FT });
 const MAX_OUT_FT = CREASE_RADIUS_FT + CREASE_EXIT_MAX_FT;
 /** Part of BITE_FREEZE_S spent sliding the wrong way; the rest is a frozen stance. */
 const BITE_SLIDE_S = BITE_FREEZE_S / 3;
-/** Body radius plus puck radius: added to reach for poke contact and for the dive decision. */
-const CONTACT_PAD_FT = GOALIE_BODY_RADIUS_FT + PUCK_COLLISION_RADIUS_FT;
+/** Reach is measured to the pad edge; a puck touches when its center is within reach plus its radius. */
+const CONTACT_PAD_FT = PUCK_COLLISION_RADIUS_FT;
 
 /**
  * Keeps a point in the goalie's zone: not behind the goal line, within the crease plus the exit allowance.

@@ -138,23 +138,26 @@ export const REBOUND_MAX_ANGLE_DEG = 35;
 /* ---------- 7. Goalie tiers and difficulty ---------- */
 
 /**
- * Goalie behavior per tier (ARCHITECTURE §6). Starting values; tuned during the build.
+ * Goalie behavior per tier (ARCHITECTURE §6). Calibrated 2026-10-20 against the scripted-shot
+ * stats tests: a settled goalie must leave the corners open. Rookie concedes about 39% of the
+ * scripted shots, Pro about 20%, All-Star about 8%. saveReachFt runs from the goalie's center to
+ * the pad edge.
  * @type {Readonly<Record<import('./types.js').TierName, import('./types.js').TierParams>>}
  */
 export const TIER_PARAMS = deepFreeze({
     rookie: {
-        reactionDelayMs: 260, lateralSpeedFtPerS: 9, angleErrorFt: 1.2, depthFt: 2.5,
-        saveReachFt: 1.7, diveReachFt: 3.3, diveRecoveryMs: 900,
+        reactionDelayMs: 155, lateralSpeedFtPerS: 10.5, angleErrorFt: 4.1, depthFt: 2.75,
+        saveReachFt: 1.1, diveReachFt: 3.3, diveRecoveryMs: 900,
         pokeRangeFt: 5, pokeChance: 0.15, dekeReadChance: 0.25, reboundChance: 0.45
     },
     pro: {
-        reactionDelayMs: 180, lateralSpeedFtPerS: 12, angleErrorFt: 0.7, depthFt: 3.5,
-        saveReachFt: 2.0, diveReachFt: 3.8, diveRecoveryMs: 700,
+        reactionDelayMs: 130, lateralSpeedFtPerS: 11, angleErrorFt: 2.3, depthFt: 3.4,
+        saveReachFt: 1.35, diveReachFt: 3.8, diveRecoveryMs: 700,
         pokeRangeFt: 6, pokeChance: 0.3, dekeReadChance: 0.5, reboundChance: 0.3
     },
     all_star: {
-        reactionDelayMs: 120, lateralSpeedFtPerS: 15, angleErrorFt: 0.35, depthFt: 4.5,
-        saveReachFt: 2.3, diveReachFt: 4.3, diveRecoveryMs: 550,
+        reactionDelayMs: 100, lateralSpeedFtPerS: 12.5, angleErrorFt: 1.85, depthFt: 3.95,
+        saveReachFt: 1.55, diveReachFt: 4.3, diveRecoveryMs: 550,
         pokeRangeFt: 7, pokeChance: 0.45, dekeReadChance: 0.7, reboundChance: 0.2
     }
 });

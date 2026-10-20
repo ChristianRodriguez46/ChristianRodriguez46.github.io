@@ -6,7 +6,25 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Changed
+- Goalie levels recalibrated so the corners stay open: in scripted tests Rookie gives up about
+  39% of shots, Pro about 20% and All-Star about 8%.
+
 ### Added
+- Game rules (`src/core/rules.js`, `game.js`): 5 attempts per round, 3 goals to advance, an
+  8-second shot clock, one rebound chance per attempt, the run ends as soon as 3 goals are out of
+  reach; every attempt ends as Goal, Save, Wide, No shot, Post and out, Poke check or Time.
+- Goalie AI (`src/core/goalie.js`, `difficulty.js`): squares up to the puck, reacts after a delay,
+  dives, poke checks, bites on or reads dekes, and gives up rebounds. Rookie, Pro and All-Star
+  levels; All-Star keeps improving after round 5, up to 20%.
+- Scoring and saved data (`src/core/scoring.js`, `settings.js`): 100 points a goal, +50 after a
+  successful deke; a best score per control scheme and starting level; saved settings are checked
+  field by field and fall back to defaults if anything is wrong.
+- Browser game (`src/browser/`, `index.html`, `style.css`): fixed-step loop, rink drawn in real NHL
+  measurements, keyboard and touch controls for all three schemes, synthesized sound with mute,
+  start, how-to-play, settings, pause, round summary and game-over screens, and screen-reader
+  announcements.
+- All text the game shows lives in `src/core/ui-strings.js`.
 - Physics (`src/core/collision.js`, `rink.js`, `skater.js`, `puck.js`): skating with acceleration,
   glide and turning; dekes; shots for all three control schemes; puck friction; bounces off the
   boards, corners and posts; swept collision tests so a fast puck can't pass through a post or the
