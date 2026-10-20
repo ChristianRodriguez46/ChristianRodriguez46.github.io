@@ -8,7 +8,7 @@ index.html          home page
 style/              site styles (main.css, coursework.css)
 js/                 site scripts
 images/             logo (logo.svg, plus PNG copies for older browsers and phones)
-Projects/           personal projects (Hangman)
+Projects/           Projects page (index.html) and personal projects (Hangman, Breakaway)
 Coursework/         labs and projects by course, with an index page
 .nojekyll           tells GitHub Pages to serve every file as-is
 ```

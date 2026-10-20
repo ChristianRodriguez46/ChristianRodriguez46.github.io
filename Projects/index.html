@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- =============================================================
+   Projects/index.html
+   The Projects page: one tile for each personal project.
+
+   Look and feel: the site's own (style/main.css). It uses the same
+   navigation, hero, tiles and footer as the homepage, so it follows
+   the visitor's light or dark system setting.
+
+   Sections in this file
+     1. Head          title, icons, stylesheet (no web fonts, no anime.js)
+     2. Navigation    same on every page; "Projects" is the current page
+     3. Hero          heading and one line
+     4. Project tiles Breakaway (rink drawing) and Hangman (letter slots)
+     5. Footer
+     6. Script        js/main.js runs the mobile menu
+
+   To add a project: copy one <li> tile, change its text and links,
+   and give it a unique id for aria-labelledby.
+
+   Troubleshooting
+   - The menu button does nothing on a phone: js/main.js did not load.
+     Check that the script path below is ../js/main.js.
+   - The page is unstyled: check that the stylesheet path is
+     ../style/main.css (this page is one folder below the site root).
+   - The Hangman letters stay blank: that animation needs anime.js,
+     which this page does not load on purpose. The tile still reads
+     correctly with the blanks.
+   ============================================================= -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Christian Rodriguez</title>
+    <meta name="description" content="Games Christian Rodriguez has built outside of class, in plain HTML, CSS and JavaScript.">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+
+    <link rel="icon" type="image/svg+xml" href="../images/logo.svg">
+    <link rel="icon" type="image/png" sizes="512x512" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="../style/main.css">
+</head>
+
+<body>
+    <!-- Lets keyboard users jump past the navigation -->
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ========= NAVIGATION (same on every page; see section 4 of style/main.css) ========= -->
+    <header class="globalnav" role="banner">
+        <nav class="globalnav__inner" role="navigation" aria-label="Primary">
+            <a class="globalnav__brand" href="../index.html" aria-label="Christian Rodriguez, home">
+                <img class="globalnav__logo" src="../images/logo.svg" alt="" width="30" height="30">
+                <span class="globalnav__name" aria-hidden="true">Christian Rodriguez</span>
+            </a>
+
+            <!-- Menu button: only visible on small screens (main.js) -->
+            <button type="button" class="globalnav__toggle" id="nav-toggle" aria-expanded="false"
+                aria-controls="nav-menu" aria-label="Open menu">
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+                <span class="globalnav__toggle-bar" aria-hidden="true"></span>
+            </button>
+
+            <div class="globalnav__menu" id="nav-menu">
+                <ul class="globalnav__links" role="list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../Projects/" aria-current="page">Projects</a></li>
+                    <li><a href="../Coursework/">Coursework</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+                <!-- CV: opens the PDF in a new tab, where its links are clickable -->
+                <a class="globalnav__cv" href="../resume/Christian_Rodriguez_Resume.pdf" target="_blank" rel="noopener"
+                    aria-label="CV, PDF, opens in a new tab">CV (PDF)</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" role="main" tabindex="-1">
+
+        <!-- ========= HERO ========= -->
+        <section class="hero hero--compact" role="region" aria-labelledby="projects-title">
+            <h1 class="hero__title" id="projects-title">Projects</h1>
+            <p class="hero__lede">Games I've built outside of class, in plain HTML, CSS and JavaScript.</p>
+        </section>
+
+        <!-- ========= PROJECT TILES ========= -->
+        <section class="tiles" role="region" aria-label="Projects">
+            <ul class="tiles__grid" role="list">
+
+                <li>
+                    <article class="tile" role="article" aria-labelledby="tile-breakaway">
+                        <h2 class="tile__title" id="tile-breakaway">Breakaway</h2>
+                        <p class="tile__lede">A top-down hockey shootout against an AI goalie, drawn with JavaScript and Canvas.</p>
+                        <div class="tile__actions">
+                            <a class="button" href="./Breakaway/">Play Breakaway</a>
+                            <a class="link-chevron"
+                                href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Projects/Breakaway">View
+                                code</a>
+                        </div>
+                        <!-- Decorative: one end of a rink; keeps its ice colors in both themes (see main.css) -->
+                        <div class="tile__art" aria-hidden="true">
+                            <svg class="rink-art" viewBox="0 0 360 230" aria-hidden="true" focusable="false">
+                                <rect class="rink-art__ice" x="3" y="3" width="354" height="224" rx="48"/>
+                                <path class="rink-art__crease" d="M142 60 A38 38 0 0 0 218 60 Z"/>
+                                <circle class="rink-art__circle" cx="88" cy="128" r="30"/>
+                                <circle class="rink-art__circle" cx="272" cy="128" r="30"/>
+                                <circle class="rink-art__dot" cx="88" cy="128" r="5"/>
+                                <circle class="rink-art__dot" cx="272" cy="128" r="5"/>
+                                <line class="rink-art__goal-line" x1="4" y1="60" x2="356" y2="60"/>
+                                <rect class="rink-art__net" x="158" y="38" width="44" height="22" rx="3"/>
+                                <line class="rink-art__blue-line" x1="4" y1="192" x2="356" y2="192"/>
+                            </svg>
+                        </div>
+                    </article>
+                </li>
+
+                <li>
+                    <article class="tile" role="article" aria-labelledby="tile-hangman">
+                        <h2 class="tile__title" id="tile-hangman">Hangman</h2>
+                        <p class="tile__lede">A word-guessing game built with HTML, CSS and JavaScript.</p>
+                        <div class="tile__actions">
+                            <a class="button" href="./Hangman/">Play Hangman</a>
+                            <a class="link-chevron"
+                                href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Projects/Hangman">View
+                                code</a>
+                        </div>
+                        <!-- Decorative: letter slots, two still blank -->
+                        <div class="tile__art" aria-hidden="true">
+                            <ul class="word-slots">
+                                <li>H</li>
+                                <li class="is-blank" data-letter="A"></li>
+                                <li>N</li>
+                                <li>G</li>
+                                <li>M</li>
+                                <li class="is-blank" data-letter="A"></li>
+                                <li>N</li>
+                            </ul>
+                        </div>
+                    </article>
+                </li>
+
+            </ul>
+        </section>
+    </main>
+
+    <!-- ========= FOOTER ========= -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer__inner">
+            <p>&copy; 2026 Christian Rodriguez.</p>
+            <nav aria-label="Footer">
+                <ul class="footer__links" role="list">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../Projects/" aria-current="page">Projects</a></li>
+                    <li><a href="../Coursework/">Coursework</a></li>
+                    <li><a href="../resume/Christian_Rodriguez_Resume.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
+                    <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
+                    <li><a href="mailto:crodriguez4643@gmail.com">Email</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- main.js runs the mobile menu (it works without anime.js) -->
+    <script src="../js/main.js" defer></script>
+</body>
+
+</html>

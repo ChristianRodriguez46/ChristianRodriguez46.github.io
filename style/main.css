@@ -16,7 +16,8 @@
      2. Base elements and accessibility helpers
      3. Buttons and links
      4. Global navigation bar: logo and name, links, CV button, mobile menu
-     5. Homepage: hero, tiles, about and contact bands
+     5. Homepage: hero, tiles, about and contact bands (also used by the
+        Projects page: wide tile, compact hero, Breakaway rink art)
      6. Footer
      7. Motion preferences, high-contrast mode
 
@@ -778,6 +779,90 @@ main:focus {
     margin-top: 12px;
 }
 
+
+/* Wide tile: spans both columns so an odd number of tiles never leaves
+   one alone in a row (the Coursework tile on the homepage). Shorter than
+   a half-width tile because the wider box needs less height. The grid
+   item is the <li> around the tile, so the column span goes on that <li>
+   (:has needs a browser from 2023 or later; older ones show a half-width
+   tile, which still works). */
+.tiles__grid > li:has(> .tile--wide) {
+    grid-column: 1 / -1;
+}
+
+.tile--wide {
+    grid-column: 1 / -1;
+    min-height: clamp(360px, 32vw, 440px);
+
+    /* Let the course numbers use the extra width */
+    & .course-cloud {
+        max-width: 760px;
+    }
+}
+
+/* Compact hero: a heading and one line, no logo or buttons (Projects page) */
+.hero--compact {
+    padding-top: clamp(48px, 7vw, 88px);
+    padding-bottom: clamp(32px, 5vw, 56px);
+}
+
+/* Breakaway tile art: one end of a hockey rink, drawn in the HTML as an
+   inline SVG. Like a photo of a rink, it keeps the same ice colors in
+   light and dark mode on purpose, so these are fixed colors and not
+   theme tokens. Every color lives in the variables below. */
+.rink-art {
+    --rink-ice: #f4f8fc;
+    --rink-boards: #9aa5b1;
+    --rink-red: #c8102e;
+    --rink-blue: #1b5fb4;
+    --rink-crease: #cfe4f7;
+    --rink-net: #6b7480;
+    --rink-net-mesh: #dde3ea;
+
+    display: block;
+    width: min(100%, 340px);
+    height: auto;
+    margin: 0 auto;
+
+    & .rink-art__ice {
+        fill: var(--rink-ice);
+        stroke: var(--rink-boards);
+        stroke-width: 3;
+    }
+
+    & .rink-art__goal-line {
+        stroke: var(--rink-red);
+        stroke-width: 3;
+    }
+
+    & .rink-art__blue-line {
+        stroke: var(--rink-blue);
+        stroke-width: 7;
+    }
+
+    & .rink-art__crease {
+        fill: var(--rink-crease);
+        stroke: var(--rink-red);
+        stroke-width: 2.5;
+    }
+
+    & .rink-art__net {
+        fill: var(--rink-net-mesh);
+        stroke: var(--rink-net);
+        stroke-width: 3;
+        stroke-linejoin: round;
+    }
+
+    & .rink-art__dot {
+        fill: var(--rink-red);
+    }
+
+    & .rink-art__circle {
+        fill: none;
+        stroke: var(--rink-red);
+        stroke-width: 2;
+    }
+}
 
 /* ---------- 6. Footer ---------- */
 .footer {

@@ -49,7 +49,7 @@
                 <ul class="globalnav__links" role="list">
                     <li><a href="#home" aria-current="page">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="Projects/Hangman/">Projects</a></li>
+                    <li><a href="Projects/">Projects</a></li>
                     <li><a href="Coursework/">Coursework</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -83,7 +83,7 @@
             <ul class="tiles__grid" role="list">
 
                 <li>
-                    <article class="tile tile--contrast" role="article" aria-labelledby="tile-coursework">
+                    <article class="tile tile--contrast tile--wide" role="article" aria-labelledby="tile-coursework">
                         <h2 class="tile__title" id="tile-coursework">Coursework</h2>
                         <p class="tile__lede">Labs and projects from thirteen computer science courses at CSU
                             Bakersfield.</p>
@@ -100,6 +100,33 @@
                                 <li>3350</li><li>3390</li><li>3500</li><li>3560</li>
                                 <li>3600</li><li>3620</li><li>3640</li><li>3680</li>
                             </ul>
+                        </div>
+                    </article>
+                </li>
+
+                <li>
+                    <article class="tile" role="article" aria-labelledby="tile-breakaway">
+                        <h2 class="tile__title" id="tile-breakaway">Breakaway</h2>
+                        <p class="tile__lede">A top-down hockey shootout against an AI goalie, drawn with JavaScript and Canvas.</p>
+                        <div class="tile__actions">
+                            <a class="button" href="./Projects/Breakaway/">Play Breakaway</a>
+                            <a class="link-chevron"
+                                href="https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/tree/main/Projects/Breakaway">View
+                                code</a>
+                        </div>
+                        <!-- Decorative: one end of a rink; keeps its ice colors in both themes (see main.css) -->
+                        <div class="tile__art" aria-hidden="true">
+                            <svg class="rink-art" viewBox="0 0 360 230" aria-hidden="true" focusable="false">
+                                <rect class="rink-art__ice" x="3" y="3" width="354" height="224" rx="48"/>
+                                <path class="rink-art__crease" d="M142 60 A38 38 0 0 0 218 60 Z"/>
+                                <circle class="rink-art__circle" cx="88" cy="128" r="30"/>
+                                <circle class="rink-art__circle" cx="272" cy="128" r="30"/>
+                                <circle class="rink-art__dot" cx="88" cy="128" r="5"/>
+                                <circle class="rink-art__dot" cx="272" cy="128" r="5"/>
+                                <line class="rink-art__goal-line" x1="4" y1="60" x2="356" y2="60"/>
+                                <rect class="rink-art__net" x="158" y="38" width="44" height="22" rx="3"/>
+                                <line class="rink-art__blue-line" x1="4" y1="192" x2="356" y2="192"/>
+                            </svg>
                         </div>
                     </article>
                 </li>
@@ -186,7 +213,7 @@
             <nav aria-label="Footer">
                 <ul class="footer__links" role="list">
                     <li><a href="index.html" aria-current="page">Home</a></li>
-                    <li><a href="Projects/Hangman/">Projects</a></li>
+                    <li><a href="Projects/">Projects</a></li>
                     <li><a href="Coursework/">Coursework</a></li>
                     <li><a href="resume/Christian_Rodriguez_Resume.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
                     <li><a href="https://github.com/ChristianRodriguez46">GitHub</a></li>
