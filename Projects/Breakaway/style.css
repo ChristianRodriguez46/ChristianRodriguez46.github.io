@@ -97,6 +97,7 @@
    The custom properties live on .breakaway, so the body cannot read them:
    #11161d below is --bk-arena, repeated once so overscroll shows the arena. */
 body.breakaway-page {
+    padding-top: var(--nav-h, 52px);  /* the dark nav is position: fixed in main.css */
     min-height: 0;
     font-size: 16px;
     line-height: normal;
@@ -620,7 +621,8 @@ body.breakaway-page {
     }
 }
 
-/* Landscape phone: the rink fits the height; strip and stick on the left, buttons on the right */
+/* Landscape phone: the rink fits the height; the stick sits left of it for the left thumb,
+   the strip and Shoot/Deke sit right of it for the right thumb. */
 @media (orientation: landscape) and (max-height: 540px) {
     .breakaway {
         --bk-rink-max-h: calc(100dvh - var(--nav-h, 52px) - var(--bk-space-4));
@@ -634,10 +636,11 @@ body.breakaway-page {
     }
 
     .bk-strip {
-        grid-column: 1;
+        grid-column: 3;
         grid-row: 1;
         grid-template-columns: minmax(0, 1fr);
         width: auto;
+        max-width: none;
         padding: var(--bk-space-2);
     }
 
@@ -651,7 +654,6 @@ body.breakaway-page {
         display: grid;
         grid-template-columns: repeat(2, auto);
         gap: var(--bk-space-1) var(--bk-space-3);
-        padding-left: 0;
     }
 
     .bk-strip__num {
@@ -666,7 +668,7 @@ body.breakaway-page {
 
     .bk-help {
         grid-column: 3;
-        grid-row: 1 / span 2;
+        grid-row: 2;
     }
 
     .breakaway[data-touch="true"] .bk-touch {
@@ -675,17 +677,17 @@ body.breakaway-page {
 
     .bk-stick {
         grid-column: 1;
-        grid-row: 2;
-        align-self: end;
+        grid-row: 1 / span 2;
+        align-self: center;
         justify-self: center;
     }
 
     .bk-touch__buttons {
         grid-column: 3;
-        grid-row: 1 / span 2;
-        align-self: end;
+        grid-row: 2;
+        align-self: start;
         justify-self: center;
-        flex-direction: column-reverse;
+        flex-direction: row;
     }
 }
 
@@ -1034,6 +1036,7 @@ body.breakaway-page {
 
 /* Dialogs (pause, reset): native modal, so focus is trapped and the page is inert */
 .bk-dialog {
+    margin: auto;               /* main.css resets margins; native centering needs auto */
     border: 0;
     max-width: min(440px, calc(100vw - var(--bk-space-8)));
     font-family: var(--bk-font-ui);
