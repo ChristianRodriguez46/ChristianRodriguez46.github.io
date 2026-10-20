@@ -2,17 +2,10 @@
 
 How to run, test and edit Breakaway on **Windows with WSL2 (Ubuntu) and VS Code**.
 
-> Draft from 2026-10-19. Sections marked *(scaffold)* get their exact commands once the project
-> files exist.
-
 Breakaway is a static web game: the browser runs everything. You only need Node.js to run the
 tests and development tools, and a tiny local web server to play it while you work.
 
 ## Prerequisites
-
-**Checked on your laptop on 2026-10-19:** Git 2.34.1, Node v24.14.0, npm 11.9.0, Python 3.10.12,
-VS Code 1.142.0, repo at `~/REPO/ChristianRodriguez46.github.io`. Everything below is already
-installed; the install steps are here for a new machine.
 
 Run every command in this guide in your **WSL (Ubuntu) terminal**, not PowerShell.
 
@@ -63,7 +56,7 @@ cd ChristianRodriguez46.github.io
 git pull            # if you already had it
 ```
 
-## 2. Install dependencies *(scaffold)*
+## 2. Install dependencies
 
 The game has no runtime dependencies. Development tools only:
 
@@ -99,7 +92,7 @@ forwards `localhost` to Windows automatically. Stop the server with Ctrl+C.
 Why a server at all: browsers refuse to load ES modules from `file://` paths, so double-clicking
 `index.html` shows a blank page with a CORS error in the console.
 
-## 6. Run the tests *(scaffold)*
+## 6. Run the tests
 
 ```bash
 cd ~/REPO/ChristianRodriguez46.github.io/Projects/Breakaway
@@ -116,7 +109,7 @@ code .
 ```
 
 VS Code opens connected to WSL (bottom-left corner shows **WSL: Ubuntu**). Recommended
-extensions are listed in `.vscode/extensions.json` *(scaffold)*.
+extensions are listed in `.vscode/extensions.json`.
 
 **Debugging:** open the game in Chrome or Edge, press F12, and use the **Sources** tab to set
 breakpoints in the game's modules.
@@ -136,6 +129,5 @@ breakpoints in the game's modules.
 
 ## Deploying
 
-Commit and push to `main`. GitHub Pages publishes the site, usually within a minute or two, at
-**https://christianrodriguez46.github.io/Projects/Breakaway/**. The full checklist is in
-`DEPLOY_CHECKLIST.md` *(delivery)*.
+Run `npm test`, then commit and push to `main`. GitHub Pages publishes the site, usually within a
+minute or two, at **https://christianrodriguez46.github.io/Projects/Breakaway/**.
