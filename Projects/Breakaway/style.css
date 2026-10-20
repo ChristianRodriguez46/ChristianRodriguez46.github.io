@@ -91,14 +91,3 @@
 }
 
 
-/* ---------- 2. Page base and accessibility helpers ---------- */
-/* Slice C: undo main.css page-wide settings for the game page (see Hangman's inline block),
-   then style the game from section 2 down. */
-.bk-visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-}
