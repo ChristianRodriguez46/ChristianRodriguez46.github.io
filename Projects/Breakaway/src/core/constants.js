@@ -46,7 +46,7 @@ function deepFreeze(value) {
 
 /* ---------- 1. Loop timing ---------- */
 
-/** One physics step: 120 per second (ADR-002). */
+/** One physics step: 120 per second (docs/decisions.md). */
 export const FIXED_STEP_S = 1 / 120;
 /** Longest frame the loop will account for; longer gaps are dropped, not simulated. */
 export const MAX_FRAME_DT_S = 0.1;
@@ -89,7 +89,7 @@ export const VISIBLE_MAX_X_FT = 88;
 export const VISIBLE_MIN_Y_FT = -6;
 export const VISIBLE_MAX_Y_FT = 104;
 
-/* ---------- 4. Bodies (playability sizes; ADR-004) ---------- */
+/* ---------- 4. Bodies (playability sizes; docs/decisions.md) ---------- */
 
 /** Real puck radius is 0.125 ft; 0.5 ft so it reads on a phone and hits posts often enough. */
 export const PUCK_COLLISION_RADIUS_FT = 0.5;

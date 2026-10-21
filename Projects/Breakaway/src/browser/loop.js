@@ -5,7 +5,7 @@
    Sections in this file
      1. createLoop: start, stop, isRunning
 
-   How it works (ARCHITECTURE §4, ADR-002): each animation frame
+   How it works (ARCHITECTURE §4, docs/decisions.md): each animation frame
    adds the real time since the last frame (capped at
    MAX_FRAME_DT_S) to an accumulator, runs step() once for every
    FIXED_STEP_S in it (at most MAX_STEPS_PER_FRAME times, then drops

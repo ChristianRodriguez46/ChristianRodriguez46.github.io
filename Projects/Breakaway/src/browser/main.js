@@ -12,7 +12,7 @@
      6. Settings changes and saved data
      7. Keyboard shortcuts, auto-pause, button wiring
 
-   How it fits (ARCHITECTURE §1, ADR-003): core/ never touches the
+   How it fits (ARCHITECTURE §1, docs/decisions.md): core/ never touches the
    DOM; this file is the only place that holds the GameState and
    moves it between screens. `?seed=<integer>` makes the run
    repeatable for tests (TEST_PLAN request 1).

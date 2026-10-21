@@ -8,7 +8,7 @@
 
    Why not Math.random(): it can't be seeded, so a test couldn't
    replay a goalie decision. The core receives one of these functions
-   instead (ADR-003). mulberry32 is a small, well-known 32-bit
+   instead (docs/decisions.md). mulberry32 is a small, well-known 32-bit
    generator: fast, good enough for games, not for security.
 
    Troubleshooting

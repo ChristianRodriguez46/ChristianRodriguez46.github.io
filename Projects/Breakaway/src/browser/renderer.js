@@ -142,7 +142,7 @@ export function createRenderer({ canvas, container, tokens, getMotion, nowMs = (
         cssH = nextH;
         dpr = nextDpr;
         ppfCss = Math.min(cssW / WORLD_W_FT, cssH / WORLD_H_FT);
-        // Drawing only: physics sizes stay the same (ADR-004 keeps markings true, players readable).
+        // Drawing only: physics sizes stay the same (docs/decisions.md keeps markings true, players readable).
         spriteScale = Math.min(SPRITE_SCALE_MAX, Math.max(1, MIN_SKATER_RADIUS_PX / (SKATER_RADIUS_FT * ppfCss)));
         canvas.width = Math.round(cssW * dpr);
         canvas.height = Math.round(cssH * dpr);

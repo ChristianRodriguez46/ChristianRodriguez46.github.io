@@ -1,4 +1,4 @@
-// ESLint flat config. The core must stay pure (ADR-003): no DOM, no clocks, no Math.random.
+// ESLint flat config. The core must stay pure (docs/decisions.md): no DOM, no clocks, no Math.random.
 import js from '@eslint/js';
 import globals from 'globals';
 

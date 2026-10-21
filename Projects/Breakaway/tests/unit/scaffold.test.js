@@ -1,4 +1,4 @@
-// Scaffold checks: constants load and are frozen, and src/core stays pure (ADR-003).
+// Scaffold checks: constants load and are frozen, and src/core stays pure (docs/decisions.md).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync } from 'node:fs';
