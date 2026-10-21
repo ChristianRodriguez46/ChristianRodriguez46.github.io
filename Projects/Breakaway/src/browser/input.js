@@ -50,13 +50,19 @@ const SHOOT_KEYS = new Set(['Space']);
 const DEKE_KEYS = new Set(['ShiftLeft', 'ShiftRight']);
 const GAME_KEYS = new Set([...LEFT_KEYS, ...RIGHT_KEYS, ...UP_KEYS, ...DOWN_KEYS, ...SHOOT_KEYS, ...DEKE_KEYS]);
 
+/** In-play buttons (Pause, Mute, touch controls) have their own shortcuts, so game keys stay with the game. */
+const IN_PLAY_CONTROLS = '.bk-strip, .bk-touch';
+
 /**
  * True when a key event comes from a control that needs its own keys (buttons, fields, links).
+ * Buttons in the score strip and touch controls don't count: after a player clicks Pause or
+ * Mute, arrows and Space must still skate and shoot instead of pressing that button again.
  * @param {EventTarget|null} target
  * @returns {boolean}
  */
 function isFromControl(target) {
     if (!(target instanceof Element)) return false;
+    if (target.closest(IN_PLAY_CONTROLS) && !target.closest('dialog')) return false;
     return Boolean(target.closest('button, input, select, textarea, a[href], [contenteditable="true"], dialog'));
 }
 
@@ -118,6 +124,8 @@ export function createInput({ target, canvas, scheme, worldFromClient }) {
     /** @param {KeyboardEvent} event @returns {void} */
     function onKeyUp(event) {
         if (!GAME_KEYS.has(event.code)) return;
+        // Space on a focused in-play button would "click" it on key up; the game owns Space here.
+        if (isEnabled && !isFromControl(event.target)) event.preventDefault();
         keysDown.delete(event.code);
         if (SHOOT_KEYS.has(event.code) && isSpaceDown) {
             isSpaceDown = false;

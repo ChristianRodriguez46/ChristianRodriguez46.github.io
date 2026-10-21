@@ -88,3 +88,12 @@ test('withBestScore returns a new object and leaves the input unchanged', () => 
     assert.equal(after.scores['hold_charge:ladder'].score, 1250);
     assert.equal(after.schema_version, 1);
 });
+
+test('a hand-edited, impossibly large best score is dropped instead of saved', async () => {
+    const { validateBestScores } = await import('../../src/core/settings.js');
+    const result = validateBestScores({
+        schema_version: 1,
+        scores: { 'hold_charge:ladder': { score: 1e21, rounds_cleared: 1, goals: 3, achieved_at: '2026-01-02T03:04:05.000Z' } }
+    });
+    assert.equal(result.scores['hold_charge:ladder'], undefined);
+});

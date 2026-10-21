@@ -54,6 +54,10 @@ const SCRATCH_RESET_FT = 10;
 /** Goalie pad half-length when the tier reach is not known yet. */
 const DEFAULT_REACH_FT = 1.7;
 const LAMP_OFF_COLOR = '#3a3f46'; // dark housing, same as the mockup; not UI text
+/** Smallest on-screen skater radius (CSS px); players and puck are drawn larger on small screens. */
+const MIN_SKATER_RADIUS_PX = 10;
+/** Largest drawing enlargement, so players never crowd the net on tiny screens. */
+const SPRITE_SCALE_MAX = 2;
 
 /**
  * Reads the rink colors from the --bk-* custom properties on an element.
@@ -106,6 +110,7 @@ export function createRenderer({ canvas, container, tokens, getMotion, nowMs = (
     let cssW = 0;
     let cssH = 0;
     let ppfCss = 1;
+    let spriteScale = 1;
     /** @type {CanvasImageSource|null} */
     let rinkLayer = null;
     let lampUntilMs = 0;
@@ -137,6 +142,8 @@ export function createRenderer({ canvas, container, tokens, getMotion, nowMs = (
         cssH = nextH;
         dpr = nextDpr;
         ppfCss = Math.min(cssW / WORLD_W_FT, cssH / WORLD_H_FT);
+        // Drawing only: physics sizes stay the same (ADR-004 keeps markings true, players readable).
+        spriteScale = Math.min(SPRITE_SCALE_MAX, Math.max(1, MIN_SKATER_RADIUS_PX / (SKATER_RADIUS_FT * ppfCss)));
         canvas.width = Math.round(cssW * dpr);
         canvas.height = Math.round(cssH * dpr);
         rinkLayer = createRinkLayer(canvas.width, canvas.height, ppfCss * dpr, tokens);
@@ -236,8 +243,9 @@ export function createRenderer({ canvas, container, tokens, getMotion, nowMs = (
             trackScratch(skaterAt);
             drawScratches(ctx);
             drawGoalie(ctx, goalieAt, puckAt, state.goalie.reachFt);
-            drawPuck(ctx, puckAt, state.puck.mode);
             drawSkater(ctx, skaterAt, state.skater.facingRad, state.skater.hasPuck, puckAt);
+            // Puck on top: with the larger drawn players on phones, a carried puck would hide under the skater.
+            drawPuck(ctx, puckAt, state.puck.mode);
             if (state.scheme === 'aim_mouse' && aimPoint && state.skater.hasPuck) drawAim(ctx, puckAt, aimPoint);
             if (state.scheme === 'hold_charge' && state.skater.isCharging) {
                 drawCharge(ctx, skaterAt, Math.min(1, state.skater.chargeHeldS / CHARGE_FULL_S));
@@ -283,7 +291,7 @@ export function createRenderer({ canvas, container, tokens, getMotion, nowMs = (
     function drawScratches(c) {
         if (scratchCount === 0) return;
         c.strokeStyle = tokens.scratch;
-        c.lineWidth = 0.3;
+        c.lineWidth = 0.3 * spriteScale;
         c.lineCap = 'round';
         c.beginPath();
         for (let n = 0; n < scratchCount; n += 1) {
@@ -306,12 +314,12 @@ export function createRenderer({ canvas, container, tokens, getMotion, nowMs = (
         const length = Math.hypot(dx, dy) || 1;
         dx /= length;
         dy /= length;
-        const half = Number.isFinite(reachFt) && reachFt > 0 ? reachFt : DEFAULT_REACH_FT;
+        const half = (Number.isFinite(reachFt) && reachFt > 0 ? reachFt : DEFAULT_REACH_FT) * Math.sqrt(spriteScale);
         const px = -dy * half;
         const py = dx * half;
         c.lineCap = 'round';
         c.strokeStyle = tokens.arena;
-        c.lineWidth = GOALIE_BODY_RADIUS_FT * 2;
+        c.lineWidth = GOALIE_BODY_RADIUS_FT * 2 * spriteScale;
         c.beginPath();
         c.moveTo(at.x - px, at.y - py);
         c.lineTo(at.x + px, at.y + py);
@@ -319,7 +327,7 @@ export function createRenderer({ canvas, container, tokens, getMotion, nowMs = (
         c.strokeStyle = tokens.ice;
         c.lineWidth = 0.25;
         c.stroke();
-        drawCircle(c, at.x, at.y - 0.2, 0.75, tokens.red, tokens.arena, 0.15);
+        drawCircle(c, at.x, at.y - 0.2, 0.75 * spriteScale, tokens.red, tokens.arena, 0.15);
     }
 
     /**
@@ -330,8 +338,9 @@ export function createRenderer({ canvas, container, tokens, getMotion, nowMs = (
      */
     function drawPuck(c, at, mode) {
         if (mode === 'absorbed') return;
-        drawCircle(c, at.x + 0.12, at.y + 0.12, PUCK_COLLISION_RADIUS_FT, 'rgb(17 22 29 / 0.18)');
-        drawCircle(c, at.x, at.y, PUCK_COLLISION_RADIUS_FT, tokens.puck);
+        const radiusFt = PUCK_COLLISION_RADIUS_FT * spriteScale;
+        drawCircle(c, at.x + 0.12, at.y + 0.12, radiusFt, 'rgb(17 22 29 / 0.18)');
+        drawCircle(c, at.x, at.y, radiusFt, tokens.puck);
     }
 
     /**
@@ -346,15 +355,15 @@ export function createRenderer({ canvas, container, tokens, getMotion, nowMs = (
         const handX = at.x + fx * 0.6 - fy * 0.8;
         const handY = at.y + fy * 0.6 + fx * 0.8;
         c.strokeStyle = tokens.arena;
-        c.lineWidth = 0.3;
+        c.lineWidth = 0.3 * spriteScale;
         c.lineCap = 'round';
         c.beginPath();
         c.moveTo(handX, handY);
         if (hasPuck) c.lineTo(puckAt.x - fx * 0.4, puckAt.y - fy * 0.4);
         else c.lineTo(at.x + fx * 2.2 - fy * 0.9, at.y + fy * 2.2 + fx * 0.9);
         c.stroke();
-        drawCircle(c, at.x, at.y, SKATER_RADIUS_FT, tokens.blue, tokens.ice, 0.25);
-        drawCircle(c, at.x + fx * 0.1, at.y + fy * 0.1, 0.6, tokens.ice);
+        drawCircle(c, at.x, at.y, SKATER_RADIUS_FT * spriteScale, tokens.blue, tokens.ice, 0.25);
+        drawCircle(c, at.x + fx * 0.1, at.y + fy * 0.1, 0.6 * spriteScale, tokens.ice);
     }
 
     /**

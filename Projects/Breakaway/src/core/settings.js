@@ -47,9 +47,15 @@ function isPlainObject(value) {
     return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
+/**
+ * Highest value any saved count may hold. Far above any real run (a goal is 150 points at most), so
+ * a hand-edited value like 1e21 is rejected instead of becoming a best nobody can ever beat.
+ */
+const MAX_SAVED_COUNT = 10_000_000;
+
 /** @param {unknown} value @returns {boolean} */
 function isNonNegativeInteger(value) {
-    return typeof value === 'number' && Number.isInteger(value) && value >= 0;
+    return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= MAX_SAVED_COUNT;
 }
 
 /** Strict ISO 8601 (the shape Date#toISOString writes) that also parses to a real date. */
