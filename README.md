@@ -30,3 +30,20 @@ does not run PHP.
 - The lab pages (`Coursework/<course>/<lab>/index.html`) are generated from page data by
   `build_lab_pages.py` in my build kit, which is kept outside this repository. To change a lab page,
   edit its data there and rerun the script instead of editing the HTML.
+
+## License
+
+The code I wrote in this repository is released under the [MIT License](LICENSE): you may reuse
+it, with credit, under the terms in that file.
+
+These are **not** covered by the MIT License:
+
+- `resume/`: my CV. All rights reserved.
+- `images/`: my logo and its icon versions. All rights reserved.
+- Images, photos, GIFs and logos inside `Coursework/` that I didn't create, including team and
+  school logos (for example the NHL, AHL and ECHL logos in CMPS 2680 `project1` and the CSU
+  Bakersfield logo). They belong to their owners and are shown here only as part of class work.
+- Code written together with classmates in team projects (CMPS 3350 Software Engineering). It
+  belongs to all of its authors.
+- Starter code, data files and figures provided by instructors or textbooks. They belong to their
+  authors.
