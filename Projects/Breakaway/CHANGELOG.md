@@ -16,6 +16,9 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
   39% of shots, Pro about 20% and All-Star about 8%.
 
 ### Added
+- Documentation and an about page: feature docs for physics, goalie AI, rules and scoring, and the
+  browser layer in `docs/`, learning notes and exercises in `docs/learning/`, screenshots, a
+  README, and an About page (`about.html`) linked from the Projects page.
 - Game rules (`src/core/rules.js`, `game.js`): 5 attempts per round, 3 goals to advance, an
   8-second shot clock, one rebound chance per attempt, the run ends as soon as 3 goals are out of
   reach; every attempt ends as Goal, Save, Wide, No shot, Post and out, Poke check or Time.
@@ -43,6 +46,6 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - `src/core/random.js`: seeded random number generator (mulberry32) and `?seed=` URL support, so
   the same seed always plays the same game.
 - GitHub Actions workflow that runs the Node tests on every push that touches the game.
-- Decision records: ADR-001 (stack), ADR-002 (fixed-timestep loop), ADR-003 (pure core and
-  browser shell), ADR-004 (world units in feet).
-- Setup guide for Windows with WSL2 and VS Code, and a learning primer on the game loop.
+- Decisions: one document, `docs/decisions.md`, covers the stack, the fixed-timestep loop, the pure
+  core and browser shell, and world units in feet.
+- Setup guide for Windows with WSL2 and VS Code, and learning notes on the game loop.
