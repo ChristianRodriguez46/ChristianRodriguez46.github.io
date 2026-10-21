@@ -6,6 +6,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Fixed
+- Space and the arrow keys keep working after clicking Pause or Mute.
+- Skater, goalie and puck are drawn larger on phones so they're easy to see.
+- Impossibly large saved best scores are rejected.
+
 ### Changed
 - Goalie levels recalibrated so the corners stay open: in scripted tests Rookie gives up about
   39% of shots, Pro about 20% and All-Star about 8%.
