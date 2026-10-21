@@ -1,0 +1,22 @@
+# Runs Breakaway's Node test suite on every push and pull request that touches the game.
+# It doesn't deploy anything: GitHub Pages still publishes the site from the branch as before.
+name: breakaway-tests
+on:
+  push:
+    paths: ['Projects/Breakaway/**', '.github/workflows/breakaway-tests.yml']
+  pull_request:
+    paths: ['Projects/Breakaway/**', '.github/workflows/breakaway-tests.yml']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Projects/Breakaway
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm test

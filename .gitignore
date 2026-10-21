@@ -9,3 +9,12 @@ a.out
 
 # server logs
 error.log
+
+# development tools and scratch space (never published)
+node_modules/
+.studio/
+
+# Breakaway test output
+Projects/Breakaway/test-results/
+Projects/Breakaway/playwright-report/
+Projects/Breakaway/tests/screenshots/
