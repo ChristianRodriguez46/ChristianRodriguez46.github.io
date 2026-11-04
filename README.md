@@ -73,6 +73,8 @@ What the repository contains:
   here at `Projects/Breakaway/`. The site only changes when I move the submodule to a new commit.
 - **Automated site checks:** a GitHub Actions workflow checks the site's pages and links around
   Breakaway on every push.
+- **Projects update themselves:** when I push a project's `main` and its tests pass, a workflow
+  here moves its submodule to the new commit, runs the site checks and republishes the site.
 
 ---
 
@@ -185,6 +187,10 @@ What the repository contains:
 						<tr style='border-bottom: 1px solid #eee;'>
 							<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/.github/workflows/breakaway-tests.yml'>breakaway-tests.yml</a></b></td>
 							<td style='padding: 8px;'>- Runs Breakaway's site checks on every push and pull request: it checks out the site with the Breakaway submodule and runs <code>npm run test:site</code>, which tests the nav links, the Projects page and the homepage tile.<br>- It doesn't deploy anything; GitHub Pages still publishes the site from the branch.</td>
+						</tr>
+						<tr style='border-bottom: 1px solid #eee;'>
+							<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/.github/workflows/update-submodules.yml'>update-submodules.yml</a></b></td>
+							<td style='padding: 8px;'>- Keeps my project submodules on their latest <code>main</code>: when a project's tests pass on a push to <code>main</code>, its <code>notify-portfolio</code> workflow starts this one.<br>- It moves the submodules, runs each project's site checks, commits as me, pushes, and asks GitHub Pages to rebuild. If a check fails, nothing is published.<br>- Also has a <b>Run workflow</b> button for updating by hand.</td>
 						</tr>
 					</table>
 				</blockquote>
@@ -1169,18 +1175,47 @@ Breakaway is the only part of the site with tests. They use Node's built-in test
 nav links, the Projects page and the homepage tile. GitHub Actions runs the site checks on every push
 and pull request, and Breakaway's repo runs the game tests.
 
-### Updating Breakaway
+### How project updates reach the site
 
-I work on Breakaway in its own repo. The site stays on the commit it points to until I move it:
+Each project lives in its own repo and appears here as a git submodule that tracks the project's
+`main`. I work on a project's `dev` branch and merge into `main` when an update is finished.
+Pushing `main` starts this chain:
+
+1. The project's `tests` workflow runs its tests.
+2. If they pass, the project's `notify-portfolio` workflow tells this repo.
+3. This repo's `update-submodules` workflow moves every submodule to its newest `main`, runs each
+   project's `npm run test:site`, commits as me, pushes, and asks GitHub Pages to rebuild.
+
+Pushes to `dev` never reach the site, and if a check fails the site keeps the versions it had.
+Because the workflow commits here, I run `git pull` in my local copy before changing anything.
+
+To update by hand, I press **Run workflow** on `update-submodules` in the Actions tab, or:
 
 ```sh
+git pull
 git submodule update --remote Projects/Breakaway   # take the latest Breakaway main
-(cd Projects/Breakaway && npm test && npm run test:site)
-python3 -m http.server 4101                         # check /Projects/Breakaway/, then Ctrl+C
+(cd Projects/Breakaway && npm run test:site)
 git add Projects/Breakaway
 git commit -m "Update Breakaway"
 git push
 ```
+
+### Adding a project
+
+For a new project in its own public repo (for example `ChristianRodriguez46/NewGame`):
+
+1. **Add it here as a submodule** that tracks `main`, then commit and push:
+   ```sh
+   git submodule add -b main https://github.com/ChristianRodriguez46/NewGame.git Projects/NewGame
+   git commit -m "feat: add NewGame as a git submodule at Projects/NewGame"
+   git push
+   ```
+   Add its tile to `Projects/index.html` (and the homepage if it should be there).
+2. **Copy two workflows into the project:** a `tests` workflow (Breakaway's `tests.yml` is a
+   template) and Breakaway's `notify-portfolio.yml`, unchanged. The notify workflow waits for the
+   workflow named `tests`.
+`update-submodules.yml` names no project, so it needs no change. If the project has an
+`npm run test:site` script, the workflow runs it before publishing.
 
 ---
 

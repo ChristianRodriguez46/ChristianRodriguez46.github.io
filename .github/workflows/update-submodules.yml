@@ -1,0 +1,97 @@
+# Moves my project submodules to the newest commit on the branch each one tracks (main, set in
+# .gitmodules), runs each project's site checks, commits as me, and republishes the site.
+#
+# When it runs
+#   - A project's notify-portfolio workflow sends "project-main-updated" after I push to that
+#     project's main and its tests pass.
+#   - The "Run workflow" button on this workflow in the Actions tab, for an update by hand.
+#
+# Steps
+#   1. Check out the site with every submodule.
+#   2. git submodule update --remote: each submodule moves to the newest commit on its branch.
+#      Nothing changed → stop here.
+#   3. npm run test:site in every project that has that script. A failure stops the run, so the
+#      site keeps the versions it had.
+#   4. Commit the new pointers as me and push.
+#   5. Ask GitHub Pages to rebuild. Pushes made with GITHUB_TOKEN don't start a Pages build on
+#      their own, so this step does it.
+#
+# Adding a project: add it as a submodule with -b main (README, "Adding a project"). This file
+# doesn't name any project, so it needs no change.
+#
+# Troubleshooting
+#   - Red at step 3: a project's site checks failed. Fix the project and push its main again.
+#   - Green but the site didn't change: check "pages build and deployment" in the Actions tab, or
+#     run this workflow again with the button.
+#   - Never starts after a project push: check that project's notify-portfolio run and its
+#     PORTFOLIO_DISPATCH_TOKEN secret.
+name: update-submodules
+on:
+  repository_dispatch:
+    types: [project-main-updated]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency:
+  group: update-submodules
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site with every submodule
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Move each submodule to the newest commit on its branch
+        id: move
+        env:
+          PROJECT: ${{ github.event.client_payload.project }}
+          SHA: ${{ github.event.client_payload.sha }}
+        run: |
+          if [ -n "$PROJECT" ]; then echo "Started by $PROJECT at $SHA."; fi
+          git submodule update --remote
+          if git diff --quiet; then
+            echo "Every project is already up to date. Nothing to publish."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git submodule status
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run each project's site checks
+        if: steps.move.outputs.changed == 'true'
+        run: |
+          for path in $(git config --file .gitmodules --get-regexp '\.path$' | awk '{ print $2 }'); do
+            if [ -f "$path/package.json" ] && grep -q '"test:site"' "$path/package.json"; then
+              echo "::group::$path: npm run test:site"
+              (cd "$path" && npm run test:site)
+              echo "::endgroup::"
+            else
+              echo "$path has no test:site script; skipped."
+            fi
+          done
+
+      - name: Commit the new versions as me and push
+        if: steps.move.outputs.changed == 'true'
+        run: |
+          git config user.name "Christian Rodriguez"
+          git config user.email "crodriguez4643@gmail.com"
+          changed=$(git diff --name-only | tr '\n' ' ' | sed 's/ $//')
+          git add -- $changed
+          git commit -m "chore: update $changed to the latest main" \
+                     -m "$(git diff --cached --submodule=log)" \
+                     -m "Made by the update-submodules workflow."
+          git push
+
+      - name: Ask GitHub Pages to rebuild the site
+        if: steps.move.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${{ github.repository }}/pages/builds"
