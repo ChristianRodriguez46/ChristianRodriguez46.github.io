@@ -84,6 +84,9 @@ jobs:
           git config user.name "Christian Rodriguez"
           git config user.email "crodriguez4643@gmail.com"
           changed=$(git diff --name-only | tr '\n' ' ' | sed 's/ $//')
+          # The checkout fetched submodules shallowly; get their history so the commit message
+          # can list the commits between the old and new versions.
+          for path in $changed; do git -C "$path" fetch --quiet --unshallow 2>/dev/null || true; done
           git add -- $changed
           git commit -m "chore: update $changed to the latest main" \
                      -m "$(git diff --cached --submodule=log)" \
