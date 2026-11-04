@@ -1,0 +1,4 @@
+[submodule "Projects/Breakaway"]
+	path = Projects/Breakaway
+	url = https://github.com/ChristianRodriguez46/Breakaway.git
+	branch = main
