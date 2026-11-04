@@ -1,22 +1,21 @@
-# Runs Breakaway's Node test suite on every push and pull request that touches the game.
+# Runs Breakaway's site checks on every push and pull request.
+# Breakaway lives in its own repo and appears here as a git submodule at Projects/Breakaway.
+# The checks read this site's pages (nav links, the Projects page, the homepage tile), so they run
+# here, with the submodule checked out. The game's own tests run in the Breakaway repo.
 # It doesn't deploy anything: GitHub Pages still publishes the site from the branch as before.
-name: breakaway-tests
-on:
-  push:
-    paths: ['Projects/Breakaway/**', '.github/workflows/breakaway-tests.yml']
-  pull_request:
-    paths: ['Projects/Breakaway/**', '.github/workflows/breakaway-tests.yml']
+name: breakaway-site-checks
+on: [push, pull_request]
 permissions:
   contents: read
 jobs:
-  test:
+  site-checks:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: Projects/Breakaway
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - run: npm test
+      - run: npm run test:site
+        working-directory: Projects/Breakaway

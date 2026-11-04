@@ -68,8 +68,11 @@ What the repository contains:
 - **Coursework from thirteen courses:** each lab has its own page explaining what the program does,
   what I wrote and how to build and run it. The PHP projects are posted as code, since GitHub Pages
   doesn't run PHP.
-- **Automated tests for Breakaway:** a GitHub Actions workflow runs the game's tests on every push
-  that changes it.
+- **Breakaway as a git submodule:** the game has its own repository,
+  [ChristianRodriguez46/Breakaway](https://github.com/ChristianRodriguez46/Breakaway), and appears
+  here at `Projects/Breakaway/`. The site only changes when I move the submodule to a new commit.
+- **Automated site checks:** a GitHub Actions workflow checks the site's pages and links around
+  Breakaway on every push.
 
 ---
 
@@ -81,7 +84,7 @@ What the repository contains:
 | **Design** | <ul><li>Design tokens (colors, type, sizes) at the top of <code>style/main.css</code></li><li>Dark theme that follows the visitor's system setting</li><li>The same navigation bar on every page</li></ul> |
 | **Code quality** | <ul><li>Every file starts with a comment block listing its sections and common problems to check</li><li>Breakaway keeps its game rules in plain modules separate from browser code, with JSDoc types checked by TypeScript</li></ul> |
 | **Documentation** | <ul><li>A README for every course and lab</li><li>Breakaway has docs for its physics, goalie AI, rules and browser code, a decisions document, a changelog and an iteration log</li></ul> |
-| **Testing** | <ul><li>Breakaway has unit, integration, statistics and site tests that run with Node's built-in test runner</li><li>GitHub Actions runs them on every push that changes the game (<code>.github/workflows/breakaway-tests.yml</code>)</li></ul> |
+| **Testing** | <ul><li>Breakaway has unit, integration and statistics tests in its own repo, plus site checks that read this site's pages, all with Node's built-in test runner</li><li>GitHub Actions runs the site checks here on every push and pull request (<code>.github/workflows/breakaway-tests.yml</code>), and the game's repo runs its own tests</li></ul> |
 | **Accessibility** | <ul><li>Skip links, keyboard navigation and visible focus</li><li>Animations are skipped when the visitor's system has "Reduce motion" turned on</li></ul> |
 | **Privacy** | <ul><li>No analytics, cookies or tracking</li><li>Breakaway saves only its settings and best scores in the visitor's browser, and nothing is sent anywhere</li></ul> |
 | **Dependencies** | <ul><li>The site has none to install. The homepage loads the Inter font from Google Fonts and anime.js from cdnjs</li><li>Breakaway's <code>package.json</code> lists development tools only (Playwright, ESLint, TypeScript)</li></ul> |
@@ -114,7 +117,7 @@ What the repository contains:
     │   └── snapshots
     ├── LICENSE
     ├── Projects
-    │   ├── Breakaway
+    │   ├── Breakaway   (git submodule: ChristianRodriguez46/Breakaway)
     │   ├── Hangman
     │   └── index.html
     ├── README.md
@@ -181,7 +184,7 @@ What the repository contains:
 					</thead>
 						<tr style='border-bottom: 1px solid #eee;'>
 							<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/.github/workflows/breakaway-tests.yml'>breakaway-tests.yml</a></b></td>
-							<td style='padding: 8px;'>- Automates testing of Breakaways core game code on every code change, ensuring ongoing code quality and stability<br>- Integrates with GitHub workflows to run the Node.js test suite within the projects specific directory, providing continuous validation without affecting deployment or publishing processes<br>- This setup maintains reliable development cycles and early detection of issues in the game development pipeline.</td>
+							<td style='padding: 8px;'>- Runs Breakaway's site checks on every push and pull request: it checks out the site with the Breakaway submodule and runs <code>npm run test:site</code>, which tests the nav links, the Projects page and the homepage tile.<br>- It doesn't deploy anything; GitHub Pages still publishes the site from the branch.</td>
 						</tr>
 					</table>
 				</blockquote>
@@ -1016,7 +1019,7 @@ What the repository contains:
 			</table>
 	<!-- Breakaway Submodule -->
 	<details>
-		<summary><b>Breakaway</b></summary>
+		<summary><b>Breakaway</b> (git submodule, code at <a href='https://github.com/ChristianRodriguez46/Breakaway'>ChristianRodriguez46/Breakaway</a>)</summary>
 		<blockquote>
 			<table style='width: 100%; border-collapse: collapse;'>
 			<thead>
@@ -1026,47 +1029,47 @@ What the repository contains:
 				</tr>
 			</thead>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/index.html'>index.html</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/blob/main/index.html'>index.html</a></b></td>
 					<td style='padding: 8px;'>- The game page: the site navigation, score strip, rink canvas, touch controls, screens and dialogs.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/about.html'>about.html</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/blob/main/about.html'>about.html</a></b></td>
 					<td style='padding: 8px;'>- The About page on my site: screenshots, how to play, how I built it, and links to the detailed docs.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/README.md'>README.md</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/blob/main/README.md'>README.md</a></b></td>
 					<td style='padding: 8px;'>- What Breakaway is, how to play, how to run it locally and how to run the tests.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/style.css'>style.css</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/blob/main/style.css'>style.css</a></b></td>
 					<td style='padding: 8px;'>- The game's design tokens and layout for phones and laptops.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/src/core'>src/core/</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/tree/main/src/core'>src/core/</a></b></td>
 					<td style='padding: 8px;'>- The game rules as plain JavaScript modules with no browser code: physics, collisions, goalie AI, difficulty, scoring and saved-settings validation.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/src/browser'>src/browser/</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/tree/main/src/browser'>src/browser/</a></b></td>
 					<td style='padding: 8px;'>- The browser side: the fixed-step game loop, canvas drawing, keyboard and touch input, sound, saved data and the screens.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/docs'>docs/</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/tree/main/docs'>docs/</a></b></td>
 					<td style='padding: 8px;'>- How the game works (physics, goalie AI, rules and scoring, browser), the decisions behind it, and my study notes and exercises.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/tests'>tests/</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/tree/main/tests'>tests/</a></b></td>
 					<td style='padding: 8px;'>- Unit, integration, statistics and site tests run with Node's built-in test runner, plus Playwright browser test setup.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/CHANGELOG.md'>CHANGELOG.md</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/blob/main/CHANGELOG.md'>CHANGELOG.md</a></b></td>
 					<td style='padding: 8px;'>- Every change to the game, newest first.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/ITERATION_LOG.md'>ITERATION_LOG.md</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/blob/main/ITERATION_LOG.md'>ITERATION_LOG.md</a></b></td>
 					<td style='padding: 8px;'>- Problems I found while building and testing, how I found them and how I fixed them.</td>
 				</tr>
 				<tr style='border-bottom: 1px solid #eee;'>
-					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io/blob/main/Projects/Breakaway/SETUP.md'>SETUP.md</a></b></td>
+					<td style='padding: 8px;'><b><a href='https://github.com/ChristianRodriguez46/Breakaway/blob/main/SETUP.md'>SETUP.md</a></b></td>
 					<td style='padding: 8px;'>- How to set up, run and test the game on Windows with WSL2 and VS Code.</td>
 				</tr>
 			</table>
@@ -1132,12 +1135,15 @@ What the repository contains:
 
 ### Installation
 
-There is nothing to build. Clone the repository:
+There is nothing to build. Clone the repository with its submodule (Breakaway):
 
 ```sh
-git clone https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io
+git clone --recurse-submodules https://github.com/ChristianRodriguez46/ChristianRodriguez46.github.io
 cd ChristianRodriguez46.github.io
 ```
+
+If I already cloned it without `--recurse-submodules`, `Projects/Breakaway` is empty, and
+`git submodule update --init` fills it.
 
 ### Usage
 
@@ -1156,10 +1162,25 @@ Breakaway is the only part of the site with tests. They use Node's built-in test
 `npm install` isn't needed:
 
 ```sh
-(cd Projects/Breakaway && npm test)
+(cd Projects/Breakaway && npm test && npm run test:site)
 ```
 
-GitHub Actions runs the same tests on every push and pull request that changes the game.
+`npm test` runs the game's own tests. `npm run test:site` checks this site's pages around the game:
+nav links, the Projects page and the homepage tile. GitHub Actions runs the site checks on every push
+and pull request, and Breakaway's repo runs the game tests.
+
+### Updating Breakaway
+
+I work on Breakaway in its own repo. The site stays on the commit it points to until I move it:
+
+```sh
+git submodule update --remote Projects/Breakaway   # take the latest Breakaway main
+(cd Projects/Breakaway && npm test && npm run test:site)
+python3 -m http.server 4101                         # check /Projects/Breakaway/, then Ctrl+C
+git add Projects/Breakaway
+git commit -m "Update Breakaway"
+git push
+```
 
 ---
 
